@@ -46,8 +46,6 @@ function PvtAssetMgmt() {
         groups={groups}
         mainTitle="Customized investment strategies designed around you."
         mainDescription="Whatever your goals may be, we design your portfolio around them. Our diverse team and longstanding expertise allow us to provide a highly personalized advisory service with respect to investing in public markets."
-        primaryButtonText=""
-        secondaryButtonText=""
       />
       <TestimonialSection
         title="Meet our Team"

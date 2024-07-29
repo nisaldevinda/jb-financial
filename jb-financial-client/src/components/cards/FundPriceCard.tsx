@@ -8,6 +8,30 @@ interface CardProps {
   sellPrice: number;
 }
 
+const fundPriceCardData: CardProps[] = [
+  {
+    title: "JB Vantage",
+    subtitle: "Value Equity Fund",
+    link: "/learn-more",
+    buyPrice: 123.45,
+    sellPrice: 120.45,
+  },
+  {
+    title: "JB Vantage",
+    subtitle: "Money Market Fund",
+    link: "/learn-more",
+    buyPrice: 678.9,
+    sellPrice: 670.8,
+  },
+  {
+    title: "JB Vantage",
+    subtitle: "Short Term Gilt Fund",
+    link: "/learn-more",
+    buyPrice: 234.56,
+    sellPrice: 230.45,
+  },
+];
+
 const FundPriceCard: React.FC<CardProps> = ({
   title,
   subtitle,
@@ -47,4 +71,4 @@ const FundPriceCard: React.FC<CardProps> = ({
   );
 };
 
-export default FundPriceCard;
+export { FundPriceCard, fundPriceCardData };

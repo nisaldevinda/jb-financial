@@ -8,6 +8,33 @@ interface CardProps {
   link: string;
 }
 
+const unitTrustCardData: CardProps[] = [
+  {
+    title: "JB Vantage",
+    subtitle: "Value Equity Fund",
+    description:
+      "Invest in equities of publicly listed companies in Sri Lanka and benefit from our rigorous research deep dive research methodology.",
+    imageUrl: "/images/unit-trusts/value-equity-fund.png",
+    link: "/learn-more",
+  },
+  {
+    title: "JB Vantage",
+    subtitle: "Money Market Fund",
+    description:
+      "Experience the relatively higher returns of a fixed deposit with the flexibility of a regular savings account, with minimal fees and quick withdrawal.",
+    imageUrl: "/images/unit-trusts/money-market-fund.png",
+    link: "/learn-more",
+  },
+  {
+    title: "JB Vantage",
+    subtitle: "Short Term Gilt Fund",
+    description:
+      "Invest in government securities such as treasury bills and bonds which are typically considered 'Risk-free' investment instruments.",
+    imageUrl: "/images/unit-trusts/short-term-gilt-fund.png",
+    link: "/learn-more",
+  },
+];
+
 const UnitTrustCard: React.FC<CardProps> = ({
   title,
   subtitle,
@@ -37,4 +64,4 @@ const UnitTrustCard: React.FC<CardProps> = ({
   );
 };
 
-export default UnitTrustCard;
+export { UnitTrustCard, unitTrustCardData };

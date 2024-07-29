@@ -1,11 +1,10 @@
-import React, { useState } from "react";
 // Components
 import JBFNavbar from "./components/JBFNavbar";
 import JBFFooter from "./components/JBFFooter";
 import "./App.css";
 
 //Routes
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -15,8 +14,6 @@ import InsWealthMgmt from "./pages/InsWealthMgmt";
 import PvtAssetMgmt from "./pages/PvtAssetMgmt";
 
 const App: React.FC = () => {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <JBFNavbar />

@@ -6,30 +6,6 @@ import BannerSection from "../components/sections/BannerSection";
 import NumbersSection from "../components/sections/NumbersSection";
 
 const About: React.FC = () => {
-  const cardData = [
-    {
-      type: "contact",
-      imageUrl: "/icons/mail.svg",
-      line1: "hello@jbvantage.lk",
-      line2: "sales@jbvantage.lk",
-      line3: "",
-    },
-    {
-      type: "contact",
-      imageUrl: "/icons/phone.svg",
-      line1: "+94 11 249 0900",
-      line2: "+94 11 249 0950",
-      line3: "+94 11 249 0952",
-    },
-    {
-      type: "contact",
-      imageUrl: "/icons/map.svg",
-      line1: "150, St. Joseph’s Street,",
-      line2: "Colombo 14,",
-      line3: "Sri Lanka.",
-    },
-  ];
-
   const groups = [
     { title: "LKR 27 Billion +", description: "Assets Under Management (AUM)" },
     { title: "380 + ", description: "Satisfied Investors" },
@@ -87,7 +63,7 @@ const About: React.FC = () => {
         bodyText=""
         buttonText=""
         buttonType="primary" // 'primary' | 'secondary'
-        cards={cardData.slice(0, 3)}
+        cardType="contact"
         alignText="left" // Change to "left" or "center"
       />
     </>

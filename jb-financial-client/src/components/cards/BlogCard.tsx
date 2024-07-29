@@ -9,6 +9,19 @@ interface BlogCardProps {
   link: string;
 }
 
+const blogCardData: BlogCardProps[] = [
+  {
+    category: "Investing",
+    duration: "3 min",
+    title: "Laddering as a strategy",
+    description:
+      "In a period of declining interest rates, laddering can be a great way to buttress your returns. Let us explain.",
+    imageUrl: "/images/blog/sample-blog-1.jpg",
+    link: "/learn-more",
+  },
+  // Add more blog card data here if needed
+];
+
 const BlogCard: React.FC<BlogCardProps> = ({
   category,
   duration,
@@ -42,4 +55,4 @@ const BlogCard: React.FC<BlogCardProps> = ({
   );
 };
 
-export default BlogCard;
+export { BlogCard, blogCardData };

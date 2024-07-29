@@ -56,8 +56,6 @@ function InsWealthMgmt() {
         groups={groups}
         mainTitle="A better way to manage an institutional portfolio"
         mainDescription="Our Institutional Wealth Management service is tailored to meet the needs of corporates and family offices, providing them with the expertise and support they need to maximize the return of their public market investments."
-        primaryButtonText=""
-        secondaryButtonText=""
       />
       <TestimonialSection
         title="Meet our Team"

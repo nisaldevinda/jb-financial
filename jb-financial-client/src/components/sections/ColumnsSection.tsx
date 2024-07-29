@@ -1,79 +1,54 @@
-// Card Components
-import UnitTrustCard from "../cards/UnitTrustCard";
-import FundPriceCard from "../cards/FundPriceCard";
-import BlogCard from "../cards/BlogCard";
-import TeamCard from "../cards/TeamCard";
-import ContactCard from "../cards/ContactCard";
+import React, { useEffect, useState } from "react";
+import { UnitTrustCard, unitTrustCardData } from "../cards/UnitTrustCard";
+import { FundPriceCard, fundPriceCardData } from "../cards/FundPriceCard";
+import { BlogCard, blogCardData } from "../cards/BlogCard";
+import { TeamCard, teamCardData } from "../cards/TeamCard";
+import { ContactCard, contactCardData } from "../cards/ContactCard";
 
-// Define prop types for the cards
-interface UnitTrustCardProps {
-  type: "unitTrust";
-  title: string;
-  subtitle: string;
-  description: string;
-  imageUrl: string;
-  link: string;
+interface CardProps {
+  type: string;
 }
-
-interface FundPriceCardProps {
-  type: "fundPrice";
-  title: string;
-  subtitle: string;
-  link: string;
-  buyPrice: number;
-  sellPrice: number;
-}
-
-interface ContactCardProps {
-  type: "contact";
-  line1: string;
-  line2: string;
-  line3: string;
-  imageUrl: string;
-}
-
-interface BlogCardProps {
-  type: "blog";
-  title: string;
-  category: string;
-  duration: string;
-  description: string;
-  imageUrl: string;
-  link: string;
-}
-
-interface TeamCardProps {
-  type: "team";
-  name: string;
-  designation: string;
-  imageUrl: string;
-}
-
-type CardProps =
-  | UnitTrustCardProps
-  | FundPriceCardProps
-  | ContactCardProps
-  | BlogCardProps
-  | TeamCardProps;
 
 interface ColumnsSectionProps {
   subtitleText: string;
   bodyText?: string;
   buttonText?: string;
   buttonType?: "primary" | "secondary";
-  cards: CardProps[];
+  cardType: string;
   alignText?: "left" | "center";
 }
 
-function ColumnsSection({
+const cardDataMapping: Record<string, CardProps[]> = {
+  unitTrust: unitTrustCardData,
+  fundPrice: fundPriceCardData,
+  contact: contactCardData,
+  blog: blogCardData,
+  team: teamCardData,
+};
+
+const cardComponentMapping: Record<string, React.FC<any>> = {
+  unitTrust: UnitTrustCard,
+  fundPrice: FundPriceCard,
+  contact: ContactCard,
+  blog: BlogCard,
+  team: TeamCard,
+};
+
+const ColumnsSection: React.FC<ColumnsSectionProps> = ({
   subtitleText,
   bodyText,
   buttonText,
   buttonType = "secondary",
-  cards,
+  cardType,
   alignText = "center",
-}: ColumnsSectionProps) {
-  // Function to apply primaryText class to specific letters
+}) => {
+  const [cards, setCards] = useState<CardProps[]>([]);
+
+  useEffect(() => {
+    const data = cardDataMapping[cardType];
+    setCards(data);
+  }, [cardType]);
+
   const applyPrimaryTextClass = (text: string) => {
     const words = text.split(" ");
     return (
@@ -101,63 +76,8 @@ function ColumnsSection({
       {bodyText && <p className={`bodyText text-${alignText}`}>{bodyText}</p>}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 w-full">
         {cards.map((card, index) => {
-          switch (card.type) {
-            case "unitTrust":
-              return (
-                <UnitTrustCard
-                  key={index}
-                  title={card.title}
-                  subtitle={card.subtitle}
-                  description={card.description}
-                  imageUrl={card.imageUrl}
-                  link={card.link}
-                />
-              );
-            case "fundPrice":
-              return (
-                <FundPriceCard
-                  key={index}
-                  title={card.title}
-                  subtitle={card.subtitle}
-                  link={card.link}
-                  buyPrice={card.buyPrice}
-                  sellPrice={card.sellPrice}
-                />
-              );
-            case "contact":
-              return (
-                <ContactCard
-                  key={index}
-                  line1={card.line1}
-                  line2={card.line2}
-                  line3={card.line3}
-                  imageUrl={card.imageUrl}
-                />
-              );
-            case "blog":
-              return (
-                <BlogCard
-                  key={index}
-                  title={card.title}
-                  category={card.category}
-                  duration={card.duration}
-                  description={card.description}
-                  imageUrl={card.imageUrl}
-                  link={card.link}
-                />
-              );
-            case "team":
-              return (
-                <TeamCard
-                  key={index}
-                  name={card.name}
-                  designation={card.designation}
-                  imageUrl={card.imageUrl}
-                />
-              );
-            default:
-              return null;
-          }
+          const CardComponent = cardComponentMapping[cardType];
+          return <CardComponent key={index} {...card} />;
         })}
       </div>
       {buttonText && (
@@ -167,6 +87,6 @@ function ColumnsSection({
       )}
     </section>
   );
-}
+};
 
 export default ColumnsSection;

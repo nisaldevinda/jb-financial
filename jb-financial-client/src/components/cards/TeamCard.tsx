@@ -6,6 +6,15 @@ interface TeamCardProps {
   imageUrl: string;
 }
 
+const teamCardData: TeamCardProps[] = [
+  {
+    name: "John Doe",
+    designation: "CEO",
+    imageUrl: "/images/team/sample-team-1.png",
+  },
+  // Add more team card data here if needed
+];
+
 const TeamCard: React.FC<TeamCardProps> = ({ name, designation, imageUrl }) => {
   return (
     <div className="flex flex-col bg-[#fbfbfd] rounded-2xl border-2 border-solid border-gray-300 p-8 md:p-12 gap-8 md:gap-12 items-center">
@@ -20,4 +29,4 @@ const TeamCard: React.FC<TeamCardProps> = ({ name, designation, imageUrl }) => {
   );
 };
 
-export default TeamCard;
+export { TeamCard, teamCardData };
