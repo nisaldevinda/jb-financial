@@ -1,13 +1,8 @@
-import { useState } from "react";
-
 import HeroSection from "../components/sections/HeroSection";
-import ColumnsSection from "../components/sections/ColumnsSection";
 import SideContentSection from "../components/sections/SideContentSection";
 import BannerSection from "../components/sections/BannerSection";
 
 function PvtWealthMgmt() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <HeroSection

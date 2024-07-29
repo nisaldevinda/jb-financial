@@ -2,7 +2,7 @@ import jbfLogo from "/logo.svg";
 
 ("use client");
 
-import { Button, Navbar } from "flowbite-react";
+import { Navbar } from "flowbite-react";
 
 function JBFNavbar() {
   return (

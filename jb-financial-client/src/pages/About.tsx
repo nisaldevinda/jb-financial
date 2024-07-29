@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 // Components
 import HeroSection from "../components/sections/HeroSection";
 import SideContentSection from "../components/sections/SideContentSection";
@@ -8,8 +6,6 @@ import BannerSection from "../components/sections/BannerSection";
 import NumbersSection from "../components/sections/NumbersSection";
 
 const About: React.FC = () => {
-  const [count, setCount] = useState(0);
-
   const cardData = [
     {
       type: "contact",

@@ -1,20 +1,12 @@
-import { useState } from "react";
-
 // Components
 import HeroSection from "../components/sections/HeroSection";
 import ColumnsSection from "../components/sections/ColumnsSection";
 import SideContentSection from "../components/sections/SideContentSection";
 import AccordionSection from "../components/sections/AccordionSection";
 
-// Images
-import pwmimg from "/a1.png";
-import pwmimg2 from "/a3.jpg";
-
 ("use client");
 
 const Home: React.FC = () => {
-  const [count, setCount] = useState(0);
-
   const cardData = [
     {
       type: "unitTrust",

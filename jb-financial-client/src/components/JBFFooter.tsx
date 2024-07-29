@@ -1,9 +1,5 @@
 import jbfLogo from "/logo.svg";
 
-("use client");
-
-import { Button, Navbar } from "flowbite-react";
-
 function JBFFooter() {
   return (
     <div className="bg-neutral-lightest px-4 py-8 md:px-20 md:py-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-6 md:gap-16">

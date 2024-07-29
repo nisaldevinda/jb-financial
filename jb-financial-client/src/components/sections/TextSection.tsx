@@ -4,16 +4,12 @@ interface TextSectionProps {
   groups: Array<{ title: string; description: string }>;
   mainTitle?: string;
   mainDescription?: string;
-  primaryButtonText?: string;
-  secondaryButtonText?: string;
 }
 
 const TextSection: React.FC<TextSectionProps> = ({
   groups,
   mainTitle,
   mainDescription,
-  primaryButtonText,
-  secondaryButtonText,
 }) => {
   return (
     <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-16">

@@ -2,7 +2,6 @@ import React from "react";
 
 ("use client");
 import { Accordion } from "flowbite-react";
-import accimg from "/acc1.jpg";
 
 interface AnotherAccordionProps {}
 

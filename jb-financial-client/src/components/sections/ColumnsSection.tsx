@@ -1,5 +1,3 @@
-import React from "react";
-
 // Card Components
 import UnitTrustCard from "../cards/UnitTrustCard";
 import FundPriceCard from "../cards/FundPriceCard";
