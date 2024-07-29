@@ -1,12 +1,9 @@
-import { useState } from "react";
-
 import HeroSection from "../components/sections/HeroSection";
 import SideContentSection from "../components/sections/SideContentSection";
 import TextSection from "../components/sections/TextSection";
 import TestimonialSection from "../components/sections/TestimonialSection";
 
 function InsWealthMgmt() {
-  const [count, setCount] = useState(0);
   const groups = [
     {
       title: "+ BETTER INSIGHTS AND MARKET ACCESSS",

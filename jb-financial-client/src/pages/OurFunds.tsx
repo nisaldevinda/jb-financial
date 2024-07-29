@@ -1,12 +1,9 @@
-import { useState } from "react";
-
 import HeroSection from "../components/sections/HeroSection";
 import ColumnsSection from "../components/sections/ColumnsSection";
 import SideContentSection from "../components/sections/SideContentSection";
 import AccordionSection from "../components/sections/AccordionSection";
 
 function OurFunds() {
-  const [count, setCount] = useState(0);
   const cardData = [
     {
       type: "unitTrust",
