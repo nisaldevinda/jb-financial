@@ -6,20 +6,9 @@
 @import 'tailwindcss/utilities';
 
 
-/* #root{
-  margin: 0 80px;
-  padding: 0;
-  max-width: max-content;
+body{
+  overflow-x: hidden !important;
 }
-
-@media (max-width: 767px){
-  #root{
-    margin: 0 16px;
-    padding: 0;
-  }
-} */
-
-/* Switzer Typefaces */
 
 @font-face {
   font-family: 'Switzer-Thin';
@@ -311,32 +300,48 @@
   font-family: "Switzer-Semibold";
 }
 
+.zodiak-r{
+  font-family: "Zodiak-Regular";
+}
+
 /* Buttons */
+
+/* Primary Button */
 
 .primary-button{
   font-family: "Switzer-Semibold";
-  font-size: 20px;
+  font-size: 16px;
   text-transform: uppercase;
   color: var(--white);
   border-radius: 50px;
   border: 2px solid #930010;
   background-color: var(--primary-900);
-  width: 360px;
+  width: fit-content;
+  padding: 12px 48px;
+}
+
+@media (max-width: 639px) {
+  .primary-button{
+    width: 100%;
+  }
 }
 
 .primary-button:hover{
-  color: var(--white);
-  background-color: var(--primary-900) !important;
+  cursor: pointer !important;
+  color: var(--primary-900);
+  background-color: var(--white);
 }
 
 .secondary-button{
   font-family: "Switzer-Semibold";
-  font-size: 20px;
+  font-size: 16px;
   text-transform: uppercase;
   color: var(--primary-900);
   border-radius: 50px;
   border: 2px solid #930010;
   background-color: transparent;
+  width: fit-content;
+  padding: 12px 48px;
 }
 
 .secondary-button:hover{
@@ -344,12 +349,42 @@
   background-color: var(--primary-900) !important;
 }
 
+@media (max-width: 639px) {
+  .secondary-button{
+    width: 100% !important;
+  }
+}
+
+/* Title Text */
+
 .titleText{
   font-family: 'Zodiak-Regular';
-  font-size: 108px;
+  font-size: 96px;
   letter-spacing: -5%;
   line-height: 125%;
 }
+
+@media (max-width: 1280px) and (min-width: 768px) {
+  .titleText{
+    font-size: 80px;
+    letter-spacing: -5%;
+    line-height: 125%;
+  }
+}
+
+@media (max-width: 767px){
+  .titleText{
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 480px){
+  .titleText{
+    font-size: 40px;
+  }
+}
+
+/* Sub Title Text */
 
 .subtitleText{
   font-family: 'Zodiak-Regular';
@@ -358,22 +393,53 @@
   line-height: 125%;
 }
 
+@media (max-width: 767px){
+  .subtitleText{
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px){
+  .subtitleText{
+    font-size: 32px;
+  }
+}
+
+/* Body Text */
+
 .bodyText{
   font-family: "Switzer-Regular";
   font-size: 20px;
   line-height: 150%;
 }
 
+@media (max-width: 767px){
+  .bodyText{
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px){
+  .bodyText{
+    font-size: 14px;
+  }
+}
+
+/* Regular Text */
+
 .regularText{
   font-family: "Switzer-Regular";
   font-size: 16px;
 }
 
-@media (max-width: 767px){
-  .titleText{
-    font-size: 40px;
+@media (max-width: 480px){
+  .regularText{
+    font-size: 14px;
   }
 }
+
+
+/* Text Colors */
 
 .primaryText{
   color: var(--primary-900);
