@@ -5,10 +5,6 @@ import { BlogCard, blogCardData } from "../cards/BlogCard";
 import { TeamCard, teamCardData } from "../cards/TeamCard";
 import { ContactCard, contactCardData } from "../cards/ContactCard";
 
-interface CardProps {
-  type: string;
-}
-
 interface ColumnsSectionProps {
   subtitleText: string;
   bodyText?: string;
@@ -18,7 +14,7 @@ interface ColumnsSectionProps {
   alignText?: "left" | "center";
 }
 
-const cardDataMapping: Record<string, CardProps[]> = {
+const cardDataMapping: Record<string, any[]> = {
   unitTrust: unitTrustCardData,
   fundPrice: fundPriceCardData,
   contact: contactCardData,
@@ -42,11 +38,11 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
   cardType,
   alignText = "center",
 }) => {
-  const [cards, setCards] = useState<CardProps[]>([]);
+  const [cards, setCards] = useState<any[]>([]);
 
   useEffect(() => {
     const data = cardDataMapping[cardType];
-    setCards(data);
+    setCards(data || []);
   }, [cardType]);
 
   const applyPrimaryTextClass = (text: string) => {
@@ -66,6 +62,8 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
     );
   };
 
+  const CardComponent = cardComponentMapping[cardType] || (() => null);
+
   return (
     <section
       className={`bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-16 items-${alignText}`}
@@ -76,7 +74,6 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
       {bodyText && <p className={`bodyText text-${alignText}`}>{bodyText}</p>}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 w-full">
         {cards.map((card, index) => {
-          const CardComponent = cardComponentMapping[cardType];
           return <CardComponent key={index} {...card} />;
         })}
       </div>
