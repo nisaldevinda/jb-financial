@@ -12,46 +12,69 @@ function JBFFooter() {
       </div>
       <div className="flex flex-col w-full md:w-1/4 gap-4">
         <h1 className="switzer-sb text-base md:text-xl uppercase text-text-dark">
-          Links
+          Funds
         </h1>
-        <a href="" className="regularText neutralText">
-          Link 1
+        <a href="/funds" className="regularText neutralText">
+          Our Funds
         </a>
-        <a href="" className="regularText neutralText">
-          Link 2
+        <a href="/funds/value-equity-fund" className="regularText neutralText">
+          Value Equity Fund
         </a>
-        <a href="" className="regularText neutralText">
-          Link 3
+        <a href="/funds/money-market-fund" className="regularText neutralText">
+          Money Market Fund
         </a>
-        <a href="" className="regularText neutralText">
-          Link 4
-        </a>
-        <a href="" className="regularText neutralText">
-          Link 5
+        <a
+          href="/funds/short-term-gilt-fund"
+          className="regularText neutralText"
+        >
+          Short Term Gilt Fund
         </a>
       </div>
       <div className="flex flex-col w-full md:w-1/4 gap-4">
         <h1 className="switzer-sb text-base md:text-xl uppercase text-text-dark">
-          Resources
+          Company
         </h1>
-        <a href="" className="regularText neutralText">
-          Link 1
+        <a href="/about" className="regularText neutralText">
+          About
         </a>
-        <a href="" className="regularText neutralText">
-          Link 2
+        <a href="/blogs" className="regularText neutralText">
+          Blogs
         </a>
-        <a href="" className="regularText neutralText">
-          Link 3
+        <a href="/team" className="regularText neutralText">
+          Team
         </a>
-        <a href="" className="regularText neutralText">
-          Link 4
+        <a href="/careers" className="regularText neutralText">
+          Careers
         </a>
-        <a href="" className="regularText neutralText">
-          Link 5
+        <a href="/contact" className="regularText neutralText">
+          Careers
         </a>
       </div>
-      <div className="flex flex-col w-full md:w-1/4 gap-4 zodiak-r">
-        Newsletter?
+      <div className="flex flex-col w-full md:w-1/4 gap-4">
+        <h1 className="switzer-sb text-base md:text-xl uppercase text-text-dark">
+          Other
+        </h1>
+        <a
+          href="/private-wealth-management"
+          className="regularText neutralText"
+        >
+          Private Wealth Management
+        </a>
+        <a href="/private-asset-management" className="regularText neutralText">
+          Private Asset Management
+        </a>
+        <a
+          href="/institutional-wealth-management"
+          className="regularText neutralText"
+        >
+          Institutional Wealth Management
+        </a>
+        <a href="/blogs/blog-1" className="regularText neutralText">
+          Single Blog
+        </a>
+        <a href="/careers/senior-manager" className="regularText neutralText">
+          Single Career
+        </a>
       </div>
     </div>
   );

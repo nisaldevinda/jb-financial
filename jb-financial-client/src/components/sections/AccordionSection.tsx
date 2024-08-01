@@ -1,10 +1,18 @@
 import React from "react";
 import FundAccordion from "../accordions/FundAccordion";
 import FaqAccordion from "../accordions/FaqAccordion";
+import CareersAccordion from "../accordions/CareersAccordion";
+import VEFFaqAccordion from "../accordions/VEFFaqAccordion";
+import MMFFaqAccordion from "../accordions/MMFFaqAccordion";
+import SGFFaqAccordion from "../accordions/SGFFaqAccordion";
 
 const accordionComponents = {
   fund: FundAccordion,
   faq: FaqAccordion,
+  careers: CareersAccordion,
+  vef: VEFFaqAccordion,
+  mmf: MMFFaqAccordion,
+  sgf: SGFFaqAccordion,
 };
 
 interface AccordionSectionProps {
@@ -29,7 +37,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({
   const AccordionComponent = accordionComponents[accordionType];
 
   return (
-    <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-16">
+    <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-16">
       <div className="flex flex-col gap-10">
         <h2 className="subtitleText text-gray-600">
           {titleWords.map((word, index) =>

@@ -2,11 +2,10 @@ import React from "react";
 
 ("use client");
 import { Accordion } from "flowbite-react";
-import accimg from "/acc1.jpg";
 
-interface FaqAccordionProps {}
+interface FundAccordionProps {}
 
-const FaqAccordion: React.FC<FaqAccordionProps> = () => {
+const FundAccordion: React.FC<FundAccordionProps> = () => {
   return (
     <Accordion collapseAll>
       <Accordion.Panel>
@@ -42,7 +41,11 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
               </div>
             </div>
             <div className="flex-none w-120">
-              <img src={accimg} className="" alt="card-1-image" />
+              <img
+                src="/images/strategies/young.jpg"
+                className=""
+                alt="card-1-image"
+              />
             </div>
           </div>
         </Accordion.Content>
@@ -55,10 +58,10 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
           <div className="flex flex-col md:flex-row gap-12 justify-between">
             <div className="flex-grow flex flex-col gap-12">
               <p className="bodyText neutralText">
-                You've just started doing well in your career, and you've got
-                many decades of professional life ahead of you. You can afford
-                to take a little more risk, so we recommend allocating a higher
-                proportion of funds into the JB Vantage Value Equity Fund.
+                Your career is progressing well and with some years under your
+                belt, you’re starting to think about your family and its future.
+                You want the best of both worlds, so we recommend a balanced
+                allocation into our money market and equity funds.
               </p>
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex flex-col flex-grow gap-0 md:gap-6">
@@ -66,7 +69,7 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
                     Equity Markets
                   </h4>
                   <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
-                    80%
+                    50%
                   </p>
                 </div>
                 <div className="flex flex-col flex-grow gap-0 md:gap-6">
@@ -74,13 +77,17 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
                     Money and Debt Market
                   </h4>
                   <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
-                    20%
+                    50%
                   </p>
                 </div>
               </div>
             </div>
             <div className="flex-none w-120">
-              <img src={accimg} className="" alt="card-1-image" />
+              <img
+                src="/images/strategies/mid-career.jpg"
+                className=""
+                alt="card-1-image"
+              />
             </div>
           </div>
         </Accordion.Content>
@@ -93,10 +100,10 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
           <div className="flex flex-col md:flex-row gap-12 justify-between">
             <div className="flex-grow flex flex-col gap-12">
               <p className="bodyText neutralText">
-                You've just started doing well in your career, and you've got
-                many decades of professional life ahead of you. You can afford
-                to take a little more risk, so we recommend allocating a higher
-                proportion of funds into the JB Vantage Value Equity Fund.
+                You’ve made it to the top and retirement is on your mind. You
+                don’t want to take too many risks, but still have some capacity
+                to do so. We recommend investing more into our money market
+                funds and perhaps a little into equity.
               </p>
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex flex-col flex-grow gap-0 md:gap-6">
@@ -104,7 +111,7 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
                     Equity Markets
                   </h4>
                   <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
-                    80%
+                    20%
                   </p>
                 </div>
                 <div className="flex flex-col flex-grow gap-0 md:gap-6">
@@ -112,13 +119,17 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
                     Money and Debt Market
                   </h4>
                   <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
-                    20%
+                    80%
                   </p>
                 </div>
               </div>
             </div>
             <div className="flex-none w-120">
-              <img src={accimg} className="" alt="card-1-image" />
+              <img
+                src="/images/strategies/senior.jpg"
+                className=""
+                alt="card-1-image"
+              />
             </div>
           </div>
         </Accordion.Content>
@@ -131,10 +142,9 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
           <div className="flex flex-col md:flex-row gap-12 justify-between">
             <div className="flex-grow flex flex-col gap-12">
               <p className="bodyText neutralText">
-                You've just started doing well in your career, and you've got
-                many decades of professional life ahead of you. You can afford
-                to take a little more risk, so we recommend allocating a higher
-                proportion of funds into the JB Vantage Value Equity Fund.
+                Time to enjoy the sunset of your life. Conservatism in how you
+                invest is prudent, and we recommend allocating a higher
+                proportion of funds into the JB Vantage Money Market Fund.
               </p>
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex flex-col flex-grow gap-0 md:gap-6">
@@ -142,7 +152,7 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
                     Equity Markets
                   </h4>
                   <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
-                    80%
+                    0%
                   </p>
                 </div>
                 <div className="flex flex-col flex-grow gap-0 md:gap-6">
@@ -150,13 +160,17 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
                     Money and Debt Market
                   </h4>
                   <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
-                    20%
+                    100%
                   </p>
                 </div>
               </div>
             </div>
             <div className="flex-none w-120">
-              <img src={accimg} className="" alt="card-1-image" />
+              <img
+                src="/images/strategies/retired.jpg"
+                className=""
+                alt="card-1-image"
+              />
             </div>
           </div>
         </Accordion.Content>
@@ -169,10 +183,9 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
           <div className="flex flex-col md:flex-row gap-12 justify-between">
             <div className="flex-grow flex flex-col gap-12">
               <p className="bodyText neutralText">
-                You've just started doing well in your career, and you've got
-                many decades of professional life ahead of you. You can afford
-                to take a little more risk, so we recommend allocating a higher
-                proportion of funds into the JB Vantage Value Equity Fund.
+                You have some excess cash which you would rather put to work
+                than leave lying around in a low-yield bank account. Our money
+                market funds are highly recommended.
               </p>
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex flex-col flex-grow gap-0 md:gap-6">
@@ -180,7 +193,7 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
                     Equity Markets
                   </h4>
                   <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
-                    80%
+                    0%
                   </p>
                 </div>
                 <div className="flex flex-col flex-grow gap-0 md:gap-6">
@@ -188,13 +201,13 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
                     Money and Debt Market
                   </h4>
                   <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
-                    20%
+                    100%
                   </p>
                 </div>
               </div>
             </div>
             <div className="flex-none w-120">
-              <img src={accimg} className="" alt="card-1-image" />
+              <img src="/images/strategies/corporate.jpg" className="" alt="" />
             </div>
           </div>
         </Accordion.Content>
@@ -203,4 +216,4 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
   );
 };
 
-export default FaqAccordion;
+export default FundAccordion;

@@ -3,6 +3,7 @@ import HeroSection from "../components/sections/HeroSection";
 import ColumnsSection from "../components/sections/ColumnsSection";
 import SideContentSection from "../components/sections/SideContentSection";
 import AccordionSection from "../components/sections/AccordionSection";
+import TestimonialSection from "../components/sections/TestimonialSection";
 
 const Home: React.FC = () => {
   return (
@@ -49,7 +50,7 @@ const Home: React.FC = () => {
         title="What kind of investment strategy works for you?"
         highlightedText="investment strategy"
         description="Here are some capital allocation strategies we recommend. They're not definitive, so we encourage talking to our investment advisors to tailor them for you."
-        accordionType="faq"
+        accordionType="fund"
       />
       <ColumnsSection
         subtitleText="Latest Fund Prices"
@@ -59,9 +60,13 @@ const Home: React.FC = () => {
         cardType="fundPrice"
         alignText="center"
       />
-      <div className="flex h-8 bg-blue-50 justify-center items-center switzer-sb">
-        TESTIMONIAL SECTION
-      </div>
+      <TestimonialSection
+        logoSrc="/weblow.png"
+        testimonialText="“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”"
+        testimonialImageSrc="/testimonial-image.png"
+        name="Susantha Susiripala"
+        designation="Financial Director at FTL"
+      />
       <ColumnsSection
         subtitleText="Contact Us"
         bodyText=""

@@ -48,11 +48,11 @@ function PvtAssetMgmt() {
         mainDescription="Whatever your goals may be, we design your portfolio around them. Our diverse team and longstanding expertise allow us to provide a highly personalized advisory service with respect to investing in public markets."
       />
       <TestimonialSection
-        title="Meet our Team"
-        description="The portfolio managers, analysts, and financial advisors who make it possible for us to help you achieve your financial goals."
-        buttonText1="Learn More"
-        buttonText2=""
-        centerAlign={true}
+        logoSrc="/weblow.png"
+        testimonialText="Our experience with Institutional Wealth Management has been exceptional. The team's expertise and personalized approach have helped us achieve our financial goals."
+        testimonialImageSrc="/testimonial-image.png"
+        name="Skylar Stanton"
+        designation="Investment Analyst"
       />
     </>
   );
