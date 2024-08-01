@@ -68,7 +68,7 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
     <section
       className={`bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-16 items-${alignText}`}
     >
-      <h2 className={`subtitleText text-gray-600 text-${alignText}`}>
+      <h2 className={`subtitleText text-neutral-mid text-${alignText}`}>
         {applyPrimaryTextClass(subtitleText)}
       </h2>
       {bodyText && <p className={`bodyText text-${alignText}`}>{bodyText}</p>}

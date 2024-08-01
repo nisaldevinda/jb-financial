@@ -12,7 +12,46 @@ const teamCardData: TeamCardProps[] = [
     designation: "CEO",
     imageUrl: "/images/team/sample-team-1.png",
   },
-  // Add more team card data here if needed
+  {
+    name: "Jane Smith",
+    designation: "CTO",
+    imageUrl: "/images/team/sample-team-2.png",
+  },
+  {
+    name: "Alice Johnson",
+    designation: "CFO",
+    imageUrl: "/images/team/sample-team-3.png",
+  },
+  {
+    name: "Michael Brown",
+    designation: "COO",
+    imageUrl: "/images/team/sample-team-1.png",
+  },
+  {
+    name: "Emily Davis",
+    designation: "CMO",
+    imageUrl: "/images/team/sample-team-2.png",
+  },
+  {
+    name: "David Wilson",
+    designation: "VP of Sales",
+    imageUrl: "/images/team/sample-team-3.png",
+  },
+  {
+    name: "Sophia Taylor",
+    designation: "Head of HR",
+    imageUrl: "/images/team/sample-team-1.png",
+  },
+  {
+    name: "James Anderson",
+    designation: "Lead Developer",
+    imageUrl: "/images/team/sample-team-2.png",
+  },
+  {
+    name: "Olivia Martinez",
+    designation: "Product Manager",
+    imageUrl: "/images/team/sample-team-3.png",
+  },
 ];
 
 const TeamCard: React.FC<TeamCardProps> = ({ name, designation, imageUrl }) => {

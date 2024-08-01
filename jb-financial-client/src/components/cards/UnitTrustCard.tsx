@@ -15,7 +15,7 @@ const unitTrustCardData: CardProps[] = [
     description:
       "Invest in equities of publicly listed companies in Sri Lanka and benefit from our rigorous research deep dive research methodology.",
     imageUrl: "/images/unit-trusts/value-equity-fund.png",
-    link: "/learn-more",
+    link: "/funds/value-equity-fund",
   },
   {
     title: "JB Vantage",
@@ -23,7 +23,7 @@ const unitTrustCardData: CardProps[] = [
     description:
       "Experience the relatively higher returns of a fixed deposit with the flexibility of a regular savings account, with minimal fees and quick withdrawal.",
     imageUrl: "/images/unit-trusts/money-market-fund.png",
-    link: "/learn-more",
+    link: "/funds/money-market-fund",
   },
   {
     title: "JB Vantage",
@@ -31,7 +31,7 @@ const unitTrustCardData: CardProps[] = [
     description:
       "Invest in government securities such as treasury bills and bonds which are typically considered 'Risk-free' investment instruments.",
     imageUrl: "/images/unit-trusts/short-term-gilt-fund.png",
-    link: "/learn-more",
+    link: "/funds/short-term-gilt-fund",
   },
 ];
 

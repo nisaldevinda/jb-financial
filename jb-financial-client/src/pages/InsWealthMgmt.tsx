@@ -58,11 +58,11 @@ function InsWealthMgmt() {
         mainDescription="Our Institutional Wealth Management service is tailored to meet the needs of corporates and family offices, providing them with the expertise and support they need to maximize the return of their public market investments."
       />
       <TestimonialSection
-        title="Meet our Team"
-        description="The portfolio managers, analysts, and financial advisors who make it possible for us to help you achieve your financial goals."
-        buttonText1="Learn More"
-        buttonText2=""
-        centerAlign={true}
+        logoSrc="/weblow.png"
+        testimonialText="Our experience with Institutional Wealth Management has been exceptional. The team's expertise and personalized approach have helped us achieve our financial goals."
+        testimonialImageSrc="/testimonial-image.png"
+        name="Skylar Stanton"
+        designation="Investment Analyst"
       />
     </>
   );

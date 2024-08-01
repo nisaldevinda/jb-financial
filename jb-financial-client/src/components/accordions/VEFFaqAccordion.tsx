@@ -3,31 +3,45 @@ import React from "react";
 ("use client");
 import { Accordion } from "flowbite-react";
 
-interface FaqAccordionProps {}
+interface VEFFaqAccordionProps {}
 
-const FaqAccordion: React.FC<FaqAccordionProps> = () => {
+const VEFFaqAccordion: React.FC<VEFFaqAccordionProps> = () => {
   return (
     <Accordion collapseAll>
       <Accordion.Panel>
         <Accordion.Title className="switzer-sb text-neutral-light focus:text-primary-800 text-base md:text-base md:text-2xl">
-          What is a unit trust?
+          What is the minimum investment?
+        </Accordion.Title>
+        <Accordion.Content className="p-6">
+          <p className="bodyText neutralText">LKR 1 Million.</p>
+        </Accordion.Content>
+      </Accordion.Panel>
+      <Accordion.Panel>
+        <Accordion.Title className="switzer-sb text-neutral-light focus:text-primary-800 text-base md:text-2xl">
+          What types of companies does the fund invest in?
         </Accordion.Title>
         <Accordion.Content className="p-6">
           <p className="bodyText neutralText">
-            A unit trust is a collective investment scheme where investors'
-            money is pooled together and professionally managed to invest in a
-            diversified portfolio of securities.
+            Large and mid-capitalization companies in Sri Lanka.
           </p>
         </Accordion.Content>
       </Accordion.Panel>
       <Accordion.Panel>
         <Accordion.Title className="switzer-sb text-neutral-light focus:text-primary-800 text-base md:text-2xl">
-          Is there a minimum investment?
+          Is this fund suitable for short-term investors?
         </Accordion.Title>
         <Accordion.Content className="p-6">
           <p className="bodyText neutralText">
-            The minimum investment is one million rupees.
+            No, it's designed for medium to long-term investors.
           </p>
+        </Accordion.Content>
+      </Accordion.Panel>
+      <Accordion.Panel>
+        <Accordion.Title className="switzer-sb text-neutral-light focus:text-primary-800 text-base md:text-2xl">
+          What is the risk level of this fund?
+        </Accordion.Title>
+        <Accordion.Content className="p-6">
+          <p className="bodyText neutralText">Moderate to high risk.</p>
         </Accordion.Content>
       </Accordion.Panel>
       <Accordion.Panel>
@@ -36,19 +50,8 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
         </Accordion.Title>
         <Accordion.Content className="p-6">
           <p className="bodyText neutralText">
-            Yes, but they're very minimal. Check the fact sheet and prospectuses
-            of each fund to know the exact amounts.
-          </p>
-        </Accordion.Content>
-      </Accordion.Panel>
-      <Accordion.Panel>
-        <Accordion.Title className="switzer-sb text-neutral-light focus:text-primary-800 text-base md:text-2xl">
-          Are unit trusts regulated?
-        </Accordion.Title>
-        <Accordion.Content className="p-6">
-          <p className="bodyText neutralText">
-            Yes, unit trusts are regulated and monitored by the Securities and
-            Exchange Commission (SEC) of Sri Lanka.
+            Yes, front-end fees and other expenses detailed in the fund’s
+            documents.
           </p>
         </Accordion.Content>
       </Accordion.Panel>
@@ -56,4 +59,4 @@ const FaqAccordion: React.FC<FaqAccordionProps> = () => {
   );
 };
 
-export default FaqAccordion;
+export default VEFFaqAccordion;

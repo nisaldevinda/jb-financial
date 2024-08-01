@@ -12,14 +12,31 @@ interface BlogCardProps {
 const blogCardData: BlogCardProps[] = [
   {
     category: "Investing",
-    duration: "3 min",
+    duration: "5 min",
     title: "Laddering as a strategy",
     description:
       "In a period of declining interest rates, laddering can be a great way to buttress your returns. Let us explain.",
     imageUrl: "/images/blog/sample-blog-1.jpg",
-    link: "/learn-more",
+    link: "/blogs/blog-1",
   },
-  // Add more blog card data here if needed
+  {
+    category: "Economy",
+    duration: "15 min",
+    title: "An uptick in economic performance",
+    description:
+      "Sri Lanka’s economic activity displayed an uptick in the first two quarters of 2024. Read our take and observations.",
+    imageUrl: "/images/blog/sample-blog-2.jpg",
+    link: "/blogs/blog-1",
+  },
+  {
+    category: "Investing",
+    duration: "10 min",
+    title: "Investment Review 2Q 2024",
+    description:
+      "Reviewing our investment portfolio and its performance in the second quarter of 2024.",
+    imageUrl: "/images/blog/sample-blog-3.jpg",
+    link: "/blogs/blog-1",
+  },
 ];
 
 const BlogCard: React.FC<BlogCardProps> = ({
