@@ -243,7 +243,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
               id={`image-${index}`}
               helperText="Add a .jpg image [1156px x 875px]"
               onChange={(e) =>
-                handleSectionChange(index, "image", e.target.files[0])
+                handleSectionChange(index, "image", !e.target.files[0])
               }
             />
           </div>

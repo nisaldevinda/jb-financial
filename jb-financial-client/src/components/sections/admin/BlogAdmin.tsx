@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import BlogAdminForm from "../../forms/admin/BlogAdminForm";
-import BlogAdminTable from "../../forms/admin/BlogAdminTable";
+import BlogAdminForm from "../../admin/BlogAdminForm";
+import BlogAdminTable from "../../admin/BlogAdminTable";
 
 interface Blog {
   id: number;
@@ -15,7 +15,7 @@ interface Blog {
   }[];
 }
 
-const AdminHeader: React.FC = () => {
+const BlogAdmin: React.FC = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
 
@@ -93,4 +93,4 @@ const AdminHeader: React.FC = () => {
   );
 };
 
-export default AdminHeader;
+export default BlogAdmin;

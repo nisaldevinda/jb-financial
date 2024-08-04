@@ -1,4 +1,4 @@
-import AdminHeader from "../../components/sections/admin/AdminHeader";
+import AdminHeader from "../../components/sections/admin/BlogAdmin";
 ("use client");
 
 function BlogAdmin() {
