@@ -22,6 +22,9 @@ import SGF from "./pages/SGF";
 import BlogInner from "./pages/BlogInner";
 import CareerInner from "./pages/CareerInner";
 
+import Login from "./pages/admin/Login";
+import BlogAdmin from "./pages/admin/BlogAdmin";
+
 const App: React.FC = () => {
   return (
     <>
@@ -49,6 +52,10 @@ const App: React.FC = () => {
           <Route path="/funds/short-term-gilt-fund" element={<SGF />} />
           <Route path="/blogs/blog-1" element={<BlogInner />} />
           <Route path="/careers/senior-manager" element={<CareerInner />} />
+
+          {/* Admin */}
+          <Route path="/admin" element={<Login />} />
+          <Route path="/admin/blogs" element={<BlogAdmin />} />
         </Routes>
       </Router>
       <JBFFooter></JBFFooter>

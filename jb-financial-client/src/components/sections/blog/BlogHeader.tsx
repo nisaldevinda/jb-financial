@@ -13,6 +13,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({
 }) => {
   return (
     <>
+      <div className="w-full h-[72px]"></div>
       <section className="bg-primary-950 px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16 items-center">
         {title && (
           <h3 className="subtitleText text-white text-center">{title}</h3>
