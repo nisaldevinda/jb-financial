@@ -69,9 +69,9 @@ function JBFFooter() {
         >
           Institutional Wealth Management
         </a>
-        <a href="/blogs/blog-1" className="regularText neutralText">
-          Single Blog
-        </a>
+        {/*<a href="/blogs/blog-1" className="regularText neutralText">*/}
+        {/*  Single Blog*/}
+        {/*</a>*/}
         <a href="/careers/senior-manager" className="regularText neutralText">
           Single Career
         </a>

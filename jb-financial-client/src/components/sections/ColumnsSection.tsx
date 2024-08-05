@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { UnitTrustCard, unitTrustCardData } from "../cards/UnitTrustCard";
 import { FundPriceCard } from "../cards/FundPriceCard";
-import { BlogCard, blogCardData } from "../cards/BlogCard";
+import { BlogCard } from "../cards/BlogCard";
 import { TeamCard, teamCardData } from "../cards/TeamCard";
 import { ContactCard, contactCardData } from "../cards/ContactCard";
 
@@ -17,7 +17,6 @@ interface ColumnsSectionProps {
 const cardDataMapping: Record<string, any[]> = {
   unitTrust: unitTrustCardData,
   contact: contactCardData,
-  blog: blogCardData,
   team: teamCardData,
 };
 
@@ -43,6 +42,10 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
     const fetchData = async () => {
       if (cardType === "fundPrice") {
         const response = await fetch("http://localhost:5000/api/fund-prices");
+        const data = await response.json();
+        setCards(data);
+      } else if (cardType === "blog") {
+        const response = await fetch("http://localhost:5000/api/blogs");
         const data = await response.json();
         setCards(data);
       } else {
