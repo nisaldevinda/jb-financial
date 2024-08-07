@@ -72,7 +72,7 @@ app.get('/api/blogs/:id', async (req, res, next) => {
         }
         res.json(blog);
     } catch (error) {
-        next(error); // Pass errors to Express error handler
+        next(error);
     }
 });
 
@@ -82,7 +82,7 @@ app.post('/api/blogs', async (req, res, next) => {
         await newBlog.save();
         res.status(201).json(newBlog);
     } catch (error) {
-        next(error); // Pass errors to Express error handler
+        next(error);
     }
 });
 
@@ -94,7 +94,7 @@ app.put('/api/blogs/:id', async (req, res, next) => {
         }
         res.json(updatedBlog);
     } catch (error) {
-        next(error); // Pass errors to Express error handler
+        next(error);
     }
 });
 
@@ -106,7 +106,7 @@ app.delete('/api/blogs/:id', async (req, res, next) => {
         }
         res.json({ message: 'Blog deleted successfully' });
     } catch (error) {
-        next(error); // Pass errors to Express error handler
+        next(error);
     }
 });
 

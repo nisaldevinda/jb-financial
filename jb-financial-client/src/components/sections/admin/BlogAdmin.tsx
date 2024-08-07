@@ -47,11 +47,9 @@ const BlogAdmin: React.FC = () => {
         setBlogs(updatedBlogs);
       } else {
         console.error('Failed to delete blog');
-        // Optionally, you can add error handling here, such as showing an error message to the user
       }
     } catch (error) {
       console.error('Error deleting blog:', error);
-      // Optionally, you can add error handling here, such as showing an error message to the user
     }
   };
 
@@ -76,7 +74,6 @@ const BlogAdmin: React.FC = () => {
             : [...blogs, blog];
     setBlogs(updatedBlogs);
     setSelectedBlog(null);
-    // Optionally, save the updated blogs to the JSON file
   };
 
   const handleCancel = () => {
