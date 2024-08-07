@@ -1,16 +1,26 @@
 import React, {useState} from "react";
 import { Table, Button, Pagination } from "flowbite-react";
 
+interface BlogContent {
+  subtitle: string;
+  paragraph: string;
+}
+
 interface Blog {
-  id: number;
+  _id: { $oid: string };
+  category: string;
+  duration: string;
   title: string;
-  // Add other fields as needed
+  description: string;
+  imageUrl: string;
+  link: string;
+  content: BlogContent[];
 }
 
 interface BlogAdminTableProps {
   blogs: Blog[];
   onEdit: (blog: Blog) => void;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
   onAdd: () => void;
 }
 

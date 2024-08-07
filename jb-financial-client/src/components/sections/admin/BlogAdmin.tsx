@@ -2,17 +2,20 @@ import React, { useState, useEffect } from "react";
 import BlogAdminForm from "../../admin/BlogAdminForm";
 import BlogAdminTable from "../../admin/BlogAdminTable";
 
+interface BlogContent {
+  subtitle: string;
+  paragraph: string;
+}
+
 interface Blog {
-  id: number;
+  _id: { $oid: string };
   category: string;
-  readTime: number;
+  duration: string;
   title: string;
   description: string;
-  sections: {
-    subtitle: string;
-    paragraph: string;
-    image?: File;
-  }[];
+  imageUrl: string;
+  link: string;
+  content: BlogContent[];
 }
 
 const BlogAdmin: React.FC = () => {
@@ -21,7 +24,7 @@ const BlogAdmin: React.FC = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const response = await fetch("/blogs.json");
+      const response = await fetch("http://localhost:5000/api/blogs");
       const blogsData: Blog[] = await response.json();
       setBlogs(blogsData);
     };
@@ -33,28 +36,43 @@ const BlogAdmin: React.FC = () => {
     setSelectedBlog(blog);
   };
 
-  const handleDelete = (id: number) => {
-    const updatedBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(updatedBlogs);
-    // Optionally, save the updated blogs to the JSON file
+  const handleDelete = async (id: string) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        const updatedBlogs = blogs.filter((blog) => blog._id.$oid !== id);
+        setBlogs(updatedBlogs);
+      } else {
+        console.error('Failed to delete blog');
+        // Optionally, you can add error handling here, such as showing an error message to the user
+      }
+    } catch (error) {
+      console.error('Error deleting blog:', error);
+      // Optionally, you can add error handling here, such as showing an error message to the user
+    }
   };
 
   const handleAdd = () => {
     const newBlog: Blog = {
-      id: blogs.length ? blogs[blogs.length - 1].id + 1 : 1,
+      _id: { $oid: "" },
       category: "",
-      readTime: 0,
+      duration: "",
       title: "",
       description: "",
-      sections: [],
+      imageUrl: "",
+      link: "",
+      content: []
     };
     setSelectedBlog(newBlog);
   };
 
   const handleSave = (blog: Blog) => {
     const updatedBlogs =
-        selectedBlog && blogs.some((b) => b.id === blog.id)
-            ? blogs.map((b) => (b.id === blog.id ? blog : b))
+        selectedBlog && blogs.some((b) => b._id.$oid === blog._id.$oid)
+            ? blogs.map((b) => (b._id.$oid === blog._id.$oid ? blog : b))
             : [...blogs, blog];
     setBlogs(updatedBlogs);
     setSelectedBlog(null);
@@ -74,7 +92,7 @@ const BlogAdmin: React.FC = () => {
               <BlogAdminTable
                   blogs={blogs}
                   onEdit={handleEdit}
-                  onDelete={handleDelete}
+                  onDelete={(id) => handleDelete(id)}
                   onAdd={handleAdd}
               />
             </div>
