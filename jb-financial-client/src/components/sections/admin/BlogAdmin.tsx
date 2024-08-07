@@ -53,9 +53,9 @@ const BlogAdmin: React.FC = () => {
 
   const handleSave = (blog: Blog) => {
     const updatedBlogs =
-      selectedBlog && blogs.some((b) => b.id === blog.id)
-        ? blogs.map((b) => (b.id === blog.id ? blog : b))
-        : [...blogs, blog];
+        selectedBlog && blogs.some((b) => b.id === blog.id)
+            ? blogs.map((b) => (b.id === blog.id ? blog : b))
+            : [...blogs, blog];
     setBlogs(updatedBlogs);
     setSelectedBlog(null);
     // Optionally, save the updated blogs to the JSON file
@@ -66,30 +66,30 @@ const BlogAdmin: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-off-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16 items-start">
-      <h3 className="switzer-sb text-xl md:text-4xl">Blogs</h3>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-12 w-full">
-        <div className="w-full md:w-1/4">
-          <div className="overflow-x-auto">
-            <BlogAdminTable
-              blogs={blogs}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-              onAdd={handleAdd}
-            />
+      <section className="w-full bg-off-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16 items-start">
+        <h3 className="switzer-sb text-xl md:text-4xl">Blogs</h3>
+        <div className="flex flex-col md:flex-row gap-4 md:gap-12 w-full">
+          <div className="w-full md:w-1/4">
+            <div className="overflow-x-auto">
+              <BlogAdminTable
+                  blogs={blogs}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete}
+                  onAdd={handleAdd}
+              />
+            </div>
+          </div>
+          <div className="w-full md:w-3/4 ">
+            {selectedBlog && (
+                <BlogAdminForm
+                    blog={selectedBlog}
+                    onSave={handleSave}
+                    onCancel={handleCancel}
+                />
+            )}
           </div>
         </div>
-        <div className="w-full md:w-3/4 ">
-          {selectedBlog && (
-            <BlogAdminForm
-              blog={selectedBlog}
-              onSave={handleSave}
-              onCancel={handleCancel}
-            />
-          )}
-        </div>
-      </div>
-    </section>
+      </section>
   );
 };
 

@@ -76,6 +76,41 @@ app.get('/api/blogs/:id', async (req, res, next) => {
     }
 });
 
+app.post('/api/blogs', async (req, res, next) => {
+    try {
+        const newBlog = new Blog(req.body);
+        await newBlog.save();
+        res.status(201).json(newBlog);
+    } catch (error) {
+        next(error); // Pass errors to Express error handler
+    }
+});
+
+app.put('/api/blogs/:id', async (req, res, next) => {
+    try {
+        const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        if (!updatedBlog) {
+            return res.status(404).json({ error: 'Blog not found' });
+        }
+        res.json(updatedBlog);
+    } catch (error) {
+        next(error); // Pass errors to Express error handler
+    }
+});
+
+app.delete('/api/blogs/:id', async (req, res, next) => {
+    try {
+        const deletedBlog = await Blog.findByIdAndDelete(req.params.id);
+        if (!deletedBlog) {
+            return res.status(404).json({ error: 'Blog not found' });
+        }
+        res.json({ message: 'Blog deleted successfully' });
+    } catch (error) {
+        next(error); // Pass errors to Express error handler
+    }
+});
+
+
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

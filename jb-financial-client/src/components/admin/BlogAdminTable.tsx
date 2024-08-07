@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { Table, Button, Pagination } from "flowbite-react";
 
 interface Blog {
@@ -15,11 +15,11 @@ interface BlogAdminTableProps {
 }
 
 const BlogAdminTable: React.FC<BlogAdminTableProps> = ({
-  blogs,
-  onEdit,
-  onDelete,
-  onAdd,
-}) => {
+                                                         blogs,
+                                                         onEdit,
+                                                         onDelete,
+                                                         onAdd,
+                                                       }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const entriesPerPage = 5;
 
@@ -40,56 +40,56 @@ const BlogAdminTable: React.FC<BlogAdminTableProps> = ({
   const totalPages = Math.ceil(sortedBlogs.length / entriesPerPage);
 
   return (
-    <div>
-      <Button onClick={onAdd} className="mt-4 switzer-sb text-neutral-dark">
-        + Add New Blog
-      </Button>
-      <Table className="switzer-r" striped>
-        <Table.Head className="w-full">
-          <Table.HeadCell>ID</Table.HeadCell>
-          <Table.HeadCell>Title</Table.HeadCell>
-          <Table.HeadCell>Actions</Table.HeadCell>
-        </Table.Head>
-        <Table.Body className="divide-y">
-          {currentBlogs.map((blog) => (
-            <Table.Row
-              key={blog.id}
-              className="bg-white dark:border-gray-700 dark:bg-gray-800"
-            >
-              <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {blog.id}
-              </Table.Cell>
-              <Table.Cell>{blog.title}</Table.Cell>
-              <Table.Cell className="flex">
-                <Button
-                  onClick={() => onEdit(blog)}
-                  size="xs"
-                  className="mr-2"
-                  color="success"
-                  pill
+      <div>
+        <Button onClick={onAdd} className="mt-4 switzer-sb text-neutral-dark">
+          + Add New Blog
+        </Button>
+        <Table className="switzer-r" striped>
+          <Table.Head className="w-full">
+            <Table.HeadCell>ID</Table.HeadCell>
+            <Table.HeadCell>Title</Table.HeadCell>
+            <Table.HeadCell>Actions</Table.HeadCell>
+          </Table.Head>
+          <Table.Body className="divide-y">
+            {currentBlogs.map((blog) => (
+                <Table.Row
+                    key={blog.id}
+                    className="bg-white dark:border-gray-700 dark:bg-gray-800"
                 >
-                  Edit
-                </Button>
-                <Button
-                  onClick={() => onDelete(blog.id)}
-                  size="xs"
-                  color="failure"
-                  pill
-                >
-                  Delete
-                </Button>
-              </Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-      <Pagination
-        className="mt-4 switzer-r text-xs"
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
-    </div>
+                  <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                    {blog.id}
+                  </Table.Cell>
+                  <Table.Cell>{blog.title}</Table.Cell>
+                  <Table.Cell className="flex space-x-2">
+                    <Button
+                        onClick={() => onEdit(blog)}
+                        size="xs"
+                        className="mr-2"
+                        color="success"
+                        pill
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                        onClick={() => onDelete(blog.id)}
+                        size="xs"
+                        color="failure"
+                        pill
+                    >
+                      Delete
+                    </Button>
+                  </Table.Cell>
+                </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+        <Pagination
+            className="mt-4 switzer-r text-xs"
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+        />
+      </div>
   );
 };
 
