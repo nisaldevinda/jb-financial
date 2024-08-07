@@ -63,11 +63,11 @@ const BlogAdminTable: React.FC<BlogAdminTableProps> = ({
           <Table.Body className="divide-y">
             {currentBlogs.map((blog) => (
                 <Table.Row
-                    key={blog.id}
+                    key={blog._id}
                     className="bg-white dark:border-gray-700 dark:bg-gray-800"
                 >
                   <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                    {blog.id}
+                    {blog._id}
                   </Table.Cell>
                   <Table.Cell>{blog.title}</Table.Cell>
                   <Table.Cell className="flex space-x-2">
@@ -81,7 +81,7 @@ const BlogAdminTable: React.FC<BlogAdminTableProps> = ({
                       Edit
                     </Button>
                     <Button
-                        onClick={() => onDelete(blog.id)}
+                        onClick={() => onDelete(blog._id)}
                         size="xs"
                         color="failure"
                         pill

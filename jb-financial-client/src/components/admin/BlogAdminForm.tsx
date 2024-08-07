@@ -87,7 +87,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
             <TextInput
                 id="_id"
                 type="text"
-                value={blog._id.$oid}
+                value={blog._id}
                 onChange={handleInputChange}
                 required
                 shadow
