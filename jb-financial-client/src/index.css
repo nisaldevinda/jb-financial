@@ -336,6 +336,30 @@ body{
   background-color: var(--white);
 }
 
+.primary-button-2{
+  font-family: "Switzer-Semibold";
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--white);
+  border-radius: 50px;
+  border: 2px solid #930010;
+  background-color: var(--primary-900);
+  width: 100%;
+  padding: 8px 32px;
+}
+
+@media (max-width: 639px) {
+  .primary-button-2{
+    width: 100%;
+  }
+}
+
+.primary-button-2:hover{
+  cursor: pointer !important;
+  color: var(--primary-900);
+  background-color: var(--white);
+}
+
 .secondary-button{
   font-family: "Switzer-Semibold";
   font-size: 16px;
@@ -358,6 +382,24 @@ body{
     width: 100% !important;
   }
 }
+
+.secondary-button-2{
+  font-family: "Switzer-Semibold";
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--primary-900);
+  border-radius: 50px;
+  border: 2px solid #930010;
+  background-color: transparent;
+  width: fit-content;
+  padding: 8px 32px;
+}
+
+.secondary-button-2:hover{
+  color: var(--white);
+  background-color: var(--primary-900) !important;
+}
+
 
 /* Title Text */
 
