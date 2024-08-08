@@ -9,7 +9,7 @@ const CareerInner: React.FC = () => {
           </h5>
           <p className="bodyText text-neutral-mid">Colombo, Sri Lanka</p>
         </div>
-        <div className="flex flex-col md:flex-row justify-between gap-4 w-full">
+        <div className="flex flex-col md:flex-row justify-between gap-6 w-full">
           <div className="flex gap-2 md:gap-6 h-fit">
             <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
               Full Time

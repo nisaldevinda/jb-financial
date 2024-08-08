@@ -43,7 +43,7 @@ const FundAccordion: React.FC<FundAccordionProps> = () => {
             <div className="flex-none w-120">
               <img
                 src="/images/strategies/young.jpg"
-                className=""
+                className="rounded-xl md:rounded-2xl"
                 alt="card-1-image"
               />
             </div>
@@ -85,7 +85,7 @@ const FundAccordion: React.FC<FundAccordionProps> = () => {
             <div className="flex-none w-120">
               <img
                 src="/images/strategies/mid-career.jpg"
-                className=""
+                className="rounded-xl md:rounded-2xl"
                 alt="card-1-image"
               />
             </div>
@@ -127,7 +127,7 @@ const FundAccordion: React.FC<FundAccordionProps> = () => {
             <div className="flex-none w-120">
               <img
                 src="/images/strategies/senior.jpg"
-                className=""
+                className="rounded-xl md:rounded-2xl"
                 alt="card-1-image"
               />
             </div>
@@ -168,7 +168,7 @@ const FundAccordion: React.FC<FundAccordionProps> = () => {
             <div className="flex-none w-120">
               <img
                 src="/images/strategies/retired.jpg"
-                className=""
+                className="rounded-xl md:rounded-2xl"
                 alt="card-1-image"
               />
             </div>
@@ -207,7 +207,11 @@ const FundAccordion: React.FC<FundAccordionProps> = () => {
               </div>
             </div>
             <div className="flex-none w-120">
-              <img src="/images/strategies/corporate.jpg" className="" alt="" />
+              <img
+                src="/images/strategies/corporate.jpg"
+                className="rounded-xl md:rounded-2xl"
+                alt=""
+              />
             </div>
           </div>
         </Accordion.Content>

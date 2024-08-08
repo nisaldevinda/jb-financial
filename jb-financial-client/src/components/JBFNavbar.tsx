@@ -1,10 +1,15 @@
 import jbfLogo from "/logo.svg";
+import React from "react";
+import { Navbar, Dropdown } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
-("use client");
+const JBFNavbar: React.FC = () => {
+  const navigate = useNavigate();
 
-import { Navbar } from "flowbite-react";
+  const handleLabelClick = () => {
+    navigate("/private-wealth-management");
+  };
 
-function JBFNavbar() {
   return (
     <Navbar
       fluid
@@ -14,12 +19,12 @@ function JBFNavbar() {
         <img src={jbfLogo} className="mr-3 h-6 sm:h-9" alt="JB Financial" />
       </Navbar.Brand>
       <div className="flex md:order-2">
-        <a href="/contact">
+        <a href="/contact" className="hidden md:block">
           <button className="secondary-button">Contact Us</button>
         </a>
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse className="">
+      <Navbar.Collapse>
         <Navbar.Link
           href="/"
           className="switzer-md text-base text-[#1d1d1f] lg:mx-6"
@@ -38,12 +43,57 @@ function JBFNavbar() {
         >
           Funds
         </Navbar.Link>
-        <Navbar.Link
-          href="/blog"
-          className="switzer-md text-base text-gray-600 lg:mx-4"
+        <Dropdown
+          arrowIcon={false}
+          inline
+          label={
+            <span
+              className="switzer-md text-base text-gray-600 lg:mx-4 cursor-pointer hidden md:block"
+              onClick={handleLabelClick}
+            >
+              Private Wealth Management
+            </span>
+          }
         >
-          Resources
-        </Navbar.Link>
+          <Dropdown.Item
+            href="/private-asset-management"
+            className="switzer-md text-base text-gray-600 hover:text-[#1d1d1f]"
+          >
+            Private Asset Management
+          </Dropdown.Item>
+          <Dropdown.Item
+            href="/institutional-wealth-management"
+            className="switzer-md text-base text-gray-600 hover:text-[#1d1d1f]"
+          >
+            Institutional Wealth Management
+          </Dropdown.Item>
+        </Dropdown>
+        <div className="block md:hidden">
+          <Navbar.Link
+            href="/private-wealth-management"
+            className="switzer-md text-base text-gray-600 lg:mx-4"
+          >
+            Private Wealth Management
+          </Navbar.Link>
+          <Navbar.Link
+            href="/private-asset-management"
+            className="switzer-md text-base text-gray-600 lg:mx-4"
+          >
+            Private Asset Management
+          </Navbar.Link>
+          <Navbar.Link
+            href="/institutional-wealth-management"
+            className="switzer-md text-base text-gray-600 lg:mx-4"
+          >
+            Institutional Wealth Management
+          </Navbar.Link>
+          <Navbar.Link
+            href="/contact"
+            className="switzer-md text-base text-gray-600 lg:mx-4"
+          >
+            Contact Us
+          </Navbar.Link>
+        </div>
         <Navbar.Link
           href="/team"
           className="switzer-md text-base text-gray-600 lg:mx-4"
@@ -59,6 +109,6 @@ function JBFNavbar() {
       </Navbar.Collapse>
     </Navbar>
   );
-}
+};
 
 export default JBFNavbar;

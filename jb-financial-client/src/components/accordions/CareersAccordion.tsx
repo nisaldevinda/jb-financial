@@ -18,7 +18,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Colombo, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
@@ -42,7 +42,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Colombo, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
@@ -68,7 +68,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Colombo, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
@@ -87,7 +87,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Kandy, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
@@ -113,7 +113,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Galle, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
@@ -132,7 +132,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Colombo, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
@@ -158,7 +158,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Colombo, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
@@ -177,7 +177,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Kandy, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
@@ -203,7 +203,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Colombo, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
@@ -222,7 +222,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = () => {
               </h5>
               <p className="bodyText text-neutral-mid">Jaffna, Sri Lanka</p>
             </div>
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div className="flex flex-col md:flex-row justify-between gap-6">
               <div className="flex gap-2 md:gap-6 h-fit">
                 <span className="switzer-sb text-xs md:text-base text-neutral-mid uppercase px-3 md:px-6 py-2 border border-neutral-mid rounded-lg">
                   Full Time
