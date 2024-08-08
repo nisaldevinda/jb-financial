@@ -52,10 +52,13 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
   const handleSectionChange = (
     index: number,
     field: string,
-    value: string | File
+    value: string | File | undefined
   ) => {
     const updatedSections = [...blog.sections];
-    updatedSections[index] = { ...updatedSections[index], [field]: value };
+    updatedSections[index] = {
+      ...updatedSections[index],
+      [field]: value || "", // Use an empty string if value is undefined
+    };
     setBlog({ ...blog, sections: updatedSections });
   };
 
@@ -242,9 +245,10 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
             <FileInput
               id={`image-${index}`}
               helperText="Add a .jpg image [1156px x 875px]"
-              onChange={(e) =>
-                handleSectionChange(index, "image", !e.target.files[0])
-              }
+              onChange={(e) => {
+                const file = e.target.files ? e.target.files[0] : undefined; // Get the file or undefined
+                handleSectionChange(index, "image", file); // Pass the file to the handler
+              }}
             />
           </div>
           <Button

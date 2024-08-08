@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { Table, Button, Pagination } from "flowbite-react";
 
+interface Section {
+  subtitle: string;
+  paragraph: string;
+  image?: File;
+}
+
 interface Blog {
   id: number;
+  category: string;
+  readTime: number;
   title: string;
-  // Add other fields as needed
+  description: string;
+  sections: Section[];
 }
 
 interface BlogAdminTableProps {
