@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart, registerables } from "chart.js";
+import { Chart, registerables, ChartData, ChartOptions } from "chart.js";
 
 // Register all necessary components
 Chart.register(...registerables);
@@ -14,7 +14,7 @@ interface ChartSectionProps {
 }
 
 const ChartSection: React.FC<ChartSectionProps> = ({ groups }) => {
-  const [chartData, setChartData] = useState<any>(null);
+  const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,22 +31,22 @@ const ChartSection: React.FC<ChartSectionProps> = ({ groups }) => {
           {
             label: "JBVEF",
             data: jbvefData,
-            borderColor: "rgba(75, 192, 192, 1)",
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderColor: "#930010",
+            backgroundColor: "rgba(147, 0, 16, 0.2)",
             fill: true,
           },
           {
             label: "SPSL20TRI",
             data: spsl20triData,
-            borderColor: "rgba(255, 99, 132, 1)",
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "#444444",
+            backgroundColor: "rgba(68, 68, 68, 0.2)",
             fill: true,
           },
           {
             label: "ASTRI",
             data: astriData,
-            borderColor: "rgba(153, 102, 255, 1)",
-            backgroundColor: "rgba(153, 102, 255, 0.2)",
+            borderColor: "#AAAAAA",
+            backgroundColor: "rgba(170, 170, 170, 0.2)",
             fill: true,
           },
         ],
@@ -61,10 +61,33 @@ const ChartSection: React.FC<ChartSectionProps> = ({ groups }) => {
     };
   }, []);
 
+  const chartOptions: ChartOptions<"line"> = {
+    scales: {
+      x: {
+        ticks: {
+          callback: function (value, index) {
+            return index % 3 === 0
+              ? this.getLabelForValue(value as number)
+              : "";
+          },
+        },
+      },
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          title: function (tooltipItems) {
+            return tooltipItems[0].label || "";
+          },
+        },
+      },
+    },
+  };
+
   return (
     <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-16">
       <div className="flex flex-col justify-center gap-12 w-full md:w-[60%]">
-        {chartData && <Line data={chartData} />}
+        {chartData && <Line data={chartData} options={chartOptions} />}
       </div>
       <div className="w-full md:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
         {groups.map((group, index) => (
