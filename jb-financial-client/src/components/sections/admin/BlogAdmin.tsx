@@ -8,7 +8,7 @@ interface BlogContent {
 }
 
 interface Blog {
-  _id: { $oid: string };
+  _id?: { $oid: string };
   category: string;
   duration: string;
   title: string;
@@ -43,7 +43,7 @@ const BlogAdmin: React.FC = () => {
       });
 
       if (response.ok) {
-        const updatedBlogs = blogs.filter((blog) => blog._id.$oid !== id);
+        const updatedBlogs = blogs.filter((blog) => blog._id?.$oid !== id);
         setBlogs(updatedBlogs);
       } else {
         console.error('Failed to delete blog');
@@ -55,7 +55,6 @@ const BlogAdmin: React.FC = () => {
 
   const handleAdd = () => {
     const newBlog: Blog = {
-      _id: { $oid: "" },
       category: "",
       duration: "",
       title: "",
@@ -67,14 +66,51 @@ const BlogAdmin: React.FC = () => {
     setSelectedBlog(newBlog);
   };
 
-  const handleSave = (blog: Blog) => {
-    const updatedBlogs =
-        selectedBlog && blogs.some((b) => b._id.$oid === blog._id.$oid)
-            ? blogs.map((b) => (b._id.$oid === blog._id.$oid ? blog : b))
-            : [...blogs, blog];
-    setBlogs(updatedBlogs);
-    setSelectedBlog(null);
+  const handleSave = async (blog: Blog) => {
+    try {
+      if (blog._id && blog._id.$oid) {
+        // Update existing blog
+        const response = await fetch(`http://localhost:5000/api/blogs/${blog._id.$oid}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(blog),
+        });
+
+        if (response.ok) {
+          const updatedBlogs = blogs.map((b) =>
+              b._id?.$oid === blog._id?.$oid ? blog : b
+          );
+          setBlogs(updatedBlogs);
+        } else {
+          console.error('Failed to update blog');
+        }
+      } else {
+        // Create new blog (ensure _id is not included)
+        const { _id, ...blogWithoutId } = blog;
+        const response = await fetch('http://localhost:5000/api/blogs', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(blogWithoutId),
+        });
+
+        if (response.ok) {
+          const newBlog = await response.json();
+          setBlogs([...blogs, newBlog]);
+        } else {
+          console.error('Failed to create blog');
+        }
+      }
+
+      setSelectedBlog(null);
+    } catch (error) {
+      console.error('Error saving blog:', error);
+    }
   };
+
 
   const handleCancel = () => {
     setSelectedBlog(null);
@@ -94,7 +130,7 @@ const BlogAdmin: React.FC = () => {
               />
             </div>
           </div>
-          <div className="w-full md:w-3/4 ">
+          <div className="w-full md:w-3/4">
             {selectedBlog && (
                 <BlogAdminForm
                     blog={selectedBlog}
