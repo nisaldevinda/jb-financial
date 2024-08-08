@@ -1,27 +1,29 @@
 import React from "react";
 import { Accordion } from "flowbite-react";
-import AccordionPanel from '../cards/AccordionPanel';
+import AccordionPanel from "../cards/AccordionPanel";
 
 interface CareersAccordionProps {
-    jobCategories: {
-        title: string;
-        jobs: {
-            title: string;
-            location: string;
-            tags: string[];
-            applyLink?: string;
-        }[];
+  jobCategories: {
+    title: string;
+    jobs: {
+      title: string;
+      location: string;
+      tags: string[];
+      applyLink?: string;
     }[];
+  }[];
 }
 
-const CareersAccordion: React.FC<CareersAccordionProps> = ({ jobCategories }) => {
-    return (
-        <Accordion collapseAll>
-            {jobCategories.map((category, index) => (
-                <AccordionPanel key={index} category={category} />
-            ))}
-        </Accordion>
-    );
+const CareersAccordion: React.FC<CareersAccordionProps> = ({
+  jobCategories,
+}) => {
+  return (
+    <Accordion collapseAll>
+      {jobCategories.map((category, index) => (
+        <AccordionPanel key={index} category={category} />
+      ))}
+    </Accordion>
+  );
 };
 
 export default CareersAccordion;
@@ -290,4 +292,3 @@ export default CareersAccordion;
 // };
 //
 // export default CareersAccordion;
-
