@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Label, TextInput, Select, Textarea, FileInput } from "flowbite-react";
+import { Button, Label, TextInput, Select, Textarea } from "flowbite-react";
 
 interface BlogContent {
   subtitle: string;
@@ -7,7 +7,7 @@ interface BlogContent {
 }
 
 interface Blog {
-  _id?: { $oid: string };
+  _id?: string; // Modified _id to a simple string to align with MongoDB ObjectId
   category: string;
   duration: string;
   title: string;
@@ -37,7 +37,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
     setBlog({ ...blog, [id]: value });
   };
 
-  const handleSectionChange = (index: number, field: string, value: string | File) => {
+  const handleSectionChange = (index: number, field: string, value: string) => {
     const updatedSections = [...blog.content];
     updatedSections[index] = { ...updatedSections[index], [field]: value };
     setBlog({ ...blog, content: updatedSections });
@@ -55,7 +55,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
     setBlog({ ...blog, content: updatedSections });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSave(blog);
   };
@@ -67,9 +67,9 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
       >
         <h4 className="switzer-sb text-base md:text-2xl">Blog Post Editor</h4>
         <p className="switzer-r text-sm text-neutral-mid">
-          Welcome back! Please enter your details.
+          {blog._id ? "Edit Blog Post" : "Create New Blog Post"}
         </p>
-        {blog._id && blog._id.$oid && (
+        {blog._id && (
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-grow">
                 <div className="mb-2 block">
@@ -78,7 +78,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
                 <TextInput
                     id="_id"
                     type="text"
-                    value={blog._id.$oid}
+                    value={blog._id}
                     readOnly
                     required
                     shadow
@@ -99,6 +99,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
                 required
                 className="switzer-r"
             >
+              <option value="">Select a Category</option>
               <option>Investing</option>
               <option>Finance</option>
               <option>Informational</option>
@@ -223,7 +224,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
         </div>
         <div className="flex gap-4 mt-4">
           <Button type="submit" className="primary-button-2 switzer-md">
-            Save Blog
+            {blog._id ? "Update Blog" : "Create Blog"}
           </Button>
           <Button type="button" color="failure" onClick={onCancel} className="switzer-r">
             Cancel

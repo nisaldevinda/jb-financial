@@ -8,7 +8,7 @@ interface BlogContent {
 }
 
 interface Blog {
-  _id?: { $oid: string };
+  _id?: string; // Modified _id to a simple string to align with MongoDB ObjectId
   category: string;
   duration: string;
   title: string;
@@ -43,7 +43,7 @@ const BlogAdmin: React.FC = () => {
       });
 
       if (response.ok) {
-        const updatedBlogs = blogs.filter((blog) => blog._id?.$oid !== id);
+        const updatedBlogs = blogs.filter((blog) => blog._id !== id);
         setBlogs(updatedBlogs);
       } else {
         console.error('Failed to delete blog');
@@ -68,9 +68,9 @@ const BlogAdmin: React.FC = () => {
 
   const handleSave = async (blog: Blog) => {
     try {
-      if (blog._id && blog._id.$oid) {
+      if (blog._id) {
         // Update existing blog
-        const response = await fetch(`http://localhost:5000/api/blogs/${blog._id.$oid}`, {
+        const response = await fetch(`http://localhost:5000/api/blogs/${blog._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -79,8 +79,12 @@ const BlogAdmin: React.FC = () => {
         });
 
         if (response.ok) {
+          const updatedBlog = await response.json();
+          console.log('Blog updated successfully:', updatedBlog);
+
+          // Update the local state with the updated blog
           const updatedBlogs = blogs.map((b) =>
-              b._id?.$oid === blog._id?.$oid ? blog : b
+              b._id === blog._id ? updatedBlog : b
           );
           setBlogs(updatedBlogs);
         } else {
@@ -88,13 +92,12 @@ const BlogAdmin: React.FC = () => {
         }
       } else {
         // Create new blog (ensure _id is not included)
-        const { _id, ...blogWithoutId } = blog;
         const response = await fetch('http://localhost:5000/api/blogs', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(blogWithoutId),
+          body: JSON.stringify(blog),
         });
 
         if (response.ok) {
@@ -110,7 +113,6 @@ const BlogAdmin: React.FC = () => {
       console.error('Error saving blog:', error);
     }
   };
-
 
   const handleCancel = () => {
     setSelectedBlog(null);
