@@ -2,17 +2,20 @@ import React, { useState, useEffect } from "react";
 import BlogAdminForm from "../../admin/BlogAdminForm";
 import BlogAdminTable from "../../admin/BlogAdminTable";
 
+interface BlogContent {
+  subtitle: string;
+  paragraph: string;
+}
+
 interface Blog {
-  id: number;
+  _id?: string; // Modified _id to a simple string to align with MongoDB ObjectId
   category: string;
-  readTime: number;
+  duration: string;
   title: string;
   description: string;
-  sections: {
-    subtitle: string;
-    paragraph: string;
-    image?: File;
-  }[];
+  imageUrl: string;
+  link: string;
+  content: BlogContent[];
 }
 
 const BlogAdmin: React.FC = () => {
@@ -21,7 +24,7 @@ const BlogAdmin: React.FC = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const response = await fetch("/blogs.json");
+      const response = await fetch("http://localhost:5000/api/blogs");
       const blogsData: Blog[] = await response.json();
       setBlogs(blogsData);
     };
@@ -33,32 +36,82 @@ const BlogAdmin: React.FC = () => {
     setSelectedBlog(blog);
   };
 
-  const handleDelete = (id: number) => {
-    const updatedBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(updatedBlogs);
-    // Optionally, save the updated blogs to the JSON file
+  const handleDelete = async (id: string) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        const updatedBlogs = blogs.filter((blog) => blog._id !== id);
+        setBlogs(updatedBlogs);
+      } else {
+        console.error('Failed to delete blog');
+      }
+    } catch (error) {
+      console.error('Error deleting blog:', error);
+    }
   };
 
   const handleAdd = () => {
     const newBlog: Blog = {
-      id: blogs.length ? blogs[blogs.length - 1].id + 1 : 1,
       category: "",
-      readTime: 0,
+      duration: "",
       title: "",
       description: "",
-      sections: [],
+      imageUrl: "",
+      link: "",
+      content: []
     };
     setSelectedBlog(newBlog);
   };
 
-  const handleSave = (blog: Blog) => {
-    const updatedBlogs =
-      selectedBlog && blogs.some((b) => b.id === blog.id)
-        ? blogs.map((b) => (b.id === blog.id ? blog : b))
-        : [...blogs, blog];
-    setBlogs(updatedBlogs);
-    setSelectedBlog(null);
-    // Optionally, save the updated blogs to the JSON file
+  const handleSave = async (blog: Blog) => {
+    try {
+      if (blog._id) {
+        // Update existing blog
+        const response = await fetch(`http://localhost:5000/api/blogs/${blog._id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(blog),
+        });
+
+        if (response.ok) {
+          const updatedBlog = await response.json();
+          console.log('Blog updated successfully:', updatedBlog);
+
+          // Update the local state with the updated blog
+          const updatedBlogs = blogs.map((b) =>
+              b._id === blog._id ? updatedBlog : b
+          );
+          setBlogs(updatedBlogs);
+        } else {
+          console.error('Failed to update blog');
+        }
+      } else {
+        // Create new blog (ensure _id is not included)
+        const response = await fetch('http://localhost:5000/api/blogs', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(blog),
+        });
+
+        if (response.ok) {
+          const newBlog = await response.json();
+          setBlogs([...blogs, newBlog]);
+        } else {
+          console.error('Failed to create blog');
+        }
+      }
+
+      setSelectedBlog(null);
+    } catch (error) {
+      console.error('Error saving blog:', error);
+    }
   };
 
   const handleCancel = () => {
@@ -66,30 +119,30 @@ const BlogAdmin: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-off-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16 items-start">
-      <h3 className="switzer-sb text-xl md:text-4xl">Blogs</h3>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-12 w-full">
-        <div className="w-full md:w-1/4">
-          <div className="overflow-x-auto">
-            <BlogAdminTable
-              blogs={blogs}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-              onAdd={handleAdd}
-            />
+      <section className="w-full bg-off-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16 items-start">
+        <h3 className="switzer-sb text-xl md:text-4xl">Blogs</h3>
+        <div className="flex flex-col md:flex-row gap-4 md:gap-12 w-full">
+          <div className="w-full md:w-1/4">
+            <div className="overflow-x-auto">
+              <BlogAdminTable
+                  blogs={blogs}
+                  onEdit={handleEdit}
+                  onDelete={(id) => handleDelete(id)}
+                  onAdd={handleAdd}
+              />
+            </div>
+          </div>
+          <div className="w-full md:w-3/4">
+            {selectedBlog && (
+                <BlogAdminForm
+                    blog={selectedBlog}
+                    onSave={handleSave}
+                    onCancel={handleCancel}
+                />
+            )}
           </div>
         </div>
-        <div className="w-full md:w-3/4 ">
-          {selectedBlog && (
-            <BlogAdminForm
-              blog={selectedBlog}
-              onSave={handleSave}
-              onCancel={handleCancel}
-            />
-          )}
-        </div>
-      </div>
-    </section>
+      </section>
   );
 };
 

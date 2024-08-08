@@ -50,7 +50,8 @@ const App: React.FC = () => {
           <Route path="/funds/value-equity-fund" element={<VEF />} />
           <Route path="/funds/money-market-fund" element={<MMF />} />
           <Route path="/funds/short-term-gilt-fund" element={<SGF />} />
-          <Route path="/blogs/blog-1" element={<BlogInner />} />
+          {/*<Route path="/blogs/blog-1" element={<BlogInner />} />*/}
+          <Route path="/blogs/:id" element={<BlogInner />} />
           <Route path="/careers/senior-manager" element={<CareerInner />} />
 
           {/* Admin */}

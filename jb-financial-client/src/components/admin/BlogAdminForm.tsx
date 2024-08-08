@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Label,
-  TextInput,
-  Select,
-  Textarea,
-  FileInput,
-} from "flowbite-react";
+import { Button, Label, TextInput, Select, Textarea } from "flowbite-react";
 
-interface Section {
+interface BlogContent {
   subtitle: string;
   paragraph: string;
-  image?: File;
 }
 
 interface Blog {
-  id: number;
+  _id?: string;
   category: string;
-  readTime: number;
+  duration: string;
   title: string;
   description: string;
-  sections: Section[];
+  imageUrl: string;
+  link: string;
+  content: BlogContent[];
 }
 
 interface BlogAdminFormProps {
@@ -46,35 +40,29 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
     >
   ) => {
     const { id, value } = e.target;
-    setBlog({ ...blog, [id]: value });
+    setBlog((prevBlog) => ({ ...prevBlog, [id]: value }));
   };
 
-  const handleSectionChange = (
-    index: number,
-    field: string,
-    value: string | File | undefined
-  ) => {
-    const updatedSections = [...blog.sections];
-    updatedSections[index] = {
-      ...updatedSections[index],
-      [field]: value || "", // Use an empty string if value is undefined
-    };
-    setBlog({ ...blog, sections: updatedSections });
-  };
-
-  const addSection = () => {
-    setBlog({
-      ...blog,
-      sections: [
-        ...blog.sections,
-        { subtitle: "", paragraph: "", image: undefined },
-      ],
+  const handleSectionChange = (index: number, field: string, value: string) => {
+    setBlog((prevBlog) => {
+      const updatedSections = [...prevBlog.content];
+      updatedSections[index] = { ...updatedSections[index], [field]: value };
+      return { ...prevBlog, content: updatedSections };
     });
   };
 
+  const addSection = () => {
+    setBlog((prevBlog) => ({
+      ...prevBlog,
+      content: [...prevBlog.content, { subtitle: "", paragraph: "" }],
+    }));
+  };
+
   const removeSection = (index: number) => {
-    const updatedSections = blog.sections.filter((_, i) => i !== index);
-    setBlog({ ...blog, sections: updatedSections });
+    setBlog((prevBlog) => ({
+      ...prevBlog,
+      content: prevBlog.content.filter((_, i) => i !== index),
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -89,24 +77,27 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
     >
       <h4 className="switzer-sb text-base md:text-2xl">Blog Post Editor</h4>
       <p className="switzer-r text-sm text-neutral-mid">
-        Welcome back! Please enter your details.
+        {blog._id ? "Edit Blog Post" : "Create New Blog Post"}
       </p>
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex-grow">
-          <div className="mb-2 block">
-            <Label htmlFor="id" value="Blog ID" className="switzer-md" />
+      {blog._id && (
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex-grow">
+            <div className="mb-2 block">
+              <Label htmlFor="_id" value="Blog ID" className="switzer-md" />
+            </div>
+            <TextInput
+              id="_id"
+              type="text"
+              value={blog._id}
+              readOnly
+              required
+              shadow
+              className="switzer-r"
+            />
           </div>
-          <TextInput
-            id="id"
-            type="number"
-            value={blog.id}
-            onChange={handleInputChange}
-            required
-            shadow
-            className="switzer-r"
-            readOnly
-          />
         </div>
+      )}
+      <div className="flex flex-col md:flex-row gap-4">
         <div className="flex-grow">
           <div className="mb-2 block">
             <Label
@@ -122,6 +113,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
             required
             className="switzer-r"
           >
+            <option value="">Select a Category</option>
             <option>Investing</option>
             <option>Finance</option>
             <option>Informational</option>
@@ -131,31 +123,15 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
         <div className="flex-grow">
           <div className="mb-2 block">
             <Label
-              htmlFor="readTime"
+              htmlFor="duration"
               value="Read Time (in minutes)"
               className="switzer-md"
             />
           </div>
           <TextInput
-            id="readTime"
-            type="number"
-            value={blog.readTime}
-            onChange={handleInputChange}
-            required
-            shadow
-            className="switzer-r"
-          />
-        </div>
-      </div>
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex-grow">
-          <div className="mb-2 block">
-            <Label htmlFor="title" value="Blog Title" className="switzer-md" />
-          </div>
-          <TextInput
-            id="title"
+            id="duration"
             type="text"
-            value={blog.title}
+            value={blog.duration}
             onChange={handleInputChange}
             required
             shadow
@@ -163,48 +139,70 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
           />
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex-grow">
-          <div className="mb-2 block">
-            <Label
-              htmlFor="description"
-              value="Blog Description"
-              className="switzer-md"
-            />
-          </div>
-          <Textarea
-            id="description"
-            value={blog.description}
-            onChange={handleInputChange}
-            required
-            rows={4}
-            className="switzer-r"
-          />
-        </div>
+      <div className="mb-2 block">
+        <Label htmlFor="title" value="Blog Title" className="switzer-md" />
       </div>
-
-      {blog.sections.map((section, index) => (
-        <div
-          key={index}
-          className="flex flex-col gap-4 p-4 bg-white shadow-sm rounded-lg w-full border border-neutral-lighter"
-        >
-          <h5 className="switzer-r text-sm md:text-lg text-neutral-mid">
-            Section:{" "}
-            <span className="switzer-sb">
-              {" "}
-              {section.subtitle || `Section ${index + 1}`}
-            </span>
-          </h5>
-          <div>
+      <TextInput
+        id="title"
+        type="text"
+        value={blog.title}
+        onChange={handleInputChange}
+        required
+        shadow
+        className="switzer-r"
+      />
+      <div className="mb-2 block">
+        <Label
+          htmlFor="description"
+          value="Blog Description"
+          className="switzer-md"
+        />
+      </div>
+      <Textarea
+        id="description"
+        value={blog.description}
+        onChange={handleInputChange}
+        required
+        shadow
+        className="switzer-r"
+      />
+      <div className="mb-2 block">
+        <Label htmlFor="imageUrl" value="Image URL" className="switzer-md" />
+      </div>
+      <TextInput
+        id="imageUrl"
+        type="text"
+        value={blog.imageUrl}
+        onChange={handleInputChange}
+        required
+        shadow
+        className="switzer-r"
+      />
+      <div className="mb-2 block">
+        <Label htmlFor="link" value="Blog Link" className="switzer-md" />
+      </div>
+      <TextInput
+        id="link"
+        type="text"
+        value={blog.link}
+        onChange={handleInputChange}
+        required
+        shadow
+        className="switzer-r"
+      />
+      <div>
+        <h5 className="switzer-md text-lg">Blog Content Sections</h5>
+        {blog.content.map((section, index) => (
+          <div key={index} className="flex flex-col gap-4 mt-4">
             <div className="mb-2 block">
               <Label
-                htmlFor={`subtitle-${index}`}
-                value="Section Title"
+                htmlFor={`section-${index}-subtitle`}
+                value={`Section ${index + 1} Subtitle`}
                 className="switzer-md"
               />
             </div>
             <TextInput
-              id={`subtitle-${index}`}
+              id={`section-${index}-subtitle`}
               type="text"
               value={section.subtitle}
               onChange={(e) =>
@@ -214,62 +212,52 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
               shadow
               className="switzer-r"
             />
-          </div>
-          <div>
             <div className="mb-2 block">
               <Label
-                htmlFor={`paragraph-${index}`}
-                value="Section Text"
+                htmlFor={`section-${index}-paragraph`}
+                value={`Section ${index + 1} Paragraph`}
                 className="switzer-md"
               />
             </div>
             <Textarea
-              id={`paragraph-${index}`}
+              id={`section-${index}-paragraph`}
               value={section.paragraph}
               onChange={(e) =>
                 handleSectionChange(index, "paragraph", e.target.value)
               }
               required
-              rows={10}
+              shadow
               className="switzer-r"
             />
+            <Button
+              type="button"
+              color="failure"
+              onClick={() => removeSection(index)}
+              className="switzer-r"
+            >
+              Remove Section
+            </Button>
           </div>
-          <div id="fileUpload" className="max-w-md switzer-r">
-            <div className="mb-2 block">
-              <Label
-                htmlFor={`image-${index}`}
-                value="Section Image (Optional)"
-                className="switzer-md"
-              />
-            </div>
-            <FileInput
-              id={`image-${index}`}
-              helperText="Add a .jpg image [1156px x 875px]"
-              onChange={(e) => {
-                const file = e.target.files ? e.target.files[0] : undefined; // Get the file or undefined
-                handleSectionChange(index, "image", file); // Pass the file to the handler
-              }}
-            />
-          </div>
-          <Button
-            type="button"
-            onClick={() => removeSection(index)}
-            className="secondary-button-2"
-          >
-            Remove Section
-          </Button>
-        </div>
-      ))}
-
-      <a href="#" onClick={addSection} className="switzer-sb">
-        + Add New Section
-      </a>
-
-      <div className="flex justify-end gap-4">
-        <Button type="submit" className="primary-button-2">
-          Save Blog
+        ))}
+        <Button
+          type="button"
+          color="primary"
+          onClick={addSection}
+          className="switzer-r mt-4"
+        >
+          Add Section
         </Button>
-        <Button type="button" className="secondary-button-2" onClick={onCancel}>
+      </div>
+      <div className="flex gap-4 mt-4">
+        <Button type="submit" className="primary-button-2 switzer-md">
+          {blog._id ? "Update Blog" : "Create Blog"}
+        </Button>
+        <Button
+          type="button"
+          color="failure"
+          onClick={onCancel}
+          className="switzer-r"
+        >
           Cancel
         </Button>
       </div>

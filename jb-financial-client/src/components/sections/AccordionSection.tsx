@@ -25,6 +25,15 @@ interface AccordionSectionProps {
   imageColumn?: { title: string; text: string; imageUrl: string };
   swapContentAndImage?: boolean;
   accordionType: keyof typeof accordionComponents;
+  jobCategories?: {
+    title: string;
+    jobs: {
+      title: string;
+      location: string;
+      tags: string[];
+      applyLink?: string;
+    }[];
+  }[];
 }
 
 const AccordionSection: React.FC<AccordionSectionProps> = ({
@@ -32,28 +41,33 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({
   highlightedText,
   description,
   accordionType,
+  jobCategories,
 }) => {
   const titleWords = title.split(" ");
   const AccordionComponent = accordionComponents[accordionType];
 
   return (
-    <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-16">
-      <div className="flex flex-col gap-10">
-        <h2 className="subtitleText text-gray-600">
-          {titleWords.map((word, index) =>
-            highlightedText.includes(word) ? (
-              <span key={index} className="primaryText">
+      <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-16">
+        <div className="flex flex-col gap-10">
+          <h2 className="subtitleText text-gray-600">
+            {titleWords.map((word, index) =>
+                highlightedText.includes(word) ? (
+                    <span key={index} className="primaryText">
                 {word}{" "}
               </span>
-            ) : (
-              <span key={index}>{word} </span>
-            )
-          )}
-        </h2>
-        <p className="bodyText neutralText">{description}</p>
-      </div>
-      <AccordionComponent />
-    </section>
+                ) : (
+                    <span key={index}>{word} </span>
+                )
+            )}
+          </h2>
+          <p className="bodyText neutralText">{description}</p>
+        </div>
+        {accordionType === 'careers' && jobCategories ? (
+            <CareersAccordion jobCategories={jobCategories} />
+        ) : (
+            <AccordionComponent />
+        )}
+      </section>
   );
 };
 

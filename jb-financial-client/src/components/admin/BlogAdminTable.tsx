@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { Table, Button, Pagination } from "flowbite-react";
 
-interface Section {
+interface BlogContent {
   subtitle: string;
   paragraph: string;
-  image?: File;
 }
 
 interface Blog {
-  id: number;
+  _id: { $oid: string };
   category: string;
-  readTime: number;
+  duration: string;
   title: string;
   description: string;
-  sections: Section[];
+  imageUrl: string;
+  link: string;
+  content: BlogContent[];
 }
 
 interface BlogAdminTableProps {
   blogs: Blog[];
   onEdit: (blog: Blog) => void;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
   onAdd: () => void;
 }
 
@@ -62,14 +63,14 @@ const BlogAdminTable: React.FC<BlogAdminTableProps> = ({
         <Table.Body className="divide-y">
           {currentBlogs.map((blog) => (
             <Table.Row
-              key={blog.id}
+              key={blog._id}
               className="bg-white dark:border-gray-700 dark:bg-gray-800"
             >
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {blog.id}
+                {blog._id}
               </Table.Cell>
               <Table.Cell>{blog.title}</Table.Cell>
-              <Table.Cell className="flex">
+              <Table.Cell className="flex space-x-2">
                 <Button
                   onClick={() => onEdit(blog)}
                   size="xs"
@@ -80,7 +81,7 @@ const BlogAdminTable: React.FC<BlogAdminTableProps> = ({
                   Edit
                 </Button>
                 <Button
-                  onClick={() => onDelete(blog.id)}
+                  onClick={() => onDelete(blog._id)}
                   size="xs"
                   color="failure"
                   pill
