@@ -1,4 +1,3 @@
-// server.cjs
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -11,12 +10,14 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect("mongodb://localhost:27017/jb-financial", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost:27017/jb-financial")
+    .then(() => console.log('Connected to MongoDB'))
+    .catch((error) => {
+        console.error('MongoDB connection error:', error);
+        process.exit(1); // Exit the process with a failure code
+    });
 
-
+// Schemas and Models
 const fundPriceSchema = new mongoose.Schema({
     title: String,
     subtitle: String,
@@ -41,29 +42,31 @@ const blogSchema = new mongoose.Schema({
 });
 
 const FundPrice = mongoose.model("FundPrice", fundPriceSchema, "jb-financial");
+const Blog = mongoose.model('Blog', blogSchema, 'blog');
 
-// API endpoint to get fund price data
-app.get('/api/fund-prices', async (req, res) => {
+// API Endpoints
+
+// Get all fund prices
+app.get('/api/fund-prices', async (req, res, next) => {
     try {
         const fundPrices = await FundPrice.find();
         res.json(fundPrices);
     } catch (error) {
-        res.status(500).send(error.message);
+        next(error);
     }
 });
 
-const Blog = mongoose.model('Blog', blogSchema,'blog');
-
-// API endpoint to get blog data
-app.get('/api/blogs', async (req, res) => {
+// Get all blogs
+app.get('/api/blogs', async (req, res, next) => {
     try {
         const blogs = await Blog.find();
         res.json(blogs);
     } catch (error) {
-        res.status(500).send(error.message);
+        next(error);
     }
 });
 
+// Get a specific blog by ID
 app.get('/api/blogs/:id', async (req, res, next) => {
     try {
         const blog = await Blog.findById(req.params.id);
@@ -72,20 +75,22 @@ app.get('/api/blogs/:id', async (req, res, next) => {
         }
         res.json(blog);
     } catch (error) {
-        next(error); // Pass errors to Express error handler
+        next(error);
     }
 });
 
+// Create a new blog
 app.post('/api/blogs', async (req, res, next) => {
     try {
         const newBlog = new Blog(req.body);
         await newBlog.save();
         res.status(201).json(newBlog);
     } catch (error) {
-        next(error); // Pass errors to Express error handler
+        next(error);
     }
 });
 
+// Update an existing blog by ID
 app.put('/api/blogs/:id', async (req, res, next) => {
     try {
         const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
@@ -94,10 +99,11 @@ app.put('/api/blogs/:id', async (req, res, next) => {
         }
         res.json(updatedBlog);
     } catch (error) {
-        next(error); // Pass errors to Express error handler
+        next(error);
     }
 });
 
+// Delete a blog by ID
 app.delete('/api/blogs/:id', async (req, res, next) => {
     try {
         const deletedBlog = await Blog.findByIdAndDelete(req.params.id);
@@ -106,12 +112,17 @@ app.delete('/api/blogs/:id', async (req, res, next) => {
         }
         res.json({ message: 'Blog deleted successfully' });
     } catch (error) {
-        next(error); // Pass errors to Express error handler
+        next(error);
     }
 });
 
+// Centralized Error Handling Middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'An internal server error occurred.' });
+});
 
-
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
