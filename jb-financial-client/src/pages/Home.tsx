@@ -5,6 +5,49 @@ import SideContentSection from "../components/sections/SideContentSection";
 import AccordionSection from "../components/sections/AccordionSection";
 import TestimonialSection from "../components/sections/TestimonialSection";
 
+const fundsData = [
+  {
+    category: "Young Professional",
+    description:
+      "You've just started doing well in your career, and you've got many decades of professional life ahead of you. You can afford to take a little more risk, so we recommend allocating a higher proportion of funds into the JB Vantage Value Equity Fund.",
+    equityPercentage: 80,
+    moneyMarketPercentage: 20,
+    imageUrl: "/images/strategies/young.jpg",
+  },
+  {
+    category: "Mid Career Professional",
+    description:
+      "Your career is progressing well and with some years under your belt, you’re starting to think about your family and its future. You want the best of both worlds, so we recommend a balanced allocation into our money market and equity funds.",
+    equityPercentage: 50,
+    moneyMarketPercentage: 50,
+    imageUrl: "/images/strategies/mid-career.jpg",
+  },
+  {
+    category: "Senior Professional",
+    description:
+      "You’ve made it to the top and retirement is on your mind. You don’t want to take too many risks, but still have some capacity to do so. We recommend investing more into our money market funds and perhaps a little into equity.",
+    equityPercentage: 20,
+    moneyMarketPercentage: 80,
+    imageUrl: "/images/strategies/senior.jpg",
+  },
+  {
+    category: "Retired Individuals",
+    description:
+      "Time to enjoy the sunset of your life. Conservatism in how you invest is prudent, and we recommend allocating a higher proportion of funds into the JB Vantage Money Market Fund.",
+    equityPercentage: 0,
+    moneyMarketPercentage: 100,
+    imageUrl: "/images/strategies/retired.jpg",
+  },
+  {
+    category: "Corporate Treasurers",
+    description:
+      "You have some excess cash which you would rather put to work than leave lying around in a low-yield bank account. Our money market funds are highly recommended.",
+    equityPercentage: 0,
+    moneyMarketPercentage: 100,
+    imageUrl: "/images/strategies/corporate.jpg",
+  },
+];
+
 const Home: React.FC = () => {
   return (
     <>
@@ -51,6 +94,7 @@ const Home: React.FC = () => {
         highlightedText="investment strategy"
         description="Here are some capital allocation strategies we recommend. They're not definitive, so we encourage talking to our investment advisors to tailor them for you."
         accordionType="fund"
+        accordionProps={{ funds: fundsData }}
       />
       <ColumnsSection
         subtitleText="Latest Fund Prices"

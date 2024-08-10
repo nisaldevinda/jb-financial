@@ -25,6 +25,7 @@ interface AccordionSectionProps {
   imageColumn?: { title: string; text: string; imageUrl: string };
   swapContentAndImage?: boolean;
   accordionType: keyof typeof accordionComponents;
+  accordionProps?: any; // To pass down any additional props to the accordion component
 }
 
 const AccordionSection: React.FC<AccordionSectionProps> = ({
@@ -32,6 +33,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({
   highlightedText,
   description,
   accordionType,
+  accordionProps,
 }) => {
   const titleWords = title.split(" ");
   const AccordionComponent = accordionComponents[accordionType];
@@ -50,9 +52,9 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({
             )
           )}
         </h2>
-        <p className="bodyText neutralText">{description}</p>
+        {description && <p className="bodyText neutralText">{description}</p>}
       </div>
-      <AccordionComponent />
+      <AccordionComponent {...accordionProps} />
     </section>
   );
 };
