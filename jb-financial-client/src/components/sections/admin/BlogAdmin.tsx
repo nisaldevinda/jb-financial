@@ -8,7 +8,7 @@ interface BlogContent {
 }
 
 interface Blog {
-  _id?: string; // Modified _id to a simple string to align with MongoDB ObjectId
+  _id?: string;
   category: string;
   duration: string;
   title: string;
