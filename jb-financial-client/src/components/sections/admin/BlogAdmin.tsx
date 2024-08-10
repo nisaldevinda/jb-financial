@@ -3,8 +3,8 @@ import BlogAdminForm from "../../admin/BlogAdminForm";
 import BlogAdminTable from "../../admin/BlogAdminTable";
 
 interface BlogContent {
-  subtitle: string;
-  paragraph: string;
+  heading: string;
+  paragraphs: string[];
 }
 
 interface Blog {
