@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Table, Button, Pagination } from "flowbite-react";
 
 interface BlogContent {
-    subtitle: string;
-    paragraph: string;
+    heading: string;
+    paragraphs: string[];
 }
 
 interface Blog {
-    _id?: string;
+    _id?: string; // Modified _id to a simple string to align with MongoDB ObjectId
     category: string;
     duration: string;
     title: string;
@@ -53,18 +53,18 @@ const BlogAdminTable: React.FC<BlogAdminTableProps> = ({
             </Button>
             <Table className="switzer-r" striped>
                 <Table.Head className="w-full">
-                    <Table.HeadCell>ID</Table.HeadCell>
+                    <Table.HeadCell>#</Table.HeadCell>
                     <Table.HeadCell>Title</Table.HeadCell>
                     <Table.HeadCell>Actions</Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
-                    {currentBlogs.map((blog) => (
+                    {currentBlogs.map((blog, index) => (
                         <Table.Row
                             key={blog._id}
                             className="bg-white dark:border-gray-700 dark:bg-gray-800"
                         >
                             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                                {blog._id}
+                                {indexOfFirstBlog + index + 1}
                             </Table.Cell>
                             <Table.Cell>{blog.title}</Table.Cell>
                             <Table.Cell className="flex space-x-2">

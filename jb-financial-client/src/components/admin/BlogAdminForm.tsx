@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Label, TextInput, Select, Textarea } from "flowbite-react";
 
 interface BlogContent {
-  subtitle: string;
-  paragraph: string;
+  heading: string;
+  paragraphs: string[];
 }
 
 interface Blog {
@@ -23,7 +23,11 @@ interface BlogAdminFormProps {
   onCancel: () => void;
 }
 
-const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave, onCancel }) => {
+const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
+                                                       blog: initialBlog,
+                                                       onSave,
+                                                       onCancel,
+                                                     }) => {
   const [blog, setBlog] = useState<Blog>(initialBlog);
 
   useEffect(() => {
@@ -37,22 +41,47 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
     setBlog({ ...blog, [id]: value });
   };
 
-  const handleSectionChange = (index: number, field: string, value: string) => {
-    const updatedSections = [...blog.content];
-    updatedSections[index] = { ...updatedSections[index], [field]: value };
-    setBlog({ ...blog, content: updatedSections });
+  const handleSectionChange = (
+      index: number,
+      field: "heading" | "paragraphs",
+      value: string | string[],
+      paragraphIndex?: number
+  ) => {
+    const updatedContent = [...blog.content];
+    if (field === "paragraphs" && paragraphIndex !== undefined) {
+      const updatedParagraphs = [...updatedContent[index].paragraphs];
+      updatedParagraphs[paragraphIndex] = value as string;
+      updatedContent[index] = { ...updatedContent[index], paragraphs: updatedParagraphs };
+    } else {
+      updatedContent[index] = { ...updatedContent[index], [field]: value };
+    }
+    setBlog({ ...blog, content: updatedContent });
   };
 
   const addSection = () => {
     setBlog({
       ...blog,
-      content: [...blog.content, { subtitle: "", paragraph: "" }],
+      content: [...blog.content, { heading: "", paragraphs: [""] }],
     });
   };
 
   const removeSection = (index: number) => {
-    const updatedSections = blog.content.filter((_, i) => i !== index);
-    setBlog({ ...blog, content: updatedSections });
+    const updatedContent = blog.content.filter((_, i) => i !== index);
+    setBlog({ ...blog, content: updatedContent });
+  };
+
+  const addParagraph = (index: number) => {
+    const updatedContent = [...blog.content];
+    updatedContent[index].paragraphs.push("");
+    setBlog({ ...blog, content: updatedContent });
+  };
+
+  const removeParagraph = (sectionIndex: number, paragraphIndex: number) => {
+    const updatedContent = [...blog.content];
+    updatedContent[sectionIndex].paragraphs = updatedContent[sectionIndex].paragraphs.filter(
+        (_, i) => i !== paragraphIndex
+    );
+    setBlog({ ...blog, content: updatedContent });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -170,44 +199,77 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
         />
         <div>
           <h5 className="switzer-md text-lg">Blog Content Sections</h5>
-          {blog.content.map((section, index) => (
-              <div key={index} className="flex flex-col gap-4 mt-4">
+          {blog.content.map((section, sectionIndex) => (
+              <div key={sectionIndex} className="flex flex-col gap-4 mt-4">
                 <div className="mb-2 block">
                   <Label
-                      htmlFor={`section-${index}-subtitle`}
-                      value={`Section ${index + 1} Subtitle`}
+                      htmlFor={`section-${sectionIndex}-heading`}
+                      value={`Section ${sectionIndex + 1} Heading`}
                       className="switzer-md"
                   />
                 </div>
                 <TextInput
-                    id={`section-${index}-subtitle`}
+                    id={`section-${sectionIndex}-heading`}
                     type="text"
-                    value={section.subtitle}
-                    onChange={(e) => handleSectionChange(index, "subtitle", e.target.value)}
+                    value={section.heading}
+                    onChange={(e) =>
+                        handleSectionChange(sectionIndex, "heading", e.target.value)
+                    }
                     required
                     shadow
                     className="switzer-r"
                 />
-                <div className="mb-2 block">
-                  <Label
-                      htmlFor={`section-${index}-paragraph`}
-                      value={`Section ${index + 1} Paragraph`}
-                      className="switzer-md"
-                  />
-                </div>
-                <Textarea
-                    id={`section-${index}-paragraph`}
-                    value={section.paragraph}
-                    onChange={(e) => handleSectionChange(index, "paragraph", e.target.value)}
-                    required
-                    shadow
-                    className="switzer-r"
-                />
+                {section.paragraphs.map((paragraph, paragraphIndex) => (
+                    <div key={paragraphIndex} className="flex flex-col gap-2">
+                      <div className="mb-2 block">
+                        <Label
+                            htmlFor={`section-${sectionIndex}-paragraph-${paragraphIndex}`}
+                            value={`Section ${sectionIndex + 1} Paragraph ${paragraphIndex + 1}`}
+                            className="switzer-md"
+                        />
+                      </div>
+                      <Textarea
+                          id={`section-${sectionIndex}-paragraph-${paragraphIndex}`}
+                          value={paragraph}
+                          onChange={(e) =>
+                              handleSectionChange(
+                                  sectionIndex,
+                                  "paragraphs",
+                                  e.target.value,
+                                  paragraphIndex
+                              )
+                          }
+                          required
+                          shadow
+                          className="switzer-r"
+                      />
+                      {section.paragraphs.length > 1 && (
+                          <Button
+                              type="button"
+                              color="failure"
+                              onClick={() =>
+                                  removeParagraph(sectionIndex, paragraphIndex)
+                              }
+                              className="switzer-r"
+                          >
+                            Remove Paragraph
+                          </Button>
+                      )}
+                    </div>
+                ))}
+                <Button
+                    type="button"
+                    color="primary"
+                    onClick={() => addParagraph(sectionIndex)}
+                    className="switzer-r mt-2"
+                >
+                  Add Paragraph
+                </Button>
                 <Button
                     type="button"
                     color="failure"
-                    onClick={() => removeSection(index)}
-                    className="switzer-r"
+                    onClick={() => removeSection(sectionIndex)}
+                    className="switzer-r mt-4"
                 >
                   Remove Section
                 </Button>
@@ -226,7 +288,12 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({ blog: initialBlog, onSave
           <Button type="submit" className="primary-button-2 switzer-md">
             {blog._id ? "Update Blog" : "Create Blog"}
           </Button>
-          <Button type="button" color="failure" onClick={onCancel} className="switzer-r">
+          <Button
+              type="button"
+              color="failure"
+              onClick={onCancel}
+              className="switzer-r"
+          >
             Cancel
           </Button>
         </div>

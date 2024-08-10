@@ -3,12 +3,12 @@ import BlogAdminForm from "../../admin/BlogAdminForm";
 import BlogAdminTable from "../../admin/BlogAdminTable";
 
 interface BlogContent {
-  subtitle: string;
-  paragraph: string;
+  heading: string;
+  paragraphs: string[];
 }
 
 interface Blog {
-  _id?: string;
+  _id?: string; // Modified _id to a simple string to align with MongoDB ObjectId
   category: string;
   duration: string;
   title: string;
