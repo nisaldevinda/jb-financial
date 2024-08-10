@@ -28,8 +28,8 @@ import BlogAdmin from "./pages/admin/BlogAdmin";
 const App: React.FC = () => {
   return (
     <>
-      <JBFNavbar />
       <Router>
+        <JBFNavbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

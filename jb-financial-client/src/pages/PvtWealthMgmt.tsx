@@ -8,7 +8,7 @@ function PvtWealthMgmt() {
       <HeroSection
         title="Private Wealth Management Exclusively For You."
         highlightedText="Exclusively For You."
-        description="We provide bespoke wealth management services to HNWIs in Sri Lanka, with specific attention paid to wealth goals and circumstances with the strictest degree of confidentiality."
+        description="We provide bespoke wealth and asset management services to HNWIs and institutional investors in Sri Lanka, with specific attention paid to investing goals and circumstances with the strictest degree of confidentiality."
         button1Text=""
         button2Text=""
         desktopImage="/images/hero/private-wealth-management-d.jpg"

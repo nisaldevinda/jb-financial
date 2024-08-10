@@ -6,8 +6,10 @@ function JBFFooter() {
       <div className="flex flex-col w-full md:w-1/4 items-start gap-4">
         <img src={jbfLogo} className="mr-3 h-6 sm:h-9" alt="JB Financial" />
         <p className="regularText neutralText">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          JB Financial is an active fund manager licensed and regulated by the
+          Securities and Exchange Commission of Sri Lanka, focused on absolute
+          returns. Since 2011, our aim is to build, manage and preserve our
+          clients’ funds and generate consistent positive returns.
         </p>
       </div>
       <div className="flex flex-col w-full md:w-1/4 gap-4">

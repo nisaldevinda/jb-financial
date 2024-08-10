@@ -93,18 +93,13 @@ const SideContentSection: React.FC<SideContentSectionProps> = ({
   );
 
   return (
-    <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-16">
-      {swapContentAndImage ? (
-        <>
-          {image}
-          {content}
-        </>
-      ) : (
-        <>
-          {content}
-          {image}
-        </>
-      )}
+    <section
+      className={`bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col-reverse md:flex-row gap-16 ${
+        swapContentAndImage ? "md:flex-row-reverse" : "md:flex-row"
+      }`}
+    >
+      {content}
+      {image}
     </section>
   );
 };
