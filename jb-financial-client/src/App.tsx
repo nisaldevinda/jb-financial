@@ -24,6 +24,7 @@ import CareerInner from "./pages/CareerInner";
 
 import Login from "./pages/admin/Login";
 import BlogAdmin from "./pages/admin/BlogAdmin";
+import CareerAdmin from "./pages/admin/CareerAdmin";
 
 const App: React.FC = () => {
   return (
@@ -57,6 +58,7 @@ const App: React.FC = () => {
           {/* Admin */}
           <Route path="/admin" element={<Login />} />
           <Route path="/admin/blogs" element={<BlogAdmin />} />
+          <Route path="/admin/careers" element={<CareerAdmin />} />
         </Routes>
       </Router>
       <JBFFooter></JBFFooter>

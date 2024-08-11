@@ -49,6 +49,20 @@ const jobSchema = new mongoose.Schema({
     link: String,
 });
 
+const careerSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    location: { type: String, required: true },
+    tags: { type: [String], required: true },
+    content: [
+        {
+            heading: { type: String, required: true },
+            paragraphs: { type: [String], required: true }
+        }
+    ]
+}, { timestamps: true });
+
+const Career = mongoose.model('Career', careerSchema,'careers');
+
 const FundPrice = mongoose.model("FundPrice", fundPriceSchema, "jb-financial");
 const Blog = mongoose.model('Blog', blogSchema, 'blog');
 const Job = mongoose.model('Job', jobSchema, 'careers');
@@ -64,6 +78,52 @@ app.get('/api/jobs', async (req, res, next) => {
         next(error);
     }
 });
+
+app.get('/api/careers/:id', async (req, res) => {
+    try {
+        const career = await Career.findById(req.params.id);
+        if (!career) return res.status(404).json({ message: 'Career not found' });
+        res.json(career);
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error', error });
+    }
+});
+
+app.post('/api/careers', async (req, res) => {
+    try {
+        const newCareer = new Career(req.body);
+        const savedCareer = await newCareer.save();
+        res.status(201).json(savedCareer);
+    } catch (error) {
+        res.status(400).json({ message: 'Error creating career', error });
+    }
+});
+
+
+app.put('/api/careers/:id', async (req, res) => {
+    try {
+        const updatedCareer = await Career.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedCareer) return res.status(404).json({ message: 'Career not found' });
+        res.json(updatedCareer);
+    } catch (error) {
+        res.status(400).json({ message: 'Error updating career', error });
+    }
+});
+
+
+app.delete('/api/careers/:id', async (req, res) => {
+    try {
+        const deletedCareer = await Career.findByIdAndDelete(req.params.id);
+        if (!deletedCareer) return res.status(404).json({ message: 'Career not found' });
+        res.json({ message: 'Career deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error', error });
+    }
+});
+
+
+
+
 
 
 // Get all fund prices
