@@ -45,7 +45,7 @@ const App: React.FC = () => {
           <Route path="/private-asset-management" element={<PvtAssetMgmt />} />
           <Route path="/team" element={<Team />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/blogs" element={<Blog />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/funds/value-equity-fund" element={<VEF />} />
           <Route path="/funds/money-market-fund" element={<MMF />} />

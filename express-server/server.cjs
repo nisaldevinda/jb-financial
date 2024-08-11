@@ -41,10 +41,30 @@ const blogSchema = new mongoose.Schema({
     ],
 });
 
+const jobSchema = new mongoose.Schema({
+    category: String,
+    title: String,
+    location: String,
+    tags: [String],
+    link: String,
+});
+
 const FundPrice = mongoose.model("FundPrice", fundPriceSchema, "jb-financial");
 const Blog = mongoose.model('Blog', blogSchema, 'blog');
+const Job = mongoose.model('Job', jobSchema, 'careers');
 
 // API Endpoints
+
+// Get all jobs
+app.get('/api/jobs', async (req, res, next) => {
+    try {
+        const jobs = await Job.find();
+        res.json(jobs);
+    } catch (error) {
+        next(error);
+    }
+});
+
 
 // Get all fund prices
 app.get('/api/fund-prices', async (req, res, next) => {
