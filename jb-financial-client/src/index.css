@@ -494,3 +494,10 @@ body{
 .neutralText{
   color: var(--neutral-gray);
 }
+
+/* Custom styles to prevent table cell content from breaking into multiple lines */
+.table-cell-nowrap {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden;    /* Hide overflowed content */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+}
