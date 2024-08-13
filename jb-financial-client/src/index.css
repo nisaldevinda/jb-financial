@@ -412,7 +412,7 @@ body{
 
 @media (max-width: 1280px) and (min-width: 768px) {
   .titleText{
-    font-size: 80px;
+    font-size: 68px;
     letter-spacing: -5%;
     line-height: 125%;
   }
@@ -439,6 +439,12 @@ body{
   line-height: 125%;
 }
 
+@media (max-width: 1280px) and (min-width: 768px) {
+  .subtitleText{
+    font-size: 48px;
+  }
+}
+
 @media (max-width: 767px){
   .subtitleText{
     font-size: 40px;
@@ -457,6 +463,12 @@ body{
   font-family: "Switzer-Regular";
   font-size: 20px;
   line-height: 150%;
+}
+
+@media (max-width: 1280px) and (min-width: 768px) {
+  .bodyText{
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 767px){
@@ -493,4 +505,11 @@ body{
 
 .neutralText{
   color: var(--neutral-gray);
+}
+
+/* Custom styles to prevent table cell content from breaking into multiple lines */
+.table-cell-nowrap {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden;    /* Hide overflowed content */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
 }
