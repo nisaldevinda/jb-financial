@@ -88,24 +88,24 @@ const JBFNavbar: React.FC = () => {
             Institutional Wealth Management
           </Navbar.Link>
           <Navbar.Link
-            href="/team"
-            className="switzer-md text-base text-gray-600 lg:mx-2"
-          >
-            Team
-          </Navbar.Link>
-          <Navbar.Link
-            href="/careers"
-            className="switzer-md text-base text-gray-600 lg:mx-2"
-          >
-            Careers
-          </Navbar.Link>
-          <Navbar.Link
             href="/contact"
             className="switzer-md text-base text-gray-600 lg:mx-2"
           >
             Contact Us
           </Navbar.Link>
         </div>
+        <Navbar.Link
+          href="/team"
+          className="switzer-md text-base text-gray-600 lg:mx-2"
+        >
+          Team
+        </Navbar.Link>
+        <Navbar.Link
+          href="/careers"
+          className="switzer-md text-base text-gray-600 lg:mx-2"
+        >
+          Careers
+        </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );
