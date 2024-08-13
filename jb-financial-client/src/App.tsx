@@ -5,12 +5,7 @@ import JBFFooter from "./components/JBFFooter";
 import "./App.css";
 
 // Routes
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import RoutesConfig from "./routes/RoutesConfig";
 
 const AppContent: React.FC = () => {
