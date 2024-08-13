@@ -1,3 +1,5 @@
+import CareersForm from "../components/forms/CareersForm";
+
 const CareerInner: React.FC = () => {
   return (
     <>
@@ -83,6 +85,9 @@ const CareerInner: React.FC = () => {
           ullam expedita provident quod harum, amet cum? Laborum illo maxime ut
           facere sed perferendis? Officiis.
         </p>
+      </section>
+      <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16">
+        <CareersForm position="Senior Manager" />
       </section>
     </>
   );

@@ -33,13 +33,13 @@ const JBFNavbar: React.FC = () => {
         </Navbar.Link>
         <Navbar.Link
           href="/about"
-          className="switzer-md text-base text-gray-600 lg:mx-4"
+          className="switzer-md text-base text-gray-600 lg:mx-2"
         >
           About
         </Navbar.Link>
         <Navbar.Link
           href="/funds"
-          className="switzer-md text-base text-gray-600 lg:mx-4"
+          className="switzer-md text-base text-gray-600 lg:mx-2"
         >
           Funds
         </Navbar.Link>
@@ -48,7 +48,7 @@ const JBFNavbar: React.FC = () => {
           inline
           label={
             <span
-              className="switzer-md text-base text-gray-600 lg:mx-4 cursor-pointer hidden md:block"
+              className="switzer-md text-base text-gray-600 lg:mx-2 cursor-pointer hidden md:block"
               onClick={handleLabelClick}
             >
               Private Wealth Management
@@ -71,41 +71,41 @@ const JBFNavbar: React.FC = () => {
         <div className="block md:hidden">
           <Navbar.Link
             href="/private-wealth-management"
-            className="switzer-md text-base text-gray-600 lg:mx-4"
+            className="switzer-md text-base text-gray-600 lg:mx-2"
           >
             Private Wealth Management
           </Navbar.Link>
           <Navbar.Link
             href="/private-asset-management"
-            className="switzer-md text-base text-gray-600 lg:mx-4"
+            className="switzer-md text-base text-gray-600 lg:mx-2"
           >
             Private Asset Management
           </Navbar.Link>
           <Navbar.Link
             href="/institutional-wealth-management"
-            className="switzer-md text-base text-gray-600 lg:mx-4"
+            className="switzer-md text-base text-gray-600 lg:mx-2"
           >
             Institutional Wealth Management
           </Navbar.Link>
           <Navbar.Link
+            href="/team"
+            className="switzer-md text-base text-gray-600 lg:mx-2"
+          >
+            Team
+          </Navbar.Link>
+          <Navbar.Link
+            href="/careers"
+            className="switzer-md text-base text-gray-600 lg:mx-2"
+          >
+            Careers
+          </Navbar.Link>
+          <Navbar.Link
             href="/contact"
-            className="switzer-md text-base text-gray-600 lg:mx-4"
+            className="switzer-md text-base text-gray-600 lg:mx-2"
           >
             Contact Us
           </Navbar.Link>
         </div>
-        <Navbar.Link
-          href="/team"
-          className="switzer-md text-base text-gray-600 lg:mx-4"
-        >
-          Team
-        </Navbar.Link>
-        <Navbar.Link
-          href="/careers"
-          className="switzer-md text-base text-gray-600 lg:mx-4"
-        >
-          Careers
-        </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

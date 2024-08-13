@@ -53,13 +53,13 @@ const FundPriceCard: React.FC<CardProps> = ({
 
       {/* Conditionally render buy prices */}
       <div
-        className={`flex ${
+        className={`flex flex-wrap ${
           showSecondBuyPrice
             ? "gap-4 md:gap-8 justify-center"
             : "justify-center"
         }`}
       >
-        <div>
+        <div className="flex-1 min-w-[200px]">
           <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
             Buy Price {showSecondBuyPrice ? "1" : ""}
           </p>
@@ -70,7 +70,7 @@ const FundPriceCard: React.FC<CardProps> = ({
         </div>
 
         {showSecondBuyPrice && (
-          <div>
+          <div className="flex-1 min-w-[200px]">
             <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
               Buy Price 2
             </p>
