@@ -21,7 +21,7 @@ const CareerAdmin: React.FC = () => {
 
     useEffect(() => {
         const fetchCareers = async () => {
-            const response = await fetch("http://localhost:5000/api/careers");
+            const response = await fetch("http://localhost:5000/api/jobs");
             const careersData: Career[] = await response.json();
             setCareers(careersData);
         };

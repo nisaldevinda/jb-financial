@@ -61,6 +61,17 @@ const careerSchema = new mongoose.Schema({
     ]
 }, { timestamps: true });
 
+const fundSchema = new mongoose.Schema({
+    date: { type: Date, required: true },
+    buyPrice1: { type: Number, required: true },
+    buyPrice2: { type: Number },
+    sellPrice: { type: Number, required: true },
+    nav: { type: Number, required: true },
+    type: { type: String, required: true }, // e.g., "Value Equity Fund", "Money Market Fund"
+});
+
+const Fund = mongoose.model("Fund", fundSchema, "Fund");
+
 const Career = mongoose.model('Career', careerSchema,'careers');
 
 const FundPrice = mongoose.model("FundPrice", fundPriceSchema, "jb-financial");
@@ -68,6 +79,32 @@ const Blog = mongoose.model('Blog', blogSchema, 'blog');
 const Job = mongoose.model('Job', jobSchema, 'careers');
 
 // API Endpoints
+
+// Get all funds of a specific type
+app.get("/funds/:type", async (req, res) => {
+    const { type } = req.params;
+    try {
+        const funds = await Fund.find({ type });
+        res.json(funds);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Update or add new fund entry
+app.post("/funds", async (req, res) => {
+    const { date, buyPrice1, buyPrice2, sellPrice, nav, type } = req.body;
+    try {
+        const existingFund = await Fund.findOneAndUpdate(
+            { date, type },
+            { buyPrice1, buyPrice2, sellPrice, nav },
+            { new: true, upsert: true }
+        );
+        res.json(existingFund);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 // Get all jobs
 app.get('/api/jobs', async (req, res, next) => {
