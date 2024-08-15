@@ -13,7 +13,7 @@ const JBFNavbar: React.FC = () => {
   return (
     <Navbar
       fluid
-      className="w-screen px-4 md:px-20 2xl:px-40 bg-white fixed z-1"
+      className="w-screen px-4 md:px-20 2xl:px-40 bg-white fixed z-10"
     >
       <Navbar.Brand href="/">
         <img src={jbfLogo} className="mr-3 h-6 sm:h-9" alt="JB Financial" />
@@ -87,12 +87,6 @@ const JBFNavbar: React.FC = () => {
           >
             Institutional Wealth Management
           </Navbar.Link>
-          <Navbar.Link
-            href="/contact"
-            className="switzer-md text-base text-gray-600 lg:mx-2"
-          >
-            Contact Us
-          </Navbar.Link>
         </div>
         <Navbar.Link
           href="/team"
@@ -105,6 +99,12 @@ const JBFNavbar: React.FC = () => {
           className="switzer-md text-base text-gray-600 lg:mx-2"
         >
           Careers
+        </Navbar.Link>
+        <Navbar.Link
+          href="/contact"
+          className="switzer-md text-base text-gray-600 lg:mx-2 block md:hidden"
+        >
+          Contact Us
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>

@@ -48,6 +48,49 @@ const fundsData = [
   },
 ];
 
+const testimonials = [
+  {
+    logoSrc: "/images/testimonials/logo/1.png",
+    testimonialText:
+      "Investing in JB Vantage's unit trusts has been a game changer for our financial strategy. With a rich history of successful client outcomes, their expertise and management have consistently delivered impressive returns over the years. We couldn't be happier with their service!",
+    testimonialImageSrc: "/images/testimonials/user/1.png",
+    name: "Alex Johnson",
+    designation: "Managing Director, Financial Solutions Ltd.",
+  },
+  {
+    logoSrc: "/images/testimonials/logo/2.png",
+    testimonialText:
+      "Our experience with JB Vantage has been exceptional. Their unit trusts are meticulously managed, offering a blend of safety and growth that has greatly benefited our portfolio. The track record of satisfied clients speaks volumes about their commitment to excellence.",
+    testimonialImageSrc: "/images/testimonials/user/2.png",
+    name: "Emily Davis",
+    designation: "Senior Investment Analyst, Capital Growth Inc.",
+  },
+  {
+    logoSrc: "/images/testimonials/logo/3.png",
+    testimonialText:
+      "JB Vantage's unit trusts have proven to be a reliable investment with consistent performance. The firm’s dedication to client satisfaction and their ability to navigate market changes effectively make them a top choice for anyone looking to grow their wealth responsibly.",
+    testimonialImageSrc: "/images/testimonials/user/3.png",
+    name: "Michael Brown",
+    designation: "Chief Financial Officer, Wealth Builders Co.",
+  },
+  {
+    logoSrc: "/images/testimonials/logo/4.png",
+    testimonialText:
+      "We have been investing with JB Vantage for several years and have always been impressed with their unit trusts' performance. Their team is highly knowledgeable and their strategic approach has resulted in substantial gains for our investments. Highly recommended!",
+    testimonialImageSrc: "/images/testimonials/user/4.png",
+    name: "Sarah Wilson",
+    designation: "Portfolio Manager, Secure Invest Ltd.",
+  },
+  {
+    logoSrc: "/images/testimonials/logo/5.png",
+    testimonialText:
+      "JB Vantage has delivered outstanding results through their unit trusts. Their deep understanding of market dynamics and dedication to achieving client goals are evident in the consistent and strong returns we've experienced. It’s been a pleasure working with them.",
+    testimonialImageSrc: "/images/testimonials/user/5.png",
+    name: "David Lee",
+    designation: "Director of Investments, Horizon Financial Group",
+  },
+];
+
 const Home: React.FC = () => {
   return (
     <>
@@ -56,6 +99,7 @@ const Home: React.FC = () => {
         highlightedText="financial goals"
         description="With our investment products, anyone can easily invest and grow their wealth. Take advantage of our diverse range of investment options which includes both unit trusts and private wealth management services."
         button1Text="Schedule an Appointment"
+        button1Link="/"
         button2Text=""
         desktopImage="/images/hero/home-d.jpg"
         mobileImage="/images/hero/home-m.jpg"
@@ -65,6 +109,7 @@ const Home: React.FC = () => {
         subtitleText="Explore our *Unit  Trusts*"
         bodyText=""
         buttonText="View All Funds"
+        buttonLink="/funds"
         buttonType="secondary"
         cardType="unitTrust"
         alignText="center"
@@ -74,6 +119,7 @@ const Home: React.FC = () => {
         highlightedText="Private Wealth Management"
         description="We provide institutions and High Net Worth Individuals with private wealth management services where we manage portfolios on their behalf. "
         buttonText="Learn More"
+        buttonLink="/private-wealth-management"
         imageUrl="/images/other/private-wealth-management.png"
       />
       <SideContentSection
@@ -100,17 +146,12 @@ const Home: React.FC = () => {
         subtitleText="Latest Fund Prices"
         bodyText=""
         buttonText="View All Funds"
+        buttonLink="/funds"
         buttonType="primary"
         cardType="fundPrice"
         alignText="center"
       />
-      <TestimonialSection
-        logoSrc="/weblow.png"
-        testimonialText="“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”"
-        testimonialImageSrc="/testimonial-image.png"
-        name="Susantha Susiripala"
-        designation="Financial Director at FTL"
-      />
+      <TestimonialSection testimonials={testimonials} />
       <ColumnsSection
         subtitleText="Contact Us"
         bodyText=""

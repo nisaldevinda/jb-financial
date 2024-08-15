@@ -35,13 +35,48 @@ const ContactCard: React.FC<ContactCardProps> = ({
   line3,
   imageUrl,
 }) => {
+  const handleEmailClick = (email: string) => {
+    window.location.href = `mailto:${email}`;
+  };
+
+  const handlePhoneClick = (phone: string) => {
+    window.location.href = `tel:${phone}`;
+  };
+
+  const handleMapClick = () => {
+    window.location.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      `${line1} ${line2} ${line3}`
+    )}`;
+  };
+
   return (
     <div className="flex items-center gap-4 py-4 md:py-16">
       <img src={imageUrl} alt="" className="w-12 md:w-auto" />
       <div>
-        <p className="bodyText text-neutral-mid">{line1}</p>
-        <p className="bodyText text-neutral-mid">{line2}</p>
-        <p className="bodyText text-neutral-mid">{line3}</p>
+        {line1 && (
+          <p
+            className="bodyText text-neutral-mid hover:text-neutral-dark cursor-pointer"
+            onClick={() => handleEmailClick(line1)}
+          >
+            {line1}
+          </p>
+        )}
+        {line2 && (
+          <p
+            className="bodyText text-neutral-mid hover:text-neutral-dark cursor-pointer"
+            onClick={() => handlePhoneClick(line2)}
+          >
+            {line2}
+          </p>
+        )}
+        {line3 && (
+          <p
+            className="bodyText text-neutral-mid hover:text-neutral-dark cursor-pointer"
+            onClick={handleMapClick}
+          >
+            {line3}
+          </p>
+        )}
       </div>
     </div>
   );

@@ -119,7 +119,9 @@ const Careers: React.FC = () => {
         highlightedText="Our Team"
         description="Experience a supportive work culture that values collaboration and growth."
         button1Text="Learn More"
+        button1Link="/team"
         button2Text="Contact Us"
+        button2Link="/contact"
         desktopImage="/images/hero/careers-d.jpg"
         mobileImage="/images/hero/careers-m.jpg"
         renderLeftContent={false} // True [Content on the Left] , False [Content on the Right]

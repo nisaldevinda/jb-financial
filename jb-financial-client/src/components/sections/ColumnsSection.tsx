@@ -10,6 +10,7 @@ interface ColumnsSectionProps {
   bodyText?: string;
   buttonText?: string;
   buttonType?: "primary" | "secondary";
+  buttonLink?: string;
   cardType: string;
   alignText?: "left" | "center";
 }
@@ -35,6 +36,7 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
   bodyText,
   buttonText,
   buttonType = "secondary",
+  buttonLink,
   cardType,
   alignText = "center",
 }) => {
@@ -73,11 +75,19 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
       </h2>
       {bodyText && <p className={`bodyText text-${alignText}`}>{bodyText}</p>}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 w-full">
-        {cards.map((card, index) => {
-          return <CardComponent key={index} {...card} />;
-        })}
+        {cards.map((card, index) => (
+          <CardComponent key={index} {...card} />
+        ))}
       </div>
-      {buttonText && (
+      {buttonText && buttonLink && (
+        <a
+          href={buttonLink}
+          className={`${buttonType}-button text-${alignText}`}
+        >
+          {buttonText}
+        </a>
+      )}
+      {buttonText && !buttonLink && (
         <button className={`${buttonType}-button text-${alignText}`}>
           {buttonText}
         </button>
