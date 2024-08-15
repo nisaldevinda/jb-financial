@@ -10,6 +10,7 @@ interface ColumnsSectionProps {
   bodyText?: string;
   buttonText?: string;
   buttonType?: "primary" | "secondary";
+  buttonLink?: string;
   cardType: string;
   alignText?: "left" | "center";
 }
@@ -29,13 +30,14 @@ const cardComponentMapping: Record<string, React.FC<any>> = {
 };
 
 const ColumnsSection: React.FC<ColumnsSectionProps> = ({
-                                                         subtitleText,
-                                                         bodyText,
-                                                         buttonText,
-                                                         buttonType = "secondary",
-                                                         cardType,
-                                                         alignText = "center",
-                                                       }) => {
+  subtitleText,
+  bodyText,
+  buttonText,
+  buttonType = "secondary",
+  buttonLink,
+  cardType,
+  alignText = "center",
+}) => {
   const [cards, setCards] = useState<any[]>([]);
 
   useEffect(() => {

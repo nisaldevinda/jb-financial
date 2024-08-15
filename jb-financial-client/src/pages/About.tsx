@@ -55,6 +55,7 @@ const About: React.FC = () => {
         title="Meet our Team"
         description="The portfolio managers, analysts, and financial advisors who make it possible for us to help you achieve your financial goals."
         buttonText1="Learn More"
+        buttonLink1="/team"
         buttonText2=""
         centerAlign={true}
       />
