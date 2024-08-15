@@ -40,13 +40,29 @@ const FundCard: React.FC<{
   };
 
   const handleDateChange: DatePickerProps["onChange"] = (selected) => {
-    const date = selected ? selected.toLocaleDateString().split("T")[0] : "";
-    console.log(date);
-    setFormData({ ...formData, date });
+    if (selected) {
+      const year = selected.getFullYear();
+      const month = String(selected.getMonth() + 1).padStart(2, '0');
+      const day = String(selected.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+      console.log(formattedDate);
+      setFormData(prevData => ({ ...prevData, date: formattedDate }));
+    } else {
+      setFormData(prevData => ({ ...prevData, date: "" }));
+    }
   };
 
   const handleSubmit = () => {
-    onSubmit(formData);
+    const submissionData = {
+      ...formData,
+      date: formData.date,
+    };
+    onSubmit(submissionData);
+  };
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
   };
 
   return (
@@ -75,7 +91,7 @@ const FundCard: React.FC<{
                           className={`${index === 0 ? "bg-neutral-lightest" : ""}`}
                       >
                         <Table.Cell className="table-cell-nowrap">
-                          {data.date}
+                          {formatDate(data.date)}
                         </Table.Cell>
                         <Table.Cell className="table-cell-nowrap">
                           {data.buyPrice1}
