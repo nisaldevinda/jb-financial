@@ -30,12 +30,18 @@ const FundCard: React.FC<{
     nav: 0,
   });
 
+  interface DatePickerProps {
+    onChange: (selectedDate: Date | null) => void;
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: Number(value) });
   };
 
-  const handleDateChange = (date: string) => {
+  const handleDateChange: DatePickerProps["onChange"] = (selected) => {
+    const date = selected ? selected.toLocaleDateString().split("T")[0] : "";
+    console.log(date);
     setFormData({ ...formData, date });
   };
 
@@ -103,7 +109,7 @@ const FundCard: React.FC<{
                 weekStart={1}
                 shadow
                 className="switzer-r"
-                onChange={handleDateChange}
+                onSelectedDateChanged={handleDateChange}
             />
           </div>
 
@@ -225,7 +231,12 @@ const ChartCard: React.FC<{
     setFormData({ ...formData, [id]: Number(value) });
   };
 
-  const handleDateChange = (date: Date) => {
+  interface DatePickerProps {
+    onChange: (selectedDate: Date | null) => void;
+  }
+
+  const handleDateChange: DatePickerProps["onChange"] = (selected) => {
+    const date = selected ? selected.toLocaleDateString().split("T")[0] : "";
     console.log(date);
     setFormData({ ...formData, date });
   };
@@ -314,7 +325,7 @@ const ChartCard: React.FC<{
                 weekStart={1}
                 shadow
                 className="switzer-r"
-                onChange={handleDateChange}
+                onSelectedDateChanged={handleDateChange}
             />
           </div>
 
