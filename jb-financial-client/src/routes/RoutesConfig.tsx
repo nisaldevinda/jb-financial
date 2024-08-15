@@ -19,6 +19,8 @@ import Login from "../pages/admin/Login";
 import BlogAdmin from "../pages/admin/BlogAdmin";
 import FundAdmin from "../pages/admin/FundAdmin";
 
+import DatePicker from "../pages/admin/DatePicker";
+
 const RoutesConfig: React.FC = () => {
   return (
     <Routes>
@@ -45,6 +47,7 @@ const RoutesConfig: React.FC = () => {
       <Route path="/admin" element={<Login />} />
       <Route path="/admin/blogs" element={<BlogAdmin />} />
       <Route path="/admin/funds" element={<FundAdmin />} />
+      <Route path="/admin/date" element={<DatePicker />} />
     </Routes>
   );
 };
