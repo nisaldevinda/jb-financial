@@ -403,7 +403,7 @@ const FundAdmin: React.FC = () => {
     fetchData();
   }, []);
 
-  const handleSubmit = async (data, fundType) => {
+  const handleSubmit = async (data: any, fundType: string) => {
     try {
       await axios.post("http://localhost:5000/funds", { ...data, type: fundType });
       alert("Data updated successfully!");

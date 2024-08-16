@@ -34,7 +34,6 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
   bodyText,
   buttonText,
   buttonType = "secondary",
-  buttonLink,
   cardType,
   alignText = "center",
 }) => {
