@@ -28,7 +28,9 @@ const Team: React.FC = () => {
         title="We’re Hiring!"
         description="Explore our current job openings."
         buttonText1="Open Positions"
+        buttonLink1="/careers"
         buttonText2="Contact Us"
+        buttonLink2="/contact"
         centerAlign={true}
       />
     </>

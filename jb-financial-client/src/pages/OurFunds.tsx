@@ -19,7 +19,7 @@ function OurFunds() {
       <ColumnsSection
         subtitleText="Explore our *Unit  Trusts*"
         bodyText=""
-        buttonText="View All Funds"
+        buttonText=""
         buttonType="secondary" // 'primary' | 'secondary'
         cardType="unitTrust"
         alignText="center" // Change to "left" or "center"

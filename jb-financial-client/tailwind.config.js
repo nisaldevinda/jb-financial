@@ -12,6 +12,7 @@ export default {
       'primary-950': '#560009',
       'primary-900': '#930010',
       'primary-800': '#BE0015',
+      'primary-200': '#FFDADE',
       'neutral-dark': '#444444',
       'neutral-light': '#AAAAAA',
       'neutral-lighter': '#CCCCCC',

@@ -29,7 +29,7 @@ const FundStatsSection: React.FC<FundStatsSectionProps> = ({
           <p className="switzer-sb text-neutral-light text-sm md:text-2xl px-4 py-2">
             Strategy
           </p>
-          <p className="switzer-sb text-neutral-dark text-sm md:text-2xl px-4 py-2">
+          <p className="switzer-sb text-neutral-dark text-sm md:text-2xl px-4 py-2 text-right">
             {strategy}
           </p>
         </div>

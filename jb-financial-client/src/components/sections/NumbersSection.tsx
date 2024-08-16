@@ -24,7 +24,7 @@ const NumbersSection: React.FC<NumbersSectionProps> = ({
               <h2 className="subtitleText text-primary-900">{group.title}</h2>
             )}
             {group.description && (
-              <p className="text-base md:text-2xl switzer-sb w-[80%]">
+              <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
                 {group.description}
               </p>
             )}

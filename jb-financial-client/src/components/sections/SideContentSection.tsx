@@ -5,6 +5,7 @@ interface SideContentSectionProps {
   highlightedText: string;
   description?: string;
   buttonText?: string;
+  buttonLink?: string;
   imageUrl: string;
   textColumns?: Array<{ title: string; text: string }>;
   imageColumn?: { title: string; text: string; imageUrl: string };
@@ -17,6 +18,7 @@ const SideContentSection: React.FC<SideContentSectionProps> = ({
   highlightedText,
   description,
   buttonText,
+  buttonLink,
   imageUrl,
   textColumns,
   imageColumn,
@@ -65,9 +67,15 @@ const SideContentSection: React.FC<SideContentSectionProps> = ({
     </div>
   );
 
-  const renderButton = buttonText && (
-    <button className="secondary-button">{buttonText}</button>
-  );
+  const renderButton =
+    buttonText &&
+    (buttonLink ? (
+      <a href={buttonLink} className="secondary-button">
+        {buttonText}
+      </a>
+    ) : (
+      <button className="secondary-button">{buttonText}</button>
+    ));
 
   const content = (
     <div className="flex flex-col justify-center gap-12 w-full md:w-[60%]">
@@ -93,18 +101,13 @@ const SideContentSection: React.FC<SideContentSectionProps> = ({
   );
 
   return (
-    <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-16">
-      {swapContentAndImage ? (
-        <>
-          {image}
-          {content}
-        </>
-      ) : (
-        <>
-          {content}
-          {image}
-        </>
-      )}
+    <section
+      className={`bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col-reverse md:flex-row gap-16 ${
+        swapContentAndImage ? "md:flex-row-reverse" : "md:flex-row"
+      }`}
+    >
+      {content}
+      {image}
     </section>
   );
 };

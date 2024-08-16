@@ -41,10 +41,214 @@ const blogSchema = new mongoose.Schema({
     ],
 });
 
+const jobSchema = new mongoose.Schema({
+    category: String,
+    title: String,
+    location: String,
+    tags: [String],
+    link: String,
+});
+
+const careerSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    location: { type: String, required: true },
+    tags: { type: [String], required: true },
+    content: [
+        {
+            heading: { type: String, required: true },
+            paragraphs: { type: [String], required: true }
+        }
+    ]
+}, { timestamps: true });
+
+const fundSchema = new mongoose.Schema({
+    date: { type: Date, required: true },
+    buyPrice1: { type: Number, required: true },
+    buyPrice2: { type: Number },
+    sellPrice: { type: Number, required: true },
+    nav: { type: Number, required: true },
+    type: { type: String, required: true }, // e.g., "Value Equity Fund", "Money Market Fund"
+});
+
+// Define schemas for each fund type
+const valueEquityFundSchema = new mongoose.Schema({
+    date: { type: String, required: true },
+    JBVEF: { type: Number, required: true },
+    SPSL20TRI: { type: Number, required: true },
+    ASTRI: { type: Number, required: true },
+});
+
+const moneyMarketFundSchema = new mongoose.Schema({
+    date: { type: String, required: true },
+    JBMMF: { type: Number, required: true },
+    NDBIB: { type: Number, required: true },
+    AWFDR: { type: Number, required: true },
+});
+
+const shortTermGiltFundSchema = new mongoose.Schema({
+    date: { type: String, required: true },
+    JBGILT: { type: Number, required: true },
+    NDBIB: { type: Number, required: true },
+    TBILL: { type: Number, required: true },
+});
+
+// Create models for each fund type
+const ValueEquityFund = mongoose.model("ValueEquityFund", valueEquityFundSchema,"fund=performance-value-eq");
+// const MoneyMarketFund = mongoose.model("MoneyMarketFund", moneyMarketFundSchema);
+// const ShortTermGiltFund = mongoose.model("ShortTermGiltFund", shortTermGiltFundSchema);
+
+const Fund = mongoose.model("Fund", fundSchema, "Fund");
+const Career = mongoose.model('Career', careerSchema,'careers');
 const FundPrice = mongoose.model("FundPrice", fundPriceSchema, "jb-financial");
 const Blog = mongoose.model('Blog', blogSchema, 'blog');
+const Job = mongoose.model('Job', jobSchema, 'careers');
 
 // API Endpoints
+
+// Routes for Value Equity Fund
+app.get("/funds/value-equity-fund", async (req, res) => {
+    try {
+        const data = await ValueEquityFund.find();
+        res.json(data);
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+app.post("/funds/value-equity-fund", async (req, res) => {
+    const newRecord = new ValueEquityFund(req.body);
+    try {
+        await newRecord.save();
+        res.json("Value Equity Fund record added!");
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+// Routes for Money Market Fund
+app.get("/funds/money-market-fund", async (req, res) => {
+    try {
+        const data = await MoneyMarketFund.find();
+        res.json(data);
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+app.post("/funds/money-market-fund", async (req, res) => {
+    const newRecord = new MoneyMarketFund(req.body);
+    try {
+        await newRecord.save();
+        res.json("Money Market Fund record added!");
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+// Routes for Short Term Gilt Fund
+app.get("/funds/short-term-gilt-fund", async (req, res) => {
+    try {
+        const data = await ShortTermGiltFund.find();
+        res.json(data);
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+app.post("/funds/short-term-gilt-fund", async (req, res) => {
+    const newRecord = new ShortTermGiltFund(req.body);
+    try {
+        await newRecord.save();
+        res.json("Short Term Gilt Fund record added!");
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+
+// Get all funds of a specific type
+app.get("/funds/:type", async (req, res) => {
+    const { type } = req.params;
+    try {
+        const funds = await Fund.find({ type });
+        res.json(funds);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Update or add new fund entry
+app.post("/funds", async (req, res) => {
+    const { date, buyPrice1, buyPrice2, sellPrice, nav, type } = req.body;
+    console.log(date)
+    try {
+        const existingFund = await Fund.findOneAndUpdate(
+            { date, type },
+            { buyPrice1, buyPrice2, sellPrice, nav },
+            { new: true, upsert: true }
+        );
+        res.json(existingFund);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// Get all jobs
+app.get('/api/jobs', async (req, res, next) => {
+    try {
+        const jobs = await Job.find();
+        res.json(jobs);
+    } catch (error) {
+        next(error);
+    }
+});
+
+app.get('/api/careers/:id', async (req, res) => {
+    try {
+        const career = await Career.findById(req.params.id);
+        if (!career) return res.status(404).json({ message: 'Career not found' });
+        res.json(career);
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error', error });
+    }
+});
+
+app.post('/api/careers', async (req, res) => {
+    try {
+        const newCareer = new Career(req.body);
+        const savedCareer = await newCareer.save();
+        res.status(201).json(savedCareer);
+    } catch (error) {
+        res.status(400).json({ message: 'Error creating career', error });
+    }
+});
+
+
+app.put('/api/careers/:id', async (req, res) => {
+    try {
+        const updatedCareer = await Career.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedCareer) return res.status(404).json({ message: 'Career not found' });
+        res.json(updatedCareer);
+    } catch (error) {
+        res.status(400).json({ message: 'Error updating career', error });
+    }
+});
+
+
+app.delete('/api/careers/:id', async (req, res) => {
+    try {
+        const deletedCareer = await Career.findByIdAndDelete(req.params.id);
+        if (!deletedCareer) return res.status(404).json({ message: 'Career not found' });
+        res.json({ message: 'Career deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error', error });
+    }
+});
+
+
+
+
+
 
 // Get all fund prices
 app.get('/api/fund-prices', async (req, res, next) => {

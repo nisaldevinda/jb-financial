@@ -8,7 +8,7 @@ function PvtWealthMgmt() {
       <HeroSection
         title="Private Wealth Management Exclusively For You."
         highlightedText="Exclusively For You."
-        description="We provide bespoke wealth management services to HNWIs in Sri Lanka, with specific attention paid to wealth goals and circumstances with the strictest degree of confidentiality."
+        description="We provide bespoke wealth and asset management services to HNWIs and institutional investors in Sri Lanka, with specific attention paid to investing goals and circumstances with the strictest degree of confidentiality."
         button1Text=""
         button2Text=""
         desktopImage="/images/hero/private-wealth-management-d.jpg"
@@ -27,6 +27,7 @@ function PvtWealthMgmt() {
             "An experienced team including lead fund managers who have been in the industry since 1994.",
         }}
         buttonText="Learn More"
+        buttonLink="/institutional-wealth-management"
         imageUrl="/images/other/institutional-investors.png"
         swapContentAndImage={true} // True [Content on the Right], False [Content on the Left]
       />
@@ -45,6 +46,7 @@ function PvtWealthMgmt() {
           },
         ]}
         buttonText="Learn More"
+        buttonLink="/private-asset-management"
         imageUrl="/images/other/next-generation.png"
         swapContentAndImage={false} // True [Content on the Right], False [Content on the Left]
       />
@@ -52,7 +54,9 @@ function PvtWealthMgmt() {
         title="Learn More About Our Investment Committee"
         description="Our investment committee consists of experienced professionals dedicated to managing your wealth."
         buttonText1="Learn More"
+        buttonLink1="/team"
         buttonText2="Contact Us"
+        buttonLink2="/contact"
         centerAlign={false}
       />
     </>
