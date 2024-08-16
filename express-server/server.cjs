@@ -70,15 +70,101 @@ const fundSchema = new mongoose.Schema({
     type: { type: String, required: true }, // e.g., "Value Equity Fund", "Money Market Fund"
 });
 
+// Define schemas for each fund type
+const valueEquityFundSchema = new mongoose.Schema({
+    date: { type: String, required: true },
+    JBVEF: { type: Number, required: true },
+    SPSL20TRI: { type: Number, required: true },
+    ASTRI: { type: Number, required: true },
+});
+
+const moneyMarketFundSchema = new mongoose.Schema({
+    date: { type: String, required: true },
+    JBMMF: { type: Number, required: true },
+    NDBIB: { type: Number, required: true },
+    AWFDR: { type: Number, required: true },
+});
+
+const shortTermGiltFundSchema = new mongoose.Schema({
+    date: { type: String, required: true },
+    JBGILT: { type: Number, required: true },
+    NDBIB: { type: Number, required: true },
+    TBILL: { type: Number, required: true },
+});
+
+// Create models for each fund type
+const ValueEquityFund = mongoose.model("ValueEquityFund", valueEquityFundSchema,"fund=performance-value-eq");
+// const MoneyMarketFund = mongoose.model("MoneyMarketFund", moneyMarketFundSchema);
+// const ShortTermGiltFund = mongoose.model("ShortTermGiltFund", shortTermGiltFundSchema);
+
 const Fund = mongoose.model("Fund", fundSchema, "Fund");
-
 const Career = mongoose.model('Career', careerSchema,'careers');
-
 const FundPrice = mongoose.model("FundPrice", fundPriceSchema, "jb-financial");
 const Blog = mongoose.model('Blog', blogSchema, 'blog');
 const Job = mongoose.model('Job', jobSchema, 'careers');
 
 // API Endpoints
+
+// Routes for Value Equity Fund
+app.get("/funds/value-equity-fund", async (req, res) => {
+    try {
+        const data = await ValueEquityFund.find();
+        res.json(data);
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+app.post("/funds/value-equity-fund", async (req, res) => {
+    const newRecord = new ValueEquityFund(req.body);
+    try {
+        await newRecord.save();
+        res.json("Value Equity Fund record added!");
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+// Routes for Money Market Fund
+app.get("/funds/money-market-fund", async (req, res) => {
+    try {
+        const data = await MoneyMarketFund.find();
+        res.json(data);
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+app.post("/funds/money-market-fund", async (req, res) => {
+    const newRecord = new MoneyMarketFund(req.body);
+    try {
+        await newRecord.save();
+        res.json("Money Market Fund record added!");
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+// Routes for Short Term Gilt Fund
+app.get("/funds/short-term-gilt-fund", async (req, res) => {
+    try {
+        const data = await ShortTermGiltFund.find();
+        res.json(data);
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
+app.post("/funds/short-term-gilt-fund", async (req, res) => {
+    const newRecord = new ShortTermGiltFund(req.body);
+    try {
+        await newRecord.save();
+        res.json("Short Term Gilt Fund record added!");
+    } catch (error) {
+        res.status(400).json("Error: " + error);
+    }
+});
+
 
 // Get all funds of a specific type
 app.get("/funds/:type", async (req, res) => {
@@ -94,6 +180,7 @@ app.get("/funds/:type", async (req, res) => {
 // Update or add new fund entry
 app.post("/funds", async (req, res) => {
     const { date, buyPrice1, buyPrice2, sellPrice, nav, type } = req.body;
+    console.log(date)
     try {
         const existingFund = await Fund.findOneAndUpdate(
             { date, type },
