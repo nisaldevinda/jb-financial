@@ -4,6 +4,7 @@ import { FundPriceCard } from "../cards/FundPriceCard";
 import { BlogCard } from "../cards/BlogCard";
 import { TeamCard, teamCardData } from "../cards/TeamCard";
 import { ContactCard, contactCardData } from "../cards/ContactCard";
+import { SERVER_URL } from "../../Constants";
 
 interface ColumnsSectionProps {
   subtitleText: string;
@@ -42,11 +43,11 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
   useEffect(() => {
     const fetchData = async () => {
       if (cardType === "fundPrice") {
-        const response = await fetch("http://localhost:5000/api/fund-prices");
+        const response = await fetch(`${SERVER_URL}/api/fund-prices`);
         const data = await response.json();
         setCards(data);
       } else if (cardType === "blog") {
-        const response = await fetch("http://localhost:5000/api/blogs");
+        const response = await fetch(`${SERVER_URL}/api/blogs`);
         const data = await response.json();
         setCards(data);
       } else {
@@ -61,41 +62,41 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
   const applyPrimaryTextClass = (text: string) => {
     const words = text.split(" ");
     return (
-        <>
-          {words.map((word, index) =>
-              word.includes("*") ? (
-                  <span key={index} className="primaryText">
+      <>
+        {words.map((word, index) =>
+          word.includes("*") ? (
+            <span key={index} className="primaryText">
               {word.replace("*", "")}
             </span>
-              ) : (
-                  <span key={index}>{word} </span>
-              )
-          )}
-        </>
+          ) : (
+            <span key={index}>{word} </span>
+          )
+        )}
+      </>
     );
   };
 
   const CardComponent = cardComponentMapping[cardType] || (() => null);
 
   return (
-      <section
-          className={`bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-16 items-${alignText}`}
-      >
-        <h2 className={`subtitleText text-neutral-mid text-${alignText}`}>
-          {applyPrimaryTextClass(subtitleText)}
-        </h2>
-        {bodyText && <p className={`bodyText text-${alignText}`}>{bodyText}</p>}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 w-full">
-          {cards.map((card, index) => {
-            return <CardComponent key={index} {...card} />;
-          })}
-        </div>
-        {buttonText && (
-            <button className={`${buttonType}-button text-${alignText}`}>
-              {buttonText}
-            </button>
-        )}
-      </section>
+    <section
+      className={`bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-16 items-${alignText}`}
+    >
+      <h2 className={`subtitleText text-neutral-mid text-${alignText}`}>
+        {applyPrimaryTextClass(subtitleText)}
+      </h2>
+      {bodyText && <p className={`bodyText text-${alignText}`}>{bodyText}</p>}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 w-full">
+        {cards.map((card, index) => {
+          return <CardComponent key={index} {...card} />;
+        })}
+      </div>
+      {buttonText && (
+        <button className={`${buttonType}-button text-${alignText}`}>
+          {buttonText}
+        </button>
+      )}
+    </section>
   );
 };
 
