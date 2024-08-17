@@ -9,8 +9,12 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
-mongoose.connect("cd")
+/// MongoDB connection
+mongoose.connect("mongodb+srv://nisaldevindar:ilvI2IB0ZI5w2SLa@cluster0.jnk0q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: "jb-financial"
+})
     .then(() => console.log('Connected to MongoDB'))
     .catch((error) => {
         console.error('MongoDB connection error:', error);
@@ -324,6 +328,11 @@ app.delete('/api/blogs/:id', async (req, res, next) => {
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ error: 'An internal server error occurred.' });
+});
+
+// Success endpoint
+app.get('/status', (req, res) => {
+    res.status(200).json({ message: "Server is up and running successfully!" });
 });
 
 // Start the server
