@@ -168,6 +168,7 @@ const ChartCard: React.FC<{
   let columns: string[];
   let labels: string[];
 
+
   switch (fundType) {
     case "Value Equity Fund":
       columns = ["JBVEF", "SPSL20 TRI", "ASTRI"];
