@@ -48,7 +48,7 @@ const RoutesConfig: React.FC = () => {
       <Route path="/admin" element={<Login />} />
       <Route path="/admin/blogs" element={<BlogAdmin />} />
       <Route path="/admin/funds" element={<FundAdmin />} />
-        <Route path="/admin/careers" element={<CareerAdmin />} />
+      <Route path="/admin/careers" element={<CareerAdmin />} />
       <Route path="/admin/date" element={<DatePicker />} />
     </Routes>
   );
