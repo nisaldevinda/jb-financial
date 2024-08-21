@@ -2,17 +2,11 @@ import React from "react";
 import FundAccordion from "../accordions/FundAccordion";
 import FaqAccordion from "../accordions/FaqAccordion";
 import CareersAccordion from "../accordions/CareersAccordion";
-import VEFFaqAccordion from "../accordions/VEFFaqAccordion";
-import MMFFaqAccordion from "../accordions/MMFFaqAccordion";
-import SGFFaqAccordion from "../accordions/SGFFaqAccordion";
 
 const accordionComponents = {
   fund: FundAccordion,
   faq: FaqAccordion,
   careers: CareersAccordion,
-  vef: VEFFaqAccordion,
-  mmf: MMFFaqAccordion,
-  sgf: SGFFaqAccordion,
 };
 
 interface AccordionSectionProps {
