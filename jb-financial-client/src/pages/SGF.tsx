@@ -42,6 +42,32 @@ const SGF: React.FC = () => {
     benchmark: "NDBIB-CRISIL 91 Day T-Bill index",
     investment: "Low-risk, short-term government securities",
   };
+  const faqData = [
+    {
+      question: "What is the minimum investment?",
+      answer: "LKR 1 Million.",
+    },
+    {
+      question: "What securities does this fund invest in?",
+      answer: "Government securities like treasury bills and bonds.",
+    },
+    {
+      question: "Is this fund regulated?",
+      answer:
+        "Yes, like all our other funds, it's regulated by the Securities and Exchange Commission of Sri Lanka.",
+    },
+    {
+      question: "How does the risk level compare to other funds?",
+      answer:
+        "This fund has a lower risk compared to equity funds, and is almost on par with a regular bank savings account.",
+    },
+    {
+      question: "Is this fund suitable for short-term investing?",
+      answer:
+        "Yes, it's designed for short-term investors seeking safety and liquidity.",
+    },
+  ];
+
   return (
     <>
       <FundHeader
@@ -83,10 +109,11 @@ const SGF: React.FC = () => {
         paragraphs={paragraphs}
       />
       <AccordionSection
-        title="Frequently asked questions"
-        highlightedText="investment strategy"
-        description="Find answers to common questions about our funds and the investment process."
-        accordionType="sgf"
+        title="Frequently Asked Questions"
+        highlightedText="Questions"
+        description="Here are some of the most common questions about our services."
+        accordionType="faq"
+        accordionProps={{ faqs: faqData }}
       />
       <FundDocumentsSection
         sectionTitle="Fund Documents"

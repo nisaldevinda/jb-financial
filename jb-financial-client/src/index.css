@@ -312,7 +312,7 @@ body{
 
 /* Primary Button */
 
-.primary-button{
+.primary-button {
   font-family: "Switzer-Semibold";
   font-size: 16px;
   text-transform: uppercase;
@@ -322,19 +322,21 @@ body{
   background-color: var(--primary-900);
   width: fit-content;
   padding: 12px 48px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @media (max-width: 639px) {
-  .primary-button{
+  .primary-button {
     width: 100%;
   }
 }
 
-.primary-button:hover{
-  cursor: pointer !important;
+.primary-button:hover {
+  cursor: pointer;
   color: var(--primary-900);
   background-color: var(--white);
 }
+
 
 .primary-button-2{
   font-family: "Switzer-Semibold";
@@ -370,6 +372,7 @@ body{
   background-color: transparent;
   width: fit-content;
   padding: 12px 48px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .secondary-button:hover{

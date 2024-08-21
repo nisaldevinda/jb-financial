@@ -44,6 +44,30 @@ const VEF: React.FC = () => {
     benchmark: "S&P Sri Lanka 20 Index",
     investment: "Value investing",
   };
+  const faqData = [
+    {
+      question: "What is the minimum investment?",
+      answer: "LKR 1 Million.",
+    },
+    {
+      question: "What types of companies does the fund invest in?",
+      answer: "Large and mid-capitalization companies in Sri Lanka.",
+    },
+    {
+      question: "Is this fund suitable for short-term investors?",
+      answer: "No, it's designed for medium to long-term investors.",
+    },
+    {
+      question: "What is the risk level of this fund?",
+      answer: "Moderate to high risk.",
+    },
+    {
+      question: "Are there any fees involved?",
+      answer:
+        "Yes, front-end fees and other expenses detailed in the fund’s documents.",
+    },
+  ];
+
   return (
     <>
       <FundHeader
@@ -85,10 +109,11 @@ const VEF: React.FC = () => {
         paragraphs={paragraphs}
       />
       <AccordionSection
-        title="Frequently asked questions"
-        highlightedText="investment strategy"
-        description="Find answers to common questions about our funds and the investment process."
-        accordionType="vef"
+        title="Frequently Asked Questions"
+        highlightedText="Questions"
+        description="Here are some of the most common questions about our services."
+        accordionType="faq"
+        accordionProps={{ faqs: faqData }}
       />
       <FundDocumentsSection
         sectionTitle="Fund Documents"

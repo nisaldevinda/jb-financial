@@ -17,24 +17,51 @@ const Contact: React.FC<ContactProps> = ({}) => {
           </p>
           <div className="flex flex-col gap-6">
             <div className="flex gap-4">
-              <img src="/icons/mail-primary.svg" alt="" />
+              <img src="/icons/mail-primary.svg" alt="Email icon" />
               <p className="bodyText text-neutral-mid">
-                hello@jbvantage.lk <br />
-                sales@jbvantage.lk
+                <a
+                  href="mailto:hello@jbvantage.lk"
+                  className="hover:text-neutral-dark"
+                >
+                  hello@jbvantage.lk
+                </a>{" "}
+                <br />
+                <a
+                  href="mailto:sales@jbvantage.lk"
+                  className="hover:text-neutral-dark"
+                >
+                  sales@jbvantage.lk
+                </a>
               </p>
             </div>
             <div className="flex gap-4">
-              <img src="/icons/phone-primary.svg" alt="" />
+              <img src="/icons/phone-primary.svg" alt="Phone icon" />
               <p className="bodyText text-neutral-mid">
-                +94 11 249 0900 <br />
-                +94 11 249 0950 <br /> +94 11 249 0952
+                <a href="tel:+94112490900" className="hover:text-neutral-dark">
+                  +94 11 249 0900
+                </a>{" "}
+                <br />
+                <a href="tel:+94112490950" className="hover:text-neutral-dark">
+                  +94 11 249 0950
+                </a>{" "}
+                <br />
+                <a href="tel:+94112490952" className="hover:text-neutral-dark">
+                  +94 11 249 0952
+                </a>
               </p>
             </div>
             <div className="flex gap-4">
-              <img src="/icons/map-primary.svg" alt="" />
+              <img src="/icons/map-primary.svg" alt="Map icon" />
               <p className="bodyText text-neutral-mid">
-                150, St. Joseph’s Street, <br />
-                Colombo 14, Sri Lanka.
+                <a
+                  href="https://www.google.com/maps?q=150,+St.+Joseph%E2%80%99s+Street,+Colombo+14,+Sri+Lanka"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-neutral-dark"
+                >
+                  150, St. Joseph’s Street, <br />
+                  Colombo 14, Sri Lanka.
+                </a>
               </p>
             </div>
           </div>

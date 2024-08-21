@@ -32,7 +32,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div>
         {renderLeftContent ? (
           <div className="absolute inset-0 flex flex-col md:justify-center px-4 md:px-20 2xl:px-40 gap-12 mt-24">
-            <h1 className="titleText text-gray-600 md:w-[55%]">
+            <h1 className="titleText text-gray-600 md:w-[55%] fade-in-up">
               {titleWords.map((word, index) =>
                 highlightedText.includes(word) ? (
                   <span key={index} className="primaryText">
@@ -59,7 +59,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
         ) : (
           <div className="absolute inset-0 flex flex-col md:justify-center md:ml-[40%] px-4 md:px-20 2xl:px-40 gap-12 mt-24">
-            <h1 className="titleText text-gray-600">
+            <h1 className="titleText text-gray-600 fade-in-up">
               {titleWords.map((word, index) =>
                 highlightedText.includes(word) ? (
                   <span key={index} className="primaryText">

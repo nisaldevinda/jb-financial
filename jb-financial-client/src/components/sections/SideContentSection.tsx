@@ -96,7 +96,7 @@ const SideContentSection: React.FC<SideContentSectionProps> = ({
 
   const image = (
     <div className="w-full md:w-[40%]">
-      <img src={imageUrl} className="" alt="section-image" />
+      <img src={imageUrl} className="fade-in-up" alt="section-image" />
     </div>
   );
 

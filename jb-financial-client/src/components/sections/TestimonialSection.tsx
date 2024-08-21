@@ -93,12 +93,13 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
             <path
               d="M14 6l-6 6 6 6"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </button>
+
         <button
           className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-neutral-lighter hover:bg-primary-900 text-white p-2 rounded-full hidden md:block w-12 h-12 flex justify-center items-center switzer-sb"
           onClick={goToNextSlide}

@@ -42,6 +42,32 @@ const MMF: React.FC = () => {
     benchmark: "NDBIB-CRISIL 91 Day T-Bill index",
     investment: "Low-risk, short-term investments",
   };
+  const faqData = [
+    {
+      question: "What is the minimum investment?",
+      answer: "LKR 1 Million.",
+    },
+    {
+      question: "What does the fund primarily invest in?",
+      answer:
+        "Short-term corporate issues like fixed deposits and commercial papers.",
+    },
+    {
+      question: "Is this fund suitable for risk-averse investors?",
+      answer: "Yes, it's designed for investors with low risk tolerance.",
+    },
+    {
+      question: "How liquid is this fund?",
+      answer:
+        "Funds invested are highly liquid, and suitable for short-term investments.",
+    },
+    {
+      question: "Are the returns taxable?",
+      answer:
+        "Yes, returns are subject to taxation based on the investor's residency status, but can change depending on applicable tax laws.",
+    },
+  ];
+
   return (
     <>
       <FundHeader
@@ -83,10 +109,11 @@ const MMF: React.FC = () => {
         paragraphs={paragraphs}
       />
       <AccordionSection
-        title="Frequently asked questions"
-        highlightedText="investment strategy"
-        description="Find answers to common questions about our funds and the investment process."
-        accordionType="mmf"
+        title="Frequently Asked Questions"
+        highlightedText="Questions"
+        description="Here are some of the most common questions about our services."
+        accordionType="faq"
+        accordionProps={{ faqs: faqData }}
       />
       <FundDocumentsSection
         sectionTitle="Fund Documents"
