@@ -4,7 +4,7 @@ import AccordionSection from "../components/sections/AccordionSection";
 import FundHeader from "../components/sections/funds/FundHeader";
 import FundDetailsSection from "../components/sections/funds/FundDetailsSection";
 import FundStatsSection from "../components/sections/funds/FundStatsSection";
-import ChartSection from "../components/sections/funds/ChartSection";
+import FundChart3 from "../components/sections/funds/charts/FundChart3";
 import FundStewardSection from "../components/sections/funds/FundStewardSection";
 import FundDocumentsSection from "../components/sections/funds/FundDocumentsSection";
 
@@ -61,7 +61,7 @@ const SGF: React.FC = () => {
         benchmark={fundStats.benchmark}
         investment={fundStats.investment}
       />
-      <ChartSection
+      <FundChart3
         groups={groups}
         mainTitle="The numbers speak for themselves"
         mainDescription="For more than a decade, we have remained at the forefront of investment management in Sri Lanka. Our continuous growth is testament to our ability to generate healthy returns for our clients."
