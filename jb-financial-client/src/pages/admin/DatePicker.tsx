@@ -8,13 +8,18 @@ interface DatePickerProps {
 export function DatePicker() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
+  const today = new Date();
+
   const handleDateChange: DatePickerProps["onChange"] = (selected) => {
     setSelectedDate(selected);
   };
 
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center">
-      <Datepicker onSelectedDateChanged={handleDateChange} />
+      <Datepicker
+        onSelectedDateChanged={handleDateChange}
+        maxDate={today} // Restrict selection to today or earlier
+      />
 
       <div className="mt-4 p-2 text-neutral-mid switzer-md">
         Your selected date is:{" "}
