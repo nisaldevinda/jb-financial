@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables, ChartData, ChartOptions } from "chart.js";
+import {SERVER_URL} from "../../../../Constants.tsx";
 
 // Register all necessary components
 Chart.register(...registerables);
@@ -18,7 +19,7 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/data/chartData2.json");
+      const response = await fetch(`${SERVER_URL}/export-json-money-market`);
       const data = await response.json();
       const labels = data.data.map((item: any) => item.Date);
       const jbvefData = data.data.map((item: any) => item.JBMMF);
