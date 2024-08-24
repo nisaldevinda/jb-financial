@@ -21,7 +21,6 @@ import FundAdmin from "../pages/admin/FundAdmin";
 import CareerAdmin from "../pages/admin/CareerAdmin.tsx";
 
 import DatePicker from "../pages/admin/DatePicker";
-import PerformanceDashboard from "../pages/admin/PerformanceDashboard.tsx";
 
 const RoutesConfig: React.FC = () => {
   return (
@@ -51,7 +50,6 @@ const RoutesConfig: React.FC = () => {
       <Route path="/admin/funds" element={<FundAdmin />} />
       <Route path="/admin/careers" element={<CareerAdmin />} />
       <Route path="/admin/date" element={<DatePicker />} />
-        <Route path="/admin/performance" element={<PerformanceDashboard />} />
     </Routes>
   );
 };
