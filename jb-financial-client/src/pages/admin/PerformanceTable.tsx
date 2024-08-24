@@ -31,26 +31,24 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `${SERVER_URL}/api/performance-${chartType}`
+          `${SERVER_URL}/api/performance-${chartType}`
       );
       const sortedData = response.data.sort(
-        (a: PerformanceData, b: PerformanceData) => {
-          // Sort by Date in descending order
-          return new Date(b.Date).getTime() - new Date(a.Date).getTime();
-        }
+          (a: PerformanceData, b: PerformanceData) => {
+            // Sort by Date in descending order
+            return new Date(b.Date).getTime() - new Date(a.Date).getTime();
+          }
       );
       setData(sortedData.slice(0, 5)); // Get only the most recent 5 entries
       if (sortedData.length > 0) {
-        const initialEntry = {
-          _id: "",
-          Date: "",
-          ...Object.keys(sortedData[0]).reduce((acc, key) => {
-            if (key !== "_id" && key !== "Date" && key !== "__v") {
-              acc[key] = ""; // Initialize other fields
-            }
-            return acc;
-          }, {} as PerformanceData),
-        };
+        // Initialize newEntry without redundant property definitions
+        const initialEntry = Object.keys(sortedData[0]).reduce((acc, key) => {
+          if (key !== "_id" && key !== "Date" && key !== "__v") {
+            acc[key] = ""; // Initialize other fields
+          }
+          return acc;
+        }, { _id: "", Date: "" } as PerformanceData); // Declare _id and Date explicitly once
+
         setNewEntry(initialEntry);
       }
     } catch (error) {
@@ -58,12 +56,9 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
     }
   };
 
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setNewEntry((prevEntry) => ({
-      ...prevEntry,
-      [name]: value,
-    }));
 
     // Check if the selected date already exists in the data
     if (name === "Date") {
@@ -75,22 +70,28 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
       } else {
         // Reset newEntry if the date is new
         setNewEntry((prev) => ({
-          ...prev,
-          Date: value,
           ...Object.keys(prev).reduce((acc, key) => {
             if (key !== "_id" && key !== "Date" && key !== "__v") {
               acc[key] = ""; // Reset other fields
             }
             return acc;
           }, {} as PerformanceData),
+          Date: value, // Set Date after resetting other fields
         }));
         setIsUpdating(false); // Set to add mode
       }
+    } else {
+      // If not handling the date, just update the field
+      setNewEntry((prevEntry) => ({
+        ...prevEntry,
+        [name]: value,
+      }));
     }
 
     // Debugging: Log the newEntry state after each change
     console.log("Current newEntry state:", { ...newEntry, [name]: value });
   };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -104,34 +105,40 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
       if (isUpdating) {
         // Update the existing entry
         await axios.put(
-          `${SERVER_URL}/api/performance-${chartType}/${newEntry._id}`,
-          entryToSend
+            `${SERVER_URL}/api/performance-${chartType}/${newEntry._id}`,
+            entryToSend
         );
       } else {
         // Add a new entry
         await axios.post(
-          `${SERVER_URL}/api/performance-${chartType}`,
-          entryToSend
+            `${SERVER_URL}/api/performance-${chartType}`,
+            entryToSend
         );
       }
 
       await fetchData();
-      // Reset newEntry to initial state after submission
-      setNewEntry({
+
+      // Create a new empty entry for resetting
+      const newEmptyEntry: PerformanceData = {
         _id: "",
         Date: "",
-        ...Object.keys(data[0]).reduce((acc, key) => {
+        ...Object.keys(data[0] || {}).reduce((acc, key) => {
           if (key !== "_id" && key !== "Date" && key !== "__v") {
             acc[key] = ""; // Reset other fields
           }
           return acc;
-        }, {} as PerformanceData),
-      });
+        }, {} as Omit<PerformanceData, '_id' | 'Date'>),
+      };
+
+      // Reset newEntry to initial state after submission
+      setNewEntry(newEmptyEntry);
       setIsUpdating(false); // Reset to add mode after submission
     } catch (error) {
       console.error("Error adding/updating entry:", error);
     }
   };
+
+
 
   const renderTable = () => (
     <div className="px-4 md:px-8">
