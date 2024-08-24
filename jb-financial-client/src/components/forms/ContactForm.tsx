@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 interface ContactFormProps {}
 
@@ -6,12 +7,39 @@ const ContactForm: React.FC<ContactFormProps> = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const [subscribe, setSubscribe] = useState<boolean>(false);
 
+  // EmailJS configuration
+  const serviceId = "service_7oqla1i";
+  const templateId = "template_scn5gyn";
+  const publicKey = "YB6BakE_DZu4DxQrW";
+
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", { name, email, message, subscribe });
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      to_name: "JB Financial",
+      message: message,
+    };
+
+    // Send the email using EmailJS
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log("Email sent successfully.", response.status, response.text);
+        alert("Your message has been sent successfully!");
+        setName("");
+        setEmail("");
+        setMessage("");
+      })
+      .catch((error) => {
+        console.error("Failed to send email.", error);
+        alert(
+          "There was an error sending your message. Please try again later."
+        );
+      });
   };
 
   return (
@@ -54,23 +82,6 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           rows={5}
           required
         />
-      </div>
-
-      <div className="flex items-center gap-2">
-        <input
-          type="checkbox"
-          id="subscribe"
-          checked={subscribe}
-          onChange={(e) => setSubscribe(e.target.checked)}
-          className="w-4 h-4"
-        />
-        <label
-          htmlFor="subscribe"
-          className="text-sm md:text-base switzer-r text-neutral-light"
-        >
-          I Agree with the{" "}
-          <a href="/terms-and-conditions">Terms and Conditions</a>
-        </label>
       </div>
 
       <button type="submit" className="primary-button">
