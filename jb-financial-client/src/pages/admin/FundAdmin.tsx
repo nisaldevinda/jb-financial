@@ -218,7 +218,6 @@ const FundCard: React.FC<{
   );
 };
 
-
 interface FundData {
   date: string;
   JBVEF?: number;
@@ -242,13 +241,13 @@ interface ChartCardProps {
 }
 
 const ChartCard: React.FC<ChartCardProps> = ({
-                                               title,
-                                               subtitle,
-                                               fundType,
-                                               fundData,
-                                               onSubmit,
-                                               onUpdate,
-                                             }) => {
+  title,
+  subtitle,
+  fundType,
+  fundData,
+  onSubmit,
+  onUpdate,
+}) => {
   // State to hold form data
   const [formData, setFormData] = useState<FundData>({
     date: "",
@@ -314,103 +313,110 @@ const ChartCard: React.FC<ChartCardProps> = ({
   }
 
   return (
-      <div className="flex flex-col bg-[#fbfbfd] rounded-2xl border-2 border-solid border-gray-300 gap-8 pb-8">
-        <div className="flex flex-col py-8 rounded-t-2xl shadow-md w-full">
-          <span className="bodyText text-neutral-light text-center">{title}</span>
-          <span className="switzer-sb text-lg md:text-2xl text-primary-900 text-center">
+    <div className="flex flex-col bg-[#fbfbfd] rounded-2xl border-2 border-solid border-gray-300 gap-8 pb-8">
+      <div className="flex flex-col py-8 rounded-t-2xl shadow-md w-full">
+        <span className="bodyText text-neutral-light text-center">{title}</span>
+        <span className="switzer-sb text-lg md:text-2xl text-primary-900 text-center">
           {subtitle}
         </span>
 
-          {/* Data Table */}
-          <div className="p-4 md:p-8">
-            <div className="flex flex-col overflow-x-auto">
-              <table className="min-w-full">
-                <thead>
+        {/* Data Table */}
+        <div className="p-4 md:p-8">
+          <div className="flex flex-col overflow-x-auto">
+            <table className="min-w-full">
+              <thead>
                 <tr>
                   <th>Date</th>
                   {columns.map((col, idx) => (
-                      <th key={idx}>{col}</th>
+                    <th key={idx}>{col}</th>
                   ))}
                 </tr>
-                </thead>
-                <tbody>
+              </thead>
+              <tbody>
                 {fundData.map((data, index) => (
-                    <tr key={index} className={`${index === 0 ? "bg-neutral-lightest" : ""}`}>
-                      <td>{data.date}</td>
-                      {columns.map((col, idx) => (
-                          <td key={idx}>{data[col as keyof FundData]}</td>
-                      ))}
-                    </tr>
+                  <tr
+                    key={index}
+                    className={`${index === 0 ? "bg-neutral-lightest" : ""}`}
+                  >
+                    <td>{data.date}</td>
+                    {columns.map((col, idx) => (
+                      <td key={idx}>{data[col as keyof FundData]}</td>
+                    ))}
+                  </tr>
                 ))}
-                </tbody>
-              </table>
-            </div>
+              </tbody>
+            </table>
           </div>
         </div>
+      </div>
 
-        <div className="p-4 md:p-8 flex flex-col gap-4">
-          {/* Date Picker */}
-          <div className="flex-grow">
+      <div className="p-4 md:p-8 flex flex-col gap-4">
+        {/* Date Picker */}
+        <div className="flex-grow">
+          <div className="mb-2 block">
+            <label htmlFor="date" className="switzer-md">
+              Select Date
+            </label>
+          </div>
+          <input
+            type="date"
+            id="date"
+            className="switzer-r"
+            onChange={(e) => handleDateChange(e.target.valueAsDate)}
+          />
+        </div>
+
+        {/* Performance Inputs */}
+        {columns.map((col, idx) => (
+          <div className="flex-grow" key={idx}>
             <div className="mb-2 block">
-              <label htmlFor="date" className="switzer-md">
-                Select Date
+              <label htmlFor={col} className="switzer-md">
+                {labels[idx]}
               </label>
             </div>
             <input
-                type="date"
-                id="date"
-                className="switzer-r"
-                onChange={(e) => handleDateChange(e.target.valueAsDate)}
+              id={col}
+              type="number"
+              required
+              className="switzer-r"
+              value={formData[col as keyof FundData] || ""}
+              onChange={handleChange}
             />
           </div>
+        ))}
 
-          {/* Performance Inputs */}
-          {columns.map((col, idx) => (
-              <div className="flex-grow" key={idx}>
-                <div className="mb-2 block">
-                  <label htmlFor={col} className="switzer-md">
-                    {labels[idx]}
-                  </label>
-                </div>
-                <input
-                    id={col}
-                    type="number"
-                    required
-                    className="switzer-r"
-                    value={formData[col as keyof FundData] || ""}
-                    onChange={handleChange}
-                />
-              </div>
-          ))}
-
-          {/* Submit Button */}
-          <button className="primary-button-2" onClick={handleSubmit}>
-            {fundData.find((data) => data.date === formData.date) ? "Update" : "Submit"}
-          </button>
-        </div>
+        {/* Submit Button */}
+        <button className="primary-button-2" onClick={handleSubmit}>
+          {fundData.find((data) => data.date === formData.date)
+            ? "Update"
+            : "Submit"}
+        </button>
       </div>
+    </div>
   );
 };
 
 // Main FundAdmin Component
 const FundAdmin: React.FC = () => {
-  type ChartType = 'value-eq' | 'short-term' | 'money-market';
-
+  type ChartType = "value-eq" | "short-term" | "money-market";
 
   const [valueEquityFundData, setValueEquityFundData] = useState([]);
   const [moneyMarketFundData, setMoneyMarketFundData] = useState([]);
   const [shortTermGiltFundData, setShortTermGiltFundData] = useState([]);
-  const [valueEquityFundPerformanceData, setValueEquityFundPerformanceData] = useState<FundData[]>([]);
-  const [moneyMarketFundPerformanceData, setMoneyMarketFundPerformanceData] = useState<FundData[]>([]);
-  const [shortTermGiltFundPerformanceData, setShortTermGiltFundPerformanceData] = useState<FundData[]>([]);
-  const [selectedChartType] = useState<ChartType>('value-eq');
-
+  const [valueEquityFundPerformanceData, setValueEquityFundPerformanceData] =
+    useState<FundData[]>([]);
+  const [moneyMarketFundPerformanceData, setMoneyMarketFundPerformanceData] =
+    useState<FundData[]>([]);
+  const [
+    shortTermGiltFundPerformanceData,
+    setShortTermGiltFundPerformanceData,
+  ] = useState<FundData[]>([]);
+  const [selectedChartType] = useState<ChartType>("value-eq");
 
   useEffect(() => {
     // Fetch data on component mount
     const fetchData = async () => {
       try {
-
         const valueEquityResponse = await axios.get(
           `${SERVER_URL}/funds/Value Equity Fund`
         );
@@ -427,9 +433,11 @@ const FundAdmin: React.FC = () => {
         setShortTermGiltFundData(shortTermGiltResponse.data);
 
         const valueEquityFundPerformanceResponse = await axios.get(
-            `${SERVER_URL}/api/value-equity-performance`);
-        setValueEquityFundPerformanceData(valueEquityFundPerformanceResponse.data);
-
+          `${SERVER_URL}/api/value-equity-performance`
+        );
+        setValueEquityFundPerformanceData(
+          valueEquityFundPerformanceResponse.data
+        );
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -462,19 +470,26 @@ const FundAdmin: React.FC = () => {
           `${SERVER_URL}/funds/Short Term Gilt Fund`
         );
         setShortTermGiltFundData(shortTermGiltResponse.data);
-
       };
 
-
       switch (fundType) {
-        case 'Value Equity Fund':
-          setValueEquityFundPerformanceData([...valueEquityFundPerformanceData, data]);
+        case "Value Equity Fund":
+          setValueEquityFundPerformanceData([
+            ...valueEquityFundPerformanceData,
+            data,
+          ]);
           break;
-        case 'Money Market Fund':
-          setMoneyMarketFundPerformanceData([...moneyMarketFundPerformanceData, data]);
+        case "Money Market Fund":
+          setMoneyMarketFundPerformanceData([
+            ...moneyMarketFundPerformanceData,
+            data,
+          ]);
           break;
-        case 'Short Term Gilt Fund':
-          setShortTermGiltFundPerformanceData([...shortTermGiltFundPerformanceData, data]);
+        case "Short Term Gilt Fund":
+          setShortTermGiltFundPerformanceData([
+            ...shortTermGiltFundPerformanceData,
+            data,
+          ]);
           break;
         default:
           break;
@@ -484,58 +499,55 @@ const FundAdmin: React.FC = () => {
     } catch (error) {
       console.error("Error updating data", error);
     }
-
-
   };
 
-
-
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4">
-      <FundCard
-        title="Fund Data Table"
-        subtitle="Value Equity Fund"
-        buyPrice2
-        fundData={valueEquityFundData}
-        onSubmit={(data) => handleSubmit(data, "Value Equity Fund")}
-      />
-      <FundCard
-        title="Fund Data Table"
-        subtitle="Money Market Fund"
-        fundData={moneyMarketFundData}
-        onSubmit={(data) => handleSubmit(data, "Money Market Fund")}
-      />
-      <FundCard
-        title="Fund Data Table"
-        subtitle="Short Term Gilt Fund"
-        fundData={shortTermGiltFundData}
-        onSubmit={(data) => handleSubmit(data, "Short Term Gilt Fund")}
-      />
-      {/*<ChartCard*/}
-      {/*    title="Value Equity Fund"*/}
-      {/*    subtitle="Manage your Value Equity Fund data"*/}
-      {/*    fundType="Value Equity Fund"*/}
-      {/*    fundData={valueEquityFundPerformanceData}*/}
-      {/*    onSubmit={(data) => handleSubmit(data, 'Value Equity Fund')}*/}
-      {/*    onUpdate={(data) => handleUpdate(data, 'Value Equity Fund')}*/}
-      {/*/>*/}
-      <PerformanceTable chartType={selectedChartType} />
-      <PerformanceTable chartType={selectedChartType} />
-      <PerformanceTable chartType={selectedChartType} />
-      {/*<ChartCard*/}
-      {/*    title="Fund Performance"*/}
-      {/*    subtitle="Money Market Fund"*/}
-      {/*    fundType="Money Market Fund"*/}
-      {/*    fundData={}*/}
-      {/*    onSubmit={(data) => handleSubmit(data, "Money Market Fund")}*/}
-      {/*/>*/}
-      {/*<ChartCard*/}
-      {/*    title="Fund Performance"*/}
-      {/*    subtitle="Short Term Gilt Fund"*/}
-      {/*    fundType="Short Term Gilt Fund"*/}
-      {/*    fundData={}*/}
-      {/*    onSubmit={(data) => handleSubmit(data, "Short Term Gilt Fund")}*/}
-      {/*/>*/}
+    <div className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-20">
+      <div className="flex flex-col gap-4">
+        <h2 className="subtitleText text-neutral-mid">Fund Prices</h2>
+        <p className="bodyText text-neutral-mid">Update fund prices daily.</p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12">
+        <FundCard
+          title="Fund Data Table"
+          subtitle="Value Equity Fund"
+          buyPrice2
+          fundData={valueEquityFundData}
+          onSubmit={(data) => handleSubmit(data, "Value Equity Fund")}
+        />
+        <FundCard
+          title="Fund Data Table"
+          subtitle="Money Market Fund"
+          fundData={moneyMarketFundData}
+          onSubmit={(data) => handleSubmit(data, "Money Market Fund")}
+        />
+        <FundCard
+          title="Fund Data Table"
+          subtitle="Short Term Gilt Fund"
+          fundData={shortTermGiltFundData}
+          onSubmit={(data) => handleSubmit(data, "Short Term Gilt Fund")}
+        />
+      </div>
+      <div className="flex flex-col gap-4">
+        <h2 className="subtitleText text-neutral-mid">Fund Charts</h2>
+        <p className="bodyText text-neutral-mid">
+          Update values for fund charts monthly.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12">
+        <PerformanceTable
+          chartType={selectedChartType}
+          cardTitle="Value Equity Fund"
+        />
+        <PerformanceTable
+          chartType={selectedChartType}
+          cardTitle="Money Market Fund"
+        />
+        <PerformanceTable
+          chartType={selectedChartType}
+          cardTitle="Short Term Gilt Fund"
+        />
+      </div>
     </div>
   );
 };
