@@ -38,9 +38,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
       </div>
       <img src={imageUrl} className="" alt="card-image" />
       <div className="flex flex-col gap-6 px-4 pt-9 pb-6">
-        <p className="regularText neutralText">{description}</p>
-        <Link to={`/blogs/${_id}`} className="switzer-md">
-          Read More
+        {/* Description with 3 lines limit and ellipsis */}
+        <p className="regularText neutralText line-clamp-3">{description}</p>
+        <Link
+          to={`/blogs/${_id}`}
+          className="switzer-md text-neutral-light hover:text-neutral-mid"
+        >
+          Read More &nbsp;→
         </Link>
       </div>
     </div>
