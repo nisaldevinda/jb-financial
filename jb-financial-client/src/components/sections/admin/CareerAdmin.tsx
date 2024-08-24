@@ -65,7 +65,7 @@ const CareerAdmin: React.FC = () => {
     try {
       if (career._id) {
         // Update existing career
-        const response = await fetch(`${SERVER_URL}api/careers/${career._id}`, {
+        const response = await fetch(`${SERVER_URL}/api/careers/${career._id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
