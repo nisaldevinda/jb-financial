@@ -13,7 +13,7 @@ interface Career {
   title: string;
   location: string;
   category: string;
-  tags: string;
+  tags: string[];  // Updated to array of strings
   content: CareerContent[];
 }
 
@@ -58,7 +58,7 @@ const CareerAdmin: React.FC = () => {
       title: "",
       location: "",
       category: "",
-      tags: "",
+      tags: [],
       content: [],
     };
     setSelectedCareer(newCareer);

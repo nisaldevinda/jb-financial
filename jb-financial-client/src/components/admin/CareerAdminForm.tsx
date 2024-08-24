@@ -11,7 +11,7 @@ interface Career {
   title: string;
   location: string;
   category: string;
-  tags: string;
+  tags: string[];  // Updated to array of strings
   content: CareerContent[];
 }
 
@@ -36,7 +36,14 @@ const CareerAdminForm: React.FC<CareerAdminFormProps> = ({
       e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { id, value } = e.target;
-    setCareer((prevCareer) => ({ ...prevCareer, [id]: value }));
+
+    // If the field being updated is 'tags', split it by commas into an array
+    if (id === "tags") {
+      const tagsArray = value.split(",").map(tag => tag.trim());
+      setCareer((prevCareer) => ({ ...prevCareer, tags: tagsArray }));
+    } else {
+      setCareer((prevCareer) => ({ ...prevCareer, [id]: value }));
+    }
   };
 
   const handleSectionChange = (
@@ -183,7 +190,7 @@ const CareerAdminForm: React.FC<CareerAdminFormProps> = ({
             <TextInput
                 id="tags"
                 type="text"
-                value={career.tags}
+                value={career.tags.join(", ")} // Convert array back to comma-separated string for display
                 onChange={handleInputChange}
                 shadow
                 className="switzer-r"
