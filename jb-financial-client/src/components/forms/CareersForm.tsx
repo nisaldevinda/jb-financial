@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 interface CareersFormProps {
   position: string; // Prop to pass the applying position
@@ -12,6 +13,12 @@ const CareersForm: React.FC<CareersFormProps> = ({ position }) => {
   const [linkedin, setLinkedin] = useState<string>("");
   const [cv, setCv] = useState<File | null>(null);
   const [error, setError] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // State to manage loading
+
+  // EmailJS configuration
+  const serviceId = "service_7oqla1i";
+  const templateId = "template_u92o6cm";
+  const publicKey = "YB6BakE_DZu4DxQrW";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,20 +28,59 @@ const CareersForm: React.FC<CareersFormProps> = ({ position }) => {
       return;
     }
 
-    // Handle form submission logic here
-    console.log("Form submitted:", {
-      position,
-      name,
-      mobile: `${countryCode} ${mobile}`,
-      email,
-      linkedin,
-      cv,
-    });
+    setIsSubmitting(true); // Start loading
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const templateParams = {
+        to_name: "JB Financial Careers",
+        from_name: name,
+        position: position,
+        mobile: `${countryCode} ${mobile}`,
+        email: email,
+        linkedin: linkedin,
+        cv: reader.result as string, // Base64 CV attachment
+      };
+
+      emailjs
+        .send(serviceId, templateId, templateParams, publicKey)
+        .then((response) => {
+          console.log(
+            "Email sent successfully.",
+            response.status,
+            response.text
+          );
+          alert("Your application has been submitted successfully!");
+          setName("");
+          setMobile("");
+          setEmail("");
+          setLinkedin("");
+          setCv(null);
+          setError("");
+          setIsSubmitting(false); // Stop loading
+        })
+        .catch((error) => {
+          console.error("Failed to send email.", error);
+          alert(
+            "There was an error submitting your application. Please try again later."
+          );
+          setIsSubmitting(false); // Stop loading
+        });
+    };
+
+    if (cv) {
+      reader.readAsDataURL(cv);
+    } else {
+      // Handle case where CV is not uploaded correctly
+      setError("Please upload your CV.");
+      setIsSubmitting(false);
+    }
   };
 
   const handleCvUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setCv(e.target.files[0]);
+      setError(""); // Clear error when a new file is selected
     }
   };
 
@@ -129,8 +175,9 @@ const CareersForm: React.FC<CareersFormProps> = ({ position }) => {
         {error && <p className="text-red-500 text-sm">{error}</p>}
       </div>
 
-      <button type="submit" className="primary-button">
-        Submit
+      {/* Submit Button */}
+      <button type="submit" className="primary-button" disabled={isSubmitting}>
+        {isSubmitting ? "Submitting..." : "Submit"}
       </button>
     </form>
   );

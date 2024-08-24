@@ -1,0 +1,49 @@
+{
+    "companyInfo": {
+      "logoSrc": "/logo.svg",
+      "description": "JB Financial is an active fund manager licensed and regulated by the Securities and Exchange Commission of Sri Lanka, focused on absolute returns. Since 2011, our aim is to build, manage and preserve our clients’ funds and generate consistent positive returns."
+    },
+    "socialLinks": [
+      {
+        "platform": "meta",
+        "url": "https://meta.com",
+        "icon": "MetaLogo"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://instagram.com",
+        "icon": "InstagramLogo"
+      },
+      {
+        "platform": "x",
+        "url": "https://twitter.com",
+        "icon": "XLogo"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Funds",
+        "links": [
+          { "text": "Value Equity Fund", "url": "/funds/value-equity-fund" },
+          { "text": "Money Market Fund", "url": "/funds/money-market-fund" },
+          { "text": "Short Term Gilt Fund", "url": "/funds/short-term-gilt-fund" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "text": "About", "url": "/about" },
+          { "text": "Team", "url": "/team" },
+          { "text": "Careers", "url": "/careers" }
+        ]
+      },
+      {
+        "title": "Private Wealth Management",
+        "links": [
+          { "text": "Private Asset Management", "url": "/private-asset-management" },
+          { "text": "Institutional Wealth Management", "url": "/institutional-wealth-management" }
+        ]
+      }
+    ]
+  }
+  
