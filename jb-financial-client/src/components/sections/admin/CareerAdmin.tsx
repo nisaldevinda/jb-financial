@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import CareerAdminForm from "../../admin/CareerAdminForm"; // Assume you have a similar form for Career
-import CareerAdminTable from "../../admin/CareerAdminTable"; // Assume you've updated the table as per the previous instructions
+import CareerAdminForm from "../../admin/CareerAdminForm";
+import CareerAdminTable from "../../admin/CareerAdminTable";
 import { SERVER_URL } from "../../../Constants";
 
 interface CareerContent {
@@ -9,9 +9,10 @@ interface CareerContent {
 }
 
 interface Career {
-  _id?: string; // MongoDB ObjectId is typically a string
+  _id?: string;
   title: string;
   location: string;
+  category: string;
   tags: string;
   content: CareerContent[];
 }
@@ -31,7 +32,8 @@ const CareerAdmin: React.FC = () => {
   }, []);
 
   const handleEdit = (career: Career) => {
-    setSelectedCareer(career);
+    setSelectedCareer({...career
+    });
   };
 
   const handleDelete = async (id: string) => {
@@ -55,6 +57,7 @@ const CareerAdmin: React.FC = () => {
     const newCareer: Career = {
       title: "",
       location: "",
+      category: "",
       tags: "",
       content: [],
     };
@@ -77,16 +80,15 @@ const CareerAdmin: React.FC = () => {
           const updatedCareer = await response.json();
           console.log("Career updated successfully:", updatedCareer);
 
-          // Update the local state with the updated career
           const updatedCareers = careers.map((c) =>
-            c._id === career._id ? updatedCareer : c
+              c._id === career._id ? updatedCareer : c
           );
           setCareers(updatedCareers);
         } else {
           console.error("Failed to update career");
         }
       } else {
-        // Create new career (ensure _id is not included)
+        // Create new career
         const response = await fetch(`${SERVER_URL}/api/careers`, {
           method: "POST",
           headers: {
@@ -114,30 +116,30 @@ const CareerAdmin: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-off-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16 items-start">
-      <h3 className="switzer-sb text-xl md:text-4xl">Careers</h3>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-12 w-full">
-        <div className="w-full md:w-1/4">
-          <div className="overflow-x-auto">
-            <CareerAdminTable
-              careers={careers}
-              onEdit={handleEdit}
-              onDelete={(id) => handleDelete(id)}
-              onAdd={handleAdd}
-            />
+      <section className="w-full bg-off-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16 items-start">
+        <h3 className="switzer-sb text-xl md:text-4xl">Careers</h3>
+        <div className="flex flex-col md:flex-row gap-4 md:gap-12 w-full">
+          <div className="w-full md:w-1/4">
+            <div className="overflow-x-auto">
+              <CareerAdminTable
+                  careers={careers}
+                  onEdit={handleEdit}
+                  onDelete={(id) => handleDelete(id)}
+                  onAdd={handleAdd}
+              />
+            </div>
+          </div>
+          <div className="w-full md:w-3/4">
+            {selectedCareer && (
+                <CareerAdminForm
+                    career={selectedCareer}
+                    onSave={handleSave}
+                    onCancel={handleCancel}
+                />
+            )}
           </div>
         </div>
-        <div className="w-full md:w-3/4">
-          {selectedCareer && (
-            <CareerAdminForm
-              career={selectedCareer}
-              onSave={handleSave}
-              onCancel={handleCancel}
-            />
-          )}
-        </div>
-      </div>
-    </section>
+      </section>
   );
 };
 

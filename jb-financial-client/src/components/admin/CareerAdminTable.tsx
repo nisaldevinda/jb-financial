@@ -7,9 +7,10 @@ interface CareerContent {
 }
 
 interface Career {
-    _id?: string; // MongoDB ObjectId is typically a string
+    _id?: string;
     title: string;
     location: string;
+    category: string;
     tags: string;
     content: CareerContent[];
 }
