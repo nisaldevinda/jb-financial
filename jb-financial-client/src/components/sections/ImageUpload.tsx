@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {SERVER_URL} from "../../Constants.tsx";
 
 const ImageUpload: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -23,7 +24,7 @@ const ImageUpload: React.FC = () => {
 
         try {
             setUploadStatus("Uploading...");
-            const response  = await axios.post("http://localhost:5000/upload", formData, {
+            const response  = await axios.post(`${SERVER_URL}/upload`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
