@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Label, TextInput, Select, Textarea } from "flowbite-react";
-import axios from "axios"; // Import axios for the image upload functionality
+import axios from "axios";
+import {SERVER_URL} from "../../Constants.tsx"; // Import axios for the image upload functionality
 
 interface BlogContent {
   heading: string;
@@ -110,7 +111,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
 
     try {
       setUploadStatus("Uploading...");
-      const response = await axios.post("http://localhost:5000/upload", formData, {
+      const response = await axios.post(`${SERVER_URL}/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
