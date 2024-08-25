@@ -21,6 +21,7 @@ import FundAdmin from "../pages/admin/FundAdmin";
 import CareerAdmin from "../pages/admin/CareerAdmin.tsx";
 
 import DatePicker from "../pages/admin/DatePicker";
+import ImageUpload  from "../components/sections/ImageUpload.tsx";
 
 const RoutesConfig: React.FC = () => {
   return (
@@ -49,7 +50,10 @@ const RoutesConfig: React.FC = () => {
       <Route path="/admin/blogs" element={<BlogAdmin />} />
       <Route path="/admin/funds" element={<FundAdmin />} />
       <Route path="/admin/careers" element={<CareerAdmin />} />
-      <Route path="/admin/date" element={<DatePicker />} />
+
+        <Route path="/admin/date" element={<DatePicker />} />
+        <Route path="/image-upload" element={<ImageUpload />} />
+
     </Routes>
   );
 };
