@@ -5,6 +5,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+html {
+  scroll-behavior: smooth;
+}
 
 body{
   overflow-x: hidden !important;
@@ -373,6 +376,7 @@ body{
   width: fit-content;
   padding: 12px 48px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
 }
 
 .secondary-button:hover{

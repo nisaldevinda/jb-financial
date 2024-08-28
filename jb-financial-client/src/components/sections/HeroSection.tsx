@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 
 interface HeroSectionProps {
   title: string;
@@ -26,6 +27,26 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   renderLeftContent = true,
 }) => {
   const titleWords = title.split(" ");
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    link: string
+  ) => {
+    event.preventDefault(); // Prevent default anchor behavior
+
+    if (link.startsWith("#")) {
+      // Handle in-page scrolling
+      const targetId = link.substring(1); // Remove the '#' to get the ID
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Handle normal navigation using React Router
+      navigate(link);
+    }
+  };
 
   return (
     <section className="w-screen h-screen relative z-0">
@@ -46,12 +67,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <p className="bodyText neutralText md:w-[40%]">{description}</p>
             <div className="flex flex-col md:flex-row gap-4">
               {button1Text && button1Link && (
-                <a href={button1Link} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={button1Link}
+                  onClick={(e) => handleLinkClick(e, button1Link)} // Use handleLinkClick
+                  rel="noopener noreferrer"
+                >
                   <button className="primary-button">{button1Text}</button>
                 </a>
               )}
               {button2Text && button2Link && (
-                <a href={button2Link} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={button2Link}
+                  onClick={(e) => handleLinkClick(e, button2Link)} // Use handleLinkClick
+                  rel="noopener noreferrer"
+                >
                   <button className="secondary-button">{button2Text}</button>
                 </a>
               )}
@@ -73,12 +102,22 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <p className="bodyText neutralText">{description}</p>
             <div className="flex flex-col md:flex-row gap-4">
               {button1Text && button1Link && (
-                <a href={button1Link} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={button1Link}
+                  onClick={(e) => handleLinkClick(e, button1Link)} // Use handleLinkClick
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <button className="primary-button">{button1Text}</button>
                 </a>
               )}
               {button2Text && button2Link && (
-                <a href={button2Link} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={button2Link}
+                  onClick={(e) => handleLinkClick(e, button2Link)} // Use handleLinkClick
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <button className="secondary-button">{button2Text}</button>
                 </a>
               )}

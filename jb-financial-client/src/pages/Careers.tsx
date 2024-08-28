@@ -34,8 +34,10 @@ const Careers: React.FC = () => {
         title="Join Our Team"
         highlightedText="Our Team"
         description="Experience a supportive work culture that values collaboration and growth."
-        button1Text="Learn More"
+        button1Text="Current Openings"
+        button1Link="#accordion-section" // Link to the accordion section
         button2Text="Contact Us"
+        button2Link="/contact"
         desktopImage="/images/hero/careers-d.jpg"
         mobileImage="/images/hero/careers-m.jpg"
         renderLeftContent={false}
@@ -47,6 +49,7 @@ const Careers: React.FC = () => {
         <p>{error}</p>
       ) : (
         <AccordionSection
+          id="accordion-section" // Pass the id prop
           title="Career Opportunities"
           highlightedText="Career"
           accordionType="careers"

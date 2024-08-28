@@ -29,9 +29,9 @@ const About: React.FC = () => {
         highlightedText=""
         description="That's why it's the best. From Day One, we have always wanted to provide simple and fair investment instruments to our clients. Explore our funds and see how they have performed before making your investment decision."
         buttonText=""
-        imageUrl="/images/other/simplicity.png"
+        imageUrl="/images/sections/simplicity.jpg"
       />
-      <SideContentSection
+      {/* <SideContentSection
         title="Experienced & Award Winning"
         highlightedText="Award Winning"
         description="Our investment committee consists of some of the most experienced and well-known names in Sri Lanka's financial services sector."
@@ -43,7 +43,7 @@ const About: React.FC = () => {
           imageUrl: "/images/awards/cfa.png",
         }}
         swapContentAndImage={true} // True [Content on the Right], False [Content on the Left]
-      />
+      /> */}
       <NumbersSection
         groups={groups}
         mainTitle="The numbers speak for themselves"

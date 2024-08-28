@@ -51,7 +51,7 @@ function OurFunds() {
         highlightedText="A proactive investment strategy"
         description="Our funds are carefully managed by our experienced investment committee, utilizing a combination of fundamental analysis and quantitative models to identify attractive investment opportunities. Each fund has a distinct investment strategy tailored to meet specific objectives and risk profiles."
         buttonText=""
-        imageUrl="/images/other/proactive-investment-strategy.png"
+        imageUrl="/images/sections/proactive-strategy.jpg"
       />
       <AccordionSection
         title="Frequently Asked Questions"

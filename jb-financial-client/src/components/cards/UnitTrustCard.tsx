@@ -14,7 +14,7 @@ const unitTrustCardData: CardProps[] = [
     subtitle: "Value Equity Fund",
     description:
       "Invest in equities of publicly listed companies in Sri Lanka and benefit from our rigorous research deep dive research methodology.",
-    imageUrl: "/images/unit-trusts/value-equity-fund.png",
+    imageUrl: "/images/funds/value-equity.jpg",
     link: "/funds/value-equity-fund",
   },
   {
@@ -22,7 +22,7 @@ const unitTrustCardData: CardProps[] = [
     subtitle: "Money Market Fund",
     description:
       "Experience the relatively higher returns of a fixed deposit with the flexibility of a regular savings account, with minimal fees and quick withdrawal.",
-    imageUrl: "/images/unit-trusts/money-market-fund.png",
+    imageUrl: "/images/funds/money-market.jpg",
     link: "/funds/money-market-fund",
   },
   {
@@ -30,7 +30,7 @@ const unitTrustCardData: CardProps[] = [
     subtitle: "Short Term Gilt Fund",
     description:
       "Invest in government securities such as treasury bills and bonds which are typically considered 'Risk-free' investment instruments.",
-    imageUrl: "/images/unit-trusts/short-term-gilt-fund.png",
+    imageUrl: "/images/funds/short-term-gilt.jpg",
     link: "/funds/short-term-gilt-fund",
   },
 ];

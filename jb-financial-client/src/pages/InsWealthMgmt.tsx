@@ -68,7 +68,7 @@ function InsWealthMgmt() {
     <>
       <HeroSection
         title="Prudent investing, guided by your objectives."
-        highlightedText=""
+        highlightedText="objectives."
         description="Discover the benefits of our Institutional Wealth Management service."
         button1Text=""
         button2Text=""
@@ -81,7 +81,7 @@ function InsWealthMgmt() {
         highlightedText="made easy."
         description="Our Institutional Wealth Management service offers expert guidance and tailored investment strategies to maximize returns and minimize risk for institutions. With our experienced professionals and comprehensive services, we provide a better option to generate healthy returns without any additional burden on treasury and corporate finance professionals on your team."
         buttonText=""
-        imageUrl="/images/other/active-investment.png"
+        imageUrl="/images/sections/active-investment-strategy.jpg"
         textColumns={[
           {
             title: "EXPERT GUIDANCE",

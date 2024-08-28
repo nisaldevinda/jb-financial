@@ -26,9 +26,9 @@ function PvtWealthMgmt() {
           line3:
             "An experienced team including lead fund managers who have been in the industry since 1994.",
         }}
-        buttonText="Learn More"
+        buttonText="Why Us?"
         buttonLink="/institutional-wealth-management"
-        imageUrl="/images/other/institutional-investors.png"
+        imageUrl="/images/sections/institutional-wealth.jpg"
         swapContentAndImage={true} // True [Content on the Right], False [Content on the Left]
       />
       <SideContentSection
@@ -45,18 +45,16 @@ function PvtWealthMgmt() {
             text: "We tailor our services to align with your financial goals and risk tolerance.",
           },
         ]}
-        buttonText="Learn More"
+        buttonText="How We Can Help?"
         buttonLink="/private-asset-management"
-        imageUrl="/images/other/next-generation.png"
+        imageUrl="/images/sections/next-generation.jpg"
         swapContentAndImage={false} // True [Content on the Right], False [Content on the Left]
       />
       <BannerSection
         title="Learn More About Our Investment Committee"
         description="Our investment committee consists of experienced professionals dedicated to managing your wealth."
-        buttonText1="Learn More"
-        buttonLink1="/team"
-        buttonText2="Contact Us"
-        buttonLink2="/contact"
+        buttonText2="Meet Our Team"
+        buttonLink2="/team"
         centerAlign={false}
       />
     </>

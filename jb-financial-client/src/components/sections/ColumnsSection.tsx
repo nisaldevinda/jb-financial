@@ -5,6 +5,7 @@ import { BlogCard } from "../cards/BlogCard";
 import { TeamCard, teamCardData } from "../cards/TeamCard";
 import { ContactCard, contactCardData } from "../cards/ContactCard";
 import { SERVER_URL } from "../../Constants";
+import { useHref } from "react-router-dom";
 
 interface ColumnsSectionProps {
   subtitleText: string;
@@ -35,6 +36,7 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
   bodyText,
   buttonText,
   buttonType = "secondary",
+  buttonLink,
   cardType,
   alignText = "center",
 }) => {
@@ -92,9 +94,15 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
         })}
       </div>
       {buttonText && (
-        <button className={`${buttonType}-button text-${alignText}`}>
-          {buttonText}
-        </button>
+        <a
+          href={buttonLink}
+          rel="noopener noreferrer"
+          className="w-full text-center"
+        >
+          <button className={`${buttonType}-button text-${alignText}`}>
+            {buttonText}
+          </button>
+        </a>
       )}
     </section>
   );

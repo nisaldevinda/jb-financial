@@ -81,7 +81,7 @@ function PvtAssetMgmt() {
         highlightedText=""
         description="Shouldn't your investment portfolio reflect that too? With our Private Asset Management service, we advise HNWIs on their portfolios by taking into account their personal and financial goals for the future."
         buttonText=""
-        imageUrl="/images/other/you-are-unique.png"
+        imageUrl="/images/sections/you-are-unique.jpg"
         swapContentAndImage={true}
       />
       <TextSection

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeroSection from "../components/sections/HeroSection";
 import ColumnsSection from "../components/sections/ColumnsSection";
 import SideContentSection from "../components/sections/SideContentSection";
 import AccordionSection from "../components/sections/AccordionSection";
 import TestimonialSection from "../components/sections/TestimonialSection";
+
+const TESTIMONIALS_JSON_PATH = "/site-data/testimonials.json";
 
 const fundsData = [
   {
@@ -48,50 +50,16 @@ const fundsData = [
   },
 ];
 
-const testimonials = [
-  {
-    logoSrc: "/images/testimonials/logo/1.png",
-    testimonialText:
-      "Investing in JB Vantage's unit trusts has been a game changer for our financial strategy. With a rich history of successful client outcomes, their expertise and management have consistently delivered impressive returns over the years. We couldn't be happier with their service!",
-    testimonialImageSrc: "/images/testimonials/user/1.png",
-    name: "Alex Johnson",
-    designation: "Managing Director, Financial Solutions Ltd.",
-  },
-  {
-    logoSrc: "/images/testimonials/logo/2.png",
-    testimonialText:
-      "Our experience with JB Vantage has been exceptional. Their unit trusts are meticulously managed, offering a blend of safety and growth that has greatly benefited our portfolio. The track record of satisfied clients speaks volumes about their commitment to excellence.",
-    testimonialImageSrc: "/images/testimonials/user/2.png",
-    name: "Emily Davis",
-    designation: "Senior Investment Analyst, Capital Growth Inc.",
-  },
-  {
-    logoSrc: "/images/testimonials/logo/3.png",
-    testimonialText:
-      "JB Vantage's unit trusts have proven to be a reliable investment with consistent performance. The firm’s dedication to client satisfaction and their ability to navigate market changes effectively make them a top choice for anyone looking to grow their wealth responsibly.",
-    testimonialImageSrc: "/images/testimonials/user/3.png",
-    name: "Michael Brown",
-    designation: "Chief Financial Officer, Wealth Builders Co.",
-  },
-  {
-    logoSrc: "/images/testimonials/logo/4.png",
-    testimonialText:
-      "We have been investing with JB Vantage for several years and have always been impressed with their unit trusts' performance. Their team is highly knowledgeable and their strategic approach has resulted in substantial gains for our investments. Highly recommended!",
-    testimonialImageSrc: "/images/testimonials/user/4.png",
-    name: "Sarah Wilson",
-    designation: "Portfolio Manager, Secure Invest Ltd.",
-  },
-  {
-    logoSrc: "/images/testimonials/logo/5.png",
-    testimonialText:
-      "JB Vantage has delivered outstanding results through their unit trusts. Their deep understanding of market dynamics and dedication to achieving client goals are evident in the consistent and strong returns we've experienced. It’s been a pleasure working with them.",
-    testimonialImageSrc: "/images/testimonials/user/5.png",
-    name: "David Lee",
-    designation: "Director of Investments, Horizon Financial Group",
-  },
-];
-
 const Home: React.FC = () => {
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    fetch(TESTIMONIALS_JSON_PATH)
+      .then((response) => response.json())
+      .then((data) => setTestimonials(data))
+      .catch((error) => console.error("Error loading testimonials:", error));
+  }, []);
+
   return (
     <>
       <HeroSection
@@ -99,7 +67,7 @@ const Home: React.FC = () => {
         highlightedText="financial goals"
         description="With our investment products, anyone can easily invest and grow their wealth. Take advantage of our diverse range of investment options which includes both unit trusts and private wealth management services."
         button1Text="Schedule an Appointment"
-        button1Link="/"
+        button1Link="/contact"
         button2Text=""
         desktopImage="/images/hero/home-d.jpg"
         mobileImage="/images/hero/home-m.jpg"
@@ -120,14 +88,15 @@ const Home: React.FC = () => {
         description="We provide institutions and High Net Worth Individuals with private wealth management services where we manage portfolios on their behalf. "
         buttonText="Learn More"
         buttonLink="/private-wealth-management"
-        imageUrl="/images/other/private-wealth-management.png"
+        imageUrl="/images/sections/private-wealth-management.jpg"
       />
       <SideContentSection
         title="Experienced & Award Winning"
         highlightedText="Award Winning"
         description="Our investment committee consists of some of the most experienced and well-known names in Sri Lanka's financial services sector."
-        buttonText="Learn More"
-        imageUrl="/images/other/award-winning.png"
+        buttonText="Meet Our Team"
+        buttonLink="/team"
+        imageUrl="/images/sections/award-winning.jpg"
         imageColumn={{
           title: "RECOGNIZED BY CFA",
           text: "We have been recognized multiple times by the CFA Institute as one of the best unit trusts in Sri Lanka.",
