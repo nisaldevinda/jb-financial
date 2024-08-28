@@ -5,7 +5,6 @@ import { BlogCard } from "../cards/BlogCard";
 import { TeamCard, teamCardData } from "../cards/TeamCard";
 import { ContactCard, contactCardData } from "../cards/ContactCard";
 import { SERVER_URL } from "../../Constants";
-import { useHref } from "react-router-dom";
 
 interface ColumnsSectionProps {
   subtitleText: string;
