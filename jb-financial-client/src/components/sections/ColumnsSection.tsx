@@ -5,6 +5,7 @@ import { BlogCard } from "../cards/BlogCard";
 import { TeamCard, teamCardData } from "../cards/TeamCard";
 import { ContactCard, contactCardData } from "../cards/ContactCard";
 import { SERVER_URL } from "../../Constants";
+import axios from "axios";
 
 interface ColumnsSectionProps {
   subtitleText: string;
@@ -44,9 +45,24 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
   useEffect(() => {
     const fetchData = async () => {
       if (cardType === "fundPrice") {
-        const response = await fetch(`${SERVER_URL}/api/fund-prices`);
-        const data = await response.json();
-        setCards(data);
+        try {
+          const [valueEquityResponse, moneyMarketResponse, shortTermGiltResponse] = await Promise.all([
+            axios.get(`${SERVER_URL}/funds/Value Equity Fund`),
+            axios.get(`${SERVER_URL}/funds/Money Market Fund`),
+            axios.get(`${SERVER_URL}/funds/Short Term Gilt Fund`)
+          ]);
+
+          const fundData = [
+            mapFundData(valueEquityResponse.data, "Value Equity Fund"),
+            mapFundData(moneyMarketResponse.data, "Money Market Fund"),
+            mapFundData(shortTermGiltResponse.data, "Short Term Gilt Fund")
+          ];
+
+          setCards(fundData);
+        } catch (error) {
+          console.error("Error fetching fund data:", error);
+          setCards([]);
+        }
       } else if (cardType === "blog") {
         const response = await fetch(`${SERVER_URL}/api/blogs`);
         const data = await response.json();
@@ -59,6 +75,27 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
 
     fetchData();
   }, [cardType]);
+
+  const mapFundData = (data: any[], fundType: string) => {
+    // Sort the data by date in descending order
+    const sortedData = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    // Use the most recent entry (first after sorting)
+    const latestData = sortedData[0];
+    console.log(latestData);
+
+    return {
+      buyPrices: [latestData.buyPrice1, latestData.buyPrice2].filter(Boolean), // Filter out undefined or null values
+      link: "/learn-more",
+      sellPrice: latestData.sellPrice,
+      nav: latestData.nav, // Add nav to the returned object
+      showSecondBuyPrice: !!latestData.buyPrice2,
+      subtitle: fundType,
+      title: "JB Vantage",
+      _id: latestData._id
+    };
+  };
+
 
   const applyPrimaryTextClass = (text: string) => {
     const words = text.split(" ");
