@@ -374,11 +374,11 @@ const FundAdmin: React.FC = () => {
           cardTitle="Value Equity Fund"
         />
         <PerformanceTable
-          chartType={selectedChartType}
+          chartType={"short-term"}
           cardTitle="Money Market Fund"
         />
         <PerformanceTable
-          chartType={selectedChartType}
+          chartType={"money-market"}
           cardTitle="Short Term Gilt Fund"
         />
       </div>
