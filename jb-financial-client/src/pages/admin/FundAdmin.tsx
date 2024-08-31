@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, Label, TextInput, Datepicker, Table } from "flowbite-react";
+import { Button, Label, TextInput, Table } from "flowbite-react";
 import { SERVER_URL } from "../../Constants";
 import PerformanceTable from "./PerformanceTable.tsx";
 
@@ -26,40 +26,50 @@ const FundCard: React.FC<{
 }> = ({ title, subtitle, buyPrice2, fundData, onSubmit }) => {
   const [formData, setFormData] = useState({
     date: "",
-    buyPrice1: 0,
-    buyPrice2: 0,
-    sellPrice: 0,
-    nav: 0,
+    buyPrice1: "",
+    buyPrice2: "",
+    sellPrice: "",
+    nav: "",
   });
 
-  interface DatePickerProps {
-    onChange: (selectedDate: Date | null) => void;
-  }
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    setFormData({ ...formData, [id]: Number(value) });
-  };
+    setFormData({ ...formData, [id]: id === 'date' ? value : Number(value) });
 
-  const handleDateChange: DatePickerProps["onChange"] = (selected) => {
-    if (selected) {
-      const year = selected.getFullYear();
-      const month = String(selected.getMonth() + 1).padStart(2, "0");
-      const day = String(selected.getDate()).padStart(2, "0");
-      const formattedDate = `${year}-${month}-${day}`;
-      console.log(formattedDate);
-      setFormData((prevData) => ({ ...prevData, date: formattedDate }));
-    } else {
-      setFormData((prevData) => ({ ...prevData, date: "" }));
+    // Clear error when user starts typing
+    if (errors[id]) {
+      setErrors({ ...errors, [id]: "" });
     }
   };
 
+
   const handleSubmit = () => {
-    const submissionData = {
-      ...formData,
-      date: formData.date,
-    };
-    onSubmit(submissionData);
+    if (validateForm()) {
+      onSubmit({
+        date: formData.date,
+        buyPrice1: Number(formData.buyPrice1),
+        buyPrice2: buyPrice2 ? Number(formData.buyPrice2) : undefined,
+        sellPrice: Number(formData.sellPrice),
+        nav: Number(formData.nav),
+      });
+    } else {
+      console.log("Form validation failed");
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors: {[key: string]: string} = {};
+    if (!formData.date) newErrors.date = "Date is required";
+    if (!formData.buyPrice1) newErrors.buyPrice1 = "Buy Price 1 is required";
+    if (buyPrice2 && !formData.buyPrice2) newErrors.buyPrice2 = "Buy Price 2 is required";
+    if (!formData.sellPrice) newErrors.sellPrice = "Sell Price is required";
+    if (!formData.nav) newErrors.nav = "NAV is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const formatDate = (dateString: string) => {
@@ -68,153 +78,150 @@ const FundCard: React.FC<{
   };
 
   return (
-    <div className="flex flex-col bg-[#fbfbfd] rounded-2xl border-2 border-solid border-gray-300 gap-8 pb-8">
-      <div className="flex flex-col py-8 rounded-t-2xl shadow-md w-full">
-        <span className="bodyText text-neutral-light text-center">{title}</span>
-        <span className="switzer-sb text-lg md:text-2xl text-primary-900 text-center">
+      <div className="flex flex-col bg-[#fbfbfd] rounded-2xl border-2 border-solid border-gray-300 gap-8 pb-8">
+        <div className="flex flex-col py-8 rounded-t-2xl shadow-md w-full">
+          <span className="bodyText text-neutral-light text-center">{title}</span>
+          <span className="switzer-sb text-lg md:text-2xl text-primary-900 text-center">
           {subtitle}
         </span>
 
-        {/* Data Table */}
-        <div className="p-4 md:p-8">
-          <div className="flex flex-col overflow-x-auto">
-            <Table className="switzer-r min-w-full">
-              <Table.Head>
-                <Table.HeadCell>Date</Table.HeadCell>
-                <Table.HeadCell>BP1</Table.HeadCell>
-                {buyPrice2 && <Table.HeadCell>BP2</Table.HeadCell>}
-                <Table.HeadCell>SP</Table.HeadCell>
-                <Table.HeadCell>NAV</Table.HeadCell>
-              </Table.Head>
-              <Table.Body className="divide-y">
-                {fundData.map((data, index) => (
-                  <Table.Row
-                    key={index}
-                    className={`${index === 0 ? "bg-neutral-lightest" : ""}`}
-                  >
-                    <Table.Cell className="table-cell-nowrap">
-                      {formatDate(data.date)}
-                    </Table.Cell>
-                    <Table.Cell className="table-cell-nowrap">
-                      {data.buyPrice1}
-                    </Table.Cell>
-                    {buyPrice2 && (
-                      <Table.Cell className="table-cell-nowrap">
-                        {data.buyPrice2}
-                      </Table.Cell>
-                    )}
-                    <Table.Cell className="table-cell-nowrap">
-                      {data.sellPrice}
-                    </Table.Cell>
-                    <Table.Cell className="table-cell-nowrap">
-                      {data.nav}
-                    </Table.Cell>
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table>
+          {/* Data Table */}
+          <div className="p-4 md:p-8">
+            <div className="flex flex-col overflow-x-auto">
+              <Table className="switzer-r min-w-full">
+                <Table.Head>
+                  <Table.HeadCell>Date</Table.HeadCell>
+                  <Table.HeadCell>BP1</Table.HeadCell>
+                  {buyPrice2 && <Table.HeadCell>BP2</Table.HeadCell>}
+                  <Table.HeadCell>SP</Table.HeadCell>
+                  <Table.HeadCell>NAV</Table.HeadCell>
+                </Table.Head>
+                <Table.Body className="divide-y">
+                  {fundData.map((data, index) => (
+                      <Table.Row
+                          key={index}
+                          className={`${index === 0 ? "bg-neutral-lightest" : ""}`}
+                      >
+                        <Table.Cell className="table-cell-nowrap">
+                          {formatDate(data.date)}
+                        </Table.Cell>
+                        <Table.Cell className="table-cell-nowrap">
+                          {data.buyPrice1}
+                        </Table.Cell>
+                        {buyPrice2 && (
+                            <Table.Cell className="table-cell-nowrap">
+                              {data.buyPrice2}
+                            </Table.Cell>
+                        )}
+                        <Table.Cell className="table-cell-nowrap">
+                          {data.sellPrice}
+                        </Table.Cell>
+                        <Table.Cell className="table-cell-nowrap">
+                          {data.nav}
+                        </Table.Cell>
+                      </Table.Row>
+                  ))}
+                </Table.Body>
+              </Table>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="p-4 md:p-8 flex flex-col gap-4">
-        {/* Date Picker */}
-        <div className="flex-grow">
-          <div className="mb-2 block">
-            <Label htmlFor="date" value="Select Date" className="switzer-md" />
-          </div>
-          <Datepicker
-            weekStart={1}
-            shadow
-            className="switzer-r"
-            onSelectedDateChanged={handleDateChange}
-          />
-        </div>
-
-        {/* Buy Price 1 */}
-        <div className="flex-grow">
-          <div className="mb-2 block">
-            <Label
-              htmlFor="buyPrice1"
-              value="Buy Price 1"
-              className="switzer-md"
-            />
-          </div>
-          <TextInput
-            id="buyPrice1"
-            type="number"
-            required
-            shadow
-            className="switzer-r"
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* Conditional Buy Price 2 */}
-        {buyPrice2 && (
+        <div className="p-4 md:p-8 flex flex-col gap-4">
+          {/* Date Input */}
           <div className="flex-grow">
             <div className="mb-2 block">
-              <Label
-                htmlFor="buyPrice2"
-                value="Buy Price 2"
-                className="switzer-md"
-              />
+              <Label htmlFor="date" value="Select Date" className="switzer-md"/>
+            </div>
+            <input
+                className={`switzer-r border rounded-md shadow-sm text-neutral-mid w-full ${
+                    errors.date ? 'border-red-500' : 'border-neutral-lighter'
+                }`}
+                type="date"
+                id="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+            />
+            {errors.date && <p className="text-red-500 text-sm mt-1">{errors.date}</p>}
+          </div>
+
+          {/* Buy Price 1 */}
+          <div className="flex-grow">
+            <div className="mb-2 block">
+              <Label htmlFor="buyPrice1" value="Buy Price 1" className="switzer-md"/>
             </div>
             <TextInput
-              id="buyPrice2"
-              type="number"
-              required
-              shadow
-              className="switzer-r"
-              onChange={handleChange}
+                id="buyPrice1"
+                type="number"
+                required
+                shadow
+                className={`switzer-r ${errors.buyPrice1 ? 'border-red-500' : ''}`}
+                value={formData.buyPrice1}
+                onChange={handleChange}
             />
+            {errors.buyPrice1 && <p className="text-red-500 text-sm mt-1">{errors.buyPrice1}</p>}
           </div>
-        )}
 
-        {/* Sell Price */}
-        <div className="flex-grow">
-          <div className="mb-2 block">
-            <Label
-              htmlFor="sellPrice"
-              value="Sell Price"
-              className="switzer-md"
+          {/* Conditional Buy Price 2 */}
+          {buyPrice2 && (
+              <div className="flex-grow">
+                <div className="mb-2 block">
+                  <Label htmlFor="buyPrice2" value="Buy Price 2" className="switzer-md"/>
+                </div>
+                <TextInput
+                    id="buyPrice2"
+                    type="number"
+                    required
+                    shadow
+                    className={`switzer-r ${errors.buyPrice2 ? 'border-red-500' : ''}`}
+                    value={formData.buyPrice2}
+                    onChange={handleChange}
+                />
+                {errors.buyPrice2 && <p className="text-red-500 text-sm mt-1">{errors.buyPrice2}</p>}
+              </div>
+          )}
+
+          {/* Sell Price */}
+          <div className="flex-grow">
+            <div className="mb-2 block">
+              <Label htmlFor="sellPrice" value="Sell Price" className="switzer-md"/>
+            </div>
+            <TextInput
+                id="sellPrice"
+                type="number"
+                required
+                shadow
+                className={`switzer-r ${errors.sellPrice ? 'border-red-500' : ''}`}
+                value={formData.sellPrice}
+                onChange={handleChange}
             />
+            {errors.sellPrice && <p className="text-red-500 text-sm mt-1">{errors.sellPrice}</p>}
           </div>
-          <TextInput
-            id="sellPrice"
-            type="number"
-            required
-            shadow
-            className="switzer-r"
-            onChange={handleChange}
-          />
+
+          {/* Net Asset Value */}
+          <div className="flex-grow">
+            <div className="mb-2 block">
+              <Label htmlFor="nav" value="Net Asset Value" className="switzer-md"/>
+            </div>
+            <TextInput
+                id="nav"
+                type="number"
+                required
+                shadow
+                className={`switzer-r ${errors.nav ? 'border-red-500' : ''}`}
+                value={formData.nav}
+                onChange={handleChange}
+            />
+            {errors.nav && <p className="text-red-500 text-sm mt-1">{errors.nav}</p>}
+          </div>
+
+          {/* Submit Button */}
+          <Button className="primary-button-2" onClick={handleSubmit}>
+            Submit
+          </Button>
         </div>
-
-        {/* Net Asset Value */}
-        <div className="flex-grow">
-          <div className="mb-2 block">
-            <Label
-              htmlFor="nav"
-              value="Net Asset Value"
-              className="switzer-md"
-            />
-          </div>
-          <TextInput
-            id="nav"
-            type="number"
-            required
-            shadow
-            className="switzer-r"
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* Submit Button */}
-        <Button className="primary-button-2" onClick={handleSubmit}>
-          Submit
-        </Button>
       </div>
-    </div>
   );
 };
 
@@ -238,9 +245,9 @@ const FundAdmin: React.FC = () => {
   const [moneyMarketFundData, setMoneyMarketFundData] = useState([]);
   const [shortTermGiltFundData, setShortTermGiltFundData] = useState([]);
   const [valueEquityFundPerformanceData, setValueEquityFundPerformanceData] =
-    useState<FundData[]>([]);
+      useState<FundData[]>([]);
   const [moneyMarketFundPerformanceData, setMoneyMarketFundPerformanceData] =
-    useState<FundData[]>([]);
+      useState<FundData[]>([]);
   const [
     shortTermGiltFundPerformanceData,
     setShortTermGiltFundPerformanceData,
@@ -252,26 +259,20 @@ const FundAdmin: React.FC = () => {
     const fetchData = async () => {
       try {
         const valueEquityResponse = await axios.get(
-          `${SERVER_URL}/funds/Value Equity Fund`
+            `${SERVER_URL}/funds/Value Equity Fund`
         );
         setValueEquityFundData(valueEquityResponse.data);
 
         const moneyMarketResponse = await axios.get(
-          `${SERVER_URL}/funds/Money Market Fund`
+            `${SERVER_URL}/funds/Money Market Fund`
         );
         setMoneyMarketFundData(moneyMarketResponse.data);
 
         const shortTermGiltResponse = await axios.get(
-          `${SERVER_URL}/funds/Short Term Gilt Fund`
+            `${SERVER_URL}/funds/Short Term Gilt Fund`
         );
         setShortTermGiltFundData(shortTermGiltResponse.data);
 
-        const valueEquityFundPerformanceResponse = await axios.get(
-          `${SERVER_URL}/api/value-equity-performance`
-        );
-        setValueEquityFundPerformanceData(
-          valueEquityFundPerformanceResponse.data
-        );
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -291,17 +292,17 @@ const FundAdmin: React.FC = () => {
       // Re-fetch data to update the UI
       const fetchData = async () => {
         const valueEquityResponse = await axios.get(
-          `${SERVER_URL}/funds/Value Equity Fund`
+            `${SERVER_URL}/funds/Value Equity Fund`
         );
         setValueEquityFundData(valueEquityResponse.data);
 
         const moneyMarketResponse = await axios.get(
-          `${SERVER_URL}/funds/Money Market Fund`
+            `${SERVER_URL}/funds/Money Market Fund`
         );
         setMoneyMarketFundData(moneyMarketResponse.data);
 
         const shortTermGiltResponse = await axios.get(
-          `${SERVER_URL}/funds/Short Term Gilt Fund`
+            `${SERVER_URL}/funds/Short Term Gilt Fund`
         );
         setShortTermGiltFundData(shortTermGiltResponse.data);
       };
@@ -336,7 +337,7 @@ const FundAdmin: React.FC = () => {
   };
 
   return (
-    <div className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-20">
+      <div className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-20">
       <div className="flex flex-col gap-4">
         <h2 className="subtitleText text-neutral-mid">Fund Prices</h2>
         <p className="bodyText text-neutral-mid">Update fund prices daily.</p>

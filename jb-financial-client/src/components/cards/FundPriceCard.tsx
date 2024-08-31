@@ -9,30 +9,6 @@ interface CardProps {
   showSecondBuyPrice?: boolean; // Optional flag to show the second buy price
 }
 
-const fundPriceCardData: CardProps[] = [
-  {
-    title: "JB Vantage",
-    subtitle: "Value Equity Fund",
-    link: "/learn-more",
-    buyPrices: [123.45, 122.45], // Two buy prices for Value Equity Fund
-    sellPrice: 120.45,
-    showSecondBuyPrice: true,
-  },
-  {
-    title: "JB Vantage",
-    subtitle: "Money Market Fund",
-    link: "/learn-more",
-    buyPrices: [678.9], // Single buy price for other funds
-    sellPrice: 670.8,
-  },
-  {
-    title: "JB Vantage",
-    subtitle: "Short Term Gilt Fund",
-    link: "/learn-more",
-    buyPrices: [234.56],
-    sellPrice: 230.45,
-  },
-];
 
 const FundPriceCard: React.FC<CardProps> = ({
   title,
@@ -114,4 +90,4 @@ const FundPriceCard: React.FC<CardProps> = ({
   );
 };
 
-export { FundPriceCard, fundPriceCardData };
+export { FundPriceCard };
