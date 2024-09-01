@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 interface Job {
-  _id: string; // Add the ID field to use for navigation
+  _id: string;
   category: string;
   title: string;
   location: string;
@@ -17,8 +17,9 @@ interface CareersAccordionProps {
 
 const CareersAccordion: React.FC<CareersAccordionProps> = ({ jobs }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const navigate = useNavigate(); // Initialize the navigate function
+  const navigate = useNavigate();
 
+  // Group jobs by category
   const groupedJobs = jobs.reduce((acc, job) => {
     if (!acc[job.category]) {
       acc[job.category] = [];
@@ -27,18 +28,23 @@ const CareersAccordion: React.FC<CareersAccordionProps> = ({ jobs }) => {
     return acc;
   }, {} as { [key: string]: Job[] });
 
+  // Get sorted categories
+  const sortedCategories = Object.keys(groupedJobs).sort((a, b) =>
+      a.localeCompare(b)
+  );
+
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   const handleApplyClick = (id: string) => {
-    navigate(`/careers/${id}`); // Navigate to the CareerInner component with the job ID
+    navigate(`/careers/${id}`);
   };
 
   return (
       <div className="accordion flex flex-col gap-4">
-        {Object.keys(groupedJobs).map((category, index) => (
-            <div key={index} className="accordion-item ">
+        {sortedCategories.map((category, index) => (
+            <div key={index} className="accordion-item">
               <div
                   className={`accordion-title cursor-pointer switzer-sb text-neutral-light text-base md:text-2xl flex justify-between items-center p-6 ${
                       activeIndex === index
@@ -82,7 +88,7 @@ const CareersAccordion: React.FC<CareersAccordionProps> = ({ jobs }) => {
                             </div>
                             <button
                                 className="primary-button"
-                                onClick={() => handleApplyClick(job._id)} // Use the job ID for navigation
+                                onClick={() => handleApplyClick(job._id)}
                             >
                               Apply Now
                             </button>
