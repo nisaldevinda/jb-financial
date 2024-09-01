@@ -44,6 +44,7 @@ const RoutesConfig: React.FC = () => {
       <Route path="/funds/short-term-gilt-fund" element={<SGF />} />
       <Route path="/blogs/:id" element={<BlogInner />} />
       <Route path="/careers/senior-manager" element={<CareerInner />} />
+        <Route path="/careers/:id" element={<CareerInner />} />
 
       {/* Admin */}
       <Route path="/admin" element={<Login />} />
