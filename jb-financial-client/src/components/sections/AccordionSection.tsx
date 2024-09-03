@@ -39,7 +39,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({
       id={id}
       className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-16"
     >
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-4 md:gap-12">
         <h2 className="subtitleText text-gray-600">
           {titleWords.map((word, index) =>
             highlightedText.includes(word) ? (

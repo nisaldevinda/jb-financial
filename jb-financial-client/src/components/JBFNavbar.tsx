@@ -18,12 +18,23 @@ const JBFNavbar: React.FC = () => {
       <Navbar.Brand href="/">
         <img src={jbfLogo} className="mr-3 h-6 sm:h-9" alt="JB Financial" />
       </Navbar.Brand>
-      <div className="flex md:order-2">
+      <div className="flex md:order-2 items-center gap-4 relative">
         <a href="/contact" className="hidden md:block">
           <button className="secondary-button">Contact Us</button>
         </a>
+        <a
+          href="https://jbs.lk/"
+          target="_blank"
+          className="hidden md:block relative group"
+        >
+          <img src="/icons/sign-in.svg" alt="Sign In" />
+          <div className="absolute top-1/2 left-full transform -translate-y-1/2 ml-2 hidden group-hover:block p-2 bg-gray-400 text-white text-sm rounded shadow-lg switzer-r text-xs w-fit">
+            Online Trading Platform
+          </div>
+        </a>
         <Navbar.Toggle />
       </div>
+
       <Navbar.Collapse>
         <Navbar.Link
           href="/"
@@ -124,6 +135,13 @@ const JBFNavbar: React.FC = () => {
           className="switzer-md text-base text-neutral-mid hover:text-neutral-dark lg:mx-1 block md:hidden"
         >
           Contact Us
+        </Navbar.Link>
+        <Navbar.Link
+          href="https://jbs.lk/"
+          target="_blank"
+          className="switzer-md text-base text-neutral-mid hover:text-neutral-dark lg:mx-1 block md:hidden"
+        >
+          Online Trading Platform
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>

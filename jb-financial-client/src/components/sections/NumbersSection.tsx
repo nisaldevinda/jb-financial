@@ -31,7 +31,7 @@ const NumbersSection: React.FC<NumbersSectionProps> = ({
           </div>
         ))}
       </div>
-      <div className="flex flex-col justify-center gap-12 w-full md:w-[60%]">
+      <div className="flex flex-col justify-center gap-4 md:gap-12 w-full md:w-[60%]">
         {mainTitle && (
           <h2 className="subtitleText text-neutral-mid">{mainTitle}</h2>
         )}
