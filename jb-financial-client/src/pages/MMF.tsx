@@ -79,7 +79,7 @@ const MMF: React.FC = () => {
         heading="Fund Objectives & Strategy"
         highlightText="Objectives & Strategy"
         description="The JB Vantage Money Market Fund is a low-risk investment option focusing on a short-term investment strategy. Launched in 2011, the fund invests in instruments such as fixed deposits, commercial papers, and trust certificates issued by regulated commercial banks, finance companies, and other investment-grade corporate issuers. This diversified portfolio aims to provide regular income while maintaining high liquidity. The fund requires a minimum initial investment of LKR 1 Million. Its low-risk profile, combined with a focus on liquidity and regular income, makes it suitable for short-term investors seeking a cash shelter with a low tolerance for risk. The Money Market Fund offers a balance between safety and returns, making it an attractive option for both individual and corporate investors in the Sri Lankan market who prioritize capital preservation and steady income."
-        imageUrl="/images/unit-trusts/money-market-fund.png"
+        imageUrl="/images/funds/money-market.jpg"
       />
       <FundStatsSection
         objective={fundStats.objective}

@@ -79,7 +79,7 @@ const SGF: React.FC = () => {
         heading="Fund Objectives & Strategy"
         highlightText="Objectives & Strategy"
         description="The JB Vantage Short Term Gilt Fund specializes in investing in gilt-edged securities issued or guaranteed by the Government of Sri Lanka. Initiated in 2016, the fund primarily invests in treasury bills and bonds, offering investors exposure to government securities with high credit worthiness and liquidity. This focus on government-backed instruments positions the fund as a lower-risk option compared to equity funds, while still providing potential for returns above typical savings accounts. The fund requires a minimum initial investment of LKR 1 Million. Its short-term focus and government security investment portfolio make it suitable for investors seeking higher levels of safety, greater liquidity, and a low tolerance for risk. The Short Term Gilt Fund also serves as an excellent option for those looking for a cash shelter between investments in the stock market or for short-term parking of funds. It caters to investors who prioritize capital protection while seeking modest returns in the Sri Lankan fixed income market."
-        imageUrl="/images/unit-trusts/short-term-gilt-fund.png"
+        imageUrl="/images/funds/short-term-gilt.jpg"
       />
       <FundStatsSection
         objective={fundStats.objective}

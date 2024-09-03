@@ -79,7 +79,7 @@ const VEF: React.FC = () => {
         heading="Fund Objectives & Strategy"
         highlightText="Objectives & Strategy"
         description="The JB Vantage Value Equity Fund is an equity fund that focuses on investing in large and mid-capitalization companies in Sri Lanka. Established in 2012, the fund targets stocks trading at below-average prices but with upside potential, aiming for long-term capital growth. The fund's portfolio is diversified across various sectors of the Sri Lankan economy, providing investors with broad exposure to the country's equity market. Managed by JB Financial (Pvt) Ltd, the fund requires a minimum initial investment of LKR 1 Million. It is designed for medium to long-term investors willing to accept moderate to high levels of risk in pursuit of potentially higher returns in the Sri Lankan equity market. The fund's value-oriented approach aims to capitalize on undervalued opportunities, making it suitable for investors seeking growth through carefully selected equity investments."
-        imageUrl="/images/unit-trusts/value-equity-fund.png"
+        imageUrl="/images/funds/value-equity.jpg"
       />
       <FundStatsSection
         objective={fundStats.objective}
