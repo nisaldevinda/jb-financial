@@ -75,10 +75,10 @@ const JBFFooter: React.FC = () => {
   };
 
   return (
-    <div className="bg-neutral-lightest px-4 pt-8 md:px-20 md:pt-20 2xl:px-40 2xl:pt-20 flex flex-col">
-      <div className=" flex flex-col md:flex-row gap-6 md:gap-16">
+    <div className="bg-neutral-lightest px-4 pt-8 md:px-8 lg:px-20 lg:pt-20 xl:px-40 2xl:pt-20 flex flex-col">
+      <div className=" flex flex-col lg:flex-row gap-6 lg:gap-16">
         {/* Company Info Section */}
-        <div className="flex flex-col w-full md:w-1/3 items-start gap-4 md:gap-8">
+        <div className="flex flex-col w-full lg:w-1/3 items-start gap-4 lg:gap-8">
           <img
             src={data.companyInfo.logoSrc}
             className="mr-3 h-6 sm:h-9"
@@ -107,9 +107,9 @@ const JBFFooter: React.FC = () => {
         {data.sections.map((section) => (
           <div
             key={section.title}
-            className="flex flex-col w-full md:w-1/5 gap-4"
+            className="flex flex-col w-full lg:w-1/5 gap-4"
           >
-            <h1 className="switzer-sb text-base md:text-xl uppercase text-neutral-dark md:mb-4">
+            <h1 className="switzer-sb text-base lg:text-xl uppercase text-neutral-dark lg:mb-4">
               {section.title}
             </h1>
             {section.links.map((link) => (
@@ -125,9 +125,9 @@ const JBFFooter: React.FC = () => {
         ))}
       </div>
       {/* Additional Section for Privacy Policy, Terms and Conditions, and Copyright */}
-      <div className="flex flex-col md:flex-row justify-between items-center w-full mt-8 border-t border-neutral-light py-4">
+      <div className="flex flex-col lg:flex-row justify-between items-center w-full mt-8 border-t border-neutral-light py-4">
         {/* Left aligned links */}
-        <div className="flex space-x-4 mb-4 md:mb-0">
+        <div className="flex space-x-4 mb-4 lg:mb-0">
           <a
             href="/privacy-policy"
             className="regularText text-neutral-mid hover:text-neutral-dark"
@@ -143,7 +143,7 @@ const JBFFooter: React.FC = () => {
         </div>
 
         {/* Right aligned copyright text */}
-        <p className="regularText text-neutral-mid text-center md:text-right">
+        <p className="regularText text-neutral-mid text-center lg:text-right">
           © {new Date().getFullYear()} JB Financial. All rights reserved. Site
           by <a href="https://www.magicunbound.co/">Magic Unbound</a>
         </p>

@@ -1,58 +1,54 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {SERVER_URL} from "../../Constants.tsx";
+import { SERVER_URL } from "../../Constants.tsx";
 
 const ImageUpload: React.FC = () => {
-    const [file, setFile] = useState<File | null>(null);
-    const [uploadStatus, setUploadStatus] = useState<string>("");
+  const [file, setFile] = useState<File | null>(null);
+  const [uploadStatus, setUploadStatus] = useState<string>("");
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const selectedFile = e.target.files?.[0];
-        if (selectedFile) {
-            setFile(selectedFile);
-        }
-    };
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+    }
+  };
 
-    const handleUpload = async () => {
-        if (!file) {
-            setUploadStatus("No file selected");
-            return;
-        }
+  const handleUpload = async () => {
+    if (!file) {
+      setUploadStatus("No file selected");
+      return;
+    }
 
-        const formData = new FormData();
-        formData.append("image", file);
+    const formData = new FormData();
+    formData.append("image", file);
 
-        try {
-            setUploadStatus("Uploading...");
-            const response  = await axios.post(`${SERVER_URL}/upload`, formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            });
-            setUploadStatus("Upload successful! Image URL saved to database.");
-            console.log("Server response:", response.data);
-        } catch (error) {
-            setUploadStatus("Upload failed. Please try again.");
-            console.error("Upload error:", error);
-        }
-    };
+    try {
+      setUploadStatus("Uploading...");
+      const response = await axios.post(`${SERVER_URL}/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setUploadStatus("Upload successful! Image URL saved to database.");
+      console.log("Server response:", response.data);
+    } catch (error) {
+      setUploadStatus("Upload failed. Please try again.");
+      console.error("Upload error:", error);
+    }
+  };
 
-    return (
-        <section className="w-screen h-screen flex justify-center items-center">
-            <div>
-                <input type="file" onChange={handleFileChange} />
-                <button onClick={handleUpload}>Upload</button>
-                {uploadStatus && <p>{uploadStatus}</p>}
-            </div>
-        </section>
-    );
+  return (
+    <section className="w-screen h-screen flex justify-center items-center">
+      <div>
+        <input type="file" onChange={handleFileChange} />
+        <button onClick={handleUpload}>Upload</button>
+        {uploadStatus && <p>{uploadStatus}</p>}
+      </div>
+    </section>
+  );
 };
 
 export default ImageUpload;
-
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import { Button, Label, TextInput, Select, Textarea } from "flowbite-react";
@@ -191,14 +187,14 @@ export default ImageUpload;
 //     return (
 //         <form
 //             onSubmit={handleSubmit}
-//             className="flex w-full flex-col gap-4 md:gap-4 p-4 shadow-md rounded-2xl bg-off-white"
+//             className="flex w-full flex-col gap-4 lg:gap-4 p-4 shadow-md rounded-2xl bg-off-white"
 //         >
-//             <h4 className="switzer-sb text-base md:text-2xl">Blog Post Editor</h4>
-//             <p className="switzer-sb text-sm md:text-xl text-neutral-mid">
+//             <h4 className="switzer-sb text-base lg:text-2xl">Blog Post Editor</h4>
+//             <p className="switzer-sb text-sm lg:text-xl text-neutral-mid">
 //                 {blog._id ? "Edit Blog Post" : "Create New Blog Post"}
 //             </p>
 //             {blog._id && (
-//                 <div className="flex flex-col md:flex-row gap-4">
+//                 <div className="flex flex-col lg:flex-row gap-4">
 //                     <div className="flex-grow">
 //                         <div className="mb-2 block">
 //                             <Label htmlFor="_id" value="Blog ID" className="switzer-md" />
@@ -216,7 +212,7 @@ export default ImageUpload;
 //                 </div>
 //             )}
 //             {/* Existing form fields */}
-//             <div className="flex flex-col md:flex-row gap-4">
+//             <div className="flex flex-col lg:flex-row gap-4">
 //                 <div className="flex-grow">
 //                     <div className="mb-2 block">
 //                         <Label htmlFor="category" value="Blog Category" className="switzer-md" />
@@ -296,7 +292,7 @@ export default ImageUpload;
 //             {uploadStatus && <p>{uploadStatus}</p>}
 //             {/* Rest of the form remains the same */}
 //             <div>
-//                 <h5 className="switzer-sb text-sm md:text-xl text-neutral-mid">Blog Content Sections</h5>
+//                 <h5 className="switzer-sb text-sm lg:text-xl text-neutral-mid">Blog Content Sections</h5>
 //                 {blog.content.map((section, sectionIndex) => (
 //                     <div key={sectionIndex} className="flex flex-col gap-4 mt-4">
 //                         <div className="mb-2 block">

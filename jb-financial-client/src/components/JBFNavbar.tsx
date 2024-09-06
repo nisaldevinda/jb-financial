@@ -13,13 +13,13 @@ const JBFNavbar: React.FC = () => {
   return (
     <Navbar
       fluid
-      className="w-screen px-4 md:px-20 2xl:px-40 bg-white fixed z-10"
+      className="w-screen px-4 lg:px-20 2xl:px-40 bg-white fixed z-10"
     >
       <Navbar.Brand href="/">
         <img src={jbfLogo} className="mr-3 h-6 sm:h-9" alt="JB Financial" />
       </Navbar.Brand>
       <div className="flex md:order-2 items-center gap-4 relative">
-        <a href="/contact" className="hidden md:block">
+        <a href="/contact" className="hidden lg:block">
           <button className="secondary-button">Contact Us</button>
         </a>
         <a
@@ -32,25 +32,25 @@ const JBFNavbar: React.FC = () => {
             Online Trading Platform
           </div>
         </a>
-        <Navbar.Toggle />
+        <Navbar.Toggle className="xl:hidden" />
       </div>
 
-      <Navbar.Collapse>
+      <Navbar.Collapse className="b">
         <Navbar.Link
           href="/"
-          className="switzer-md text-base text-[#1d1d1f] lg:mx-1"
+          className="switzer-md text-base text-[#1d1d1f] md:-mr-4 lg:mx-1"
         >
           Home
         </Navbar.Link>
         <Navbar.Link
           href="/about"
-          className="switzer-md text-base text-neutral-mid hover:text-neutral-dark lg:mx-1"
+          className="switzer-md text-base text-neutral-mid md:-mr-4 hover:text-neutral-dark lg:mx-1"
         >
           About
         </Navbar.Link>
         <Navbar.Link
           href="/funds"
-          className="switzer-md text-base text-neutral-mid hover:text-neutral-dark lg:mx-1"
+          className="switzer-md text-base text-neutral-mid md:-mr-4 hover:text-neutral-dark lg:mx-1"
         >
           Funds
         </Navbar.Link>
@@ -68,7 +68,7 @@ const JBFNavbar: React.FC = () => {
               {/* Conditionally render the arrow icon only on desktop and laptop */}
               <span className="hidden md:inline-flex">
                 <svg
-                  className="w-4 h-4 text-neutral-mid hover:text-neutral-dark ml-1"
+                  className="w-4 h-4 text-neutral-mid hover:text-neutral-dark ml-1 md:-mr-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -120,13 +120,13 @@ const JBFNavbar: React.FC = () => {
         </div>
         <Navbar.Link
           href="/team"
-          className="switzer-md text-base text-neutral-mid hover:text-neutral-dark lg:mx-1"
+          className="switzer-md text-base text-neutral-mid hover:text-neutral-dark md:-mr-4 lg:mx-1"
         >
           Team
         </Navbar.Link>
         <Navbar.Link
           href="/careers"
-          className="switzer-md text-base text-neutral-mid hover:text-neutral-dark lg:mx-1"
+          className="switzer-md text-base text-neutral-mid hover:text-neutral-dark md:-mr-4 lg:mx-1"
         >
           Careers
         </Navbar.Link>

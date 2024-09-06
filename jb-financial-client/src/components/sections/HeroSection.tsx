@@ -52,8 +52,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <section className="w-screen h-screen relative z-0">
       <div>
         {renderLeftContent ? (
-          <div className="absolute inset-0 flex flex-col md:justify-center px-4 md:px-20 2xl:px-40 gap-4 md:gap-12 mt-24">
-            <h1 className="titleText text-gray-600 md:w-[55%] fade-in-up">
+          <div className="absolute inset-0 flex flex-col lg:justify-center px-4 md:px-8 lg:px-20 xl:px-40 gap-4 md:gap-8 lg:gap-12 mt-24">
+            <h1 className="titleText text-gray-600 lg:w-[55%] fade-in-up">
               {titleWords.map((word, index) =>
                 highlightedText.includes(word) ? (
                   <span key={index} className="primaryText">
@@ -64,8 +64,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 )
               )}
             </h1>
-            <p className="bodyText neutralText md:w-[40%]">{description}</p>
-            <div className="flex flex-col md:flex-row gap-4">
+            <p className="bodyText neutralText lg:w-[40%]">{description}</p>
+            <div className="flex flex-col lg:flex-row gap-4">
               {button1Text && button1Link && (
                 <a
                   href={button1Link}
@@ -87,7 +87,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
           </div>
         ) : (
-          <div className="absolute inset-0 flex flex-col md:justify-center md:ml-[40%] px-4 md:px-20 2xl:px-40 gap-4 md:gap-12 mt-24">
+          <div className="absolute inset-0 flex flex-col lg:justify-center lg:ml-[40%] px-4 md:px-8 lg:px-20 2xl:px-40 gap-4 lg:gap-12 mt-24">
             <h1 className="titleText text-gray-600 fade-in-up">
               {titleWords.map((word, index) =>
                 highlightedText.includes(word) ? (
@@ -100,7 +100,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               )}
             </h1>
             <p className="bodyText neutralText">{description}</p>
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col lg:flex-row gap-4">
               {button1Text && button1Link && (
                 <a
                   href={button1Link}
@@ -128,13 +128,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
       {/* Desktop and Laptop Background Image */}
       <div
-        className="hidden md:block absolute inset-0 bg-cover bg-center z-[-1]"
+        className="hidden lg:block absolute inset-0 bg-cover bg-center z-[-1]"
         style={{ backgroundImage: `url(${desktopImage})` }}
       />
 
       {/* Tablet and Mobile Background Image */}
       <div
-        className="md:hidden absolute inset-0 bg-cover bg-center z-[-1]"
+        className="lg:hidden absolute inset-0 bg-cover bg-center z-[-1]"
         style={{ backgroundImage: `url(${mobileImage})` }}
       />
     </section>

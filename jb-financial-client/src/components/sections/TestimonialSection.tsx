@@ -44,7 +44,7 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
   };
 
   return (
-    <section className="bg-off-white border-y-2 border-neutral-lighter px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-8 items-center">
+    <section className="bg-off-white border-y-2 border-neutral-lighter px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col gap-4 lg:gap-8 items-center">
       <div className="relative w-full overflow-hidden">
         <div
           className="flex transition-transform duration-500"
@@ -55,10 +55,10 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="min-w-full flex flex-col items-center text-center gap-4 md:gap-8"
+              className="min-w-full flex flex-col items-center text-center gap-4 lg:gap-8"
             >
               <img src={testimonial.logoSrc} alt="Logo" className="w-[140px]" />
-              <p className="bodyText neutralText w-full md:w-1/2">
+              <p className="bodyText neutralText w-full lg:w-1/2">
                 {`“${testimonial.testimonialText}”`}
               </p>
               <div className="flex flex-col gap-4 items-center">
@@ -68,7 +68,7 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
                   className="w-16"
                 />
                 <div className="flex flex-col gap-1">
-                  <h5 className="switzer-sb text-lg md:text-2xl primaryText">
+                  <h5 className="switzer-sb text-lg lg:text-2xl primaryText">
                     {testimonial.name}
                   </h5>
                   <p className="bodyText text-neutral-light">
@@ -80,7 +80,7 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
           ))}
         </div>
         <button
-          className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-neutral-lighter hover:bg-primary-900 text-white p-2 rounded-full hidden md:block w-12 h-12 flex justify-center items-center switzer-sb"
+          className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-neutral-lighter hover:bg-primary-900 text-white p-2 rounded-full hidden lg:block w-12 h-12 flex justify-center items-center switzer-sb"
           onClick={goToPrevSlide}
         >
           <svg
@@ -101,7 +101,7 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
         </button>
 
         <button
-          className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-neutral-lighter hover:bg-primary-900 text-white p-2 rounded-full hidden md:block w-12 h-12 flex justify-center items-center switzer-sb"
+          className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-neutral-lighter hover:bg-primary-900 text-white p-2 rounded-full hidden lg:block w-12 h-12 flex justify-center items-center switzer-sb"
           onClick={goToNextSlide}
         >
           <svg

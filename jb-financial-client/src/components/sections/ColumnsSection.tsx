@@ -46,16 +46,20 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
     const fetchData = async () => {
       if (cardType === "fundPrice") {
         try {
-          const [valueEquityResponse, moneyMarketResponse, shortTermGiltResponse] = await Promise.all([
+          const [
+            valueEquityResponse,
+            moneyMarketResponse,
+            shortTermGiltResponse,
+          ] = await Promise.all([
             axios.get(`${SERVER_URL}/funds/Value Equity Fund`),
             axios.get(`${SERVER_URL}/funds/Money Market Fund`),
-            axios.get(`${SERVER_URL}/funds/Short Term Gilt Fund`)
+            axios.get(`${SERVER_URL}/funds/Short Term Gilt Fund`),
           ]);
 
           const fundData = [
             mapFundData(valueEquityResponse.data, "Value Equity Fund"),
             mapFundData(moneyMarketResponse.data, "Money Market Fund"),
-            mapFundData(shortTermGiltResponse.data, "Short Term Gilt Fund")
+            mapFundData(shortTermGiltResponse.data, "Short Term Gilt Fund"),
           ];
 
           setCards(fundData);
@@ -78,7 +82,9 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
 
   const mapFundData = (data: any[], fundType: string) => {
     // Sort the data by date in descending order
-    const sortedData = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    const sortedData = data.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
 
     // Use the most recent entry (first after sorting)
     const latestData = sortedData[0];
@@ -92,10 +98,9 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
       showSecondBuyPrice: !!latestData.buyPrice2,
       subtitle: fundType,
       title: "JB Vantage",
-      _id: latestData._id
+      _id: latestData._id,
     };
   };
-
 
   const applyPrimaryTextClass = (text: string) => {
     const words = text.split(" ");
@@ -118,13 +123,13 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
 
   return (
     <section
-      className={`bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-16 items-${alignText}`}
+      className={`bg-white px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-8 lg:gap-16 items-${alignText}`}
     >
       <h2 className={`subtitleText text-neutral-mid text-${alignText}`}>
         {applyPrimaryTextClass(subtitleText)}
       </h2>
       {bodyText && <p className={`bodyText text-${alignText}`}>{bodyText}</p>}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-12 w-full">
         {cards.map((card, index) => {
           return <CardComponent key={index} {...card} />;
         })}

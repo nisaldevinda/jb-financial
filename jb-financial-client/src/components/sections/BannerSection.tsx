@@ -21,14 +21,14 @@ const BannerSection: React.FC<BannerSectionProps> = ({
 }) => {
   return (
     <section
-      className={`bg-off-white border-y-2 border-neutral-lighter px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16 ${
+      className={`bg-off-white border-y-2 border-neutral-lighter px-4 py-8 md:px-8lg:p-20 xl:px-40 2xl:py-20 flex flex-col gap-4 lg:gap-16 ${
         centerAlign ? "items-center text-center" : ""
       }`}
     >
       {title && <h2 className="subtitleText text-gray-600">{title}</h2>}
       {description && <p className="bodyText neutralText">{description}</p>}
       {(buttonText1 || buttonText2) && (
-        <div className="flex flex-col gap-4 md:flex-row md:gap-8">
+        <div className="flex flex-col gap-4 lg:flex-row lg:gap-8">
           {buttonText1 && buttonLink1 && (
             <a href={buttonLink1} rel="noopener noreferrer">
               <button className="secondary-button">{buttonText1}</button>

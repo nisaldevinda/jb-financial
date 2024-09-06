@@ -16,22 +16,22 @@ const NumbersSection: React.FC<NumbersSectionProps> = ({
   secondaryButtonText,
 }) => {
   return (
-    <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-16">
-      <div className="w-full md:w-[40%] flex flex-col gap-4 md:gap-16">
+    <section className="bg-white px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
+      <div className="w-full lg:w-[40%] flex flex-col gap-4 lg:gap-16">
         {groups.map((group, index) => (
           <div key={index}>
             {group.title && (
               <h2 className="subtitleText text-primary-900">{group.title}</h2>
             )}
             {group.description && (
-              <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
+              <p className="text-base lg:text-2xl text-neutral-dark switzer-md w-[80%]">
                 {group.description}
               </p>
             )}
           </div>
         ))}
       </div>
-      <div className="flex flex-col justify-center gap-4 md:gap-12 w-full md:w-[60%]">
+      <div className="flex flex-col justify-center gap-4 lg:gap-12 w-full lg:w-[60%]">
         {mainTitle && (
           <h2 className="subtitleText text-neutral-mid">{mainTitle}</h2>
         )}

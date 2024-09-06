@@ -55,7 +55,7 @@ const UnitTrustCard: React.FC<CardProps> = ({
         <p className="regularText neutralText">{description}</p>
         <a
           href={link}
-          className="switzer-md text-neutral-light hover:text-neutral-mid"
+          className="switzer-md text-base md:text-lg text-neutral-light hover:text-neutral-mid"
         >
           Learn More &nbsp;→
         </a>
