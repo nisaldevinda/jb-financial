@@ -74,6 +74,7 @@ function PvtAssetMgmt() {
         button2Text=""
         desktopImage="/images/hero/private-asset-management-d.jpg"
         mobileImage="/images/hero/private-asset-management-m.jpg"
+        tabletImage="/images/hero/private-asset-management-t.jpg"
         renderLeftContent={true} // True [Content on the Left] , False [Content on the Right]
       />
       <SideContentSection

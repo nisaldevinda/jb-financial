@@ -14,6 +14,7 @@ const Team: React.FC = () => {
         button2Text=""
         desktopImage="/images/hero/team-d.jpg"
         mobileImage="/images/hero/team-m.jpg"
+        tabletImage="/images/hero/team-t.jpg"
         renderLeftContent={false} // True [Content on the Left] , False [Content on the Right]
       />
       <ColumnsSection

@@ -129,7 +129,7 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
         {applyPrimaryTextClass(subtitleText)}
       </h2>
       {bodyText && <p className={`bodyText text-${alignText}`}>{bodyText}</p>}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-12 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 w-full">
         {cards.map((card, index) => {
           return <CardComponent key={index} {...card} />;
         })}

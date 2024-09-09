@@ -74,6 +74,7 @@ function InsWealthMgmt() {
         button2Text=""
         desktopImage="/images/hero/institutional-wealth-management-d.jpg"
         mobileImage="/images/hero/institutional-wealth-management-m.jpg"
+        tabletImage="/images/hero/institutional-wealth-management-t.jpg"
         renderLeftContent={true} // True [Content on the Left] , False [Content on the Right]
       />
       <SideContentSection

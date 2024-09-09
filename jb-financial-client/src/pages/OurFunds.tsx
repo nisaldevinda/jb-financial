@@ -36,6 +36,7 @@ function OurFunds() {
         button2Text=""
         desktopImage="/images/hero/our-funds-d.jpg"
         mobileImage="/images/hero/our-funds-m.jpg"
+        tabletImage="/images/hero/our-funds-t.jpg"
         renderLeftContent={true} // True [Content on the Left] , False [Content on the Right]
       />
       <ColumnsSection

@@ -40,6 +40,7 @@ const Careers: React.FC = () => {
         button2Link="/contact"
         desktopImage="/images/hero/careers-d.jpg"
         mobileImage="/images/hero/careers-m.jpg"
+        tabletImage="/images/hero/careers-t.jpg"
         renderLeftContent={false}
       />
       <PlainTextSection />

@@ -71,6 +71,7 @@ const Home: React.FC = () => {
         button2Text=""
         desktopImage="/images/hero/home-d.jpg"
         mobileImage="/images/hero/home-m.jpg"
+        tabletImage="/images/hero/home-t.jpg"
         renderLeftContent={true}
       />
       <ColumnsSection

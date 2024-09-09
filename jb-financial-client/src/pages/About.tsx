@@ -22,6 +22,7 @@ const About: React.FC = () => {
         button2Text=""
         desktopImage="/images/hero/about-d.jpg"
         mobileImage="/images/hero/about-m.jpg"
+        tabletImage="/images/hero/about-t.jpg"
         renderLeftContent={false} // True [Content on the Left] , False [Content on the Right]
       />
       <SideContentSection

@@ -13,6 +13,7 @@ function PvtWealthMgmt() {
         button2Text=""
         desktopImage="/images/hero/private-wealth-management-d.jpg"
         mobileImage="/images/hero/private-wealth-management-m.jpg"
+        tabletImage="/images/hero/private-wealth-management-t.jpg"
         renderLeftContent={true} // True [Content on the Left] , False [Content on the Right]
       />
       <SideContentSection

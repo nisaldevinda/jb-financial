@@ -13,14 +13,21 @@ const JBFNavbar: React.FC = () => {
   return (
     <Navbar
       fluid
-      className="w-screen px-4 lg:px-20 2xl:px-40 bg-white fixed z-10"
+      className="w-screen px-4 md:px-8 lg:px-20 xl:px-40 bg-white fixed z-10"
     >
       <Navbar.Brand href="/">
         <img src={jbfLogo} className="mr-3 h-6 sm:h-9" alt="JB Financial" />
       </Navbar.Brand>
       <div className="flex md:order-2 items-center gap-4 relative">
-        <a href="/contact" className="hidden lg:block">
+        {/* Contact Us Button as an Icon on smaller screens */}
+        <a href="/contact" className="lg:block hidden">
           <button className="secondary-button">Contact Us</button>
+        </a>
+        <a href="/contact" className="block lg:hidden relative group">
+          <img src="/icons/phone-contact.svg" alt="Contact Us" />
+          <div className="absolute top-1/2 left-full transform -translate-y-1/2 ml-2 hidden group-hover:block p-2 bg-gray-400 text-white text-sm rounded shadow-lg switzer-r text-xs w-fit">
+            Contact Us
+          </div>
         </a>
         <a
           href="https://jbs.lk/"
@@ -35,7 +42,7 @@ const JBFNavbar: React.FC = () => {
         <Navbar.Toggle className="xl:hidden" />
       </div>
 
-      <Navbar.Collapse className="b">
+      <Navbar.Collapse>
         <Navbar.Link
           href="/"
           className="switzer-md text-base text-[#1d1d1f] md:-mr-4 lg:mx-1"
@@ -54,18 +61,16 @@ const JBFNavbar: React.FC = () => {
         >
           Funds
         </Navbar.Link>
+
+        {/* Updated Dropdown for Services */}
         <Dropdown
           arrowIcon={false} // Disable the arrow icon by default
           inline
           label={
             <div className="flex items-center">
-              <span
-                className="switzer-md text-base text-neutral-mid hover:text-neutral-dark lg:mx-1 cursor-pointer hidden md:block"
-                onClick={handleLabelClick}
-              >
-                Private Wealth Management
+              <span className="switzer-md text-base text-neutral-mid hover:text-neutral-dark lg:mx-1 cursor-pointer hidden md:block">
+                Services
               </span>
-              {/* Conditionally render the arrow icon only on desktop and laptop */}
               <span className="hidden md:inline-flex">
                 <svg
                   className="w-4 h-4 text-neutral-mid hover:text-neutral-dark ml-1 md:-mr-4"
@@ -86,6 +91,12 @@ const JBFNavbar: React.FC = () => {
           }
         >
           <Dropdown.Item
+            href="/private-wealth-management"
+            className="switzer-md text-base text-neutral-mid hover:text-neutral-dark hover:text-[#1d1d1f]"
+          >
+            Private Wealth Management
+          </Dropdown.Item>
+          <Dropdown.Item
             href="/private-asset-management"
             className="switzer-md text-base text-neutral-mid hover:text-neutral-dark hover:text-[#1d1d1f]"
           >
@@ -98,6 +109,8 @@ const JBFNavbar: React.FC = () => {
             Institutional Wealth Management
           </Dropdown.Item>
         </Dropdown>
+
+        {/* Links for Mobile and Tablet */}
         <div className="block md:hidden">
           <Navbar.Link
             href="/private-wealth-management"
@@ -118,6 +131,7 @@ const JBFNavbar: React.FC = () => {
             Institutional Wealth Management
           </Navbar.Link>
         </div>
+
         <Navbar.Link
           href="/team"
           className="switzer-md text-base text-neutral-mid hover:text-neutral-dark md:-mr-4 lg:mx-1"

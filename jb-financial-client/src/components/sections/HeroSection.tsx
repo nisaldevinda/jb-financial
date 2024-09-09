@@ -11,6 +11,7 @@ interface HeroSectionProps {
   button2Link?: string;
   desktopImage: string;
   mobileImage: string;
+  tabletImage: string;
   renderLeftContent?: boolean;
 }
 
@@ -24,6 +25,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   button2Link,
   desktopImage,
   mobileImage,
+  tabletImage,
   renderLeftContent = true,
 }) => {
   const titleWords = title.split(" ");
@@ -49,7 +51,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="w-screen h-screen relative z-0">
+    <section className="w-screen h-[calc(100dvh)] relative z-0">
       <div>
         {renderLeftContent ? (
           <div className="absolute inset-0 flex flex-col lg:justify-center px-4 md:px-8 lg:px-20 xl:px-40 gap-4 md:gap-8 lg:gap-12 mt-24">
@@ -132,9 +134,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         style={{ backgroundImage: `url(${desktopImage})` }}
       />
 
-      {/* Tablet and Mobile Background Image */}
+      {/* Tablet Background Image */}
       <div
-        className="lg:hidden absolute inset-0 bg-cover bg-center z-[-1]"
+        className="hidden md:block lg:hidden absolute inset-0 bg-cover bg-center z-[-1]"
+        style={{ backgroundImage: `url(${tabletImage})` }}
+      />
+
+      {/* Mobile Background Image */}
+      <div
+        className="md:hidden absolute inset-0 bg-cover bg-center z-[-1]"
         style={{ backgroundImage: `url(${mobileImage})` }}
       />
     </section>
