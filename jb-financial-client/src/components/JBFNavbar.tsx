@@ -1,15 +1,8 @@
 import jbfLogo from "/logo.svg";
 import React from "react";
 import { Navbar, Dropdown } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
 
 const JBFNavbar: React.FC = () => {
-  const navigate = useNavigate();
-
-  const handleLabelClick = () => {
-    navigate("/private-wealth-management");
-  };
-
   return (
     <Navbar
       fluid
