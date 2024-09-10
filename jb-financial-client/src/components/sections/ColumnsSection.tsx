@@ -90,9 +90,16 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
     const latestData = sortedData[0];
     console.log(latestData);
 
+    // Generate the correct link based on the fund type
+    const fundLinks: Record<string, string> = {
+      "Value Equity Fund": "/funds/value-equity-fund",
+      "Money Market Fund": "/funds/money-market-fund",
+      "Short Term Gilt Fund": "/funds/short-term-gilt-fund",
+    };
+
     return {
       buyPrices: [latestData.buyPrice1, latestData.buyPrice2].filter(Boolean), // Filter out undefined or null values
-      link: "/learn-more",
+      link: fundLinks[fundType] || "/learn-more", // Dynamically set the fund page link
       sellPrice: latestData.sellPrice,
       nav: latestData.nav, // Add nav to the returned object
       showSecondBuyPrice: !!latestData.buyPrice2,

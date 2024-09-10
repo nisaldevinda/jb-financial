@@ -53,7 +53,11 @@ const SideContentSection: React.FC<SideContentSectionProps> = ({
         </h4>
         <p className="regularText neutralText">{imageColumn.text}</p>
       </div>
-      <img src={imageColumn.imageUrl} alt="" className="w-full lg:w-1/2" />
+      <img
+        src={imageColumn.imageUrl}
+        alt=""
+        className="w-full lg:w-1/2 object-contain h-auto"
+      />
     </div>
   );
 
@@ -95,15 +99,15 @@ const SideContentSection: React.FC<SideContentSectionProps> = ({
   );
 
   const image = (
-    <div className="w-full lg:w-[40%]">
+    <div className="w-full lg:w-[40%] flex items-center">
       <img src={imageUrl} className="fade-in-up w-full" alt="section-image" />
     </div>
   );
 
   return (
     <section
-      className={`bg-white px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col-reverse lg:flex-row md:gap-8 gap-16 ${
-        swapContentAndImage ? "lg:flex-row-reverse" : "lg:flex-row"
+      className={`bg-white px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col-reverse md:flex-row md:gap-8 gap-16 ${
+        swapContentAndImage ? "md:flex-row-reverse" : "md:flex-row"
       }`}
     >
       {content}

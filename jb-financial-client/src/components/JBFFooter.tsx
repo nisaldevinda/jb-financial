@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MetaLogo, InstagramLogo, XLogo } from "@phosphor-icons/react";
+import { MetaLogo, InstagramLogo, LinkedinLogo } from "@phosphor-icons/react";
 import footerData from "./footerData.json"; // Import the JSON data
 
 // Define the type for hover state
@@ -63,7 +63,7 @@ const JBFFooter: React.FC = () => {
         );
       case "XLogo":
         return (
-          <XLogo
+          <LinkedinLogo
             size={iconSize}
             color={hoveredIcon === platform ? hoverColor : defaultColor}
             className="transition-colors duration-300"

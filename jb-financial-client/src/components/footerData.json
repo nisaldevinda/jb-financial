@@ -6,17 +6,17 @@
     "socialLinks": [
       {
         "platform": "meta",
-        "url": "https://meta.com",
+        "url": "https://web.facebook.com/JBUnitTrusts?_rdc=1&_rdr",
         "icon": "MetaLogo"
       },
       {
         "platform": "instagram",
-        "url": "https://instagram.com",
+        "url": "https://www.instagram.com/jbfinancial_lk/",
         "icon": "InstagramLogo"
       },
       {
         "platform": "x",
-        "url": "https://twitter.com",
+        "url": "https://www.linkedin.com/company/jbvantage/",
         "icon": "XLogo"
       }
     ],
@@ -33,6 +33,7 @@
         "title": "Company",
         "links": [
           { "text": "About", "url": "/about" },
+          { "text": "Resources", "url": "/blog" },
           { "text": "Team", "url": "/team" },
           { "text": "Careers", "url": "/careers" }
         ]

@@ -250,7 +250,14 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
           className="switzer-md"
         />
       </div>
-      <input type="file" onChange={handleFileChange} />
+      <p className="text-sm switzer-r text-neutral-mid">
+        Preferred Size: 491px x 491px
+      </p>
+      <input
+        type="file"
+        onChange={handleFileChange}
+        className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit "
+      />
       <Button
         type="button"
         onClick={handleUpload}
@@ -311,7 +318,11 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
                 className="switzer-md"
               />
             </div>
-            <input type="file" onChange={handleFileChange} />
+            <input
+              type="file"
+              onChange={handleFileChange}
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit "
+            />
 
             {section.paragraphs.map((paragraph, paragraphIndex) => (
               <div key={paragraphIndex}>
