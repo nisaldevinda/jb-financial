@@ -6,6 +6,7 @@ import { SERVER_URL } from "../Constants";
 interface BlogContent {
   heading: string;
   paragraphs: string[];
+  imageUrl?: string;
 }
 
 interface Blog {
@@ -42,32 +43,39 @@ const BlogInner: React.FC = () => {
   }
 
   return (
-    <>
-      <div className="h-[72px]"></div>
+      <>
+        <div className="h-[72px]"></div>
 
-      <BlogFeaturedSection
-        imageSrc={blog.imageUrl}
-        category={blog.category}
-        readingTime={blog.duration}
-        title={blog.title}
-        description={blog.description}
-        buttonText="Read More"
-      />
-      <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16">
-        {blog.content.map((section, index) => (
-          <div key={index} className="mb-8 flex flex-col gap-0 md:gap-4">
-            <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
-              {section.heading}
-            </h3>
-            {section.paragraphs.map((paragraph, paraIndex) => (
-              <p key={paraIndex} className="bodyText text-neutral-mid mb-4">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        ))}
-      </section>
-    </>
+        <BlogFeaturedSection
+            imageSrc={blog.imageUrl}
+            category={blog.category}
+            readingTime={blog.duration}
+            title={blog.title}
+            description={blog.description}
+            buttonText="Read More"
+        />
+        <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16">
+          {blog.content.map((section, index) => (
+              <div key={index} className="mb-8 flex flex-col gap-0 md:gap-4">
+                <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+                  {section.heading}
+                </h3>
+                {section.imageUrl && (
+                    <img
+                        src={section.imageUrl}
+                        alt={section.heading}
+                        className="w-full h-auto mb-4 rounded-lg"
+                    />
+                )}
+                {section.paragraphs.map((paragraph, paraIndex) => (
+                    <p key={paraIndex} className="bodyText text-neutral-mid mb-4">
+                      {paragraph}
+                    </p>
+                ))}
+              </div>
+          ))}
+        </section>
+      </>
   );
 };
 

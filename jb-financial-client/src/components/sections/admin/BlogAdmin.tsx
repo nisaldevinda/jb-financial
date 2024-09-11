@@ -6,6 +6,7 @@ import { SERVER_URL } from "../../../Constants";
 interface BlogContent {
   heading: string;
   paragraphs: string[];
+  imageUrl?: string;
 }
 
 interface Blog {
