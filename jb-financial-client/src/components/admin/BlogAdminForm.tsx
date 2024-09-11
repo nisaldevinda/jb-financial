@@ -35,7 +35,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
   const [file, setFile] = useState<File | null>(null); // State for managing file upload
   const [uploadStatus, setUploadStatus] = useState<string>("");
   const [sectionFiles, setSectionFiles] = useState<(File | null)[]>(
-      new Array(initialBlog.content.length).fill(null)
+    new Array(initialBlog.content.length).fill(null)
   );
 
   useEffect(() => {
@@ -52,10 +52,10 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
   };
 
   const handleSectionChange = (
-      index: number,
-      field: "heading" | "paragraphs" | "imageUrl",
-      value: string | string[],
-      paragraphIndex?: number
+    index: number,
+    field: "heading" | "paragraphs" | "imageUrl",
+    value: string | string[],
+    paragraphIndex?: number
   ) => {
     const updatedContent = [...blog.content];
     if (field === "paragraphs" && paragraphIndex !== undefined) {
@@ -71,7 +71,10 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
     setBlog({ ...blog, content: updatedContent });
   };
 
-  const handleSectionFileChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleSectionFileChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       const updatedSectionFiles = [...sectionFiles];
@@ -97,14 +100,18 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
         },
       });
 
-      setUploadStatus(`Upload successful for section ${index + 1}! Image URL saved.`);
+      setUploadStatus(
+        `Upload successful for section ${index + 1}! Image URL saved.`
+      );
       console.log("Server response:", response.data);
 
       const updatedContent = [...blog.content];
       updatedContent[index].imageUrl = response.data.imageUrl;
       setBlog({ ...blog, content: updatedContent });
     } catch (error) {
-      setUploadStatus(`Upload failed for section ${index + 1}. Please try again.`);
+      setUploadStatus(
+        `Upload failed for section ${index + 1}. Please try again.`
+      );
       console.error("Upload error:", error);
     }
   };
@@ -112,7 +119,10 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
   const addSection = () => {
     setBlog({
       ...blog,
-      content: [...blog.content, { heading: "", paragraphs: [""], imageUrl: "" }],
+      content: [
+        ...blog.content,
+        { heading: "", paragraphs: [""], imageUrl: "" },
+      ],
     });
     setSectionFiles([...sectionFiles, null]);
   };
@@ -316,72 +326,62 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
           Blog Content Sections
         </h5>
         {blog.content.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="flex flex-col gap-4 mt-4">
-              <div className="mb-2 block">
-                <Label
-                    htmlFor={`section-${sectionIndex}-heading`}
-                    value={`Section ${sectionIndex + 1} Heading`}
-                    className="switzer-md"
-                />
-              </div>
-              <TextInput
-                  id={`section-${sectionIndex}-heading`}
-                  type="text"
-                  value={section.heading}
-                  onChange={(e) =>
-                      handleSectionChange(sectionIndex, "heading", e.target.value)
-                  }
-                  required
-                  shadow
-                  className="switzer-r"
+          <div key={sectionIndex} className="flex flex-col gap-4 mt-4">
+            <div className="mb-2 block">
+              <Label
+                htmlFor={`section-${sectionIndex}-heading`}
+                value={`Section ${sectionIndex + 1} Heading`}
+                className="switzer-md"
               />
+            </div>
+            <TextInput
+              id={`section-${sectionIndex}-heading`}
+              type="text"
+              value={section.heading}
+              onChange={(e) =>
+                handleSectionChange(sectionIndex, "heading", e.target.value)
+              }
+              required
+              shadow
+              className="switzer-r"
+            />
 
-              {/* Section Image Upload */}
-              <div className="mb-2 block">
-                <Label
-                    htmlFor={`section-${sectionIndex}-image-url`}
-                    value={`Section ${sectionIndex + 1} Image`}
-                    className="switzer-md"
-                />
-              </div>
-              <TextInput
-                  id={`section-${sectionIndex}-image-url`}
-                  type="text"
-                  value={section.imageUrl || ""}
-                  onChange={(e) =>
-                      handleSectionChange(sectionIndex, "imageUrl", e.target.value)
-                  }
-                  shadow
-                  className="switzer-r"
+            {/* Section Image Upload */}
+            <div className="mb-2 block">
+              <Label
+                htmlFor={`section-${sectionIndex}-image-url`}
+                value={`Section ${sectionIndex + 1} Image`}
+                className="switzer-md"
               />
-              <div className="mb-2 block">
-                <Label
-                    htmlFor={`section-${sectionIndex}-image-upload`}
-                    value={`Upload Section ${sectionIndex + 1} Image`}
-                    className="switzer-md"
-                />
-              </div>
-              <input
-                  type="file"
-                  onChange={(e) => handleSectionFileChange(e, sectionIndex)}
+            </div>
+            <TextInput
+              id={`section-${sectionIndex}-image-url`}
+              type="text"
+              value={section.imageUrl || ""}
+              onChange={(e) =>
+                handleSectionChange(sectionIndex, "imageUrl", e.target.value)
+              }
+              shadow
+              className="switzer-r"
+            />
+            <div className="mb-2 block">
+              <Label
+                htmlFor={`section-${sectionIndex}-image-upload`}
+                value={`Upload Section ${sectionIndex + 1} Image`}
+                className="switzer-md"
               />
-<<<<<<< HEAD
             </div>
             <input
               type="file"
-              onChange={handleFileChange}
-              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit "
+              onChange={(e) => handleSectionFileChange(e, sectionIndex)}
             />
-
-=======
-              <Button
-                  type="button"
-                  onClick={() => handleSectionUpload(sectionIndex)}
-                  className="primary-button switzer-md mt-2"
-              >
-                Upload Section Image
-              </Button>
->>>>>>> 7d9b766dfa77c2d84bd4664d51e2594be71dc20c
+            <Button
+              type="button"
+              onClick={() => handleSectionUpload(sectionIndex)}
+              className="primary-button switzer-md mt-2"
+            >
+              Upload Section Image
+            </Button>
             {section.paragraphs.map((paragraph, paragraphIndex) => (
               <div key={paragraphIndex}>
                 <div className="mb-2 block">
