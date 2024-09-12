@@ -14,6 +14,8 @@ import MMF from "../pages/MMF";
 import SGF from "../pages/SGF";
 import BlogInner from "../pages/BlogInner";
 import CareerInner from "../pages/CareerInner";
+import PrivacyPolicy from "../pages/PrivacyPolicy.tsx";
+import Terms from "../pages/Terms.tsx";
 
 import Login from "../pages/admin/Login";
 import BlogAdmin from "../pages/admin/BlogAdmin";
@@ -21,7 +23,7 @@ import FundAdmin from "../pages/admin/FundAdmin";
 import CareerAdmin from "../pages/admin/CareerAdmin.tsx";
 
 import DatePicker from "../pages/admin/DatePicker";
-import ImageUpload  from "../components/sections/ImageUpload.tsx";
+import ImageUpload from "../components/sections/ImageUpload.tsx";
 
 const RoutesConfig: React.FC = () => {
   return (
@@ -43,8 +45,9 @@ const RoutesConfig: React.FC = () => {
       <Route path="/funds/money-market-fund" element={<MMF />} />
       <Route path="/funds/short-term-gilt-fund" element={<SGF />} />
       <Route path="/blogs/:id" element={<BlogInner />} />
-      <Route path="/careers/senior-manager" element={<CareerInner />} />
-        <Route path="/careers/:id" element={<CareerInner />} />
+      <Route path="/careers/:id" element={<CareerInner />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/terms-and-conditions" element={<Terms />} />
 
       {/* Admin */}
       <Route path="/admin" element={<Login />} />
@@ -52,9 +55,8 @@ const RoutesConfig: React.FC = () => {
       <Route path="/admin/funds" element={<FundAdmin />} />
       <Route path="/admin/careers" element={<CareerAdmin />} />
 
-        <Route path="/admin/date" element={<DatePicker />} />
-        <Route path="/image-upload" element={<ImageUpload />} />
-
+      <Route path="/admin/date" element={<DatePicker />} />
+      <Route path="/image-upload" element={<ImageUpload />} />
     </Routes>
   );
 };
