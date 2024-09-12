@@ -130,13 +130,13 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
 
   return (
     <section
-      className={`bg-white px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-8 lg:gap-16 items-${alignText}`}
+      className={`bg-white px-4 py-8 md:px-8 lg:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-8 lg:gap-16 items-${alignText}`}
     >
       <h2 className={`subtitleText text-neutral-mid text-${alignText}`}>
         {applyPrimaryTextClass(subtitleText)}
       </h2>
       {bodyText && <p className={`bodyText text-${alignText}`}>{bodyText}</p>}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 lg:gap-8 w-full">
         {cards.map((card, index) => {
           return <CardComponent key={index} {...card} />;
         })}

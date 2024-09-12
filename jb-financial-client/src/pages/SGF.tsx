@@ -27,6 +27,7 @@ const SGF: React.FC = () => {
       fileSize: "3.8MB",
       tags: ["Introduction"],
       buttonText: "Download File",
+      filePath: "/documents/fund-overview.pdf",
     },
     {
       title: "Fund Charts 23/24",
@@ -34,6 +35,7 @@ const SGF: React.FC = () => {
       fileSize: "11.2MB",
       tags: ["Analysis", "Charts", "Patterns"],
       buttonText: "Download File",
+      filePath: "/documents/fund-overview.pdf",
     },
   ];
   const fundStats = {
@@ -98,6 +100,7 @@ const SGF: React.FC = () => {
         subtitleText="Notes from our Portfolio Manager"
         bodyText="Performance reviews, insights on the economic climate, and more."
         buttonText="View all notes"
+        buttonLink="/blog"
         buttonType="primary" // 'primary' | 'secondary'
         cardType="blog"
         alignText="left" // Change to "left" or "center"

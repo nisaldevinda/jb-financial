@@ -15,7 +15,7 @@ const About: React.FC = () => {
   return (
     <>
       <HeroSection
-        title="Disciplined, thorough investing that suits your needs."
+        title="Disciplined investing that suits your needs."
         highlightedText="investing that suits your needs."
         description="Our approach to investing is characterised by a commitment to simplicity and a rigorous focus on fundamental analysis. We believe in thoroughly understanding the underlying factors that drive an asset’s performance and using this knowledge to make informed investment decisions."
         button1Text=""

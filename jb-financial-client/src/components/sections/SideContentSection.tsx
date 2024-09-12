@@ -56,7 +56,7 @@ const SideContentSection: React.FC<SideContentSectionProps> = ({
       <img
         src={imageColumn.imageUrl}
         alt=""
-        className="w-full lg:w-1/2 object-contain h-auto"
+        className="w-1/2 object-contain h-auto"
       />
     </div>
   );
@@ -106,7 +106,7 @@ const SideContentSection: React.FC<SideContentSectionProps> = ({
 
   return (
     <section
-      className={`bg-white px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col-reverse md:flex-row md:gap-8 gap-16 ${
+      className={`bg-white px-4 py-8 md:px-8 lg:p-20 2xl:px-40 2xl:py-20 flex flex-col-reverse md:flex-row md:gap-8 gap-16 ${
         swapContentAndImage ? "md:flex-row-reverse" : "md:flex-row"
       }`}
     >

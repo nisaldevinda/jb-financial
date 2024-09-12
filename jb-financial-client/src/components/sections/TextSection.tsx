@@ -12,7 +12,7 @@ const TextSection: React.FC<TextSectionProps> = ({
   mainDescription,
 }) => {
   return (
-    <section className="bg-white px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
+    <section className="bg-white px-4 py-8 md:px-8 lg:p-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
       <div className="flex flex-col justify-start gap-12 w-full lg:w-[60%]">
         <h2 className="subtitleText text-neutral-mid">{mainTitle}</h2>
         <p className="bodyText neutralText w-full lg:w-[80%]">

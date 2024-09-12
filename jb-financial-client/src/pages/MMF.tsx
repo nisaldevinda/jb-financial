@@ -27,6 +27,7 @@ const MMF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["Introduction"],
       buttonText: "Download File",
+      filePath: "/documents/fund-overview.pdf",
     },
     {
       title: "Fund Charts 23/24",
@@ -34,6 +35,7 @@ const MMF: React.FC = () => {
       fileSize: "11.2MB",
       tags: ["Analysis", "Charts", "Patterns"],
       buttonText: "Download File",
+      filePath: "/documents/fund-overview.pdf",
     },
   ];
   const fundStats = {
@@ -99,6 +101,7 @@ const MMF: React.FC = () => {
         bodyText="Performance reviews, insights on the economic climate, and more."
         buttonText="View all notes"
         buttonType="primary" // 'primary' | 'secondary'
+        buttonLink="/blog"
         cardType="blog"
         alignText="left" // Change to "left" or "center"
       />

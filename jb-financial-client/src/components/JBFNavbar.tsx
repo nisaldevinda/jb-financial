@@ -12,7 +12,7 @@ const JBFNavbar: React.FC = () => {
   return (
     <Navbar
       fluid
-      className="w-screen px-4 md:px-8 lg:px-20 xl:px-40 bg-white fixed z-10 shadow-sm"
+      className="w-screen px-4 md:px-8 lg:px-20 2xl:px-40 bg-white fixed z-10 shadow-sm"
     >
       <Navbar.Brand href="/">
         <img src={jbfLogo} className="mr-3 h-6 sm:h-9" alt="JB Financial" />

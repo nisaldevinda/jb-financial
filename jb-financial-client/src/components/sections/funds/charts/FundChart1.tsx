@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables, ChartData, ChartOptions } from "chart.js";
-import {SERVER_URL} from "../../../../Constants.tsx";
+import { SERVER_URL } from "../../../../Constants.tsx";
 
 // Register all necessary components
 Chart.register(...registerables);
@@ -86,11 +86,11 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
   };
 
   return (
-    <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-16">
-      <div className="flex flex-col justify-center gap-12 w-full md:w-[60%]">
+    <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
+      <div className="flex flex-col justify-center gap-12 w-full lg:w-[60%]">
         {chartData && <Line data={chartData} options={chartOptions} />}
       </div>
-      <div className="w-full md:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
+      <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
         {groups.map((group, index) => (
           <div key={index}>
             {group.title && (

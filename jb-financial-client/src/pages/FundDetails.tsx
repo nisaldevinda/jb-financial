@@ -29,6 +29,7 @@ const FundDetails: React.FC = () => {
       fileSize: "3.8MB",
       tags: ["Introduction"],
       buttonText: "Download File",
+      filePath: "",
     },
     {
       title: "Fund Charts 23/24",
@@ -36,6 +37,7 @@ const FundDetails: React.FC = () => {
       fileSize: "11.2MB",
       tags: ["Analysis", "Charts", "Patterns"],
       buttonText: "Download File",
+      filePath: "",
     },
   ];
   const fundStats = {

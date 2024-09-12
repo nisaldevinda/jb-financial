@@ -14,9 +14,9 @@ const FundStatsSection: React.FC<FundStatsSectionProps> = ({
   investment,
 }) => {
   return (
-    <section className="bg-white px-4 pt-0 pb-8 md:px-20 md:pt-0 md:pb-20 2xl:px-40 2xl:pt-0 2xl:pb-20 flex flex-col md:flex-row gap-6 md:gap-16">
-      <div className="w-full md:w-1/4"></div>
-      <div className="w-full md:w-3/4 flex flex-col gap-4 md:gap-10 justify-center">
+    <section className="bg-white px-4 pt-0 pb-8 md:px-8 lg:px-20 md:pt-0 md:pb-20 2xl:px-40 2xl:pt-0 2xl:pb-20 flex flex-col md:flex-row gap-6 md:gap-16">
+      <div className="w-full md:w-1/4 hidden lg:block"></div>
+      <div className="w-full lg:w-3/4 flex flex-col gap-4 md:gap-10 justify-center">
         <div className="flex justify-between border-y border-neutral-light">
           <p className="switzer-sb text-neutral-light text-sm md:text-2xl px-4 py-2">
             Objective

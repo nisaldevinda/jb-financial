@@ -51,7 +51,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
 
   return (
     <div className="flex items-center gap-4 py-4 md:py-16">
-      <img src={imageUrl} alt="" className="w-12 md:w-auto" />
+      <img src={imageUrl} alt="" className="w-12 lg:w-auto" />
       <div>
         {line1 && (
           <p

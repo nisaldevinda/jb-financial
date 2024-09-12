@@ -44,11 +44,11 @@ const FundDetailsSection: React.FC<FundDetailsSectionProps> = ({
 
   return (
     <>
-      <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-6 md:gap-16">
-        <div className="w-full md:w-1/4">
+      <section className="bg-white px-4 py-8 md:px-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-6 md:gap-16">
+        <div className="w-full md:w-1/4 hidden lg:block">
           <img src={imageUrl} alt="" />
         </div>
-        <div className="w-full md:w-3/4 flex flex-col gap-4 md:gap-10 justify-center">
+        <div className="w-full lg:w-3/4 flex flex-col gap-4 md:gap-10 justify-center">
           <h4 className="subtitleText text-neutral-mid">{renderHeading()}</h4>
           {renderDescription()}
         </div>

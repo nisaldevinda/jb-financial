@@ -44,7 +44,7 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
   };
 
   return (
-    <section className="bg-off-white border-y-2 border-neutral-lighter px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col gap-4 lg:gap-8 items-center">
+    <section className="bg-off-white border-y-2 border-neutral-lighter px-4 py-8 md:px-8 lg:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 lg:gap-8 items-center">
       <div className="relative w-full overflow-hidden">
         <div
           className="flex transition-transform duration-500"

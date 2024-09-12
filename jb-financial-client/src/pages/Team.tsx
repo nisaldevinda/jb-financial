@@ -9,7 +9,7 @@ const Team: React.FC = () => {
       <HeroSection
         title="Meet The Team"
         highlightedText="Team"
-        description="Our fast growing team comprises of seasoned investment professionals, compliance experts, intellectually brilliant portfolio managers, and everyone in between"
+        description="Our fast growing team comprises of seasoned investment professionals, compliance experts, intellectually brilliant portfolio managers, and everyone in between."
         button1Text=""
         button2Text=""
         desktopImage="/images/hero/team-d.jpg"

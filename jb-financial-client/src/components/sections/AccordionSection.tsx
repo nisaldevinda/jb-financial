@@ -37,7 +37,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({
   return (
     <section
       id={id}
-      className="bg-white px-4 py-8 md:px-8 lg:p-20 xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-8 lg:gap-16"
+      className="bg-white px-4 py-8 md:px-8 lg:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-8 lg:gap-16"
     >
       <div className="flex flex-col gap-4 lg:gap-12">
         <h2 className="subtitleText text-gray-600">

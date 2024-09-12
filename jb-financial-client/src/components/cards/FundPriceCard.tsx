@@ -21,7 +21,7 @@ const FundPriceCard: React.FC<CardProps> = ({
 }) => {
   return (
     <div className="flex flex-col bg-[#fbfbfd] rounded-2xl border-2 border-solid border-gray-300 gap-8 pb-8">
-      <div className="flex flex-col py-8 rounded-t-2xl shadow-md w-full">
+      <div className="flex flex-col p-8 rounded-t-2xl shadow-md w-full">
         <span className="bodyText text-neutral-light text-center">{title}</span>
         <span className="switzer-sb text-lg md:text-2xl text-primary-900 text-center">
           {subtitle}
