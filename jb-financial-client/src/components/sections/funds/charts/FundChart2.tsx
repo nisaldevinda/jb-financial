@@ -24,7 +24,7 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
       const labels = data.data.map((item: any) => item.Date);
       const jbvefData = data.data.map((item: any) => item.JBMMF);
       const spsl20triData = data.data.map((item: any) => item.NDBIB);
-      const astriData = data.data.map((item: any) => item.AWFDR);
+      // const astriData = data.data.map((item: any) => item.AWFDR);
 
       setChartData({
         labels: labels,
