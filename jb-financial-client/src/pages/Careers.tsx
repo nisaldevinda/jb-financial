@@ -38,9 +38,9 @@ const Careers: React.FC = () => {
         button1Link="#accordion-section" // Link to the accordion section
         button2Text="Contact Us"
         button2Link="/contact"
-        desktopImage="/images/hero/careers-d.jpg"
-        mobileImage="/images/hero/careers-m.jpg"
-        tabletImage="/images/hero/careers-t.jpg"
+        desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/careers-d.webp"
+        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/careers-m.webp"
+        tabletImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/careers-t.webp"
         renderLeftContent={false}
       />
       <PlainTextSection />

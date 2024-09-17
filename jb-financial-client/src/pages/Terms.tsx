@@ -3,7 +3,7 @@ const Terms: React.FC = () => {
     <>
       <div className="h-[72px]"></div>
       <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16">
-        <h2 className="subtitleText text-neutral-mid">
+        <h2 className="text-2xl md:text-5xl switzer-sb text-primary-900">
           JB Financial Pvt Ltd - Terms and Conditions
         </h2>
         <div>
@@ -18,7 +18,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             1. Agreement to Terms
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -29,7 +29,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             2. Description of Services
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -39,7 +39,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             3. User Responsibilities
           </h3>
           <p className="bodyText text-neutral-mid mb-4">You agree to:</p>
@@ -54,7 +54,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             4. Fees and Payments
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -64,7 +64,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             5. Limitation of Liability
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -75,7 +75,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             6. Disclaimers
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -86,7 +86,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             7. Governing Law
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -96,7 +96,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             8. Changes to Terms
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -106,7 +106,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             9. Termination
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -116,7 +116,7 @@ const Terms: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             10. Contact Information
           </h3>
           <p className="bodyText text-neutral-mid mb-4">

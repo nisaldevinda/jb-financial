@@ -43,13 +43,13 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
             backgroundColor: "rgba(68, 68, 68, 0.2)",
             fill: true,
           },
-          {
-            label: "ASTRI",
-            data: astriData,
-            borderColor: "#AAAAAA",
-            backgroundColor: "rgba(170, 170, 170, 0.2)",
-            fill: true,
-          },
+          // {
+          //   label: "ASTRI",
+          //   data: astriData,
+          //   borderColor: "#AAAAAA",
+          //   backgroundColor: "rgba(170, 170, 170, 0.2)",
+          //   fill: true,
+          // },
         ],
       });
     };

@@ -34,9 +34,9 @@ function OurFunds() {
         description="Explore our range of unit trusts designed to help you achieve your financial goals."
         button1Text="Learn More"
         button2Text=""
-        desktopImage="/images/hero/our-funds-d.jpg"
-        mobileImage="/images/hero/our-funds-m.jpg"
-        tabletImage="/images/hero/our-funds-t.jpg"
+        desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/our-funds-d.webp"
+        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/our-funds-m.webp"
+        tabletImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/our-funds-t.webp"
         renderLeftContent={true} // True [Content on the Left] , False [Content on the Right]
       />
       <ColumnsSection
@@ -52,7 +52,7 @@ function OurFunds() {
         highlightedText="A proactive investment strategy"
         description="Our funds are carefully managed by our experienced investment committee, utilizing a combination of fundamental analysis and quantitative models to identify attractive investment opportunities. Each fund has a distinct investment strategy tailored to meet specific objectives and risk profiles."
         buttonText=""
-        imageUrl="/images/sections/proactive-strategy.jpg"
+        imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/proactive-strategy.webp"
       />
       <AccordionSection
         title="Frequently Asked Questions"

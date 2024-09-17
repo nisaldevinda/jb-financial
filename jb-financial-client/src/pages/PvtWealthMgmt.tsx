@@ -11,9 +11,9 @@ function PvtWealthMgmt() {
         description="We provide bespoke wealth and asset management services to HNWIs and institutional investors in Sri Lanka, with specific attention paid to investing goals and circumstances with the strictest degree of confidentiality."
         button1Text=""
         button2Text=""
-        desktopImage="/images/hero/private-wealth-management-d.jpg"
-        mobileImage="/images/hero/private-wealth-management-m.jpg"
-        tabletImage="/images/hero/private-wealth-management-t.jpg"
+        desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/private-wealth-management-d.webp"
+        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/private-wealth-management-m.webp"
+        tabletImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/private-wealth-management-t.webp"
         renderLeftContent={true} // True [Content on the Left] , False [Content on the Right]
       />
       <SideContentSection
@@ -29,7 +29,7 @@ function PvtWealthMgmt() {
         }}
         buttonText="Why Us?"
         buttonLink="/institutional-wealth-management"
-        imageUrl="/images/sections/institutional-wealth.jpg"
+        imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/institutional-wealth.webp"
         swapContentAndImage={true} // True [Content on the Right], False [Content on the Left]
       />
       <SideContentSection
@@ -48,7 +48,7 @@ function PvtWealthMgmt() {
         ]}
         buttonText="How We Can Help?"
         buttonLink="/private-asset-management"
-        imageUrl="/images/sections/next-generation.jpg"
+        imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/next-generation.webp"
         swapContentAndImage={false} // True [Content on the Right], False [Content on the Left]
       />
       <BannerSection

@@ -72,9 +72,9 @@ function InsWealthMgmt() {
         description="Discover the benefits of our Institutional Wealth Management service."
         button1Text=""
         button2Text=""
-        desktopImage="/images/hero/institutional-wealth-management-d.jpg"
-        mobileImage="/images/hero/institutional-wealth-management-m.jpg"
-        tabletImage="/images/hero/institutional-wealth-management-t.jpg"
+        desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/institutional-wealth-management-d.webp"
+        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/institutional-wealth-management-m.webp"
+        tabletImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/institutional-wealth-management-t.webp"
         renderLeftContent={true} // True [Content on the Left] , False [Content on the Right]
       />
       <SideContentSection
@@ -82,7 +82,7 @@ function InsWealthMgmt() {
         highlightedText="made easy."
         description="Our Institutional Wealth Management service offers expert guidance and tailored investment strategies to maximize returns and minimize risk for institutions. With our experienced professionals and comprehensive services, we provide a better option to generate healthy returns without any additional burden on treasury and corporate finance professionals on your team."
         buttonText=""
-        imageUrl="/images/sections/active-investment-strategy.jpg"
+        imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/active-investment-strategy.webp"
         textColumns={[
           {
             title: "EXPERT GUIDANCE",

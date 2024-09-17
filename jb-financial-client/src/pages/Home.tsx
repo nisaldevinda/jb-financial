@@ -69,9 +69,9 @@ const Home: React.FC = () => {
         button1Text="Schedule an Appointment"
         button1Link="/contact"
         button2Text=""
-        desktopImage="/images/hero/home-d.jpg"
-        mobileImage="/images/hero/home-m.jpg"
-        tabletImage="/images/hero/home-t.jpg"
+        desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/home-d.webp"
+        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/home-d.webp"
+        tabletImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/home-t.webp"
         renderLeftContent={true}
       />
       <ColumnsSection
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
         description="We provide institutions and High Net Worth Individuals with private wealth management services where we manage portfolios on their behalf. "
         buttonText="Learn More"
         buttonLink="/private-wealth-management"
-        imageUrl="/images/sections/private-wealth-management.jpg"
+        imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/private-wealth-management.webp"
       />
       <SideContentSection
         title="Experienced & Award Winning"
@@ -97,7 +97,7 @@ const Home: React.FC = () => {
         description="Our investment committee consists of some of the most experienced and well-known names in Sri Lanka's financial services sector."
         buttonText="Meet Our Team"
         buttonLink="/team"
-        imageUrl="/images/sections/award-winning.jpg"
+        imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/award-winning.webp"
         imageColumn={{
           title: "RECOGNIZED BY CFA",
           text: "We have been recognized multiple times by the CFA Institute as one of the best unit trusts in Sri Lanka.",

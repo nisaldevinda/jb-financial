@@ -20,9 +20,9 @@ const About: React.FC = () => {
         description="Our approach to investing is characterised by a commitment to simplicity and a rigorous focus on fundamental analysis. We believe in thoroughly understanding the underlying factors that drive an asset’s performance and using this knowledge to make informed investment decisions."
         button1Text=""
         button2Text=""
-        desktopImage="/images/hero/about-d.jpg"
-        mobileImage="/images/hero/about-m.jpg"
-        tabletImage="/images/hero/about-t.jpg"
+        desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/about-d.webp"
+        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/about-m.webp"
+        tabletImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/about-t.webp"
         renderLeftContent={false} // True [Content on the Left] , False [Content on the Right]
       />
       <SideContentSection
@@ -30,7 +30,7 @@ const About: React.FC = () => {
         highlightedText=""
         description="That's why it's the best. From Day One, we have always wanted to provide simple and fair investment instruments to our clients. Explore our funds and see how they have performed before making your investment decision."
         buttonText=""
-        imageUrl="/images/sections/simplicity.jpg"
+        imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/simplicity.webp"
       />
       {/* <SideContentSection
         title="Experienced & Award Winning"

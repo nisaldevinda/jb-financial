@@ -72,9 +72,9 @@ function PvtAssetMgmt() {
         description="Discover the benefits of our private portfolio management service for high net worth individuals."
         button1Text=""
         button2Text=""
-        desktopImage="/images/hero/private-asset-management-d.jpg"
-        mobileImage="/images/hero/private-asset-management-m.jpg"
-        tabletImage="/images/hero/private-asset-management-t.jpg"
+        desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/private-asset-management-d.webp"
+        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/private-asset-management-m.webp"
+        tabletImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/private-asset-management-t.webp"
         renderLeftContent={true} // True [Content on the Left] , False [Content on the Right]
       />
       <SideContentSection
@@ -82,7 +82,7 @@ function PvtAssetMgmt() {
         highlightedText=""
         description="Shouldn't your investment portfolio reflect that too? With our Private Asset Management service, we advise HNWIs on their portfolios by taking into account their personal and financial goals for the future."
         buttonText=""
-        imageUrl="/images/sections/you-are-unique.jpg"
+        imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/you-are-unique.webp"
         swapContentAndImage={true}
       />
       <TextSection

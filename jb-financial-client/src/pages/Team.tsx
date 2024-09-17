@@ -12,9 +12,9 @@ const Team: React.FC = () => {
         description="Our fast growing team comprises of seasoned investment professionals, compliance experts, intellectually brilliant portfolio managers, and everyone in between."
         button1Text=""
         button2Text=""
-        desktopImage="/images/hero/team-d.jpg"
-        mobileImage="/images/hero/team-m.jpg"
-        tabletImage="/images/hero/team-t.jpg"
+        desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/team-d.webp"
+        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/team-m.webp"
+        tabletImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/team-t.webp"
         renderLeftContent={false} // True [Content on the Left] , False [Content on the Right]
       />
       <ColumnsSection

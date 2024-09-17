@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables, ChartData, ChartOptions } from "chart.js";
-import {SERVER_URL} from "../../../../Constants.tsx";
+import { SERVER_URL } from "../../../../Constants.tsx";
 
 // Register all necessary components
 Chart.register(...registerables);
@@ -43,13 +43,13 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
             backgroundColor: "rgba(68, 68, 68, 0.2)",
             fill: true,
           },
-          {
-            label: "AWFDR",
-            data: astriData,
-            borderColor: "#AAAAAA",
-            backgroundColor: "rgba(170, 170, 170, 0.2)",
-            fill: true,
-          },
+          // {
+          //   label: "AWFDR",
+          //   data: astriData,
+          //   borderColor: "#AAAAAA",
+          //   backgroundColor: "rgba(170, 170, 170, 0.2)",
+          //   fill: true,
+          // },
         ],
       });
     };

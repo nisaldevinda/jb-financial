@@ -3,7 +3,7 @@ const PrivacyPolicy: React.FC = () => {
     <>
       <div className="h-[72px]"></div>
       <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16">
-        <h2 className="subtitleText text-neutral-mid">
+        <h2 className="text-2xl md:text-5xl switzer-sb text-primary-900">
           JB Financial Pvt Ltd - Privacy Policy
         </h2>
         <div>
@@ -19,7 +19,7 @@ const PrivacyPolicy: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             1. Information We Collect
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -44,7 +44,7 @@ const PrivacyPolicy: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             2. How We Use Your Information
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -61,7 +61,7 @@ const PrivacyPolicy: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             3. Information Sharing and Disclosure
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -80,7 +80,7 @@ const PrivacyPolicy: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             4. Data Security
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -91,7 +91,7 @@ const PrivacyPolicy: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             5. Your Rights
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -101,7 +101,7 @@ const PrivacyPolicy: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             6. Changes to This Privacy Policy
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
@@ -111,7 +111,7 @@ const PrivacyPolicy: React.FC = () => {
         </div>
 
         <div className="mb-8 flex flex-col gap-0 md:gap-4">
-          <h3 className="zodiak-r text-2xl md:text-5xl text-neutral-mid mb-4">
+          <h3 className="switzer-md text-lg md:text-3xl text-primary-900 mb-4">
             7. Contact Us
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
