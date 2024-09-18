@@ -70,7 +70,7 @@ const Home: React.FC = () => {
         button1Link="/contact"
         button2Text=""
         desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/home-d.webp"
-        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/home-d.webp"
+        mobileImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/home-m.webp"
         tabletImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/home-t.webp"
         renderLeftContent={true}
       />

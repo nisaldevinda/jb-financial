@@ -65,11 +65,34 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
   const chartOptions: ChartOptions<"line"> = {
     scales: {
       x: {
+        title: {
+          display: true, // Ensure the label is shown
+          text: "Date", // The label text for the x-axis
+          font: {
+            size: 12, // Adjust font size if needed
+            family: "Switzer-Semibold",
+          },
+        },
         ticks: {
           callback: function (value, index) {
             return index % 3 === 0
               ? this.getLabelForValue(value as number)
               : "";
+          },
+        },
+      },
+      y: {
+        title: {
+          display: true, // Ensure the label is shown
+          text: "Return Percentage (%)", // The label text for the y-axis
+          font: {
+            size: 12, // Adjust font size if needed
+            family: "Switzer-Semibold",
+          },
+        },
+        ticks: {
+          callback: function (value) {
+            return `${value}%`; // Add percentage sign to y-axis ticks
           },
         },
       },

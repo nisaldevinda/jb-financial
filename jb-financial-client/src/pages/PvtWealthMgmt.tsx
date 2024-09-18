@@ -20,13 +20,6 @@ function PvtWealthMgmt() {
         title="Unlocking Opportunities for Institutional Investors"
         highlightedText="Institutional Investors"
         description="Our wealth management service offers improved price discovery and access to our team's expertise, giving you a competitive edge in the market and helping you make better financial decisions to achieve success."
-        newRow={{
-          line1: "Better Insights & Market Access",
-          line2:
-            "Better prices and rates due to our scale and negotiating power",
-          line3:
-            "An experienced team including lead fund managers who have been in the industry since 1994.",
-        }}
         buttonText="Why Us?"
         buttonLink="/institutional-wealth-management"
         imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/institutional-wealth.webp"
@@ -36,16 +29,6 @@ function PvtWealthMgmt() {
         title="Pass down your wealth to the next generation confidently"
         highlightedText="next generation"
         description="Our private asset management service offers dedicated investment advisory services to meet the unique needs of high-net-worth individuals."
-        textColumns={[
-          {
-            title: "Comprehensive",
-            text: "Our team of experienced professionals provide personalized investment strategies and guidance.",
-          },
-          {
-            title: "Bespoke",
-            text: "We tailor our services to align with your financial goals and risk tolerance.",
-          },
-        ]}
         buttonText="How We Can Help?"
         buttonLink="/private-asset-management"
         imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/next-generation.webp"

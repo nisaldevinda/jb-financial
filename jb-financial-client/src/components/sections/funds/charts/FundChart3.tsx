@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, registerables, ChartData, ChartOptions } from "chart.js";
-import {SERVER_URL} from "../../../../Constants.tsx";
+import { SERVER_URL } from "../../../../Constants.tsx";
 
 // Register all necessary components
 Chart.register(...registerables);
@@ -24,7 +24,7 @@ const FundChart3: React.FC<FundChart3Props> = ({ groups }) => {
       const labels = data.data.map((item: any) => item.Date);
       const jbvefData = data.data.map((item: any) => item.JBGILT);
       const spsl20triData = data.data.map((item: any) => item.NDBIB);
-      const astriData = data.data.map((item: any) => item.TBILL);
+      // const astriData = data.data.map((item: any) => item.TBILL);
 
       setChartData({
         labels: labels,
@@ -43,13 +43,13 @@ const FundChart3: React.FC<FundChart3Props> = ({ groups }) => {
             backgroundColor: "rgba(68, 68, 68, 0.2)",
             fill: true,
           },
-          {
-            label: "T-BILL",
-            data: astriData,
-            borderColor: "#AAAAAA",
-            backgroundColor: "rgba(170, 170, 170, 0.2)",
-            fill: true,
-          },
+          // {
+          //   label: "T-BILL",
+          //   data: astriData,
+          //   borderColor: "#AAAAAA",
+          //   backgroundColor: "rgba(170, 170, 170, 0.2)",
+          //   fill: true,
+          // },
         ],
       });
     };
@@ -65,11 +65,34 @@ const FundChart3: React.FC<FundChart3Props> = ({ groups }) => {
   const chartOptions: ChartOptions<"line"> = {
     scales: {
       x: {
+        title: {
+          display: true, // Ensure the label is shown
+          text: "Date", // The label text for the x-axis
+          font: {
+            size: 12, // Adjust font size if needed
+            family: "Switzer-Semibold",
+          },
+        },
         ticks: {
           callback: function (value, index) {
             return index % 3 === 0
               ? this.getLabelForValue(value as number)
               : "";
+          },
+        },
+      },
+      y: {
+        title: {
+          display: true, // Ensure the label is shown
+          text: "Return Percentage (%)", // The label text for the y-axis
+          font: {
+            size: 12, // Adjust font size if needed
+            family: "Switzer-Semibold",
+          },
+        },
+        ticks: {
+          callback: function (value) {
+            return `${value}%`; // Add percentage sign to y-axis ticks
           },
         },
       },

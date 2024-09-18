@@ -54,9 +54,9 @@ const FundAccordion: React.FC<FundAccordionProps> = ({ funds }) => {
               {groupedFunds[category].map((fund, i) => (
                 <div
                   key={i}
-                  className="flex flex-col md:flex-row gap-12 justify-between border-b-2 border-neutral-lightest pb-4 md:pb-6"
+                  className="flex flex-col lg:flex-row gap-12 justify-between border-b-2 border-neutral-lightest pb-4 md:pb-6"
                 >
-                  <div className="flex-grow flex flex-col gap-12 ">
+                  <div className="flex-grow flex flex-col gap-12">
                     <p className="bodyText neutralText">{fund.description}</p>
                     <div className="flex flex-col md:flex-row gap-4">
                       <div className="flex flex-col flex-grow gap-0 md:gap-6">
@@ -77,7 +77,7 @@ const FundAccordion: React.FC<FundAccordionProps> = ({ funds }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex-none w-120">
+                  <div className="flex md:flex-none items-center justify-center">
                     <img
                       src={fund.imageUrl}
                       className="rounded-xl md:rounded-2xl"
