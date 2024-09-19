@@ -1,183 +1,115 @@
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 
 interface CareersFormProps {
-  position: string; // Prop to pass the applying position
+  position: string;
 }
 
 const CareersForm: React.FC<CareersFormProps> = ({ position }) => {
-  const [name, setName] = useState<string>("");
-  const [mobile, setMobile] = useState<string>("");
-  const [countryCode, setCountryCode] = useState<string>("+94"); // Default to Sri Lanka
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [mobile, setMobile] = useState<string>("");
   const [linkedin, setLinkedin] = useState<string>("");
-  const [cv, setCv] = useState<File | null>(null);
-  const [error, setError] = useState<string>("");
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // State to manage loading
-
-  // EmailJS configuration
-  const serviceId = "service_7oqla1i";
-  const templateId = "template_u92o6cm";
-  const publicKey = "YB6BakE_DZu4DxQrW";
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (cv && cv.size > 5 * 1024 * 1024) {
-      setError("File size should be less than 5MB");
-      return;
-    }
-
-    setIsSubmitting(true); // Start loading
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      const templateParams = {
-        to_name: "JB Financial Careers",
-        from_name: name,
-        position: position,
-        mobile: `${countryCode} ${mobile}`,
-        email: email,
-        linkedin: linkedin,
-        cv: reader.result as string, // Base64 CV attachment
-      };
-
-      emailjs
-        .send(serviceId, templateId, templateParams, publicKey)
-        .then((response) => {
-          console.log(
-            "Email sent successfully.",
-            response.status,
-            response.text
-          );
-          alert("Your application has been submitted successfully!");
-          setName("");
-          setMobile("");
-          setEmail("");
-          setLinkedin("");
-          setCv(null);
-          setError("");
-          setIsSubmitting(false); // Stop loading
-        })
-        .catch((error) => {
-          console.error("Failed to send email.", error);
-          alert(
-            "There was an error submitting your application. Please try again later."
-          );
-          setIsSubmitting(false); // Stop loading
-        });
-    };
-
-    if (cv) {
-      reader.readAsDataURL(cv);
-    } else {
-      // Handle case where CV is not uploaded correctly
-      setError("Please upload your CV.");
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleCvUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setCv(e.target.files[0]);
-      setError(""); // Clear error when a new file is selected
-    }
-  };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      action="https://submit-form.com/mEAsfn5j4"
+      method="POST"
       className="flex flex-col gap-4 md:gap-10 p-4 md:p-12 bg-off-white shadow-2xl rounded-3xl"
     >
       <h3 className="subtitleText text-neutral-mid">Apply Now</h3>
 
-      {/* Autofilled Position Field */}
-      <div className="flex flex-col gap-2">
-        <input
-          type="text"
-          value={position}
-          className="px-6 py-4 border border-neutral-lighter bg-neutral-light rounded-lg switzer-r text-neutral-mid"
-          readOnly
-        />
-      </div>
+      {/* Position (Hidden Field) */}
+      <input
+        type="hidden"
+        id="position"
+        name="position"
+        value={position}
+        className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 bg-neutral-lightest rounded-lg switzer-r text-neutral-mid flex-grow"
+      />
 
-      {/* Name Field */}
-      <div className="flex flex-col gap-2">
+      {/* First Name */}
+      <div className="flex flex-col md:flex-row gap-2 md:gap-6">
         <input
           type="text"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Your Name"
-          className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid"
+          id="first-name"
+          name="first-name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          placeholder="First Name"
+          className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid flex-grow"
+          required
+        />
+        <input
+          type="text"
+          id="last-name"
+          name="last-name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          placeholder="Last Name"
+          className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid flex-grow"
           required
         />
       </div>
 
-      {/* Mobile Number with Country Code */}
-      <div className="flex flex-col md:flex-row gap-2">
-        <select
-          value={countryCode}
-          onChange={(e) => setCountryCode(e.target.value)}
-          className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid md:w-1/4"
-        >
-          <option value="+94">+94 (Sri Lanka)</option>
-          <option value="+1">+1 (USA)</option>
-          <option value="+44">+44 (UK)</option>
-          {/* Add more country codes as needed */}
-        </select>
-        <input
-          type="tel"
-          id="mobile"
-          value={mobile}
-          onChange={(e) => setMobile(e.target.value)}
-          placeholder="Mobile Number"
-          className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid md:w-3/4"
-          required
-        />
-      </div>
-
-      {/* Email Field */}
+      {/* Email */}
       <div className="flex flex-col gap-2">
         <input
           type="email"
           id="email"
+          name="email"
           value={email}
-          placeholder="Your Email"
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
           className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid"
           required
         />
       </div>
 
-      {/* LinkedIn URL Field (Optional) */}
+      {/* Mobile Number */}
+      <div className="flex flex-col gap-2">
+        <input
+          type="tel"
+          id="mobile"
+          name="mobile"
+          value={mobile}
+          onChange={(e) => setMobile(e.target.value)}
+          placeholder="Mobile Number"
+          className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid"
+          required
+        />
+      </div>
+
+      {/* LinkedIn URL */}
       <div className="flex flex-col gap-2">
         <input
           type="url"
           id="linkedin"
+          name="linkedin"
           value={linkedin}
-          placeholder="LinkedIn URL (Optional)"
           onChange={(e) => setLinkedin(e.target.value)}
+          placeholder="LinkedIn URL (Optional)"
           className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid"
         />
       </div>
 
-      {/* Upload CV Field */}
+      {/* CV Upload */}
       <div className="flex flex-col gap-2">
+        <label htmlFor="photo" className="switzer-md text-neutral-mid mb-2">
+          Upload CV
+        </label>
         <input
-          type="file"
-          id="cv"
-          accept=".pdf, .docx"
-          onChange={handleCvUpload}
-          className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid"
-          required
+          type="hidden"
+          id="photo"
+          name="photo"
+          role="uploadcare-uploader"
+          data-public-key="8da6d6ea3e475bce95cb"
         />
-        {error && <p className="text-red-500 text-sm">{error}</p>}
       </div>
 
       {/* Submit Button */}
-      <button type="submit" className="primary-button" disabled={isSubmitting}>
-        {isSubmitting ? "Submitting..." : "Submit"}
+      <button type="submit" className="primary-button">
+        Send
       </button>
     </form>
   );

@@ -54,13 +54,13 @@ const FundAccordion: React.FC<FundAccordionProps> = ({ funds }) => {
               {groupedFunds[category].map((fund, i) => (
                 <div
                   key={i}
-                  className="flex flex-col lg:flex-row gap-12 justify-between border-b-2 border-neutral-lightest pb-4 md:pb-6"
+                  className="flex flex-col md:flex-row gap-12 justify-between border-b-2 border-neutral-lightest pb-4 md:pb-6"
                 >
-                  <div className="flex-grow flex flex-col gap-12">
+                  <div className="flex-grow flex flex-col gap-12 w-full md:w-[60%]">
                     <p className="bodyText neutralText">{fund.description}</p>
                     <div className="flex flex-col md:flex-row gap-4">
                       <div className="flex flex-col flex-grow gap-0 md:gap-6">
-                        <h4 className="switzer-sb text-base md:text-2xl text-neutral-dark uppercase">
+                        <h4 className="switzer-sb text-base md:text-xl lg:text-2xl text-neutral-dark uppercase">
                           Equity Markets
                         </h4>
                         <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
@@ -68,7 +68,7 @@ const FundAccordion: React.FC<FundAccordionProps> = ({ funds }) => {
                         </p>
                       </div>
                       <div className="flex flex-col flex-grow gap-0 md:gap-6">
-                        <h4 className="switzer-sb text-base md:text-2xl text-neutral-dark uppercase">
+                        <h4 className="switzer-sb text-base md:text-xl lg:text-2xl text-neutral-dark uppercase">
                           Money and Debt Market
                         </h4>
                         <p className="zodiak-r text-2xl md:text-[64px] text-primary-900">
@@ -77,7 +77,7 @@ const FundAccordion: React.FC<FundAccordionProps> = ({ funds }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex md:flex-none items-center justify-center">
+                  <div className="flex md:flex-none items-center justify-center w-full md:w-[40%]">
                     <img
                       src={fund.imageUrl}
                       className="rounded-xl md:rounded-2xl"

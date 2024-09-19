@@ -121,7 +121,7 @@ const Terms: React.FC = () => {
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
             For any questions about these Terms, please contact us at:
-            <a href="mailto:hello@jbvantage.lk"> hello@jbvantage.lk</a>
+            <a href="mailto:info.financial@jb.lk"> info.financial@jb.lk</a>
           </p>
           <p className="bodyText text-neutral-mid mb-4">
             By using our services, you acknowledge that you have read and

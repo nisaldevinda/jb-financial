@@ -116,7 +116,8 @@ const PrivacyPolicy: React.FC = () => {
           </h3>
           <p className="bodyText text-neutral-mid mb-4">
             If you have any questions about this Privacy Policy, please contact
-            us at <a href="mailto:hello@jbvantage.lk"> hello@jbvantage.lk</a>
+            us at{" "}
+            <a href="mailto:info.financial@jb.lk"> info.financial@jb.lk</a>
           </p>
         </div>
       </section>

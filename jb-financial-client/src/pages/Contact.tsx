@@ -1,6 +1,6 @@
 import React from "react";
 
-import ContactForm from "../components/forms/ContactForm";
+import ContactFormN from "../components/forms/ContactFormN";
 
 interface ContactProps {}
 
@@ -67,7 +67,7 @@ const Contact: React.FC<ContactProps> = ({}) => {
           </div>
         </div>
         <div className="w-full md:w-1/2">
-          <ContactForm />
+          <ContactFormN />
         </div>
       </section>
     </>

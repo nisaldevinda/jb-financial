@@ -83,16 +83,16 @@ function InsWealthMgmt() {
         description="Our Institutional Wealth Management service offers expert guidance and tailored investment strategies to maximize returns and minimize risk for institutions. With our experienced professionals and comprehensive services, we provide a better option to generate healthy returns without any additional burden on treasury and corporate finance professionals on your team."
         buttonText=""
         imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/active-investment-strategy.webp"
-        textColumns={[
-          {
-            title: "EXPERT GUIDANCE",
-            text: "Access to a team of experienced professionals who understand the unique needs of institutions.",
-          },
-          {
-            title: "TAILORED STRATEGIES",
-            text: "Customized investment strategies designed to align with your goals and risk tolerance.",
-          },
-        ]}
+        // textColumns={[
+        //   {
+        //     title: "EXPERT GUIDANCE",
+        //     text: "Access to a team of experienced professionals who understand the unique needs of institutions.",
+        //   },
+        //   {
+        //     title: "TAILORED STRATEGIES",
+        //     text: "Customized investment strategies designed to align with your goals and risk tolerance.",
+        //   },
+        // ]}
         swapContentAndImage={true}
       />
       <TextSection
