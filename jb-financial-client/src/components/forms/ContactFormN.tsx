@@ -11,7 +11,7 @@ const ContactFormN: React.FC<ContactFormNProps> = () => {
 
   return (
     <form
-      action="https://submit-form.com/echo"
+      action="https://submit-form.com/L2fLPRTx2"
       method="POST"
       className="flex flex-col gap-4 md:gap-10 p-4 md:p-12 bg-off-white shadow-2xl rounded-3xl"
     >

@@ -95,13 +95,13 @@ const CareersForm: React.FC<CareersFormProps> = ({ position }) => {
 
       {/* CV Upload */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="photo" className="switzer-md text-neutral-mid mb-2">
+        <label htmlFor="cv" className="switzer-md text-neutral-mid mb-2">
           Upload CV
         </label>
         <input
           type="hidden"
-          id="photo"
-          name="photo"
+          id="cv"
+          name="cv"
           role="uploadcare-uploader"
           data-public-key="8da6d6ea3e475bce95cb"
         />
