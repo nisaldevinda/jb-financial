@@ -18,7 +18,7 @@ const BlogFeaturedSection: React.FC<BlogFeaturedSectionProps> = ({
   buttonText,
 }) => {
   return (
-    <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col md:flex-row gap-6 md:gap-16">
+    <section className="bg-white px-4 py-8 md:px-8 lg:p-20 2xl:px-40 2xl:py-20 flex gap-6 md:gap-8 lg:gap-16 items-center">
       <div className="w-full md:w-1/4">
         <img src={imageSrc} alt={title} />
       </div>
