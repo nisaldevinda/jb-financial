@@ -11,12 +11,24 @@ const CareersForm: React.FC<CareersFormProps> = ({ position }) => {
   const [mobile, setMobile] = useState<string>("");
   const [linkedin, setLinkedin] = useState<string>("");
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    alert("Thank you! Your application has been sent to the HR.");
+    e.currentTarget.submit(); // Continue with form submission
+  };
+
   return (
     <form
       action="https://submit-form.com/mEAsfn5j4"
       method="POST"
+      onSubmit={handleSubmit}
       className="flex flex-col gap-4 md:gap-10 p-4 md:p-12 bg-off-white shadow-2xl rounded-3xl"
     >
+      <input
+        type="hidden"
+        name="_redirect"
+        value="https://jb-financial.vercel.app/"
+      />
       <h3 className="subtitleText text-neutral-mid">Apply Now</h3>
 
       {/* Position (Hidden Field) */}
