@@ -13,7 +13,7 @@ const CareersForm: React.FC<CareersFormProps> = ({ position }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Thank you! Your application has been sent to the HR.");
+    alert("Thank you! We have recieved your application.");
     e.currentTarget.submit(); // Continue with form submission
   };
 

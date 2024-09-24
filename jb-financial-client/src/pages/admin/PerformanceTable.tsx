@@ -31,23 +31,26 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
   const fetchData = async () => {
     try {
       const response = await axios.get(
-          `${SERVER_URL}/api/performance-${chartType}`
+        `${SERVER_URL}/api/performance-${chartType}`
       );
       const sortedData = response.data.sort(
-          (a: PerformanceData, b: PerformanceData) => {
-            // Sort by Date in descending order
-            return new Date(b.Date).getTime() - new Date(a.Date).getTime();
-          }
+        (a: PerformanceData, b: PerformanceData) => {
+          // Sort by Date in descending order
+          return new Date(b.Date).getTime() - new Date(a.Date).getTime();
+        }
       );
       setData(sortedData.slice(0, 5)); // Get only the most recent 5 entries
       if (sortedData.length > 0) {
         // Initialize newEntry without redundant property definitions
-        const initialEntry = Object.keys(sortedData[0]).reduce((acc, key) => {
-          if (key !== "_id" && key !== "Date" && key !== "__v") {
-            acc[key] = ""; // Initialize other fields
-          }
-          return acc;
-        }, { _id: "", Date: "" } as PerformanceData); // Declare _id and Date explicitly once
+        const initialEntry = Object.keys(sortedData[0]).reduce(
+          (acc, key) => {
+            if (key !== "_id" && key !== "Date" && key !== "__v") {
+              acc[key] = ""; // Initialize other fields
+            }
+            return acc;
+          },
+          { _id: "", Date: "" } as PerformanceData
+        ); // Declare _id and Date explicitly once
 
         setNewEntry(initialEntry);
       }
@@ -55,7 +58,6 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
       console.error("Error fetching data:", error);
     }
   };
-
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -92,7 +94,6 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
     console.log("Current newEntry state:", { ...newEntry, [name]: value });
   };
 
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -105,14 +106,14 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
       if (isUpdating) {
         // Update the existing entry
         await axios.put(
-            `${SERVER_URL}/api/performance-${chartType}/${newEntry._id}`,
-            entryToSend
+          `${SERVER_URL}/api/performance-${chartType}/${newEntry._id}`,
+          entryToSend
         );
       } else {
         // Add a new entry
         await axios.post(
-            `${SERVER_URL}/api/performance-${chartType}`,
-            entryToSend
+          `${SERVER_URL}/api/performance-${chartType}`,
+          entryToSend
         );
       }
 
@@ -127,7 +128,7 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
             acc[key] = ""; // Reset other fields
           }
           return acc;
-        }, {} as Omit<PerformanceData, '_id' | 'Date'>),
+        }, {} as Omit<PerformanceData, "_id" | "Date">),
       };
 
       // Reset newEntry to initial state after submission
@@ -137,8 +138,6 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
       console.error("Error adding/updating entry:", error);
     }
   };
-
-
 
   const renderTable = () => (
     <div className="px-4 md:px-8">
@@ -215,6 +214,9 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
         {isUpdating ? "Update Entry" : "Add Entry"}
       </button>{" "}
       {/* Change button text */}
+      <button type="submit" className="secondary-button">
+        Delete Entry
+      </button>{" "}
     </form>
   );
 
