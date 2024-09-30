@@ -96,6 +96,11 @@ const VEF: React.FC = () => {
         primaryButtonText=""
         secondaryButtonText=""
       />
+      <FundDocumentsSection
+        sectionTitle="Fund Documents"
+        description="Explore our current up to date insights on the fund."
+        documents={documents}
+      />
       <ColumnsSection
         subtitleText="Notes from our Portfolio Manager"
         bodyText="Performance reviews, insights on the economic climate, and more."
@@ -117,11 +122,6 @@ const VEF: React.FC = () => {
         description="Here are some of the most common questions about our services."
         accordionType="faq"
         accordionProps={{ faqs: faqData }}
-      />
-      <FundDocumentsSection
-        sectionTitle="Fund Documents"
-        description="Explore our current up to date insights on the fund."
-        documents={documents}
       />
       <ColumnsSection
         subtitleText="Contact Us"

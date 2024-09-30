@@ -17,7 +17,7 @@ const About: React.FC = () => {
       <HeroSection
         title="Disciplined investing that suits your needs."
         highlightedText="investing that suits your needs."
-        description="Our approach to investing is characterised by a commitment to simplicity and a rigorous focus on fundamental analysis. We believe in thoroughly understanding the underlying factors that drive an asset’s performance and using this knowledge to make informed investment decisions."
+        description="We are an active fund manager, focused on absolute returns. Our aim is to build, manage and preserve our clients’ funds and generate consistent positive returns. We acknowledge that all investment involves risk but we believe firmly in the capital markets to deliver superior returns."
         button1Text=""
         button2Text=""
         desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/about-d.webp"

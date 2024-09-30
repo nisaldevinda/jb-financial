@@ -16,6 +16,7 @@ import BlogInner from "../pages/BlogInner";
 import CareerInner from "../pages/CareerInner";
 import PrivacyPolicy from "../pages/PrivacyPolicy.tsx";
 import Terms from "../pages/Terms.tsx";
+import CommonTerms from "../pages/CommonTerms.tsx";
 
 import Login from "../pages/admin/Login";
 import BlogAdmin from "../pages/admin/BlogAdmin";
@@ -48,6 +49,7 @@ const RoutesConfig: React.FC = () => {
       <Route path="/careers/:id" element={<CareerInner />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms-and-conditions" element={<Terms />} />
+      <Route path="/common-terminology" element={<CommonTerms />} />
 
       {/* Admin */}
       <Route path="/admin" element={<Login />} />

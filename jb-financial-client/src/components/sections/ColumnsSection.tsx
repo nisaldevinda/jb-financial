@@ -6,6 +6,7 @@ import { TeamCard, teamCardData } from "../cards/TeamCard";
 import { ContactCard, contactCardData } from "../cards/ContactCard";
 import { SERVER_URL } from "../../Constants";
 import axios from "axios";
+import { FeaturesCard, FeaturesCardData } from "../cards/FeaturesCard";
 
 interface ColumnsSectionProps {
   subtitleText: string;
@@ -21,6 +22,7 @@ const cardDataMapping: Record<string, any[]> = {
   unitTrust: unitTrustCardData,
   contact: contactCardData,
   team: teamCardData,
+  features: FeaturesCardData,
 };
 
 const cardComponentMapping: Record<string, React.FC<any>> = {
@@ -29,6 +31,7 @@ const cardComponentMapping: Record<string, React.FC<any>> = {
   contact: ContactCard,
   blog: BlogCard,
   team: TeamCard,
+  features: FeaturesCard,
 };
 
 const ColumnsSection: React.FC<ColumnsSectionProps> = ({

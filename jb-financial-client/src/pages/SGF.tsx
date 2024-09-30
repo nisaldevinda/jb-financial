@@ -11,7 +11,7 @@ import FundDocumentsSection from "../components/sections/funds/FundDocumentsSect
 const SGF: React.FC = () => {
   const groups = [
     { title: "30%", description: "Return since inception" },
-    { title: "30%", description: "12M Yield" },
+    { title: "30%", description: "7 Day Yield" },
     {
       title: "15%",
       description: "Performance of benchmark during last 12 months",

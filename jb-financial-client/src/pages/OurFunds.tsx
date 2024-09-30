@@ -10,18 +10,58 @@ const faqData = [
       "A unit trust is a collective investment scheme where investors' money is pooled together and professionally managed to invest in a diversified portfolio of securities.",
   },
   {
-    question: "Is there a minimum investment?",
-    answer: "The minimum investment is one million rupees.",
+    question: "Why should I invest in a unit trust?",
+    answer:
+      "Pooling your money with other investors can offer three key advantages. The first is diversification, as a single unit trust can most likely hold more securities than you as an individual or a company could buy on your own. The second is professional management, as an advisor handles the trusts’ investment management responsibilities, taking the burden off you to keep track of them yourself. And finally, you benefit from convenience. Units can be bought and sold any business day, so you have easy access to your money.",
   },
   {
-    question: "Are there any fees involved?",
+    question: "Why invest through JB Vantage?",
     answer:
-      "Yes, but they're very minimal. Check the fact sheet and prospectuses of each fund to know the exact amounts.",
+      "Private banking typically requires minimum investments of Rs. 10-20 million and high fees. JB Vantage offers similar investment quality through a centralized, automated platform, with minimums as low as Rs. 1 million per fund, making private banking-level investments more accessible and cost-effective.",
   },
   {
-    question: "Are unit trusts regulated?",
+    question:
+      "Why not just stick to well known and familiar investment strategies, such as fixed deposit investing?",
     answer:
-      "Yes, unit trusts are regulated and monitored by the Securities and Exchange Commission (SEC) of Sri Lanka.",
+      "Fixed deposits offer predictability but lack diversification and flexibility compared to unit trusts. While suitable during high interest rates, they represent only a narrow subset of fixed income investments. A diversified portfolio, including other assets like debentures, is crucial for successful investing across all interest rate cycles.",
+  },
+  {
+    question: "Who can invest with JB Vantage?",
+    answer:
+      "In order to invest with us, you must invest a minimum Rs. 1 million per fund. Other than that, there are no restrictions.",
+  },
+  {
+    question:
+      "I am a non-Sri Lankan investor, can I sign up for an account with JB Vantage?",
+    answer:
+      "Yes. If you are a non-Sri Lankan, or a non-resident, you can still become part of the JB Vantage community. However, certain investor information may be requested of you by the Central Bank or Securities and Exchange Commission of Sri Lanka.",
+  },
+  {
+    question: "How do I redeem my investment?",
+    answer:
+      "You can choose to redeem your investment by sending us a signed redemption form. We will lock in your redemption price (buying price). Bear in mind to check whether your fund has a lock-up period and early redemption fees may apply.",
+  },
+  {
+    question:
+      "How do cash transfers work? Does JB Vantage take custody of my cash?",
+    answer:
+      "All cash transfers are done via cheque, SLIPS, RTGS or international wire transfer directly from your bank account. JB Vantage does not take custody of cash at any point – money is transferred directly from your account to our unit trusts’ bank accounts in the name of each Trust at Deutsche Bank AG, Colombo Branch.",
+  },
+  {
+    question: "How quickly is my money available if I decide to sell?",
+    answer:
+      "JB Vantage Money Market and Short Term Gilt Funds offer quick access, with redemptions typically processed within 3 working days. The Value Equity Fund may take up to 7 business days. While you can sell anytime, investments in non-money market funds are best viewed as medium to long-term (3-5 years) due to market cycles of their underlying assets.",
+  },
+  {
+    question:
+      "How can I monitor the returns of the investment in JB Vantage Unit Trust?",
+    answer:
+      "JB Vantage Unit Trust prices are published in national newspapers and on their website. Your investment's market value is calculated by multiplying your unit count by the current manager's buying price. For instance, 80,049.19 units bought at Rs. 12.4853 each would increase from Rs. 1,000,000 to Rs. 1,016,330.03 if the price rose to Rs. 12.6893 after 6 weeks.",
+  },
+  {
+    question: "What about Taxation?",
+    answer:
+      "The gain earned through the fund is tax free and must be included in your personal income tax or corporate tax declaration in Sri Lanka or elsewhere, depending on applicable rules.",
   },
 ];
 

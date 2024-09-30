@@ -33,21 +33,19 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
             label: "JBVEF",
             data: jbvefData,
             borderColor: "#930010",
-            backgroundColor: "rgba(147, 0, 16, 0.2)",
             fill: true,
+            pointRadius: 2,
           },
           {
             label: "SPSL20TRI",
             data: spsl20triData,
             borderColor: "#444444",
-            backgroundColor: "rgba(68, 68, 68, 0.2)",
             fill: true,
           },
           // {
           //   label: "ASTRI",
           //   data: astriData,
           //   borderColor: "#AAAAAA",
-          //   backgroundColor: "rgba(170, 170, 170, 0.2)",
           //   fill: true,
           // },
         ],
@@ -73,6 +71,9 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
             family: "Switzer-Semibold",
           },
         },
+        grid: {
+          display: false, // Hide grid lines for x-axis
+        },
         ticks: {
           callback: function (value, index) {
             return index % 3 === 0
@@ -89,6 +90,9 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
             size: 12, // Adjust font size if needed
             family: "Switzer-Semibold",
           },
+        },
+        grid: {
+          display: false, // Hide grid lines for x-axis
         },
         ticks: {
           callback: function (value) {
@@ -111,7 +115,9 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
   return (
     <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
       <div className="flex flex-col justify-center gap-12 w-full lg:w-[60%]">
-        {chartData && <Line data={chartData} options={chartOptions} />}
+        {chartData && (
+          <Line data={chartData} options={chartOptions} className="" />
+        )}
       </div>
       <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
         {groups.map((group, index) => (

@@ -144,6 +144,12 @@ const JBFFooter: React.FC = () => {
           >
             Terms and Conditions+{" "}
           </a>
+          <a
+            href="/common-terminology"
+            className="regularText text-neutral-mid hover:text-neutral-dark"
+          >
+            Common Terminology
+          </a>
         </div>
 
         {/* Right aligned copyright text */}

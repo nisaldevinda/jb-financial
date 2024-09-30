@@ -19,25 +19,28 @@ const JBFNavbar: React.FC = () => {
       </Navbar.Brand>
       <div className="flex md:order-2 items-center gap-4 relative">
         {/* Contact Us Button as an Icon on smaller screens */}
-        <a href="/contact" className="lg:block hidden">
+        {/* <a href="/contact" className="lg:block hidden">
           <button className="secondary-button">Contact Us</button>
+        </a> */}
+        <a
+          href="https://jbs.lk/ut"
+          target="_blank"
+          className="hidden md:block relative group"
+        >
+          {/* <img src="/icons/sign-in.svg" alt="Sign In" />
+          <div className="absolute top-1/2 left-full transform -translate-y-1/2 ml-2 hidden group-hover:block p-2 bg-gray-400 text-white text-sm rounded shadow-lg switzer-r text-xs w-fit">
+            Online Trading Platform
+          </div> */}
+          <button className="secondary-button">Online Trading Platform</button>
         </a>
-        <a href="/contact" className="block lg:hidden relative group">
+
+        <a href="/contact" className="hidden lg:block relative group">
           <img src="/icons/phone-contact.svg" alt="Contact Us" />
           <div className="absolute top-1/2 left-full transform -translate-y-1/2 ml-2 hidden group-hover:block p-2 bg-gray-400 text-white text-sm rounded shadow-lg switzer-r text-xs w-fit">
             Contact Us
           </div>
         </a>
-        <a
-          href="https://jbs.lk/"
-          target="_blank"
-          className="hidden md:block relative group"
-        >
-          <img src="/icons/sign-in.svg" alt="Sign In" />
-          <div className="absolute top-1/2 left-full transform -translate-y-1/2 ml-2 hidden group-hover:block p-2 bg-gray-400 text-white text-sm rounded shadow-lg switzer-r text-xs w-fit">
-            Online Trading Platform
-          </div>
-        </a>
+
         <Navbar.Toggle className="xl:hidden" />
       </div>
 

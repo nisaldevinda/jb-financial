@@ -83,6 +83,15 @@ const Home: React.FC = () => {
         cardType="unitTrust"
         alignText="center"
       />
+      <ColumnsSection
+        subtitleText="*Why  Invest*  in a Unit Trust?"
+        bodyText=""
+        buttonText=""
+        buttonLink="/funds"
+        buttonType="secondary"
+        cardType="features"
+        alignText="center"
+      />
       <SideContentSection
         title="Private Wealth Management"
         highlightedText="Private Wealth Management"

@@ -49,8 +49,7 @@ const FundDocumentsSection: React.FC<FundDocumentsSectionProps> = ({
               ))}
             </div>
             <a
-              href={doc.filePath}
-              download
+              href={doc.filePath} // Removed download attribute
               className="primary-button"
               target="_blank" // Open in a new tab
               rel="noopener noreferrer" // Security best practice
