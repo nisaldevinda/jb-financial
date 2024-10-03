@@ -24,7 +24,6 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
       const labels = data.data.map((item: any) => item.Date);
       const jbvefData = data.data.map((item: any) => item.JBMMF);
       const spsl20triData = data.data.map((item: any) => item.NDBIB);
-      // const astriData = data.data.map((item: any) => item.AWFDR);
 
       setChartData({
         labels: labels,
@@ -43,13 +42,6 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
             backgroundColor: "rgba(68, 68, 68, 0.2)",
             fill: true,
           },
-          // {
-          //   label: "AWFDR",
-          //   data: astriData,
-          //   borderColor: "#AAAAAA",
-          //   backgroundColor: "rgba(170, 170, 170, 0.2)",
-          //   fill: true,
-          // },
         ],
       });
     };
@@ -66,15 +58,17 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
     scales: {
       x: {
         title: {
-          display: true, // Ensure the label is shown
-          text: "Date", // The label text for the x-axis
+          display: true,
+          text: "Date",
           font: {
-            size: 12, // Adjust font size if needed
+            size: 12,
             family: "Switzer-Semibold",
           },
         },
         ticks: {
-          callback: function (value, index) {
+          autoSkip: true,
+          maxTicksLimit: 10,
+          callback(value, index) {
             return index % 3 === 0
               ? this.getLabelForValue(value as number)
               : "";
@@ -83,16 +77,16 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
       },
       y: {
         title: {
-          display: true, // Ensure the label is shown
-          text: "Return Percentage (%)", // The label text for the y-axis
+          display: true,
+          text: "Return Percentage (%)",
           font: {
-            size: 12, // Adjust font size if needed
+            size: 12,
             family: "Switzer-Semibold",
           },
         },
         ticks: {
-          callback: function (value) {
-            return `${value}%`; // Add percentage sign to y-axis ticks
+          callback(value) {
+            return `${value}%`;
           },
         },
       },
@@ -100,7 +94,7 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
     plugins: {
       tooltip: {
         callbacks: {
-          title: function (tooltipItems) {
+          title(tooltipItems) {
             return tooltipItems[0].label || "";
           },
         },

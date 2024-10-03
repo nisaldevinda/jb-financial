@@ -331,6 +331,8 @@ body{
 @media (max-width: 639px) {
   .primary-button {
     width: 100%;
+    padding: 8px 32px;
+    text-align: center;
   }
 }
 
@@ -387,6 +389,8 @@ body{
 @media (max-width: 639px) {
   .secondary-button{
     width: 100% !important;
+    padding: 8px 32px;
+    text-align: center;
   }
 }
 

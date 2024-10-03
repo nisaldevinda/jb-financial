@@ -2,6 +2,7 @@ import HeroSection from "../components/sections/HeroSection";
 import ColumnsSection from "../components/sections/ColumnsSection";
 import SideContentSection from "../components/sections/SideContentSection";
 import AccordionSection from "../components/sections/AccordionSection";
+import FundTableSection from "../components/sections/funds/FundTableSection";
 
 const faqData = [
   {
@@ -65,6 +66,49 @@ const faqData = [
   },
 ];
 
+const headers = [
+  "Fund Type",
+  "1 Month",
+  "3 Months",
+  "6 Months",
+  "YTD",
+  "1 Year",
+  "SI*",
+  "TER**",
+];
+const rows = [
+  [
+    "JBVEF",
+    "15.20%",
+    "16.05%",
+    "17.75%",
+    "15.20%",
+    "23.52%",
+    "12.52%",
+    "0.61%",
+  ],
+  [
+    "JBMMF",
+    "15.20%",
+    "16.05%",
+    "17.75%",
+    "15.20%",
+    "23.52%",
+    "12.52%",
+    "0.61%",
+  ],
+  [
+    "JBGILT",
+    "15.20%",
+    "16.05%",
+    "17.75%",
+    "15.20%",
+    "23.52%",
+    "12.52%",
+    "0.61%",
+  ],
+];
+
 function OurFunds() {
   return (
     <>
@@ -87,6 +131,7 @@ function OurFunds() {
         cardType="unitTrust"
         alignText="center" // Change to "left" or "center"
       />
+      <FundTableSection headers={headers} rows={rows} />
       <SideContentSection
         title="A proactive investment strategy for each fund"
         highlightedText="A proactive investment strategy"

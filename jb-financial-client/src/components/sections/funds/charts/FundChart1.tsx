@@ -64,39 +64,45 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
     scales: {
       x: {
         title: {
-          display: true, // Ensure the label is shown
-          text: "Date", // The label text for the x-axis
+          display: true,
+          text: "Date",
           font: {
-            size: 12, // Adjust font size if needed
+            size: 12,
             family: "Switzer-Semibold",
           },
         },
         grid: {
-          display: false, // Hide grid lines for x-axis
+          display: false,
         },
         ticks: {
+          autoSkip: true, // Automatically skip labels to prevent overlap
+          maxTicksLimit: 10, // Limit the number of ticks displayed
           callback: function (value, index) {
+            const date = new Date(this.getLabelForValue(value as number));
             return index % 3 === 0
-              ? this.getLabelForValue(value as number)
+              ? new Intl.DateTimeFormat("en", {
+                  year: "numeric",
+                  month: "short",
+                }).format(date)
               : "";
           },
         },
       },
       y: {
         title: {
-          display: true, // Ensure the label is shown
-          text: "Return Percentage (%)", // The label text for the y-axis
+          display: true,
+          text: "Return Percentage (%)",
           font: {
-            size: 12, // Adjust font size if needed
+            size: 12,
             family: "Switzer-Semibold",
           },
         },
         grid: {
-          display: false, // Hide grid lines for x-axis
+          display: false,
         },
         ticks: {
           callback: function (value) {
-            return `${value}%`; // Add percentage sign to y-axis ticks
+            return `${value}%`;
           },
         },
       },

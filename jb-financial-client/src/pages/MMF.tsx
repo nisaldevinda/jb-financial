@@ -22,20 +22,49 @@ const MMF: React.FC = () => {
   ];
   const documents = [
     {
-      title: "Money Market Fund - Introduction",
+      title: "Explanatory Memorandum",
       fileType: "PDF",
       fileSize: "3.9MB",
-      tags: ["Introduction"],
-      buttonText: "Download File",
-      filePath: "/documents/fund-overview.pdf",
+      tags: ["A detailed overview of fund specifics."],
+      buttonText: "View Document",
+      filePath: "/docs/mmf/em.pdf",
+      imagePath: "/images/documents/mmf-em.jpg",
     },
     {
-      title: "Fund Charts 23/24",
-      fileType: "XLSX",
-      fileSize: "11.2MB",
-      tags: ["Analysis", "Charts", "Patterns"],
-      buttonText: "Download File",
-      filePath: "/documents/fund-overview.pdf",
+      title: "Application Form",
+      fileType: "PDF",
+      fileSize: "3.9MB",
+      tags: ["So we can get to know you."],
+      buttonText: "View Document",
+      filePath: "/docs/mmf/af.pdf",
+      imagePath: "/images/documents/af.jpg",
+    },
+    {
+      title: "Purchase Form",
+      fileType: "PDF",
+      fileSize: "3.9MB",
+      tags: ["Purchase units of the fund."],
+      buttonText: "View Document",
+      filePath: "/docs/mmf/pf.pdf",
+      imagePath: "/images/documents/pf.jpg",
+    },
+    {
+      title: "Application Checklist",
+      fileType: "PDF",
+      fileSize: "3.9MB",
+      tags: ["Check whether your application is complete."],
+      buttonText: "View Document",
+      filePath: "/docs/mmf/ac.pdf",
+      imagePath: "/images/documents/ac.jpg",
+    },
+    {
+      title: "Monthly Factsheet",
+      fileType: "PDF",
+      fileSize: "3.9MB",
+      tags: ["Monthly Factsheet for September 2024."],
+      buttonText: "View Document",
+      filePath: "/docs/mmf/mf.pdf",
+      imagePath: "/images/documents/test.jpg",
     },
   ];
   const fundStats = {
@@ -96,6 +125,11 @@ const MMF: React.FC = () => {
         primaryButtonText=""
         secondaryButtonText=""
       />
+      <FundDocumentsSection
+        sectionTitle="Fund Documents"
+        description="Explore our current up to date insights on the fund."
+        documents={documents}
+      />
       <ColumnsSection
         subtitleText="Notes from our Portfolio Manager"
         bodyText="Performance reviews, insights on the economic climate, and more."
@@ -118,11 +152,7 @@ const MMF: React.FC = () => {
         accordionType="faq"
         accordionProps={{ faqs: faqData }}
       />
-      <FundDocumentsSection
-        sectionTitle="Fund Documents"
-        description="Explore our current up to date insights on the fund."
-        documents={documents}
-      />
+
       <ColumnsSection
         subtitleText="Contact Us"
         bodyText=""

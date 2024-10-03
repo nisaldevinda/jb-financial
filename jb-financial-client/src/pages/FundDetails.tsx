@@ -6,7 +6,6 @@ import FundDetailsSection from "../components/sections/funds/FundDetailsSection"
 import FundStatsSection from "../components/sections/funds/FundStatsSection";
 import ChartSection from "../components/sections/funds/ChartSection";
 import FundStewardSection from "../components/sections/funds/FundStewardSection";
-import FundDocumentsSection from "../components/sections/funds/FundDocumentsSection";
 
 const FundDetails: React.FC = () => {
   const groups = [
@@ -22,24 +21,24 @@ const FundDetails: React.FC = () => {
     "Murtaza is currently the chair of Advocata Institute, an independent policy think tank based in Colombo. He previously served as an independent Director of Nations Trust Bank PLC (2010 – 2019) and Serendib Hotels PLC (2010 – 2020). Additionally, he was a director of the Colombo Stock Exchange from April 2007 to August 2009 and February 2019 to July 2020. Murtaza is a past President of CFA Sri Lanka.",
     "Murtaza holds a Masters in Financial Economics from the University of Colombo, Bachelor of Computer Science and Mechanical Engineering from the University of NSW, Australia. He is also a Chartered Financial Analyst.",
   ];
-  const documents = [
-    {
-      title: "Value Equity Fund - Introduction",
-      fileType: "PDF",
-      fileSize: "3.8MB",
-      tags: ["Introduction"],
-      buttonText: "Download File",
-      filePath: "",
-    },
-    {
-      title: "Fund Charts 23/24",
-      fileType: "XLSX",
-      fileSize: "11.2MB",
-      tags: ["Analysis", "Charts", "Patterns"],
-      buttonText: "Download File",
-      filePath: "",
-    },
-  ];
+  // const documents = [
+  //   {
+  //     title: "Value Equity Fund - Introduction",
+  //     fileType: "PDF",
+  //     fileSize: "3.8MB",
+  //     tags: ["Introduction"],
+  //     buttonText: "Download File",
+  //     filePath: "",
+  //   },
+  //   {
+  //     title: "Fund Charts 23/24",
+  //     fileType: "XLSX",
+  //     fileSize: "11.2MB",
+  //     tags: ["Analysis", "Charts", "Patterns"],
+  //     buttonText: "Download File",
+  //     filePath: "",
+  //   },
+  // ];
   const fundStats = {
     objective: "Growth | Value",
     strategy: "Bottom-Up | Active",
@@ -92,11 +91,7 @@ const FundDetails: React.FC = () => {
         description="Find answers to common questions about our funds and the investment process."
         accordionType="faq"
       />
-      <FundDocumentsSection
-        sectionTitle="Fund Documents"
-        description="Explore our current up to date insights on the fund."
-        documents={documents}
-      />
+
       <ColumnsSection
         subtitleText="Contact Us"
         bodyText=""

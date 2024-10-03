@@ -141,47 +141,53 @@ const PerformanceTable: React.FC<PerformanceTableProps> = ({
 
   const renderTable = () => (
     <div className="px-4 md:px-8">
-      <table className="min-w-full border-collapse border border-gray-200 switzer-r text-neutral-mid">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="border border-gray-300 px-4 py-2 text-left">Date</th>
-            {data.length > 0 &&
-              Object.keys(data[0])
-                .filter(
-                  (key) => key !== "_id" && key !== "Date" && key !== "__v"
-                )
-                .map((key) => (
-                  <th
-                    key={key}
-                    className="border border-gray-300 px-4 py-2 text-left"
-                  >
-                    {key}
-                  </th>
-                ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((entry, index) => (
-            <tr
-              key={entry._id}
-              className={`${
-                index % 2 === 0 ? "bg-white" : "bg-gray-50"
-              } hover:bg-gray-100`}
-            >
-              <td className="border border-gray-300 px-4 py-2">{entry.Date}</td>
-              {Object.entries(entry)
-                .filter(
-                  ([key]) => key !== "_id" && key !== "Date" && key !== "__v"
-                )
-                .map(([key, value]) => (
-                  <td key={key} className="border border-gray-300 px-4 py-2">
-                    {value}
-                  </td>
-                ))}
+      <div className="overflow-x-auto">
+        <table className="min-w-full border-collapse border border-gray-200 switzer-r text-neutral-mid">
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="border border-gray-300 px-4 py-2 text-left">
+                Date
+              </th>
+              {data.length > 0 &&
+                Object.keys(data[0])
+                  .filter(
+                    (key) => key !== "_id" && key !== "Date" && key !== "__v"
+                  )
+                  .map((key) => (
+                    <th
+                      key={key}
+                      className="border border-gray-300 px-4 py-2 text-left"
+                    >
+                      {key}
+                    </th>
+                  ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.map((entry, index) => (
+              <tr
+                key={entry._id}
+                className={`${
+                  index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                } hover:bg-gray-100`}
+              >
+                <td className="border border-gray-300 px-4 py-2">
+                  {entry.Date}
+                </td>
+                {Object.entries(entry)
+                  .filter(
+                    ([key]) => key !== "_id" && key !== "Date" && key !== "__v"
+                  )
+                  .map(([key, value]) => (
+                    <td key={key} className="border border-gray-300 px-4 py-2">
+                      {value}
+                    </td>
+                  ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 
