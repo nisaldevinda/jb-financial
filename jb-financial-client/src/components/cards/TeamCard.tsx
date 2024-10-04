@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { FaTimes } from "react-icons/fa"; // Importing close icon from react-icons
-import { Info } from "@phosphor-icons/react";
+import { ReadCvLogo } from "@phosphor-icons/react";
 
 interface TeamCardProps {
   name: string;
@@ -46,16 +46,16 @@ const TeamCard: React.FC<TeamCardProps> = ({
   return (
     <div className="flex flex-col bg-[#fbfbfd] rounded-2xl border-2 border-solid border-gray-300 p-8 md:p-12 gap-8 md:gap-12 items-center">
       <img src={imageUrl} alt={name} className="w-60 h-auto" />
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 items-center">
         <h5 className="switzer-sb text-lg md:text-2xl primaryText text-center">
           {name}
         </h5>
         <p className="bodyText text-neutral-light text-center">{designation}</p>
         <button
           onClick={() => setOpen(true)}
-          className="flex justify-center mt-4"
+          className="flex justify-center mt-4 p-3 border border-neutral-light hover:bg-primary-900 rounded-full w-fit"
         >
-          <Info size={32} color="#930010" />
+          <ReadCvLogo size={24} color="#930010" className="info-icon" />
         </button>
         <Popup open={open} onClose={() => setOpen(false)} modal>
           <div className="popup-content p-6 bg-white rounded-lg shadow-lg w-full mx-auto flex flex-col gap-4">
