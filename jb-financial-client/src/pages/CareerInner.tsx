@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CareersForm from "../components/forms/CareersForm.tsx";
+import PDFUploadForm from "../components/forms/PDFUploadForm.tsx";
 import { SERVER_URL } from "../Constants.tsx";
 
 interface ContentItem {
@@ -77,7 +77,7 @@ const CareerInner: React.FC = () => {
 
       {/* Careers Form Section */}
       <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16">
-        <CareersForm position={career.title} />
+        <PDFUploadForm position={career.title} />
       </section>
     </>
   ) : (
