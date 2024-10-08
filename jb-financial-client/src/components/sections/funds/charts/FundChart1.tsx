@@ -41,6 +41,7 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
             data: spsl20triData,
             borderColor: "#444444",
             fill: true,
+            pointRadius: 2,
           },
           // {
           //   label: "ASTRI",

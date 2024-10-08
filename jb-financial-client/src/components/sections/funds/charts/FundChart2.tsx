@@ -34,6 +34,7 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
             borderColor: "#930010",
             backgroundColor: "rgba(147, 0, 16, 0.2)",
             fill: true,
+            pointRadius: 2,
           },
           {
             label: "NDBIB CRISIL 90 DAY T-BILL INDEX",
@@ -41,6 +42,7 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
             borderColor: "#444444",
             backgroundColor: "rgba(68, 68, 68, 0.2)",
             fill: true,
+            pointRadius: 2,
           },
         ],
       });
@@ -65,12 +67,19 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
             family: "Switzer-Semibold",
           },
         },
+        grid: {
+          display: false,
+        },
         ticks: {
-          autoSkip: true,
-          maxTicksLimit: 10,
-          callback(value, index) {
+          autoSkip: true, // Automatically skip labels to prevent overlap
+          maxTicksLimit: 10, // Limit the number of ticks displayed
+          callback: function (value, index) {
+            const date = new Date(this.getLabelForValue(value as number));
             return index % 3 === 0
-              ? this.getLabelForValue(value as number)
+              ? new Intl.DateTimeFormat("en", {
+                  year: "numeric",
+                  month: "short",
+                }).format(date)
               : "";
           },
         },
@@ -83,6 +92,9 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
             size: 12,
             family: "Switzer-Semibold",
           },
+        },
+        grid: {
+          display: false,
         },
         ticks: {
           callback(value) {

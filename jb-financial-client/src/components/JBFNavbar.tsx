@@ -1,10 +1,23 @@
 import jbfLogo from "/logo.svg";
-import React from "react";
-import { Navbar, Dropdown } from "flowbite-react";
+import React, { useState } from "react";
+import { Navbar } from "flowbite-react";
 import { useLocation } from "react-router-dom";
 
 const JBFNavbar: React.FC = () => {
   const location = useLocation();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  let timeoutId: ReturnType<typeof setTimeout>;
+
+  const handleMouseEnter = () => {
+    clearTimeout(timeoutId);
+    setIsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutId = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 300); // 300ms delay, adjust as needed
+  };
 
   // Function to check if the current route matches the given href
   const isActive = (href: string) => location.pathname === href;
@@ -18,19 +31,11 @@ const JBFNavbar: React.FC = () => {
         <img src={jbfLogo} className="mr-3 h-6 sm:h-9" alt="JB Financial" />
       </Navbar.Brand>
       <div className="flex md:order-2 items-center gap-4 relative">
-        {/* Contact Us Button as an Icon on smaller screens */}
-        {/* <a href="/contact" className="lg:block hidden">
-          <button className="secondary-button">Contact Us</button>
-        </a> */}
         <a
           href="https://jbs.lk/ut"
           target="_blank"
           className="hidden md:block relative group"
         >
-          {/* <img src="/icons/sign-in.svg" alt="Sign In" />
-          <div className="absolute top-1/2 left-full transform -translate-y-1/2 ml-2 hidden group-hover:block p-2 bg-gray-400 text-white text-sm rounded shadow-lg switzer-r text-xs w-fit">
-            Online Trading Platform
-          </div> */}
           <button className="secondary-button">Online Trading Platform</button>
         </a>
 
@@ -76,65 +81,46 @@ const JBFNavbar: React.FC = () => {
           Funds
         </Navbar.Link>
 
-        {/* Updated Dropdown for Services */}
-        <Dropdown
-          arrowIcon={false} // Disable the arrow icon by default
-          inline
-          label={
-            <div className="flex items-center">
-              <span
-                className={`switzer-md text-base ${
-                  [
-                    "/private-wealth-management",
-                    "/private-asset-management",
-                    "/institutional-wealth-management",
-                  ].includes(location.pathname)
-                    ? "text-neutral-dark switzer-sb"
-                    : "text-neutral-mid hover:text-neutral-dark"
-                } lg:mx-1 cursor-pointer hidden md:block`}
-              >
-                Services
-              </span>
-              <span className="hidden md:inline-flex">
-                <svg
-                  className="w-4 h-4 text-neutral-mid hover:text-neutral-dark ml-1 md:-mr-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </span>
-            </div>
-          }
+        {/* Updated Services Section */}
+        <div
+          className="relative hidden md:block"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          <Dropdown.Item
+          <Navbar.Link
             href="/private-wealth-management"
-            className="switzer-md text-base text-neutral-mid hover:text-neutral-dark hover:text-[#1d1d1f]"
+            className={`switzer-md text-base ${
+              [
+                "/private-wealth-management",
+                "/private-asset-management",
+                "/institutional-wealth-management",
+              ].includes(location.pathname)
+                ? "text-neutral-dark switzer-sb"
+                : "text-neutral-mid hover:text-neutral-dark"
+            } lg:mx-1 cursor-pointer`}
           >
-            Private Wealth Management
-          </Dropdown.Item>
-          <Dropdown.Item
-            href="/private-asset-management"
-            className="switzer-md text-base text-neutral-mid hover:text-neutral-dark hover:text-[#1d1d1f]"
-          >
-            Private Asset Management
-          </Dropdown.Item>
-          <Dropdown.Item
-            href="/institutional-wealth-management"
-            className="switzer-md text-base text-neutral-mid hover:text-neutral-dark hover:text-[#1d1d1f]"
-          >
-            Institutional Wealth Management
-          </Dropdown.Item>
-        </Dropdown>
+            Services
+          </Navbar.Link>
 
-        {/* Links for Mobile and Tablet */}
+          {isDropdownOpen && (
+            <div className="absolute top-full left-0 mt-1 bg-white border rounded-lg shadow-lg py-2">
+              <a
+                href="/private-asset-management"
+                className="w-[280px] block px-4 py-2 switzer-md text-base text-neutral-mid hover:text-neutral-dark hover:bg-gray-100"
+              >
+                Private Asset Management
+              </a>
+              <a
+                href="/institutional-wealth-management"
+                className="block px-4 py-2 switzer-md text-base text-neutral-mid hover:text-neutral-dark hover:bg-gray-100"
+              >
+                Institutional Wealth Management
+              </a>
+            </div>
+          )}
+        </div>
+
+        {/* Mobile Services Links */}
         <div className="block md:hidden">
           <Navbar.Link
             href="/private-wealth-management"

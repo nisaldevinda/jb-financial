@@ -20,17 +20,17 @@ const Contact: React.FC<ContactProps> = ({}) => {
               <img src="/icons/mail-primary.svg" alt="Email icon" />
               <p className="bodyText text-neutral-mid">
                 <a
-                  href="mailto:hello@jbvantage.lk"
+                  href="mailto:info.financial@jb.lk"
                   className="hover:text-neutral-dark"
                 >
-                  hello@jbvantage.lk
+                  info.financial@jb.lk
                 </a>{" "}
                 <br />
                 <a
-                  href="mailto:sales@jbvantage.lk"
+                  href="mailto:customercare@jb.lk"
                   className="hover:text-neutral-dark"
                 >
-                  sales@jbvantage.lk
+                  customercare@jb.lk
                 </a>
               </p>
             </div>
@@ -41,13 +41,14 @@ const Contact: React.FC<ContactProps> = ({}) => {
                   +94 11 249 0900
                 </a>{" "}
                 <br />
-                <a href="tel:+94112490950" className="hover:text-neutral-dark">
+                <span>(Working Hours: Mon -Fri from 9AM -5PM)</span>
+                {/* <a href="tel:+94112490950" className="hover:text-neutral-dark">
                   +94 11 249 0950
                 </a>{" "}
                 <br />
                 <a href="tel:+94112490952" className="hover:text-neutral-dark">
                   +94 11 249 0952
-                </a>
+                </a> */}
               </p>
             </div>
             <div className="flex gap-4">

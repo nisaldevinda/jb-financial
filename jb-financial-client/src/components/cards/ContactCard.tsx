@@ -9,15 +9,15 @@ interface ContactCardProps {
 
 const contactCardData: ContactCardProps[] = [
   {
-    line1: "hello@jbvantage.lk",
-    line2: "sales@jbvantage.lk",
+    line1: "info.financial@jb.lk",
+    line2: "customercare@jb.lk",
     line3: "",
     imageUrl: "/icons/mail.svg",
   },
   {
     line1: "+94 11 249 0900",
-    line2: "+94 11 249 0950",
-    line3: "+94 11 249 0952",
+    line2: "(Working Hours: Mon -Fri from 9AM -5PM)",
+    line3: "",
     imageUrl: "/icons/phone.svg",
   },
   {
