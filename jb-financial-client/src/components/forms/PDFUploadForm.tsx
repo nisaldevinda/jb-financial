@@ -1,7 +1,6 @@
 import React, { useState, FormEvent } from "react";
 import axios from "axios";
 import { SERVER_URL } from "../../Constants.tsx";
-import emailjs from "emailjs-com";
 
 interface FormData {
   firstName: string;
@@ -70,41 +69,6 @@ const PDFUploadForm: React.FC<PDFUploadFormProps> = ({ position }) => {
     }
   };
 
-  //   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  //     e.preventDefault();
-  //     setIsSubmitting(true);
-
-  //     try {
-  //       let pdfUrl = "";
-  //       if (selectedFile) {
-  //         pdfUrl = await handleUpload(selectedFile);
-  //       }
-
-  //       const finalFormData = {
-  //         ...formData,
-  //         pdfUrl,
-  //         position, // Adding the hidden applied position field
-  //       };
-
-  //       console.log("Form submitted with data:", finalFormData);
-
-  //       // Reset form
-  //       setFormData({
-  //         firstName: "",
-  //         lastName: "",
-  //         email: "",
-  //         mobileNumber: "",
-  //         linkedInUrl: "",
-  //       });
-  //       setSelectedFile(null);
-  //       setUploadStatus("Form submitted successfully!");
-  //     } catch (error) {
-  //       setUploadStatus("Form submission failed. Please try again.");
-  //     } finally {
-  //       setIsSubmitting(false);
-  //     }
-  //   };
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -115,39 +79,34 @@ const PDFUploadForm: React.FC<PDFUploadFormProps> = ({ position }) => {
         pdfUrl = await handleUpload(selectedFile);
       }
 
-      const templateParams = {
-        to_name: "JBF Website Carreer",
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        mobileNumber: formData.mobileNumber,
-        linkedInUrl: formData.linkedInUrl || "N/A",
+      const emailData = {
+        ...formData,
         pdfUrl,
-        position, // Hidden field with applied position
+        position,
       };
 
-      // Use EmailJS to send the email
-      const result = await emailjs.send(
-        "service_7oqla1i", // Replace with your EmailJS service ID
-        "template_u92o6cm", // Replace with your EmailJS template ID
-        templateParams,
-        "YB6BakE_DZu4DxQrW" // Replace with your EmailJS public key (user ID)
+      // Make sure this URL matches your backend endpoint
+      const response = await axios.post(
+        `${SERVER_URL}/api/send-email`,
+        emailData
       );
 
-      console.log("Email sent successfully!", result.text);
-      setUploadStatus("Form submitted and email sent successfully!");
-
-      // Reset form
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        mobileNumber: "",
-        linkedInUrl: "",
-      });
-      setSelectedFile(null);
+      if (response.data.success) {
+        setUploadStatus("Form submitted and email sent successfully!");
+        // Reset form
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          mobileNumber: "",
+          linkedInUrl: "",
+        });
+        setSelectedFile(null);
+      } else {
+        throw new Error(response.data.message || "Failed to send email");
+      }
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.error("Error submitting form:", error);
       setUploadStatus("Form submission failed. Please try again.");
     } finally {
       setIsSubmitting(false);
