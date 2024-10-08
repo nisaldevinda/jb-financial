@@ -113,7 +113,21 @@ const TeamCard: React.FC<TeamCardProps> = ({
         >
           <ReadCvLogo size={24} color="#930010" className="info-icon" />
         </button>
-        <Popup open={open} onClose={() => setOpen(false)} modal>
+        <Popup
+          open={open}
+          onClose={() => setOpen(false)}
+          modal
+          contentStyle={{
+            width: "95%",
+            maxWidth: "800px",
+            borderRadius: "16px",
+            padding: 0,
+            border: "none",
+          }}
+          overlayStyle={{
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+          }}
+        >
           <div className="popup-content p-6 bg-white rounded-lg shadow-lg w-full mx-auto flex flex-col gap-4">
             {/* Close Icon */}
             <button
