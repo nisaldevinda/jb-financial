@@ -21,7 +21,7 @@ const FundStatsSection: React.FC<FundStatsSectionProps> = ({
           <p className="switzer-sb text-neutral-light text-sm md:text-2xl px-4 py-2">
             Objective
           </p>
-          <p className="switzer-sb text-neutral-dark text-sm md:text-2xl px-4 py-2">
+          <p className="switzer-sb text-neutral-dark text-sm md:text-2xl px-4 py-2 text-right">
             {objective}
           </p>
         </div>
@@ -37,15 +37,15 @@ const FundStatsSection: React.FC<FundStatsSectionProps> = ({
           <p className="switzer-sb text-neutral-light text-sm md:text-2xl px-4 py-2">
             Benchmark
           </p>
-          <p className="switzer-sb text-neutral-dark text-sm md:text-2xl px-4 py-2">
+          <p className="switzer-sb text-neutral-dark text-sm md:text-2xl px-4 py-2 text-right">
             {benchmark}
           </p>
         </div>
         <div className="flex justify-between border-y border-neutral-light">
           <p className="switzer-sb text-neutral-light text-sm md:text-2xl px-4 py-2">
-            Investment
+            Investment Style
           </p>
-          <p className="switzer-sb text-neutral-dark text-sm md:text-2xl px-4 py-2">
+          <p className="switzer-sb text-neutral-dark text-sm md:text-2xl px-4 py-2 text-right">
             {investment}
           </p>
         </div>

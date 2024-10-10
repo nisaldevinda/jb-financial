@@ -36,7 +36,7 @@ const JBFNavbar: React.FC = () => {
           target="_blank"
           className="hidden md:block relative group"
         >
-          <button className="secondary-button">Online Trading Platform</button>
+          <button className="secondary-button">Login</button>
         </a>
 
         <a href="/contact" className="hidden lg:block relative group">
@@ -130,7 +130,7 @@ const JBFNavbar: React.FC = () => {
                 : "text-neutral-mid hover:text-neutral-dark"
             } lg:mx-1`}
           >
-            Private Wealth Management
+            Wealth Management
           </Navbar.Link>
           <Navbar.Link
             href="/private-asset-management"
@@ -140,7 +140,7 @@ const JBFNavbar: React.FC = () => {
                 : "text-neutral-mid hover:text-neutral-dark"
             } lg:mx-1`}
           >
-            Private Asset Management
+            &bull; Private Asset Management
           </Navbar.Link>
           <Navbar.Link
             href="/institutional-wealth-management"
@@ -150,7 +150,7 @@ const JBFNavbar: React.FC = () => {
                 : "text-neutral-mid hover:text-neutral-dark"
             } lg:mx-1`}
           >
-            Institutional Wealth Management
+            &bull; Institutional Wealth Management
           </Navbar.Link>
         </div>
 
@@ -185,11 +185,11 @@ const JBFNavbar: React.FC = () => {
           Contact Us
         </Navbar.Link>
         <Navbar.Link
-          href="https://jbs.lk/"
+          href="https://jbs.lk/ut"
           target="_blank"
           className="switzer-md text-base text-neutral-mid hover:text-neutral-dark lg:mx-1 block md:hidden"
         >
-          Online Trading Platform
+          Login
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>

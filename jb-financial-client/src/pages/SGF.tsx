@@ -18,7 +18,7 @@ const SGF: React.FC = () => {
     },
   ];
   const paragraphs = [
-    "Christine has worked in private and institutional fund management since 1996 and set up JB Financial’s wealth management operation in 2011. ​She began her career with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. In Sri Lanka, she has worked at CitiNational Investment Bank and has independently advised institutions on setting investment policy.​ Christine is trained as an economist and holds a MA and a BA (Hons) Economics. She is a CFA charter holder since 1999.​",
+    "Set up JB Financial's (JBF) wealth management operation at in 2011 and has worked in private and institutional fund management since 1996. Christine began her career in 1996 with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. In Sri Lanka, she has worked at CitiNational Investment Bank and independently advised institutions on setting investment policy.​",
   ];
   const documents = [
     {
@@ -109,7 +109,9 @@ const SGF: React.FC = () => {
       <FundDetailsSection
         heading="Fund Objectives & Strategy"
         highlightText="Objectives & Strategy"
-        description="The JB Vantage Short Term Gilt Fund specializes in investing in gilt-edged securities issued or guaranteed by the Government of Sri Lanka. Initiated in 2016, the fund primarily invests in treasury bills and bonds, offering investors exposure to government securities with high credit worthiness and liquidity. This focus on government-backed instruments positions the fund as a lower-risk option compared to equity funds, while still providing potential for returns above typical savings accounts. The fund requires a minimum initial investment of LKR 1 Million. Its short-term focus and government security investment portfolio make it suitable for investors seeking higher levels of safety, greater liquidity, and a low tolerance for risk. The Short Term Gilt Fund also serves as an excellent option for those looking for a cash shelter between investments in the stock market or for short-term parking of funds. It caters to investors who prioritize capital protection while seeking modest returns in the Sri Lankan fixed income market."
+        description={[
+          "The JB Vantage Short Term Gilt Fund specializes in investing in gilt-edged securities issued or guaranteed by the Government of Sri Lanka. Initiated in 2016, the fund primarily invests in treasury bills and bonds, offering investors exposure to government securities with high credit worthiness and liquidity. This focus on government-backed instruments positions the fund as a lower-risk option compared to equity funds, while still providing potential for returns above typical savings accounts. The fund requires a minimum initial investment of LKR 1 Million. Its short-term focus and government security investment portfolio make it suitable for investors seeking higher levels of safety, greater liquidity, and a low tolerance for risk. The Short Term Gilt Fund also serves as an excellent option for those looking for a cash shelter between investments in the stock market or for short-term parking of funds.",
+        ]}
         imageUrl="/images/funds/short-term-gilt.jpg"
       />
       <FundStatsSection
@@ -140,8 +142,8 @@ const SGF: React.FC = () => {
         alignText="left" // Change to "left" or "center"
       />
       <FundStewardSection
-        name="Christine"
-        designation="Fund Manager"
+        name="Christine Dias Bandaranaike, CFA"
+        designation="Portfolio Manager & CEO"
         imageSrc="/images/team/sample-team-3.png"
         paragraphs={paragraphs}
       />

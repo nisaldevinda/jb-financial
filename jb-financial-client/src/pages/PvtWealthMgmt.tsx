@@ -29,7 +29,7 @@ function PvtWealthMgmt() {
         title="Pass down your wealth to the next generation confidently"
         highlightedText="next generation"
         description="Our private asset management service offers dedicated investment advisory services to meet the unique needs of high-net-worth individuals."
-        buttonText="How We Can Help?"
+        buttonText="How We Can Help"
         buttonLink="/private-asset-management"
         imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/next-generation.webp"
         swapContentAndImage={false} // True [Content on the Right], False [Content on the Left]

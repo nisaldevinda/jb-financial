@@ -52,7 +52,7 @@ const BlogInner: React.FC = () => {
         readingTime={blog.duration}
         title={blog.title}
         description={blog.description}
-        buttonText="Read More"
+        buttonText=""
       />
       <section className="bg-white px-4 py-8 md:px-8 lg:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-6 md:gap-8 lg:gap-16 items-center">
         {blog.content.map((section, index) => (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import PDFUploadForm from "../components/forms/PDFUploadForm.tsx";
 import { SERVER_URL } from "../Constants.tsx";
@@ -19,6 +19,9 @@ const CareerInner: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Get the job ID from the URL
   const [career, setCareer] = useState<CareerData | null>(null);
 
+  // Create a ref for the application form section
+  const formRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     // Fetch career data from your API using the job ID
     fetch(`${SERVER_URL}/api/careers/${id}`)
@@ -33,6 +36,13 @@ const CareerInner: React.FC = () => {
       })
       .catch((error) => console.error("Error fetching career data:", error));
   }, [id]);
+
+  // Function to handle smooth scrolling
+  const scrollToForm = () => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return career ? (
     <>
@@ -55,7 +65,10 @@ const CareerInner: React.FC = () => {
               </span>
             ))}
           </div>
-          <button className="primary-button">Apply Now</button>
+          {/* Apply Now button with scroll functionality */}
+          <button className="primary-button" onClick={scrollToForm}>
+            Apply Now
+          </button>
         </div>
       </section>
 
@@ -76,7 +89,10 @@ const CareerInner: React.FC = () => {
       </section>
 
       {/* Careers Form Section */}
-      <section className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16">
+      <section
+        ref={formRef} // Attach ref here
+        className="bg-white px-4 py-8 md:p-20 2xl:px-40 2xl:py-20 flex flex-col gap-4 md:gap-16"
+      >
         <PDFUploadForm position={career.title} />
       </section>
     </>

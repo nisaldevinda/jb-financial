@@ -62,7 +62,7 @@ const faqData = [
   {
     question: "What about Taxation?",
     answer:
-      "The gain earned through the fund is tax free and must be included in your personal income tax or corporate tax declaration in Sri Lanka or elsewhere, depending on applicable rules.",
+      "The gain earned through the fund is tax free and must be included in your personal income tax or corporate tax declaration in Sri Lanka or elsewhere, depending on applicable rules. Separately, while JB Financial is not a participating FFI* under FATCA, we have given our consent to our Trustee, Deutsche Bank AG, to disclose relevant transaction information to the United States Internal Revenue Service or any FATCA related legal body as required.",
   },
 ];
 

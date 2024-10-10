@@ -18,9 +18,7 @@ const VEF: React.FC = () => {
     },
   ];
   const paragraphs = [
-    "Murtaza Jafferjee has worked in the Sri Lankan equity market since 1994. His experience includes advising individual and institutional investors on investment in equities. At JB Financial, Murtaza functions in the capacity of Director overseeing the company, as a member of the Investment Committee and as portfolio manager for the JB Vantage Value Equity Fund.",
-    "Murtaza is currently the chair of Advocata Institute, an independent policy think tank based in Colombo. He previously served as an independent Director of Nations Trust Bank PLC (2010 – 2019) and Serendib Hotels PLC (2010 – 2020). Additionally, he was a director of the Colombo Stock Exchange from April 2007 to August 2009 and February 2019 to July 2020. Murtaza is a past President of CFA Sri Lanka.",
-    "Murtaza holds a Masters in Financial Economics from the University of Colombo, Bachelor of Computer Science and Mechanical Engineering from the University of NSW, Australia. He is also a Chartered Financial Analyst.",
+    "Sashika joined JBF in 2023 as the Chief Investment Officer and Portfolio Manager, primarily focused on the private wealth portfolios and the unit trusts. Prior to joining JB, he served as Vice President at Capital Alliance Investments and Assistant Vice President Treasury at Softlogic Life managing unit trusts and insurance portfolios.",
   ];
   const documents = [
     {
@@ -109,7 +107,10 @@ const VEF: React.FC = () => {
       <FundDetailsSection
         heading="Fund Objectives & Strategy"
         highlightText="Objectives & Strategy"
-        description="The JB Vantage Value Equity Fund is an equity fund that focuses on investing in large and mid-capitalization companies in Sri Lanka. Established in 2012, the fund targets stocks trading at below-average prices but with upside potential, aiming for long-term capital growth. The fund's portfolio is diversified across various sectors of the Sri Lankan economy, providing investors with broad exposure to the country's equity market. Managed by JB Financial (Pvt) Ltd, the fund requires a minimum initial investment of LKR 1 Million. It is designed for medium to long-term investors willing to accept moderate to high levels of risk in pursuit of potentially higher returns in the Sri Lankan equity market. The fund's value-oriented approach aims to capitalize on undervalued opportunities, making it suitable for investors seeking growth through carefully selected equity investments."
+        description={[
+          "The fundamental investment objective of the JB Vantage Value Equity Fund is to achieve long term capital appreciation through investments in securities of companies which we believe are undervalued by the market and as such, have strong appreciation potential. The Fund may invest in all categories of equity related securities of companies including voting and nonvoting common shares, preference shares, rights, warrants and other equity related issues.",
+          "Equity funds are generally expected to be of high risk and/or a “growth” category of investment. This is due to the fact that the Fund invests for capital growth or appreciation, by trying to grow the investor’s money over time through investment in equities. That is, growth is generated through capital gains – profits earned from buying and selling equity securities.",
+        ]}
         imageUrl="/images/funds/value-equity.jpg"
       />
       <FundStatsSection
@@ -140,8 +141,8 @@ const VEF: React.FC = () => {
         alignText="left" // Change to "left" or "center"
       />
       <FundStewardSection
-        name="Murtaza Jafferjee"
-        designation="Fund Manager"
+        name="Sashika Wickramaratne"
+        designation="Portfolio Manager & CIO"
         imageSrc="/images/team/sample-team-1.png"
         paragraphs={paragraphs}
       />

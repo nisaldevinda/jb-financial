@@ -33,7 +33,7 @@
         "title": "Company",
         "links": [
           { "text": "About", "url": "/about" },
-          { "text": "Resources", "url": "/blog" },
+          { "text": "Blog", "url": "/blog" },
           { "text": "Team", "url": "/team" },
           { "text": "Careers", "url": "/careers" }
         ]

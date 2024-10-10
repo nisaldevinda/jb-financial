@@ -3,7 +3,7 @@ import React from "react";
 interface FundDetailsSectionProps {
   heading?: string;
   highlightText?: string;
-  description?: string;
+  description?: string[];
   imageUrl?: string;
 }
 
@@ -33,9 +33,9 @@ const FundDetailsSection: React.FC<FundDetailsSectionProps> = ({
   };
 
   const renderDescription = () => {
-    if (!description) return null;
+    if (!description || description.length === 0) return null;
 
-    return description.split("\n").map((para, index) => (
+    return description.map((para, index) => (
       <p key={index} className="bodyText text-neutral-mid">
         {para}
       </p>

@@ -18,7 +18,7 @@ const MMF: React.FC = () => {
     },
   ];
   const paragraphs = [
-    "Christine has worked in private and institutional fund management since 1996 and set up JB Financial’s wealth management operation in 2011. ​She began her career with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. In Sri Lanka, she has worked at CitiNational Investment Bank and has independently advised institutions on setting investment policy.​ Christine is trained as an economist and holds a MA and a BA (Hons) Economics. She is a CFA charter holder since 1999.​",
+    "Set up JB Financial's (JBF) wealth management operation at in 2011 and has worked in private and institutional fund management since 1996. Christine began her career in 1996 with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. In Sri Lanka, she has worked at CitiNational Investment Bank and independently advised institutions on setting investment policy.​",
   ];
   const documents = [
     {
@@ -109,7 +109,10 @@ const MMF: React.FC = () => {
       <FundDetailsSection
         heading="Fund Objectives & Strategy"
         highlightText="Objectives & Strategy"
-        description="The JB Vantage Money Market Fund is a low-risk investment option focusing on a short-term investment strategy. Launched in 2011, the fund invests in instruments such as fixed deposits, commercial papers, and trust certificates issued by regulated commercial banks, finance companies, and other investment-grade corporate issuers. This diversified portfolio aims to provide regular income while maintaining high liquidity. The fund requires a minimum initial investment of LKR 1 Million. Its low-risk profile, combined with a focus on liquidity and regular income, makes it suitable for short-term investors seeking a cash shelter with a low tolerance for risk. The Money Market Fund offers a balance between safety and returns, making it an attractive option for both individual and corporate investors in the Sri Lankan market who prioritize capital preservation and steady income."
+        description={[
+          "The JB Vantage Money Market Fund is intended for the short-term investment of excess cash. The amount of income that a unit holder may receive will be largely dependent on the current interest-rate environment. It suits investors who have a short-term savings goal and seek a competitive yield. Withdrawals are speedy, and the fund is a very good alternative to traditional short-term savings options such as savings accounts of fixed deposits.",
+          "Compared to rates “locked in” over a longer time horizon, money market funds will generate less income when rates fall due to their shorter time horizon. Conversely, when interest rates rise, money market fund yields tend to rise faster than longer-term maturity products.",
+        ]}
         imageUrl="/images/funds/money-market.jpg"
       />
       <FundStatsSection
@@ -140,8 +143,8 @@ const MMF: React.FC = () => {
         alignText="left" // Change to "left" or "center"
       />
       <FundStewardSection
-        name="Christine"
-        designation="Fund Manager"
+        name="Christine Dias Bandaranaike, CFA"
+        designation="Portfolio Manager & CEO"
         imageSrc="/images/team/sample-team-3.png"
         paragraphs={paragraphs}
       />
