@@ -20,18 +20,23 @@ const FundChart3: React.FC<FundChart3Props> = ({ groups }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${SERVER_URL}/export-json-short-term`);
-      const data = await response.json();
-      const labels = data.data.map((item: any) => item.Date);
-      const jbvefData = data.data.map((item: any) => item.JBGILT);
-      const spsl20triData = data.data.map((item: any) => item.NDBIB);
-      // const astriData = data.data.map((item: any) => item.TBILL);
+      const rawData = await response.json();
+
+      // Sort the data array by date
+      const sortedData = rawData.data.sort((a: any, b: any) => {
+        return new Date(a.Date).getTime() - new Date(b.Date).getTime();
+      });
+
+      const labels = sortedData.map((item: any) => item.Date);
+      const jbgiltData = sortedData.map((item: any) => item.JBGILT);
+      const ndibData = sortedData.map((item: any) => item.NDBIB);
 
       setChartData({
         labels: labels,
         datasets: [
           {
             label: "JBGILT",
-            data: jbvefData,
+            data: jbgiltData,
             borderColor: "#930010",
             backgroundColor: "rgba(147, 0, 16, 0.2)",
             fill: true,
@@ -39,26 +44,18 @@ const FundChart3: React.FC<FundChart3Props> = ({ groups }) => {
           },
           {
             label: "NDBIB CRISIL 90 DAY T-BILL INDEX",
-            data: spsl20triData,
+            data: ndibData,
             borderColor: "#444444",
             backgroundColor: "rgba(68, 68, 68, 0.2)",
             fill: true,
             pointRadius: 2,
           },
-          // {
-          //   label: "T-BILL",
-          //   data: astriData,
-          //   borderColor: "#AAAAAA",
-          //   backgroundColor: "rgba(170, 170, 170, 0.2)",
-          //   fill: true,
-          // },
         ],
       });
     };
 
     fetchData();
 
-    // Cleanup function to avoid memory leaks
     return () => {
       setChartData(null);
     };
@@ -68,36 +65,54 @@ const FundChart3: React.FC<FundChart3Props> = ({ groups }) => {
     scales: {
       x: {
         title: {
-          display: true, // Ensure the label is shown
-          text: "Date", // The label text for the x-axis
+          display: true,
+          text: "Date",
           font: {
-            size: 12, // Adjust font size if needed
+            size: 12,
             family: "Switzer-Semibold",
           },
         },
         grid: {
           display: false,
+          drawTicks: true,
+          tickLength: 3,
+          tickWidth: 5,
         },
         ticks: {
-          autoSkip: true, // Automatically skip labels to prevent overlap
-          maxTicksLimit: 10, // Limit the number of ticks displayed
-          callback: function (value, index) {
+          maxTicksLimit: 200,
+          callback: function (value) {
+            if (!this.getLabelForValue) return "";
+
             const date = new Date(this.getLabelForValue(value as number));
-            return index % 3 === 0
-              ? new Intl.DateTimeFormat("en", {
-                  year: "numeric",
-                  month: "short",
-                }).format(date)
-              : "";
+            const startDate = new Date("2012-05-01");
+            const endDate = new Date("2024-05-31");
+
+            // Skip if date is outside our range
+            if (date < startDate || date > endDate) return "";
+
+            // Only show May (month 4) every two years
+            if (
+              date.getMonth() === 0 &&
+              (date.getFullYear() - startDate.getFullYear()) % 2 === 0
+            ) {
+              return new Intl.DateTimeFormat("en", {
+                year: "numeric",
+                month: "short",
+              }).format(date);
+            }
+            return "";
           },
+          autoSkip: false,
+          maxRotation: 0,
+          minRotation: 0,
         },
       },
       y: {
         title: {
-          display: true, // Ensure the label is shown
-          text: "Return Percentage (%)", // The label text for the y-axis
+          display: true,
+          text: "Return Percentage (%)",
           font: {
-            size: 12, // Adjust font size if needed
+            size: 12,
             family: "Switzer-Semibold",
           },
         },
@@ -106,7 +121,7 @@ const FundChart3: React.FC<FundChart3Props> = ({ groups }) => {
         },
         ticks: {
           callback: function (value) {
-            return `${value}%`; // Add percentage sign to y-axis ticks
+            return `${value}%`;
           },
         },
       },

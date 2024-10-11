@@ -99,7 +99,7 @@ const JBFNavbar: React.FC = () => {
                 : "text-neutral-mid hover:text-neutral-dark"
             } lg:mx-1 cursor-pointer`}
           >
-            Services
+            Wealth Management
           </Navbar.Link>
 
           {isDropdownOpen && (

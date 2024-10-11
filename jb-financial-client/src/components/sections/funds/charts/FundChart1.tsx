@@ -20,11 +20,16 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${SERVER_URL}/export-json-value-equity`);
-      const data = await response.json();
-      const labels = data.data.map((item: any) => item.Date);
-      const jbvefData = data.data.map((item: any) => item.JBVEF);
-      const spsl20triData = data.data.map((item: any) => item.SPSL20TRI);
-      // const astriData = data.data.map((item: any) => item.ASTRI);
+      const rawData = await response.json();
+
+      // Sort the data array by date
+      const sortedData = rawData.data.sort((a: any, b: any) => {
+        return new Date(a.Date).getTime() - new Date(b.Date).getTime();
+      });
+
+      const labels = sortedData.map((item: any) => item.Date);
+      const jbvefData = sortedData.map((item: any) => item.JBVEF);
+      const spsl20triData = sortedData.map((item: any) => item.SPSL20TRI);
 
       setChartData({
         labels: labels,
@@ -43,19 +48,12 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
             fill: true,
             pointRadius: 2,
           },
-          // {
-          //   label: "ASTRI",
-          //   data: astriData,
-          //   borderColor: "#AAAAAA",
-          //   fill: true,
-          // },
         ],
       });
     };
 
     fetchData();
 
-    // Cleanup function to avoid memory leaks
     return () => {
       setChartData(null);
     };
@@ -74,19 +72,37 @@ const FundChart1: React.FC<FundChart1Props> = ({ groups }) => {
         },
         grid: {
           display: false,
+          drawTicks: true,
+          tickLength: 3,
+          tickWidth: 5,
         },
         ticks: {
-          autoSkip: true, // Automatically skip labels to prevent overlap
-          maxTicksLimit: 10, // Limit the number of ticks displayed
-          callback: function (value, index) {
+          maxTicksLimit: 200,
+          callback: function (value) {
+            if (!this.getLabelForValue) return "";
+
             const date = new Date(this.getLabelForValue(value as number));
-            return index % 3 === 0
-              ? new Intl.DateTimeFormat("en", {
-                  year: "numeric",
-                  month: "short",
-                }).format(date)
-              : "";
+            const startDate = new Date("2012-05-01");
+            const endDate = new Date("2024-05-31");
+
+            // Skip if date is outside our range
+            if (date < startDate || date > endDate) return "";
+
+            // Only show May (month 4) every two years
+            if (
+              date.getMonth() === 4 &&
+              (date.getFullYear() - startDate.getFullYear()) % 2 === 0
+            ) {
+              return new Intl.DateTimeFormat("en", {
+                year: "numeric",
+                month: "short",
+              }).format(date);
+            }
+            return "";
           },
+          autoSkip: false,
+          maxRotation: 0, // Horizontal labels
+          minRotation: 0, // Ensure labels stay horizontal
         },
       },
       y: {

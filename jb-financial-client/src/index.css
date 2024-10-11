@@ -406,6 +406,14 @@ body{
   padding: 8px 32px;
 }
 
+@media (max-width: 639px) {
+  .secondary-button-2{
+    padding: 4px 16px;
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
 .secondary-button-2:hover{
   color: var(--white);
   background-color: var(--primary-900) !important;

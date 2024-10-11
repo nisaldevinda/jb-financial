@@ -20,17 +20,23 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${SERVER_URL}/export-json-money-market`);
-      const data = await response.json();
-      const labels = data.data.map((item: any) => item.Date);
-      const jbvefData = data.data.map((item: any) => item.JBMMF);
-      const spsl20triData = data.data.map((item: any) => item.NDBIB);
+      const rawData = await response.json();
+
+      // Sort the data array by date
+      const sortedData = rawData.data.sort((a: any, b: any) => {
+        return new Date(a.Date).getTime() - new Date(b.Date).getTime();
+      });
+
+      const labels = sortedData.map((item: any) => item.Date);
+      const jbmmfData = sortedData.map((item: any) => item.JBMMF); // Changed from sortedData.data
+      const ndibData = sortedData.map((item: any) => item.NDBIB); // Changed from sortedData.data
 
       setChartData({
         labels: labels,
         datasets: [
           {
             label: "JBMMF",
-            data: jbvefData,
+            data: jbmmfData,
             borderColor: "#930010",
             backgroundColor: "rgba(147, 0, 16, 0.2)",
             fill: true,
@@ -38,7 +44,7 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
           },
           {
             label: "NDBIB CRISIL 90 DAY T-BILL INDEX",
-            data: spsl20triData,
+            data: ndibData,
             borderColor: "#444444",
             backgroundColor: "rgba(68, 68, 68, 0.2)",
             fill: true,
@@ -50,7 +56,6 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
 
     fetchData();
 
-    // Cleanup function to avoid memory leaks
     return () => {
       setChartData(null);
     };
@@ -69,19 +74,35 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
         },
         grid: {
           display: false,
+          drawTicks: true,
+          tickLength: 3,
+          tickWidth: 5,
         },
         ticks: {
-          autoSkip: true, // Automatically skip labels to prevent overlap
-          maxTicksLimit: 10, // Limit the number of ticks displayed
-          callback: function (value, index) {
+          maxTicksLimit: 200,
+          callback: function (value) {
+            if (!this.getLabelForValue) return "";
+
             const date = new Date(this.getLabelForValue(value as number));
-            return index % 3 === 0
-              ? new Intl.DateTimeFormat("en", {
-                  year: "numeric",
-                  month: "short",
-                }).format(date)
-              : "";
+            const startDate = new Date("2011-05-01");
+            const endDate = new Date("2024-05-31");
+
+            if (date < startDate || date > endDate) return "";
+
+            if (
+              date.getMonth() === 7 && // Changed back to 4 (May) to match Chart1
+              (date.getFullYear() - startDate.getFullYear()) % 2 === 0
+            ) {
+              return new Intl.DateTimeFormat("en", {
+                year: "numeric",
+                month: "short",
+              }).format(date);
+            }
+            return "";
           },
+          autoSkip: false,
+          maxRotation: 0,
+          minRotation: 0,
         },
       },
       y: {
@@ -97,7 +118,7 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
           display: false,
         },
         ticks: {
-          callback(value) {
+          callback: function (value) {
             return `${value}%`;
           },
         },
@@ -106,7 +127,7 @@ const FundChart2: React.FC<FundChart2Props> = ({ groups }) => {
     plugins: {
       tooltip: {
         callbacks: {
-          title(tooltipItems) {
+          title: function (tooltipItems) {
             return tooltipItems[0].label || "";
           },
         },
