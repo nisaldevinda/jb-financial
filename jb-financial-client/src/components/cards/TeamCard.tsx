@@ -109,7 +109,7 @@ const TeamCard: React.FC<TeamCardProps> = ({
         <p className="bodyText text-neutral-light text-center">{designation}</p>
         <button
           onClick={() => setOpen(true)}
-          className="flex justify-center mt-4 p-3 border border-neutral-light hover:bg-primary-900 rounded-full w-fit"
+          className="flex justify-center mt-4 p-3 border border-neutral-light hover:shadow-md hover:border-primary-900 rounded-full w-fit"
         >
           <ReadCvLogo size={24} color="#930010" className="info-icon" />
         </button>
