@@ -266,48 +266,48 @@ interface FundData {
   T_BILL?: number;
 }
 
-const headers = [
-  "Fund Type",
-  "1 Month",
-  "3 Months",
-  "6 Months",
-  "YTD",
-  "1 Year",
-  "SI*",
-  "TER**",
-];
-const rows = [
-  [
-    "JBVEF",
-    "15.20%",
-    "16.05%",
-    "17.75%",
-    "15.20%",
-    "23.52%",
-    "12.52%",
-    "0.61%",
-  ],
-  [
-    "JBMMF",
-    "15.20%",
-    "16.05%",
-    "17.75%",
-    "15.20%",
-    "23.52%",
-    "12.52%",
-    "0.61%",
-  ],
-  [
-    "JBGILT",
-    "15.20%",
-    "16.05%",
-    "17.75%",
-    "15.20%",
-    "23.52%",
-    "12.52%",
-    "0.61%",
-  ],
-];
+// const headers = [
+//   "Fund Type",
+//   "1 Month",
+//   "3 Months",
+//   "6 Months",
+//   "YTD",
+//   "1 Year",
+//   "SI*",
+//   "TER**",
+// ];
+// const rows = [
+//   [
+//     "JBVEF",
+//     "15.20%",
+//     "16.05%",
+//     "17.75%",
+//     "15.20%",
+//     "23.52%",
+//     "12.52%",
+//     "0.61%",
+//   ],
+//   [
+//     "JBMMF",
+//     "15.20%",
+//     "16.05%",
+//     "17.75%",
+//     "15.20%",
+//     "23.52%",
+//     "12.52%",
+//     "0.61%",
+//   ],
+//   [
+//     "JBGILT",
+//     "15.20%",
+//     "16.05%",
+//     "17.75%",
+//     "15.20%",
+//     "23.52%",
+//     "12.52%",
+//     "0.61%",
+//   ],
+// ];
 
 // Main FundAdmin Component
 const FundAdmin: React.FC = () => {
@@ -455,7 +455,7 @@ const FundAdmin: React.FC = () => {
           cardTitle="Short Term Gilt Fund"
         />
       </div>
-      <FundTableAdmin headers={headers} rows={rows} />
+      <FundTableAdmin />
       <FundDocumentAdmin />
     </div>
   );
