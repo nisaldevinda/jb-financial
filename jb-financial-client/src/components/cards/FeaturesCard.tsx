@@ -17,13 +17,13 @@ const FeaturesCardData: CardProps[] = [
   {
     subtitle: "Security",
     description:
-      "Our investors have two layers of protection by way of a third party trustee and custodian—Deutsche Bank AG Colombo, and oversight by the SEC of Sri Lanka.",
+      "Our investors have two layers of protection by way of a third party trustee and custodian, Deutsche Bank AG Colombo, and oversight by the SEC of Sri Lanka.",
     icon: ShieldCheck, // Dynamic icon
   },
   {
     subtitle: "Standards",
     description:
-      "We employ the most rigorous industry practices: Global Investment Performance Standards (GIPS), the Asset Manager Code, the CFA Institute Code of Ethics and Conduct.",
+      "We employ the most rigorous industry practices including the CFA Asset Manager Code, which is followed by more than 1,100 firms in 30 countries worldwide.",
     icon: Medal, // Dynamic icon
   },
 ];

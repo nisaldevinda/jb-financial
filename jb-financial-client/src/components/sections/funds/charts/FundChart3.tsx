@@ -7,14 +7,13 @@ import { SERVER_URL } from "../../../../Constants.tsx";
 Chart.register(...registerables);
 
 interface FundChart3Props {
-  groups: Array<{ title: string; description: string }>;
   mainTitle?: string;
   mainDescription?: string;
   primaryButtonText?: string;
   secondaryButtonText?: string;
 }
 
-const FundChart3: React.FC<FundChart3Props> = ({ groups }) => {
+const FundChart3: React.FC<FundChart3Props> = ({}) => {
   const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
 
   useEffect(() => {
@@ -134,27 +133,53 @@ const FundChart3: React.FC<FundChart3Props> = ({ groups }) => {
           },
         },
       },
+      title: {
+        display: true,
+        text: "Performance Since Inception",
+        color: "#AAAAAA'",
+        font: {
+          size: 18,
+          family: "Switzer-Regular",
+        },
+        padding: {
+          top: 10,
+          bottom: 30,
+        },
+      },
     },
   };
 
   return (
     <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
-      <div className="flex flex-col justify-center gap-12 w-full lg:w-[60%]">
-        {chartData && <Line data={chartData} options={chartOptions} />}
+      <div className="overflow-x-auto w-full lg:w-[60%]">
+        <div className="flex flex-col justify-center gap-12 w-[200%] lg:w-full">
+          {chartData && <Line data={chartData} options={chartOptions} />}
+        </div>
       </div>
       <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
-        {groups.map((group, index) => (
-          <div key={index}>
-            {group.title && (
-              <h2 className="subtitleText text-primary-900">{group.title}</h2>
-            )}
-            {group.description && (
-              <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-                {group.description}
-              </p>
-            )}
-          </div>
-        ))}
+        <div>
+          <h2 className="subtitleText text-primary-900" id="ytd-value-sgf">
+            30%
+          </h2>
+          <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
+            YTD Return :{" "}
+            <span className="text-neutral-light" id="ytd-date-sgf">
+              as at 17th October 2024
+            </span>
+          </p>
+        </div>
+        <div>
+          <h2 className="subtitleText text-primary-900">30%</h2>
+          <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
+            12M Return
+          </p>
+        </div>
+        <div>
+          <h2 className="subtitleText text-primary-900">15%</h2>
+          <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
+            Benchmark 12M Return
+          </p>
+        </div>
       </div>
     </section>
   );

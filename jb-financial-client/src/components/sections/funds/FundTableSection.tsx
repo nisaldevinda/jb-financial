@@ -128,10 +128,10 @@ const FundTableViewer: React.FC = () => {
           All returns shown are annualized
         </p>
         <p className="regularText text-left">*SI – Since Inception</p>
-        <p className="regularText text-left">
+        {/* <p className="regularText text-left">
           **TER - Total Expense Ratio, and is calculated by dividing total fund
           costs by total fund assets.
-        </p>
+        </p> */}
       </div>
     </div>
   );

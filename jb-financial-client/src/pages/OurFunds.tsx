@@ -13,7 +13,7 @@ const faqData = [
   {
     question: "Why should I invest in a unit trust?",
     answer:
-      "Pooling your money with other investors can offer three key advantages. The first is diversification, as a single unit trust can most likely hold more securities than you as an individual or a company could buy on your own. The second is professional management, as an advisor handles the trusts’ investment management responsibilities, taking the burden off you to keep track of them yourself. And finally, you benefit from convenience. Units can be bought and sold any business day, so you have easy access to your money.",
+      "Pooling your money with other investors can offer three key advantages. The first is diversification, as a single unit trust can most likely hold more securities than you as an individual or a company could buy on your own. The second is professional management, as a portfolio manager handles the trusts’ investment management responsibilities, taking the burden off you to keep track of them yourself. And finally, you benefit from convenience. Units can be bought and sold any business day, so you have easy access to your money.",
   },
   {
     question: "Why invest through JB Vantage?",
@@ -29,40 +29,40 @@ const faqData = [
   {
     question: "Who can invest with JB Vantage?",
     answer:
-      "In order to invest with us, you must invest a minimum Rs. 1 million per fund. Other than that, there are no restrictions.",
+      "The minimum investment is LKR 1 million per fund and you need to be at least 18 years of age. Other than that, there are no restrictions.",
   },
   {
     question:
-      "I am a non-Sri Lankan investor, can I sign up for an account with JB Vantage?",
+      "I am a non-Sri Lankan investor. Can I sign up for an account with JB Vantage?",
     answer:
       "Yes. If you are a non-Sri Lankan, or a non-resident, you can still become part of the JB Vantage community. However, certain investor information may be requested of you by the Central Bank or Securities and Exchange Commission of Sri Lanka.",
   },
   {
     question: "How do I redeem my investment?",
     answer:
-      "You can choose to redeem your investment by sending us a signed redemption form. We will lock in your redemption price (buying price). Bear in mind to check whether your fund has a lock-up period and early redemption fees may apply.",
+      "You can choose to redeem your investment by sending us a signed redemption form. We will lock in your redemption price (buying price). Bear in mind to check whether your fund has a lock-up period and whether early redemption fees may apply.",
   },
   {
     question:
       "How do cash transfers work? Does JB Vantage take custody of my cash?",
     answer:
-      "All cash transfers are done via cheque, SLIPS, RTGS or international wire transfer directly from your bank account. JB Vantage does not take custody of cash at any point – money is transferred directly from your account to our unit trusts’ bank accounts in the name of each Trust at Deutsche Bank AG, Colombo Branch.",
+      "All transfers are done via cheque, SLIPS, RTGS, CEFTS, or international wire transfer directly from your bank account. JB Vantage does not take custody of cash at any point – money is transferred directly from your account to our unit trusts’ bank accounts in the name of each Trust at Deutsche Bank AG, Colombo Branch.",
   },
   {
     question: "How quickly is my money available if I decide to sell?",
     answer:
-      "JB Vantage Money Market and Short Term Gilt Funds offer quick access, with redemptions typically processed within 3 working days. The Value Equity Fund may take up to 7 business days. While you can sell anytime, investments in non-money market funds are best viewed as medium to long-term (3-5 years) due to market cycles of their underlying assets.",
+      "JB Vantage Money Market and Short Term Gilt Funds offer quick access, with redemptions typically processed within 2 working days. The Value Equity Fund may take up to 7 business days. While you can sell anytime, investments in non-money market funds are best viewed as medium to long-term (3-5 years) due to market cycles of their underlying assets.",
   },
   {
     question:
       "How can I monitor the returns of the investment in JB Vantage Unit Trust?",
     answer:
-      "JB Vantage Unit Trust prices are published in national newspapers and on their website. Your investment's market value is calculated by multiplying your unit count by the current manager's buying price. For instance, 80,049.19 units bought at Rs. 12.4853 each would increase from Rs. 1,000,000 to Rs. 1,016,330.03 if the price rose to Rs. 12.6893 after 6 weeks.",
+      "JB Vantage Unit Trust prices are published in national newspapers and on their website. Your investment's market value is calculated by multiplying your unit count by the current manager's buying price. For instance, 80,049.19 units bought at Rs. 12.4853 each would increase from Rs. 1,000,000 to Rs. 1,016,330.03 if the price rose to Rs. 12.6893 after 6 weeks. You can also log in to your online portal to see how your investments are performing.",
   },
   {
     question: "What about Taxation?",
     answer:
-      "The gain earned through the fund is tax free and must be included in your personal income tax or corporate tax declaration in Sri Lanka or elsewhere, depending on applicable rules. Separately, while JB Financial is not a participating FFI* under FATCA, we have given our consent to our Trustee, Deutsche Bank AG, to disclose relevant transaction information to the United States Internal Revenue Service or any FATCA related legal body as required.",
+      "As tax laws are subject to change, please talk to your tax advisor on this matter. Separately, while JB Financial is not a participating FFI* under FATCA, we have given our consent to the Trustee, Deutsche Bank AG, to disclose relevant transaction information to the United States Internal Revenue Service or any FATCA related legal body as required.",
   },
 ];
 

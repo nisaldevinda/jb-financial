@@ -35,7 +35,7 @@ const fundsData = [
   {
     category: "Retired Individuals",
     description:
-      "Time to enjoy the sunset of your life. Conservatism in how you invest is prudent, and we recommend allocating a higher proportion of funds into the JB Vantage Money Market Fund.",
+      "Time to enjoy the sunset of your life. Conservatism in how you invest is prudent, and we recommend allocating a higher proportion of funds into the JB Vantage Money Market Fund so you can access them during an emergency.",
     equityPercentage: 0,
     moneyMarketPercentage: 100,
     imageUrl: "/images/strategies/retired.jpg",
@@ -43,7 +43,7 @@ const fundsData = [
   {
     category: "Corporate Treasurers",
     description:
-      "You have some excess cash which you would rather put to work than leave lying around in a low-yield bank account. Our money market funds are highly recommended.",
+      "You have some cash which you would rather put to work than leave lying around in a low-yield bank account. Our money market funds are highly recommended.",
     equityPercentage: 0,
     moneyMarketPercentage: 100,
     imageUrl: "/images/strategies/corporate.jpg",
@@ -95,7 +95,7 @@ const Home: React.FC = () => {
       <SideContentSection
         title="Private Wealth Management"
         highlightedText="Private Wealth Management"
-        description="We provide institutions and High Net Worth Individuals with private wealth management services where we manage portfolios on their behalf. "
+        description="We provide institutions and high-net-worth individuals with private wealth management services where we manage portfolios on their behalf."
         buttonText="Learn More"
         buttonLink="/private-wealth-management"
         imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/private-wealth-management.webp"
@@ -103,13 +103,13 @@ const Home: React.FC = () => {
       <SideContentSection
         title="Experienced & Award Winning"
         highlightedText="Award Winning"
-        description="Our investment committee consists of some of the most experienced and well-known names in Sri Lanka's financial services sector."
+        description="Our investment committee consists of some of the most experienced and well-known names in capital market industry."
         buttonText="Meet Our Team"
         buttonLink="/team"
         imageUrl="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/award-winning.webp"
         imageColumn={{
           title: "RECOGNIZED BY CFA",
-          text: "We have been recognized multiple times by the CFA Institute as one of the best unit trusts in Sri Lanka.",
+          text: "We have been recognized multiple times by the CFA Society of Sri Lanka as one of the best unit trusts in the country.",
           imageUrl: "/images/awards/cfa.png",
         }}
         swapContentAndImage={true}

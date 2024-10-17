@@ -16,7 +16,7 @@ const contactCardData: ContactCardProps[] = [
   },
   {
     line1: "+94 11 249 0900",
-    line2: "(Working Hours: Mon -Fri from 9AM -5PM)",
+    line2: "(Working Hours: Mon - Fri from 9AM -5PM)",
     line3: "",
     imageUrl: "/icons/phone.svg",
   },

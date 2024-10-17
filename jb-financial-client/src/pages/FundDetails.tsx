@@ -3,7 +3,7 @@ import AccordionSection from "../components/sections/AccordionSection";
 
 import FundHeader from "../components/sections/funds/FundHeader";
 import FundDetailsSection from "../components/sections/funds/FundDetailsSection";
-import FundStatsSection from "../components/sections/funds/FundStatsSection";
+// import FundStatsSection from "../components/sections/funds/FundStatsSection";
 import ChartSection from "../components/sections/funds/ChartSection";
 import FundStewardSection from "../components/sections/funds/FundStewardSection";
 
@@ -39,12 +39,12 @@ const FundDetails: React.FC = () => {
   //     filePath: "",
   //   },
   // ];
-  const fundStats = {
-    objective: "Growth | Value",
-    strategy: "Bottom-Up | Active",
-    benchmark: "S&P SL20",
-    investment: "Value Seeking",
-  };
+  // const fundStats = {
+  //   objective: "Growth | Value",
+  //   strategy: "Bottom-Up | Active",
+  //   benchmark: "S&P SL20",
+  //   investment: "Value Seeking",
+  // };
   return (
     <>
       <FundHeader
@@ -61,12 +61,12 @@ const FundDetails: React.FC = () => {
         ]}
         imageUrl="/images/unit-trusts/value-equity-fund.png"
       />
-      <FundStatsSection
+      {/* <FundStatsSection
         objective={fundStats.objective}
         strategy={fundStats.strategy}
         benchmark={fundStats.benchmark}
         investment={fundStats.investment}
-      />
+      /> */}
       <ChartSection
         groups={groups}
         mainTitle="The numbers speak for themselves"

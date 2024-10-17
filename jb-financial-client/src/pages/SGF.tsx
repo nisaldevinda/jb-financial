@@ -9,16 +9,16 @@ import FundStewardSection from "../components/sections/funds/FundStewardSection"
 import FundDocumentsSection from "../components/sections/funds/FundDocumentsSection";
 
 const SGF: React.FC = () => {
-  const groups = [
-    { title: "30%", description: "Return since inception" },
-    { title: "30%", description: "7 Day Yield" },
-    {
-      title: "15%",
-      description: "Performance of benchmark during last 12 months",
-    },
-  ];
+  // const groups = [
+  //   { title: "30%", description: "7 Day Yield" },
+  //   { title: "30%", description: "12M Return" },
+  //   {
+  //     title: "15%",
+  //     description: "Benchmark 12M Return",
+  //   },
+  // ];
   const paragraphs = [
-    "Set up JB Financial's (JBF) wealth management operation at in 2011 and has worked in private and institutional fund management since 1996. Christine began her career in 1996 with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. In Sri Lanka, she has worked at CitiNational Investment Bank and independently advised institutions on setting investment policy.​",
+    "Christine set up JB Financial's wealth management operation in 2011 and has worked in private and institutional fund management since 1996. Christine began her career in 1996 with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. She has worked at CitiNational Investment Bank and independently advised institutions on setting investment policy.​​",
   ];
   const documents = [
     {
@@ -64,14 +64,16 @@ const SGF: React.FC = () => {
       tags: ["Monthly Factsheet for September 2024."],
       buttonText: "View Document",
       filePath: "/docs/sgf/mf.pdf",
-      imagePath: "/images/documents/test.jpg",
+      imagePath: "/images/documents/sgf-mf.jpg",
     },
   ];
   const fundStats = {
     objective: "Capital preservation with moderate returns",
-    strategy: " Invest in government securities",
+    strategy: "Invest in government securities",
     benchmark: "NDBIB-CRISIL 91 Day T-Bill index",
-    investment: "Low-risk, short-term government securities",
+    investment: "Short-term government securities and REPOs",
+    fundSize: "LKR 2.58 Billion",
+    totalRatio: "0.56%",
   };
   const faqData = [
     {
@@ -80,7 +82,7 @@ const SGF: React.FC = () => {
     },
     {
       question: "What securities does this fund invest in?",
-      answer: "Government securities like treasury bills and bonds.",
+      answer: "Government securities like treasury bills, bonds and REPOs.",
     },
     {
       question: "Is this fund regulated?",
@@ -90,7 +92,7 @@ const SGF: React.FC = () => {
     {
       question: "How does the risk level compare to other funds?",
       answer:
-        "This fund has a lower risk compared to equity funds, and is almost on par with a regular bank savings account.",
+        "This fund has a lower risk compared to most investments including regular bank savings accounts, money market funds holding corporate securities, and equity funds.",
     },
     {
       question: "Is this fund suitable for short-term investing?",
@@ -110,7 +112,8 @@ const SGF: React.FC = () => {
         heading="Fund Objectives & Strategy"
         highlightText="Objectives & Strategy"
         description={[
-          "The JB Vantage Short Term Gilt Fund specializes in investing in gilt-edged securities issued or guaranteed by the Government of Sri Lanka. Initiated in 2016, the fund primarily invests in treasury bills and bonds, offering investors exposure to government securities with high credit worthiness and liquidity. This focus on government-backed instruments positions the fund as a lower-risk option compared to equity funds, while still providing potential for returns above typical savings accounts. The fund requires a minimum initial investment of LKR 1 Million. Its short-term focus and government security investment portfolio make it suitable for investors seeking higher levels of safety, greater liquidity, and a low tolerance for risk. The Short Term Gilt Fund also serves as an excellent option for those looking for a cash shelter between investments in the stock market or for short-term parking of funds.",
+          "The JB Vantage Short Term Gilt Fund specializes in investing in gilt-edged securities issued or guaranteed by the Government of Sri Lanka. Common examples of such instruments are treasury bills, treasury bonds and repurchase agreements (REPOs).",
+          "Treasury funds are generally expected to be a low risk investment category when compared to both equity and money market funds. However, any dividend paid, or interest accruing will change in line with changes in current interest rates due to the short-term and liquid nature of the fund.",
         ]}
         imageUrl="/images/funds/short-term-gilt.jpg"
       />
@@ -119,9 +122,11 @@ const SGF: React.FC = () => {
         strategy={fundStats.strategy}
         benchmark={fundStats.benchmark}
         investment={fundStats.investment}
+        fundSize={fundStats.fundSize}
+        totalRatio={fundStats.totalRatio}
       />
       <FundChart3
-        groups={groups}
+        // groups={groups}
         mainTitle="The numbers speak for themselves"
         mainDescription="For more than a decade, we have remained at the forefront of investment management in Sri Lanka. Our continuous growth is testament to our ability to generate healthy returns for our clients."
         primaryButtonText=""

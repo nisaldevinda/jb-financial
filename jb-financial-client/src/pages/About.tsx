@@ -9,7 +9,7 @@ const About: React.FC = () => {
   const groups = [
     { title: "LKR 27 Billion +", description: "Assets Under Management (AUM)" },
     { title: "380 + ", description: "Satisfied Investors" },
-    { title: "11 Years", description: "Of Managing Investments" },
+    { title: "14 Years", description: "Of Managing Investments" },
   ];
 
   return (
@@ -17,7 +17,7 @@ const About: React.FC = () => {
       <HeroSection
         title="Disciplined investing that suits your needs."
         highlightedText="investing that suits your needs."
-        description="We are an active fund manager, focused on absolute returns. Our aim is to build, manage and preserve our clients’ funds and generate consistent positive returns. We acknowledge that all investment involves risk but we believe firmly in the capital markets to deliver superior returns."
+        description="We are an active fund manager, focused on absolute returns. Our aim is to build, manage and preserve our clients’ wealth by generating consistent positive returns. We acknowledge that all investment involves risk but we believe firmly in the capital markets to deliver superior returns."
         button1Text=""
         button2Text=""
         desktopImage="https://jbfinance-images.s3.eu-north-1.amazonaws.com/static/about-d.webp"

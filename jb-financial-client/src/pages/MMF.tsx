@@ -9,16 +9,16 @@ import FundStewardSection from "../components/sections/funds/FundStewardSection"
 import FundDocumentsSection from "../components/sections/funds/FundDocumentsSection";
 
 const MMF: React.FC = () => {
-  const groups = [
-    { title: "30%", description: "Return since inception" },
-    { title: "30%", description: "7 Day Yield" },
-    {
-      title: "15%",
-      description: "Performance of benchmark during last 12 months",
-    },
-  ];
+  // const groups = [
+  //   { title: "30%", description: "YTD Return" },
+  //   { title: "30%", description: "12M Return" },
+  //   {
+  //     title: "15%",
+  //     description: "Benchmark 12M Return",
+  //   },
+  // ];
   const paragraphs = [
-    "Set up JB Financial's (JBF) wealth management operation at in 2011 and has worked in private and institutional fund management since 1996. Christine began her career in 1996 with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. In Sri Lanka, she has worked at CitiNational Investment Bank and independently advised institutions on setting investment policy.​",
+    "Christine set up JB Financial's wealth management operation in 2011 and has worked in private and institutional fund management since 1996. Christine began her career in 1996 with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. She has worked at CitiNational Investment Bank and independently advised institutions on setting investment policy.​​",
   ];
   const documents = [
     {
@@ -64,14 +64,16 @@ const MMF: React.FC = () => {
       tags: ["Monthly Factsheet for September 2024."],
       buttonText: "View Document",
       filePath: "/docs/mmf/mf.pdf",
-      imagePath: "/images/documents/test.jpg",
+      imagePath: "/images/documents/mmf-mf.jpg",
     },
   ];
   const fundStats = {
     objective: "Regular income and liquidity",
     strategy: "Invest in short-term corporate issues",
     benchmark: "NDBIB-CRISIL 91 Day T-Bill index",
-    investment: "Low-risk, short-term investments",
+    investment: "‘Investment grade’, short term instruments",
+    fundSize: "LKR 19.88 Billion",
+    totalRatio: "0.73%",
   };
   const faqData = [
     {
@@ -110,7 +112,7 @@ const MMF: React.FC = () => {
         heading="Fund Objectives & Strategy"
         highlightText="Objectives & Strategy"
         description={[
-          "The JB Vantage Money Market Fund is intended for the short-term investment of excess cash. The amount of income that a unit holder may receive will be largely dependent on the current interest-rate environment. It suits investors who have a short-term savings goal and seek a competitive yield. Withdrawals are speedy, and the fund is a very good alternative to traditional short-term savings options such as savings accounts of fixed deposits.",
+          "The JB Vantage Money Market Fund is intended for the short-term investment of excess cash. The amount of income that a unit holder may receive will be largely dependent on the current interest-rate environment. It suits investors who have a short-term savings goal and seek a competitive yield. Withdrawals are speedy, and the fund is a very good alternative to traditional short-term savings options such as savings accounts or fixed deposits.",
           "Compared to rates “locked in” over a longer time horizon, money market funds will generate less income when rates fall due to their shorter time horizon. Conversely, when interest rates rise, money market fund yields tend to rise faster than longer-term maturity products.",
         ]}
         imageUrl="/images/funds/money-market.jpg"
@@ -120,9 +122,11 @@ const MMF: React.FC = () => {
         strategy={fundStats.strategy}
         benchmark={fundStats.benchmark}
         investment={fundStats.investment}
+        fundSize={fundStats.fundSize}
+        totalRatio={fundStats.totalRatio}
       />
       <FundChart2
-        groups={groups}
+        // groups={groups}
         mainTitle="The numbers speak for themselves"
         mainDescription="For more than a decade, we have remained at the forefront of investment management in Sri Lanka. Our continuous growth is testament to our ability to generate healthy returns for our clients."
         primaryButtonText=""

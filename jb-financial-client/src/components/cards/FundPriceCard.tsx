@@ -6,7 +6,7 @@ interface CardProps {
   link: string;
   buyPrices: number[]; // Array to accommodate one or more buy prices
   sellPrice: number;
-  nav: number; // Add a new prop for Net Asset Value
+  nav?: number; // Make nav optional for conditional rendering
   showSecondBuyPrice?: boolean; // Optional flag to show the second buy price
 }
 
@@ -16,7 +16,7 @@ const FundPriceCard: React.FC<CardProps> = ({
   link,
   buyPrices,
   sellPrice,
-  nav, // Add nav to destructured props
+  nav, // Nav is destructured here
   showSecondBuyPrice = false, // Default to false if not provided
 }) => {
   return (
@@ -36,17 +36,19 @@ const FundPriceCard: React.FC<CardProps> = ({
             : "justify-center"
         }`}
       >
-        <div className="flex-1 min-w-[200px]">
-          <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
-            Buy Price {showSecondBuyPrice ? "1" : ""}
-          </p>
-          <h4 className="zodiak-r text-[40px] text-center text-primary-900">
-            <span className="switzer-md text-xl">LKR</span>
-            {buyPrices[0].toFixed(2)}
-          </h4>
-        </div>
+        {buyPrices.length > 0 && (
+          <div className="flex-1 min-w-[200px]">
+            <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
+              Buy Price {showSecondBuyPrice ? "1" : ""}
+            </p>
+            <h4 className="zodiak-r text-[40px] text-center text-primary-900">
+              <span className="switzer-md text-xl">LKR</span>
+              {buyPrices[0].toFixed(2)}
+            </h4>
+          </div>
+        )}
 
-        {showSecondBuyPrice && (
+        {showSecondBuyPrice && buyPrices[1] !== undefined && (
           <div className="flex-1 min-w-[200px]">
             <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
               Buy Price 2
@@ -59,28 +61,32 @@ const FundPriceCard: React.FC<CardProps> = ({
         )}
       </div>
 
-      {/* Sell Price */}
-      <div>
-        <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
-          Sell Price
-        </p>
-        <h4 className="zodiak-r text-[40px] text-center text-neutral-mid">
-          <span className="switzer-md text-xl">LKR</span>
-          {sellPrice.toFixed(2)}
-        </h4>
+      {/* Sell Price and Net Asset Value in one row */}
+      <div className="flex justify-center gap-8 mt-4">
+        <div className="flex-1 min-w-[200px]">
+          <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
+            Sell Price
+          </p>
+          <h4 className="zodiak-r text-[40px] text-center text-neutral-mid">
+            <span className="switzer-md text-xl">LKR</span>
+            {sellPrice.toFixed(2)}
+          </h4>
+        </div>
+
+        {nav !== undefined && (
+          <div className="flex-1 min-w-[200px]">
+            <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
+              Net Asset Value
+            </p>
+            <h4 className="zodiak-r text-[40px] text-center text-neutral-mid">
+              <span className="switzer-md text-xl">LKR</span>
+              {nav.toFixed(2)}
+            </h4>
+          </div>
+        )}
       </div>
 
-      {/* Net Asset Value */}
-      <div>
-        <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
-          Net Asset Value
-        </p>
-        <h4 className="zodiak-r text-[40px] text-center text-neutral-mid">
-          <span className="switzer-md text-xl">LKR</span>
-          {nav.toFixed(2)}
-        </h4>
-      </div>
-
+      {/* Link to learn more */}
       <a
         href={link}
         className="switzer-md text-center text-neutral-light hover:text-neutral-mid"

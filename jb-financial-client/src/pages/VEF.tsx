@@ -9,16 +9,16 @@ import FundStewardSection from "../components/sections/funds/FundStewardSection"
 import FundDocumentsSection from "../components/sections/funds/FundDocumentsSection";
 
 const VEF: React.FC = () => {
-  const groups = [
-    { title: "30%", description: "Return since inception" },
-    { title: "30%", description: "12M Yield" },
-    {
-      title: "15%",
-      description: "Performance of benchmark during last 12 months",
-    },
-  ];
+  // const groups = [
+  //   { title: "30%", description: "YTD Return" },
+  //   { title: "30%", description: "12M Return" },
+  //   {
+  //     title: "15%",
+  //     description: "Benchmark 12M Return",
+  //   },
+  // ];
   const paragraphs = [
-    "Sashika joined JBF in 2023 as the Chief Investment Officer and Portfolio Manager, primarily focused on the private wealth portfolios and the unit trusts. Prior to joining JB, he served as Vice President at Capital Alliance Investments and Assistant Vice President Treasury at Softlogic Life managing unit trusts and insurance portfolios.",
+    "Sashika joined JB Financial in 2023 as the Chief Investment Officer and Portfolio Manager for the JB Financial Value Equity Fund. Prior to joining JB, he served as Vice President at Capital Alliance Investments and Assistant Vice President Treasury at Softlogic Life, managing unit trusts and insurance portfolios. He has been in the investment management industry for over 10 years.",
   ];
   const documents = [
     {
@@ -64,14 +64,16 @@ const VEF: React.FC = () => {
       tags: ["Monthly Factsheet for September 2024."],
       buttonText: "View Document",
       filePath: "/docs/vef/mf.pdf",
-      imagePath: "/images/documents/test.jpg",
+      imagePath: "/images/documents/vef-mf.jpg",
     },
   ];
   const fundStats = {
     objective: "Long-term capital growth",
     strategy: "Invest in undervalued large and mid-cap stocks",
-    benchmark: "S&P Sri Lanka 20 Index",
+    benchmark: "S&P Sri Lanka 20 Total Returns Index",
     investment: "Value investing",
+    fundSize: "LKR 2.2 Billion",
+    totalRatio: "2.15%",
   };
   const faqData = [
     {
@@ -101,7 +103,7 @@ const VEF: React.FC = () => {
     <>
       <FundHeader
         title="JB Vantage Value Equity Fund"
-        description="Consider investing in our Value Equity Fund for sustainable, long-term returns from the Colombo Stock Exchange with superior ease and efficiency."
+        description="Consider investing in our Value Equity Fund for superior, long-term returns from the Colombo Stock Exchange with ease and efficiency."
         tags={["Diversified", "Sustainable", "High Returns"]}
       />
       <FundDetailsSection
@@ -109,7 +111,7 @@ const VEF: React.FC = () => {
         highlightText="Objectives & Strategy"
         description={[
           "The fundamental investment objective of the JB Vantage Value Equity Fund is to achieve long term capital appreciation through investments in securities of companies which we believe are undervalued by the market and as such, have strong appreciation potential. The Fund may invest in all categories of equity related securities of companies including voting and nonvoting common shares, preference shares, rights, warrants and other equity related issues.",
-          "Equity funds are generally expected to be of high risk and/or a “growth” category of investment. This is due to the fact that the Fund invests for capital growth or appreciation, by trying to grow the investor’s money over time through investment in equities. That is, growth is generated through capital gains – profits earned from buying and selling equity securities.",
+          "Equity funds are generally expected to be of high risk and/or “growth” category of investment. This is due to the fact that the Fund invests for capital growth or appreciation, by trying to grow the investor’s money over time through investment in equities. That is, growth is generated through capital gains – profits earned from buying and selling equity securities.",
         ]}
         imageUrl="/images/funds/value-equity.jpg"
       />
@@ -118,9 +120,11 @@ const VEF: React.FC = () => {
         strategy={fundStats.strategy}
         benchmark={fundStats.benchmark}
         investment={fundStats.investment}
+        fundSize={fundStats.fundSize}
+        totalRatio={fundStats.totalRatio}
       />
       <FundChart1
-        groups={groups}
+        // groups={groups}
         mainTitle="The numbers speak for themselves"
         mainDescription="For more than a decade, we have remained at the forefront of investment management in Sri Lanka. Our continuous growth is testament to our ability to generate healthy returns for our clients."
         primaryButtonText=""
