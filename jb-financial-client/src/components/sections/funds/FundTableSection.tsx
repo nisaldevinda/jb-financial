@@ -9,8 +9,9 @@ interface FundData {
   sixMonths: string;
   ytd: string;
   oneYear: string;
+  threeYear: string;
+  fiveYear: string;
   si: string;
-  ter: string;
 }
 
 interface FundTable {
@@ -109,10 +110,13 @@ const FundTableViewer: React.FC = () => {
                     {row.oneYear}
                   </td>
                   <td className="px-2 md:px-6 py-3 md:py-6 text-neutral-mid text-xs md:text-base text-gray-700 whitespace-nowrap">
-                    {row.si}
+                    {row.threeYear}
                   </td>
                   <td className="px-2 md:px-6 py-3 md:py-6 text-neutral-mid text-xs md:text-base text-gray-700 whitespace-nowrap">
-                    {row.ter}
+                    {row.fiveYear}
+                  </td>
+                  <td className="px-2 md:px-6 py-3 md:py-6 text-neutral-mid text-xs md:text-base text-gray-700 whitespace-nowrap">
+                    {row.si}
                   </td>
                 </tr>
               ))}

@@ -160,10 +160,7 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
             30%
           </h2>
           <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-            YTD Return :{" "}
-            <span className="text-neutral-light" id="ytd-date">
-              as at 17th October 2024
-            </span>
+            YTD Return
           </p>
         </div>
         <div>

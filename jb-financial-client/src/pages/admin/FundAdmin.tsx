@@ -67,8 +67,8 @@ const FundCard: React.FC<{
     if (buyPrice2 && !formData.buyPrice2)
       newErrors.buyPrice2 = "Buy Price 2 is required";
     if (!formData.sellPrice) newErrors.sellPrice = "Sell Price is required";
-    if (!formData.nav) newErrors.nav = "NAV is required";
-
+    if (formData.nav == null || formData.nav === "")
+      newErrors.nav = "NAV is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };

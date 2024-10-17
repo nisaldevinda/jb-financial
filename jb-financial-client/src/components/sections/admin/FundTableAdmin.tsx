@@ -10,14 +10,16 @@ interface FundData {
   sixMonths: string;
   ytd: string;
   oneYear: string;
+  threeYear: string;
+  fiveear: string;
   si: string;
-  ter: string;
 }
 
 const FundTableAdmin: React.FC = () => {
   const [data, setData] = useState<FundData[]>([]);
   const [asAtDate, setAsAtDate] = useState<string>("");
   const [columns, setColumns] = useState<string[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Fetch initial table data from the API
@@ -54,6 +56,7 @@ const FundTableAdmin: React.FC = () => {
   };
 
   const handleSubmit = () => {
+    setIsSubmitting(true);
     const tableData = { asAtDate, columns, data };
 
     fetch(`${SERVER_URL}/api/fund-performance-summary`, {
@@ -64,8 +67,15 @@ const FundTableAdmin: React.FC = () => {
       .then((response) => response.json())
       .then((result) => {
         console.log("Data saved:", result);
+        alert("Changes saved successfully!");
       })
-      .catch((error) => console.error("Error saving data:", error));
+      .catch((error) => {
+        console.error("Error saving data:", error);
+        alert("Error saving changes. Please try again.");
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -123,16 +133,16 @@ const FundTableAdmin: React.FC = () => {
                       className="w-full bg-transparent"
                     />
                   </td>
-                  {Object.keys(fund)
-                    .filter((key) => key !== "fundType")
-                    .map((key) => (
+                  {Object.entries(fund)
+                    .filter(([key]) => key !== "fundType" && key !== "_id")
+                    .map(([key, value]) => (
                       <td
                         key={key}
                         className="px-2 md:px-6 py-3 md:py-6 text-neutral-mid text-xs md:text-base text-gray-700 whitespace-nowrap"
                       >
                         <input
                           type="text"
-                          value={fund[key as keyof FundData]}
+                          value={value}
                           onChange={(e) =>
                             handleInputChange(
                               index,
@@ -152,9 +162,10 @@ const FundTableAdmin: React.FC = () => {
       </div>
       <button
         onClick={handleSubmit}
-        className="mt-4 px-4 py-2 bg-primary-900 text-white rounded hover:bg-primary-800 transition-colors duration-200"
+        disabled={isSubmitting}
+        className="primary-button disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Submit Changes
+        {isSubmitting ? "Saving changes..." : "Submit Changes"}
       </button>
       <div>
         <p className="regularText text-left">

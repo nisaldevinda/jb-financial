@@ -73,7 +73,7 @@ const FundPriceCard: React.FC<CardProps> = ({
           </h4>
         </div>
 
-        {nav !== undefined && (
+        {nav !== undefined && nav !== 0 && (
           <div className="flex-1 min-w-[200px]">
             <p className="switzer-sb text-base uppercase text-neutral-mid text-center">
               Net Asset Value

@@ -122,6 +122,7 @@ const MMF: React.FC = () => {
         strategy={fundStats.strategy}
         benchmark={fundStats.benchmark}
         investment={fundStats.investment}
+        investmentTooltip="Rated BBB - and above"
         fundSize={fundStats.fundSize}
         totalRatio={fundStats.totalRatio}
       />
