@@ -5,6 +5,7 @@ import { SERVER_URL } from "../../Constants";
 import PerformanceTable from "./PerformanceTable.tsx";
 import FundTableAdmin from "../../components/sections/admin/FundTableAdmin.tsx";
 import FundDocumentAdmin from "../../components/sections/admin/FundDocumentAdmin.tsx";
+import FundYtdAdmin from "../../components/sections/admin/FundYtdAdmin.tsx";
 
 // FundCard Component
 const FundCard: React.FC<{
@@ -457,6 +458,7 @@ const FundAdmin: React.FC = () => {
       </div>
       <FundTableAdmin />
       <FundDocumentAdmin />
+      <FundYtdAdmin />
     </div>
   );
 };

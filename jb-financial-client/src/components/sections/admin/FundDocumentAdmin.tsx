@@ -14,6 +14,7 @@ const FundDocumentAdmin: React.FC<FundDocumentAdminProps> = ({}) => {
             type="file"
             className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit "
           />
+          <button className="primary-button">Submit</button>
         </div>
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Money Market Fund</p>
@@ -21,6 +22,7 @@ const FundDocumentAdmin: React.FC<FundDocumentAdminProps> = ({}) => {
             type="file"
             className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit "
           />
+          <button className="primary-button">Submit</button>
         </div>
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Short Term Gilt Fund</p>
@@ -28,6 +30,7 @@ const FundDocumentAdmin: React.FC<FundDocumentAdminProps> = ({}) => {
             type="file"
             className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit "
           />
+          <button className="primary-button">Submit</button>
         </div>
       </div>
     </div>
