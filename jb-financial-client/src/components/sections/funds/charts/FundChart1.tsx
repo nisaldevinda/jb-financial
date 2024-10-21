@@ -15,11 +15,15 @@ interface FundChart1Props {
 
 const FundChart1: React.FC<FundChart1Props> = ({}) => {
   const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
+  const [ytdReturn, setYtdReturn] = useState<number | null>(null);
+
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${SERVER_URL}/export-json-value-equity`);
+      const fundYTDDataResponse = await fetch(`${SERVER_URL}/api/fundYTDScheme-performance`);
       const rawData = await response.json();
+      const fundYTDData = await fundYTDDataResponse.json();
 
       // Sort the data array by date
       const sortedData = rawData.data.sort((a: any, b: any) => {
@@ -49,6 +53,7 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
           },
         ],
       });
+      setYtdReturn(fundYTDData.valueEquityFund);
     };
 
     fetchData();
@@ -157,7 +162,7 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
       <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
         <div>
           <h2 className="subtitleText text-primary-900" id="ytd-value">
-            30%
+            {ytdReturn !== null ? `${ytdReturn}` : "Loading..."}
           </h2>
           <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
             YTD Return

@@ -7,6 +7,10 @@ import FundStatsSection from "../components/sections/funds/FundStatsSection";
 import FundChart2 from "../components/sections/funds/charts/FundChart2";
 import FundStewardSection from "../components/sections/funds/FundStewardSection";
 import FundDocumentsSection from "../components/sections/funds/FundDocumentsSection";
+import React, { useState , useEffect  } from "react";
+import axios from "axios";
+import {SERVER_URL} from "../Constants.tsx";
+
 
 const MMF: React.FC = () => {
   // const groups = [
@@ -17,6 +21,22 @@ const MMF: React.FC = () => {
   //     description: "Benchmark 12M Return",
   //   },
   // ];
+
+  const [moneyMarketFundUrl, setMoneyMarketFundUrl] = useState('');
+
+  useEffect(() => {
+    const fetchDocumentUrl = async () => {
+      try {
+        const response = await axios.get(`${SERVER_URL}/api/fund-doc-urls`);
+        const { moneyMarketFundUrl } = response.data;
+        setMoneyMarketFundUrl(moneyMarketFundUrl);
+      } catch (error) {
+        console.error("Error fetching document URL:", error);
+      }
+    };
+
+    fetchDocumentUrl();
+  }, []);
   const paragraphs = [
     "Christine set up JB Financial's wealth management operation in 2011 and has worked in private and institutional fund management since 1996. Christine began her career in 1996 with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. She has worked at CitiNational Investment Bank and independently advised institutions on setting investment policy.​​",
   ];
@@ -63,7 +83,7 @@ const MMF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["Monthly Factsheet for September 2024."],
       buttonText: "View Document",
-      filePath: "/docs/mmf/mf.pdf",
+      filePath: moneyMarketFundUrl,
       imagePath: "/images/documents/mmf-mf.jpg",
     },
   ];

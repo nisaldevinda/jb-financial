@@ -7,6 +7,10 @@ import FundStatsSection from "../components/sections/funds/FundStatsSection";
 import FundChart1 from "../components/sections/funds/charts/FundChart1";
 import FundStewardSection from "../components/sections/funds/FundStewardSection";
 import FundDocumentsSection from "../components/sections/funds/FundDocumentsSection";
+import React, { useState , useEffect  } from "react";
+import axios from "axios";
+import {SERVER_URL} from "../Constants.tsx";
+
 
 const VEF: React.FC = () => {
   // const groups = [
@@ -17,6 +21,22 @@ const VEF: React.FC = () => {
   //     description: "Benchmark 12M Return",
   //   },
   // ];
+
+  const [valueEquityFundUrl, setValueEquityFundUrl] = useState('');
+
+  useEffect(() => {
+    const fetchDocumentUrl = async () => {
+      try {
+        const response = await axios.get(`${SERVER_URL}/api/fund-doc-urls`);
+        const { valueEquityFundUrl } = response.data;
+        setValueEquityFundUrl(valueEquityFundUrl);
+      } catch (error) {
+        console.error("Error fetching document URL:", error);
+      }
+    };
+
+    fetchDocumentUrl();
+  }, []);
   const paragraphs = [
     "Sashika joined JB Financial in 2023 as the Chief Investment Officer and Portfolio Manager for the JB Financial Value Equity Fund. Prior to joining JB, he served as Vice President at Capital Alliance Investments and Assistant Vice President Treasury at Softlogic Life, managing unit trusts and insurance portfolios. He has been in the investment management industry for over 10 years.",
   ];
@@ -63,7 +83,7 @@ const VEF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["Monthly Factsheet for September 2024."],
       buttonText: "View Document",
-      filePath: "/docs/vef/mf.pdf",
+      filePath: valueEquityFundUrl,
       imagePath: "/images/documents/vef-mf.jpg",
     },
   ];

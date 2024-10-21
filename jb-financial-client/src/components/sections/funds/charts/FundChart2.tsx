@@ -15,42 +15,55 @@ interface FundChart2Props {
 
 const FundChart2: React.FC<FundChart2Props> = ({}) => {
   const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
+  const [ytdValue, setYtdValue] = useState<string | null>(null);
+  const [ytdDate, setYtdDate] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${SERVER_URL}/export-json-money-market`);
-      const rawData = await response.json();
+      try {
+        // Fetch the chart data
+        const response = await fetch(`${SERVER_URL}/export-json-money-market`);
+        const rawData = await response.json();
 
-      // Sort the data array by date
-      const sortedData = rawData.data.sort((a: any, b: any) => {
-        return new Date(a.Date).getTime() - new Date(b.Date).getTime();
-      });
+        // Sort the data array by date
+        const sortedData = rawData.data.sort((a: any, b: any) => {
+          return new Date(a.Date).getTime() - new Date(b.Date).getTime();
+        });
 
-      const labels = sortedData.map((item: any) => item.Date);
-      const jbmmfData = sortedData.map((item: any) => item.JBMMF); // Changed from sortedData.data
-      const ndibData = sortedData.map((item: any) => item.NDBIB); // Changed from sortedData.data
+        const labels = sortedData.map((item: any) => item.Date);
+        const jbmmfData = sortedData.map((item: any) => item.JBMMF);
+        const ndibData = sortedData.map((item: any) => item.NDBIB);
 
-      setChartData({
-        labels: labels,
-        datasets: [
-          {
-            label: "JBMMF",
-            data: jbmmfData,
-            borderColor: "#930010",
-            backgroundColor: "rgba(147, 0, 16, 0.2)",
-            fill: true,
-            pointRadius: 2,
-          },
-          {
-            label: "NDBIB CRISIL 90 DAY T-BILL INDEX",
-            data: ndibData,
-            borderColor: "#444444",
-            backgroundColor: "rgba(68, 68, 68, 0.2)",
-            fill: true,
-            pointRadius: 2,
-          },
-        ],
-      });
+        setChartData({
+          labels: labels,
+          datasets: [
+            {
+              label: "JBMMF",
+              data: jbmmfData,
+              borderColor: "#930010",
+              backgroundColor: "rgba(147, 0, 16, 0.2)",
+              fill: true,
+              pointRadius: 2,
+            },
+            {
+              label: "NDBIB CRISIL 90 DAY T-BILL INDEX",
+              data: ndibData,
+              borderColor: "#444444",
+              backgroundColor: "rgba(68, 68, 68, 0.2)",
+              fill: true,
+              pointRadius: 2,
+            },
+          ],
+        });
+
+        // Fetch the YTD value from the API
+        const ytdResponse = await fetch(`${SERVER_URL}/api/fundYTDScheme-performance`);
+        const ytdData = await ytdResponse.json();
+        setYtdValue(ytdData.moneyMarketFund);
+        setYtdDate(ytdData.moneyMarketFundDate);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
     fetchData();
@@ -89,8 +102,8 @@ const FundChart2: React.FC<FundChart2Props> = ({}) => {
             if (date < startDate || date > endDate) return "";
 
             if (
-              date.getMonth() === 7 && // Changed back to 4 (May) to match Chart1
-              (date.getFullYear() - startDate.getFullYear()) % 2 === 0
+                date.getMonth() === 4 && // May
+                (date.getFullYear() - startDate.getFullYear()) % 2 === 0
             ) {
               return new Intl.DateTimeFormat("en", {
                 year: "numeric",
@@ -147,21 +160,21 @@ const FundChart2: React.FC<FundChart2Props> = ({}) => {
   };
 
   return (
-    <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
-      <div className="overflow-x-auto w-full lg:w-[60%]">
-        <div className="flex flex-col justify-center gap-12 w-[200%] lg:w-full">
-          {chartData && <Line data={chartData} options={chartOptions} />}
+      <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
+        <div className="overflow-x-auto w-full lg:w-[60%]">
+          <div className="flex flex-col justify-center gap-12 w-[200%] lg:w-full">
+            {chartData && <Line data={chartData} options={chartOptions} />}
+          </div>
         </div>
-      </div>
-      <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
-        <div>
-          <h2 className="subtitleText text-primary-900" id="ytd-value-mmf">
-            30%
-          </h2>
-          <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-            YTD Return :{" "}
-            <span className="text-neutral-light" id="ytd-date-mmf">
-              as at 17th October 2024
+        <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
+          <div>
+            <h2 className="subtitleText text-primary-900" id="ytd-value-mmf">
+              {ytdValue ? `${ytdValue}` : "Loading..."}
+            </h2>
+            <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
+              YTD Return :{" "}
+              <span className="text-neutral-light" id="ytd-date-mmf">
+              as at {ytdDate ? ytdDate : "Loading..."}
             </span>
           </p>
         </div>
