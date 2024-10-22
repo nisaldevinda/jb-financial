@@ -232,7 +232,7 @@ const BlogAdminForm: React.FC<BlogAdminFormProps> = ({
             className="switzer-r"
           >
             <option value="">Select a Category</option>
-            <option>All</option>
+            <option>General</option>
             <option>Value Equity Fund</option>
             <option>Money Market Fund</option>
             <option>Short Term Gilt Fund</option>
