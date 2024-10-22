@@ -7,10 +7,9 @@ import FundStatsSection from "../components/sections/funds/FundStatsSection";
 import FundChart3 from "../components/sections/funds/charts/FundChart3";
 import FundStewardSection from "../components/sections/funds/FundStewardSection";
 import FundDocumentsSection from "../components/sections/funds/FundDocumentsSection";
-import React, { useState , useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {SERVER_URL} from "../Constants.tsx";
-
+import { SERVER_URL } from "../Constants.tsx";
 
 const SGF: React.FC = () => {
   // const groups = [
@@ -22,14 +21,13 @@ const SGF: React.FC = () => {
   //   },
   // ];
 
-
-  const [shortTermGiltFundUrl, setShortTermGiltFundUrl] = useState('');
+  const [shortTermGiltFundUrl, setShortTermGiltFundUrl] = useState("");
 
   useEffect(() => {
     const fetchDocumentUrl = async () => {
       try {
         const response = await axios.get(`${SERVER_URL}/api/fund-doc-urls`);
-        const {  shortTermGiltFundUrl } = response.data;
+        const { shortTermGiltFundUrl } = response.data;
         setShortTermGiltFundUrl(shortTermGiltFundUrl);
       } catch (error) {
         console.error("Error fetching document URL:", error);
@@ -163,6 +161,7 @@ const SGF: React.FC = () => {
         bodyText="Performance reviews, insights on the economic climate, and more."
         buttonText="View all notes"
         buttonLink="/blog"
+        blogCategory="Short Term Gilt Fund"
         buttonType="primary" // 'primary' | 'secondary'
         cardType="blog"
         alignText="left" // Change to "left" or "center"

@@ -6,11 +6,22 @@ interface FundYtdAdminProps {}
 
 const FundYtdAdmin: React.FC<FundYtdAdminProps> = () => {
   const [fundData, setFundData] = useState({
-    valueEquityFund: "",
-    moneyMarketFund: "",
-    moneyMarketFundDate: "",
-    shortTermGiltFund: "",
-    shortTermGiltFundDate: "",
+    // valueEquityFund: "",
+    // moneyMarketFund: "",
+    // moneyMarketFundDate: "",
+    // shortTermGiltFund: "",
+    // shortTermGiltFundDate: "",
+    vefYtdValue: "",
+    vef12mValue: "",
+    vef12mDate: "",
+    mmfYtdValue: "",
+    mmfYtdDate: "",
+    mmf12mValue: "",
+    mmf12mDate: "",
+    sgfYtdValue: "",
+    sgfYtdDate: "",
+    sgf12mValue: "",
+    sgf12mDate: "",
   });
 
   // Fetch data from the API
@@ -49,59 +60,123 @@ const FundYtdAdmin: React.FC<FundYtdAdminProps> = () => {
 
   return (
     <div className="flex flex-col gap-6 md:gap-8 lg:gap-16">
-      <h2 className="subtitleText text-neutral-mid text-left">Fund YTD</h2>
-      <p className="bodyText text-neutral-mid">
-        Update the Fund YTD Return Value and Date
-      </p>
+      <h2 className="subtitleText text-neutral-mid text-left">Fund Returns</h2>
+      <p className="bodyText text-neutral-mid">Update the Fund Return Values</p>
       <div className="flex gap-4 md:gap-8">
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Value Equity Fund</p>
-          <input
-            name="valueEquityFund"
-            value={fundData.valueEquityFund}
-            onChange={handleChange}
-            placeholder="Value Equity Fund percentage"
-            type="text"
-            className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
-          />
+          <div className="flex items-center gap-4">
+            <p className="regularText text-neutral-mid">YTD</p>
+            <input
+              name="vefYtdValue"
+              value={fundData.vefYtdValue}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+          </div>
+          <div className="flex items-center gap-4">
+            <p className="regularText text-neutral-mid">12M</p>
+            <input
+              name="vef12mValue"
+              value={fundData.vef12mValue}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+            <input
+              name="vef12mDate"
+              value={fundData.vef12mDate}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+          </div>
         </div>
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Money Market Fund</p>
-          <input
-            name="moneyMarketFund"
-            value={fundData.moneyMarketFund}
-            onChange={handleChange}
-            placeholder="Money Market Fund percentage"
-            type="text"
-            className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
-          />
-          <input
-            name="moneyMarketFundDate"
-            value={fundData.moneyMarketFundDate}
-            onChange={handleChange}
-            placeholder="Money Market Fund Date"
-            type="text"
-            className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
-          />
+          <div className="flex items-center gap-4">
+            <p className="regularText text-neutral-mid">YTD</p>
+            <input
+              name="mmfYtdValue"
+              value={fundData.mmfYtdValue}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+            <input
+              name="mmfYtdDate"
+              value={fundData.mmfYtdDate}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+          </div>
+          <div className="flex items-center gap-4">
+            <p className="regularText text-neutral-mid">12M</p>
+            <input
+              name="mmf12mValue"
+              value={fundData.mmf12mValue}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+            <input
+              name="mmf12mDate"
+              value={fundData.mmf12mDate}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+          </div>
         </div>
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Short Term Gilt Fund</p>
-          <input
-            name="shortTermGiltFund"
-            value={fundData.shortTermGiltFund}
-            onChange={handleChange}
-            placeholder="Short Term Gilt Fund percentage"
-            type="text"
-            className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
-          />
-          <input
-            name="shortTermGiltFundDate"
-            value={fundData.shortTermGiltFundDate}
-            onChange={handleChange}
-            placeholder="Short Term Gilt Fund Date"
-            type="text"
-            className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
-          />
+          <div className="flex items-center gap-4">
+            <p className="regularText text-neutral-mid">YTD</p>
+            <input
+              name="sgfYtdValue"
+              value={fundData.sgfYtdValue}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+            <input
+              name="sgfYtdDate"
+              value={fundData.sgfYtdDate}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+          </div>
+          <div className="flex items-center gap-4">
+            <p className="regularText text-neutral-mid">12M</p>
+            <input
+              name="sgf12mValue"
+              value={fundData.sgf12mValue}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+            <input
+              name="sgf12mDate"
+              value={fundData.sgf12mDate}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+          </div>
         </div>
       </div>
       <button className="primary-button" onClick={handleSubmit}>

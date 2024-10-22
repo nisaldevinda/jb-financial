@@ -16,6 +16,7 @@ interface ColumnsSectionProps {
   buttonLink?: string;
   cardType: string;
   alignText?: "left" | "center";
+  blogCategory?: string; // New prop for filtering blogs by category
 }
 
 const cardDataMapping: Record<string, any[]> = {
@@ -42,6 +43,7 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
   buttonLink,
   cardType,
   alignText = "center",
+  blogCategory, // New prop
 }) => {
   const [cards, setCards] = useState<any[]>([]);
 
@@ -73,7 +75,13 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
       } else if (cardType === "blog") {
         const response = await fetch(`${SERVER_URL}/api/blogs`);
         const data = await response.json();
-        setCards(data);
+
+        // Filter blogs by category if blogCategory is provided
+        const filteredData = blogCategory
+          ? data.filter((blog: any) => blog.category === blogCategory)
+          : data;
+
+        setCards(filteredData);
       } else {
         const data = cardDataMapping[cardType];
         setCards(data || []);
@@ -81,19 +89,18 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
     };
 
     fetchData();
-  }, [cardType]);
+  }, [cardType, blogCategory]); // Added blogCategory to dependencies
+
+  // Rest of the code remains unchanged...
 
   const mapFundData = (data: any[], fundType: string) => {
-    // Sort the data by date in descending order
     const sortedData = data.sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
-    // Use the most recent entry (first after sorting)
     const latestData = sortedData[0];
     console.log(latestData);
 
-    // Generate the correct link based on the fund type
     const fundLinks: Record<string, string> = {
       "Value Equity Fund": "/funds/value-equity-fund",
       "Money Market Fund": "/funds/money-market-fund",
@@ -101,10 +108,10 @@ const ColumnsSection: React.FC<ColumnsSectionProps> = ({
     };
 
     return {
-      buyPrices: [latestData.buyPrice1, latestData.buyPrice2].filter(Boolean), // Filter out undefined or null values
-      link: fundLinks[fundType] || "/learn-more", // Dynamically set the fund page link
+      buyPrices: [latestData.buyPrice1, latestData.buyPrice2].filter(Boolean),
+      link: fundLinks[fundType] || "/learn-more",
       sellPrice: latestData.sellPrice,
-      nav: latestData.nav, // Add nav to the returned object
+      nav: latestData.nav,
       showSecondBuyPrice: !!latestData.buyPrice2,
       subtitle: fundType,
       title: "JB Vantage",

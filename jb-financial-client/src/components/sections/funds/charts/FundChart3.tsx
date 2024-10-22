@@ -15,16 +15,19 @@ interface FundChart3Props {
 
 const FundChart3: React.FC<FundChart3Props> = ({}) => {
   const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
-  const [ytdReturn, setYtdReturn] = useState<number | null>(null);
+  const [ytdValue, setYtdValue] = useState<string | null>(null);
   const [ytdDate, setYtdDate] = useState<string | null>(null);
+  const [twelveValue, setTwelveValue] = useState<string | null>(null);
+  const [twelveDate, setTwelveDate] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${SERVER_URL}/export-json-short-term`);
-      const fundYTDDataResponse = await fetch(`${SERVER_URL}/api/fundYTDScheme-performance`);
+      const fundYTDDataResponse = await fetch(
+        `${SERVER_URL}/api/fundYTDScheme-performance`
+      );
       const rawData = await response.json();
       const fundYTDData = await fundYTDDataResponse.json();
-
 
       // Sort the data array by date
       const sortedData = rawData.data.sort((a: any, b: any) => {
@@ -59,8 +62,10 @@ const FundChart3: React.FC<FundChart3Props> = ({}) => {
       });
 
       // Set YTD return and date values
-      setYtdReturn(fundYTDData.shortTermGiltFund);
-      setYtdDate(fundYTDData.shortTermGiltFundDate);
+      setYtdValue(fundYTDData.sgfYtdValue);
+      setYtdDate(fundYTDData.sgfYtdDate);
+      setTwelveValue(fundYTDData.sgf12mValue);
+      setTwelveDate(fundYTDData.mmf12mDate);
     };
 
     fetchData();
@@ -101,8 +106,8 @@ const FundChart3: React.FC<FundChart3Props> = ({}) => {
 
             // Only show May (month 4) every two years
             if (
-                date.getMonth() === 0 &&
-                (date.getFullYear() - startDate.getFullYear()) % 2 === 0
+              date.getMonth() === 0 &&
+              (date.getFullYear() - startDate.getFullYear()) % 2 === 0
             ) {
               return new Intl.DateTimeFormat("en", {
                 year: "numeric",
@@ -160,38 +165,43 @@ const FundChart3: React.FC<FundChart3Props> = ({}) => {
   };
 
   return (
-      <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
-        <div className="overflow-x-auto w-full lg:w-[60%]">
-          <div className="flex flex-col justify-center gap-12 w-[200%] lg:w-full">
-            {chartData && <Line data={chartData} options={chartOptions} />}
-          </div>
+    <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
+      <div className="overflow-x-auto w-full lg:w-[60%]">
+        <div className="flex flex-col justify-center gap-12 w-[200%] lg:w-full">
+          {chartData && <Line data={chartData} options={chartOptions} />}
         </div>
-        <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
-          <div>
-            <h2 className="subtitleText text-primary-900" id="ytd-value-sgf">
-              {ytdReturn !== null ? `${ytdReturn}` : "Loading..."}
-            </h2>
-            <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-              YTD Return :{" "}
-              <span className="text-neutral-light" id="ytd-date-sgf">
+      </div>
+      <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
+        <div>
+          <h2 className="subtitleText text-primary-900" id="ytd-value-sgf">
+            {ytdValue !== null ? `${ytdValue}` : "Loading..."}
+          </h2>
+          <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
+            YTD Return :{" "}
+            <span className="text-neutral-light" id="ytd-date-sgf">
               {ytdDate ? `as at ${ytdDate}` : "Loading..."}
             </span>
-            </p>
-          </div>
-          <div>
-            <h2 className="subtitleText text-primary-900">30%</h2>
-            <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-              12M Return
-            </p>
-          </div>
-          <div>
-            <h2 className="subtitleText text-primary-900">15%</h2>
-            <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-              Benchmark 12M Return
-            </p>
-          </div>
+          </p>
         </div>
-      </section>
+        <div>
+          <h2 className="subtitleText text-primary-900">
+            {twelveValue !== null ? `${twelveValue}` : "Loading..."}
+          </h2>
+          <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
+            12M Return :{" "}
+            <span className="text-neutral-light">
+              as at {twelveDate !== null ? `${twelveDate}` : "Loading..."}
+            </span>
+          </p>
+        </div>
+        <div>
+          <h2 className="subtitleText text-primary-900">15%</h2>
+          <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
+            Benchmark 12M Return
+          </p>
+        </div>
+      </div>
+    </section>
   );
 };
 

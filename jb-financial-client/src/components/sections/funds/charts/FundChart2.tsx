@@ -17,6 +17,8 @@ const FundChart2: React.FC<FundChart2Props> = ({}) => {
   const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
   const [ytdValue, setYtdValue] = useState<string | null>(null);
   const [ytdDate, setYtdDate] = useState<string | null>(null);
+  const [twelveValue, setTwelveValue] = useState<string | null>(null);
+  const [twelveDate, setTwelveDate] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,10 +59,14 @@ const FundChart2: React.FC<FundChart2Props> = ({}) => {
         });
 
         // Fetch the YTD value from the API
-        const ytdResponse = await fetch(`${SERVER_URL}/api/fundYTDScheme-performance`);
+        const ytdResponse = await fetch(
+          `${SERVER_URL}/api/fundYTDScheme-performance`
+        );
         const ytdData = await ytdResponse.json();
-        setYtdValue(ytdData.moneyMarketFund);
-        setYtdDate(ytdData.moneyMarketFundDate);
+        setYtdValue(ytdData.mmfYtdValue);
+        setYtdDate(ytdData.mmfYtdDate);
+        setTwelveValue(ytdData.mmf12mValue);
+        setTwelveDate(ytdData.mmf12mDate);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -102,8 +108,8 @@ const FundChart2: React.FC<FundChart2Props> = ({}) => {
             if (date < startDate || date > endDate) return "";
 
             if (
-                date.getMonth() === 4 && // May
-                (date.getFullYear() - startDate.getFullYear()) % 2 === 0
+              date.getMonth() === 4 && // May
+              (date.getFullYear() - startDate.getFullYear()) % 2 === 0
             ) {
               return new Intl.DateTimeFormat("en", {
                 year: "numeric",
@@ -160,28 +166,33 @@ const FundChart2: React.FC<FundChart2Props> = ({}) => {
   };
 
   return (
-      <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
-        <div className="overflow-x-auto w-full lg:w-[60%]">
-          <div className="flex flex-col justify-center gap-12 w-[200%] lg:w-full">
-            {chartData && <Line data={chartData} options={chartOptions} />}
-          </div>
+    <section className="bg-white px-4 py-8 md:p-8 lg:px-20 2xl:px-40 2xl:py-20 flex flex-col lg:flex-row gap-16">
+      <div className="overflow-x-auto w-full lg:w-[60%]">
+        <div className="flex flex-col justify-center gap-12 w-[200%] lg:w-full">
+          {chartData && <Line data={chartData} options={chartOptions} />}
         </div>
-        <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
-          <div>
-            <h2 className="subtitleText text-primary-900" id="ytd-value-mmf">
-              {ytdValue ? `${ytdValue}` : "Loading..."}
-            </h2>
-            <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-              YTD Return :{" "}
-              <span className="text-neutral-light" id="ytd-date-mmf">
+      </div>
+      <div className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-16 justify-center">
+        <div>
+          <h2 className="subtitleText text-primary-900" id="ytd-value-mmf">
+            {ytdValue ? `${ytdValue}` : "Loading..."}
+          </h2>
+          <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
+            YTD Return :{" "}
+            <span className="text-neutral-light" id="ytd-date-mmf">
               as at {ytdDate ? ytdDate : "Loading..."}
             </span>
           </p>
         </div>
         <div>
-          <h2 className="subtitleText text-primary-900">30%</h2>
+          <h2 className="subtitleText text-primary-900">
+            {twelveValue ? `${twelveValue}` : "Loading..."}
+          </h2>
           <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-            12M Return
+            12M Return :{" "}
+            <span className="text-neutral-light">
+              as at {twelveDate ? `${twelveDate}` : "Loading..."}
+            </span>
           </p>
         </div>
         <div>

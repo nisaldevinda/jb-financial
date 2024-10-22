@@ -7,10 +7,9 @@ import FundStatsSection from "../components/sections/funds/FundStatsSection";
 import FundChart2 from "../components/sections/funds/charts/FundChart2";
 import FundStewardSection from "../components/sections/funds/FundStewardSection";
 import FundDocumentsSection from "../components/sections/funds/FundDocumentsSection";
-import React, { useState , useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {SERVER_URL} from "../Constants.tsx";
-
+import { SERVER_URL } from "../Constants.tsx";
 
 const MMF: React.FC = () => {
   // const groups = [
@@ -22,7 +21,7 @@ const MMF: React.FC = () => {
   //   },
   // ];
 
-  const [moneyMarketFundUrl, setMoneyMarketFundUrl] = useState('');
+  const [moneyMarketFundUrl, setMoneyMarketFundUrl] = useState("");
 
   useEffect(() => {
     const fetchDocumentUrl = async () => {
@@ -164,6 +163,7 @@ const MMF: React.FC = () => {
         buttonText="View all notes"
         buttonType="primary" // 'primary' | 'secondary'
         buttonLink="/blog"
+        blogCategory="Money Market Fund"
         cardType="blog"
         alignText="left" // Change to "left" or "center"
       />

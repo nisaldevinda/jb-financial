@@ -16,12 +16,17 @@ interface FundChart1Props {
 const FundChart1: React.FC<FundChart1Props> = ({}) => {
   const [chartData, setChartData] = useState<ChartData<"line"> | null>(null);
   const [ytdReturn, setYtdReturn] = useState<number | null>(null);
-
+  const [twelveMonthReturn, setTwelveMonthReturn] = useState<number | null>(
+    null
+  );
+  const [twelveMonthDate, setTwelveMonthDate] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`${SERVER_URL}/export-json-value-equity`);
-      const fundYTDDataResponse = await fetch(`${SERVER_URL}/api/fundYTDScheme-performance`);
+      const fundYTDDataResponse = await fetch(
+        `${SERVER_URL}/api/fundYTDScheme-performance`
+      );
       const rawData = await response.json();
       const fundYTDData = await fundYTDDataResponse.json();
 
@@ -53,7 +58,9 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
           },
         ],
       });
-      setYtdReturn(fundYTDData.valueEquityFund);
+      setYtdReturn(fundYTDData.vefYtdValue);
+      setTwelveMonthReturn(fundYTDData.vef12mValue);
+      setTwelveMonthDate(fundYTDData.vef12mDate);
     };
 
     fetchData();
@@ -169,9 +176,15 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
           </p>
         </div>
         <div>
-          <h2 className="subtitleText text-primary-900">30%</h2>
+          <h2 className="subtitleText text-primary-900">
+            {twelveMonthReturn !== null ? `${twelveMonthReturn}` : "Loading..."}
+          </h2>
           <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-            12M Return
+            12M Return :{" "}
+            <span className="text-neutral-light">
+              as at{" "}
+              {twelveMonthDate !== null ? `${twelveMonthDate}` : "Loading..."}
+            </span>
           </p>
         </div>
         <div>
