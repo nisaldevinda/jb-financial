@@ -1,8 +1,14 @@
 import jbfLogo from "/logo.svg";
 import React from "react";
 import { Navbar } from "flowbite-react";
+import { useAuth } from "../pages/admin/Auth";
 
 const JBFAdminNavbar: React.FC = () => {
+  const { logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+    // The ProtectedRoute component will automatically redirect to login
+  };
   return (
     <Navbar
       fluid
@@ -12,9 +18,10 @@ const JBFAdminNavbar: React.FC = () => {
         <img src={jbfLogo} className="mr-3 h-6 sm:h-9" alt="JB Financial" />
       </Navbar.Brand>
       <div className="flex md:order-2 items-center">
-        <a href="mailto:nisaldevindar@gmail.com" className="hidden md:block">
-          <button className="secondary-button">Help</button>
-        </a>
+        <button className="secondary-button" onClick={handleLogout}>
+          Logout
+        </button>
+
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>

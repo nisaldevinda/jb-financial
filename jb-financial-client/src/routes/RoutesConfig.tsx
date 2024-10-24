@@ -1,4 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+// RoutesConfig.tsx
+import { Routes, Route, Navigate } from "react-router-dom";
+import { ProtectedRoute } from "../pages/admin/Auth";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import OurFunds from "../pages/OurFunds";
@@ -14,21 +16,21 @@ import MMF from "../pages/MMF";
 import SGF from "../pages/SGF";
 import BlogInner from "../pages/BlogInner";
 import CareerInner from "../pages/CareerInner";
-import PrivacyPolicy from "../pages/PrivacyPolicy.tsx";
-import Terms from "../pages/Terms.tsx";
-import CommonTerms from "../pages/CommonTerms.tsx";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import Terms from "../pages/Terms";
+import CommonTerms from "../pages/CommonTerms";
 
 import Login from "../pages/admin/Login";
 import BlogAdmin from "../pages/admin/BlogAdmin";
 import FundAdmin from "../pages/admin/FundAdmin";
-import CareerAdmin from "../pages/admin/CareerAdmin.tsx";
-
+import CareerAdmin from "../pages/admin/CareerAdmin";
 import DatePicker from "../pages/admin/DatePicker";
-import ImageUpload from "../components/sections/ImageUpload.tsx";
+import ImageUpload from "../components/sections/ImageUpload";
 
 const RoutesConfig: React.FC = () => {
   return (
     <Routes>
+      {/* Public Routes */}
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/funds" element={<OurFunds />} />
@@ -51,14 +53,53 @@ const RoutesConfig: React.FC = () => {
       <Route path="/terms-and-conditions" element={<Terms />} />
       <Route path="/common-terminology" element={<CommonTerms />} />
 
-      {/* Admin */}
+      {/* Auth Routes */}
       <Route path="/admin" element={<Login />} />
-      <Route path="/admin/blogs" element={<BlogAdmin />} />
-      <Route path="/admin/funds" element={<FundAdmin />} />
-      <Route path="/admin/careers" element={<CareerAdmin />} />
 
-      <Route path="/admin/date" element={<DatePicker />} />
-      <Route path="/image-upload" element={<ImageUpload />} />
+      {/* Protected Admin Routes */}
+      <Route
+        path="/admin/blogs"
+        element={
+          <ProtectedRoute>
+            <BlogAdmin />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/funds"
+        element={
+          <ProtectedRoute>
+            <FundAdmin />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/careers"
+        element={
+          <ProtectedRoute>
+            <CareerAdmin />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/date"
+        element={
+          <ProtectedRoute>
+            <DatePicker />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/image-upload"
+        element={
+          <ProtectedRoute>
+            <ImageUpload />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Catch-all redirect */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };

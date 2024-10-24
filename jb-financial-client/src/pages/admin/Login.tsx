@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./Auth"; // Make sure to import from where you placed the context
 
 function Login() {
   const [username, setUsername] = useState<string>("");
@@ -10,6 +11,11 @@ function Login() {
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { login } = useAuth(); // Use the auth context
+
+  // You can customize this to match your admin credentials
+  const ADMIN_USERNAME = "admin";
+  const ADMIN_PASSWORD = "your-secure-admin-password"; // In production, use proper security measures
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,28 +23,19 @@ function Login() {
     setError("");
 
     try {
-      const response = await fetch("/admin/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-        credentials: "include", // Important for session cookies
-      });
+      // Validate credentials
+      if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+        // Use the login function from auth context
+        const success = login(password);
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Login failed");
-      }
-
-      // If login is successful
-      if (data.message === "Login successful") {
-        // You might want to store some user info in localStorage if needed
-        localStorage.setItem("isAuthenticated", "true");
-
-        // Redirect to admin blogs page
-        navigate("/admin/blogs");
+        if (success) {
+          // Redirect to admin dashboard
+          navigate("/admin/blogs");
+        } else {
+          throw new Error("Authentication failed");
+        }
+      } else {
+        throw new Error("Invalid credentials");
       }
     } catch (error) {
       setError(

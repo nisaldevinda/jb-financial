@@ -1,10 +1,12 @@
+// App.tsx
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import JBFNavbar from "./components/JBFNavbar";
 import JBFAdminNavbar from "./components/JBFAdminNavbar";
 import JBFFooter from "./components/JBFFooter";
 import RoutesConfig from "./routes/RoutesConfig";
-import LoadingSpinner from "./components/LoadingSpinner"; // Import your loading spinner
+import LoadingSpinner from "./components/LoadingSpinner";
+import { AuthProvider } from "./pages/admin/Auth";
 import "./App.css";
 
 const AppContent: React.FC = () => {
@@ -19,25 +21,20 @@ const AppContent: React.FC = () => {
     const handleStart = () => setIsLoading(true);
     const handleComplete = () => setIsLoading(false);
 
-    handleStart(); // Trigger loading on route change
+    handleStart();
 
-    // Mimic a network request with a setTimeout
     const timeoutId = setTimeout(() => {
       handleComplete();
-    }, 300); // Adjust the timeout to match the desired loading duration
+    }, 300);
 
     return () => clearTimeout(timeoutId);
   }, [location.pathname]);
 
   return (
     <>
-      {/* Show the loading spinner when isLoading is true */}
       {isLoading && <LoadingSpinner />}
-      {/* Conditionally render the appropriate navbar */}
       {!isLoginPage && (isAdminRoute ? <JBFAdminNavbar /> : <JBFNavbar />)}
-      {/* Render the main routes */}
       <RoutesConfig />
-      {/* Conditionally render the footer */}
       {!isAdminRoute && <JBFFooter />}
     </>
   );
@@ -45,9 +42,11 @@ const AppContent: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </AuthProvider>
   );
 };
 
