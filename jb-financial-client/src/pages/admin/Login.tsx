@@ -2,42 +2,52 @@
 
 import { useState } from "react";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
-
-interface User {
-  username: string;
-  password: string;
-}
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
 
     try {
-      // Fetch user data from the JSON file
-      const response = await fetch("/auth/users.json");
-      const users: User[] = await response.json();
+      const response = await fetch("/admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+        credentials: "include", // Important for session cookies
+      });
 
-      // Check if the entered username and password match any user
-      const user = users.find(
-        (user) => user.username === username && user.password === password
-      );
+      const data = await response.json();
 
-      if (user) {
-        // If user is found, redirect to the admin blogs page
+      if (!response.ok) {
+        throw new Error(data.error || "Login failed");
+      }
+
+      // If login is successful
+      if (data.message === "Login successful") {
+        // You might want to store some user info in localStorage if needed
+        localStorage.setItem("isAuthenticated", "true");
+
+        // Redirect to admin blogs page
         navigate("/admin/blogs");
-      } else {
-        // If no match is found, display an error message
-        setError("Invalid username or password. Please try again.");
       }
     } catch (error) {
-      setError("An error occurred. Please try again later.");
-      console.error("Error fetching users:", error);
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Login failed. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -57,7 +67,7 @@ function Login() {
               className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative switzer-r text-sm"
               role="alert"
             >
-              <strong className="font-bold">Error :</strong>
+              <strong className="font-bold">Error:</strong>
               <span className="block sm:inline"> {error}</span>
             </div>
           )}
@@ -78,6 +88,7 @@ function Login() {
               className="switzer-r"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              disabled={isLoading}
             />
           </div>
           <div>
@@ -96,6 +107,7 @@ function Login() {
               className="switzer-r"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={isLoading}
             />
           </div>
           <div className="flex items-center gap-2">
@@ -104,8 +116,12 @@ function Login() {
               Remember me
             </Label>
           </div>
-          <Button type="submit" className="primary-button-2">
-            Sign In
+          <Button
+            type="submit"
+            className="primary-button-2"
+            disabled={isLoading}
+          >
+            {isLoading ? "Signing in..." : "Sign In"}
           </Button>
         </form>
       </div>

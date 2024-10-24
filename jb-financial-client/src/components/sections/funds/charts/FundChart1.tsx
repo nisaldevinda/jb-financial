@@ -20,6 +20,7 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
     null
   );
   const [twelveMonthDate, setTwelveMonthDate] = useState<number | null>(null);
+  const [benchmarkValue, setBenchmarkValue] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,6 +62,7 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
       setYtdReturn(fundYTDData.vefYtdValue);
       setTwelveMonthReturn(fundYTDData.vef12mValue);
       setTwelveMonthDate(fundYTDData.vef12mDate);
+      setBenchmarkValue(fundYTDData.vefBenchValue);
     };
 
     fetchData();
@@ -188,7 +190,9 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
           </p>
         </div>
         <div>
-          <h2 className="subtitleText text-primary-900">15%</h2>
+          <h2 className="subtitleText text-primary-900">
+            {benchmarkValue !== null ? `${benchmarkValue}` : "Loading..."}
+          </h2>
           <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
             Benchmark 12M Return
           </p>

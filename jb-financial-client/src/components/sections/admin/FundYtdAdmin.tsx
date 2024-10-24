@@ -14,14 +14,17 @@ const FundYtdAdmin: React.FC<FundYtdAdminProps> = () => {
     vefYtdValue: "",
     vef12mValue: "",
     vef12mDate: "",
+    vefBenchValue: "",
     mmfYtdValue: "",
     mmfYtdDate: "",
     mmf12mValue: "",
     mmf12mDate: "",
+    mmfBenchValue: "",
     sgfYtdValue: "",
     sgfYtdDate: "",
     sgf12mValue: "",
     sgf12mDate: "",
+    sgfBenchValue: "",
   });
 
   // Fetch data from the API
@@ -95,11 +98,22 @@ const FundYtdAdmin: React.FC<FundYtdAdminProps> = () => {
               className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
             />
           </div>
+          <div className="flex items-center gap-4">
+            <p className="regularText text-neutral-mid">Benchmark</p>
+            <input
+              name="vefBenchValue"
+              value={fundData.vefBenchValue}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+          </div>
         </div>
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Money Market Fund</p>
           <div className="flex items-center gap-4">
-            <p className="regularText text-neutral-mid">YTD</p>
+            <p className="regularText text-neutral-mid">7D</p>
             <input
               name="mmfYtdValue"
               value={fundData.mmfYtdValue}
@@ -136,11 +150,22 @@ const FundYtdAdmin: React.FC<FundYtdAdminProps> = () => {
               className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
             />
           </div>
+          <div className="flex items-center gap-4">
+            <p className="regularText text-neutral-mid">Benchmark</p>
+            <input
+              name="mmfBenchValue"
+              value={fundData.mmfBenchValue}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+          </div>
         </div>
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Short Term Gilt Fund</p>
           <div className="flex items-center gap-4">
-            <p className="regularText text-neutral-mid">YTD</p>
+            <p className="regularText text-neutral-mid">7D</p>
             <input
               name="sgfYtdValue"
               value={fundData.sgfYtdValue}
@@ -171,6 +196,17 @@ const FundYtdAdmin: React.FC<FundYtdAdminProps> = () => {
             <input
               name="sgf12mDate"
               value={fundData.sgf12mDate}
+              onChange={handleChange}
+              placeholder=""
+              type="text"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+            />
+          </div>
+          <div className="flex items-center gap-4">
+            <p className="regularText text-neutral-mid">Benchmark</p>
+            <input
+              name="sgfBenchValue"
+              value={fundData.sgfBenchValue}
               onChange={handleChange}
               placeholder=""
               type="text"

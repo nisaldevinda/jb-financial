@@ -19,6 +19,7 @@ const FundChart3: React.FC<FundChart3Props> = ({}) => {
   const [ytdDate, setYtdDate] = useState<string | null>(null);
   const [twelveValue, setTwelveValue] = useState<string | null>(null);
   const [twelveDate, setTwelveDate] = useState<string | null>(null);
+  const [benchmarkValue, setBenchmarkValue] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,7 +66,8 @@ const FundChart3: React.FC<FundChart3Props> = ({}) => {
       setYtdValue(fundYTDData.sgfYtdValue);
       setYtdDate(fundYTDData.sgfYtdDate);
       setTwelveValue(fundYTDData.sgf12mValue);
-      setTwelveDate(fundYTDData.mmf12mDate);
+      setTwelveDate(fundYTDData.sgf12mDate);
+      setBenchmarkValue(fundYTDData.sgfBenchValue);
     };
 
     fetchData();
@@ -177,7 +179,7 @@ const FundChart3: React.FC<FundChart3Props> = ({}) => {
             {ytdValue !== null ? `${ytdValue}` : "Loading..."}
           </h2>
           <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
-            YTD Return :{" "}
+            Y7 Day Yield :{" "}
             <span className="text-neutral-light" id="ytd-date-sgf">
               {ytdDate ? `as at ${ytdDate}` : "Loading..."}
             </span>
@@ -195,7 +197,9 @@ const FundChart3: React.FC<FundChart3Props> = ({}) => {
           </p>
         </div>
         <div>
-          <h2 className="subtitleText text-primary-900">15%</h2>
+          <h2 className="subtitleText text-primary-900">
+            {benchmarkValue !== null ? `${benchmarkValue}` : "Loading..."}
+          </h2>
           <p className="text-base md:text-2xl text-neutral-dark switzer-md w-[80%]">
             Benchmark 12M Return
           </p>
