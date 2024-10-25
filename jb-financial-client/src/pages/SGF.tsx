@@ -55,7 +55,7 @@ const SGF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["So we can get to know you."],
       buttonText: "View Document",
-      filePath: "/docs/sgf/af.pdf",
+      filePath: "/docs/sgf/application_form.pdf",
       imagePath: "/images/documents/af.jpg",
     },
     {
@@ -64,7 +64,7 @@ const SGF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["Purchase units of the fund."],
       buttonText: "View Document",
-      filePath: "/docs/sgf/pf.pdf",
+      filePath: "/docs/sgf/purchase_form.pdf",
       imagePath: "/images/documents/pf.jpg",
     },
     {
@@ -73,7 +73,7 @@ const SGF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["Check whether your application is complete."],
       buttonText: "View Document",
-      filePath: "/docs/sgf/ac.pdf",
+      filePath: "/docs/sgf/application_checklist.pdf",
       imagePath: "/images/documents/ac.jpg",
     },
     {

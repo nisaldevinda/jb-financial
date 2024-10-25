@@ -46,7 +46,7 @@ const MMF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["A detailed overview of fund specifics."],
       buttonText: "View Document",
-      filePath: "/docs/mmf/em.pdf",
+      filePath: "/docs/mmf/explanatory_memorandum.pdf",
       imagePath: "/images/documents/mmf-em.jpg",
     },
     {
@@ -55,7 +55,7 @@ const MMF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["So we can get to know you."],
       buttonText: "View Document",
-      filePath: "/docs/mmf/af.pdf",
+      filePath: "/docs/mmf/application_form.pdf",
       imagePath: "/images/documents/af.jpg",
     },
     {
@@ -64,7 +64,7 @@ const MMF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["Purchase units of the fund."],
       buttonText: "View Document",
-      filePath: "/docs/mmf/pf.pdf",
+      filePath: "/docs/mmf/purchase_form.pdf",
       imagePath: "/images/documents/pf.jpg",
     },
     {
@@ -73,7 +73,7 @@ const MMF: React.FC = () => {
       fileSize: "3.9MB",
       tags: ["Check whether your application is complete."],
       buttonText: "View Document",
-      filePath: "/docs/mmf/ac.pdf",
+      filePath: "/docs/mmf/application_checklist.pdf",
       imagePath: "/images/documents/ac.jpg",
     },
     {
