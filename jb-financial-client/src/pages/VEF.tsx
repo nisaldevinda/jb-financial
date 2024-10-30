@@ -22,6 +22,7 @@ const VEF: React.FC = () => {
   // ];
 
   const [valueEquityFundUrl, setValueEquityFundUrl] = useState("");
+  const [valueEquityFundUrl2, setValueEquityFundUrl2] = useState("");
 
   useEffect(() => {
     const fetchDocumentUrl = async () => {
@@ -29,6 +30,7 @@ const VEF: React.FC = () => {
         const response = await axios.get(`${SERVER_URL}/api/fund-doc-urls`);
         const { valueEquityFundUrl } = response.data;
         setValueEquityFundUrl(valueEquityFundUrl);
+        setValueEquityFundUrl2(valueEquityFundUrl2);
       } catch (error) {
         console.error("Error fetching document URL:", error);
       }
@@ -84,6 +86,15 @@ const VEF: React.FC = () => {
       buttonText: "View Document",
       filePath: valueEquityFundUrl,
       imagePath: "/images/documents/vef-mf.jpg",
+    },
+    {
+      title: "GIPS Report",
+      fileType: "PDF",
+      fileSize: "3.9MB",
+      tags: ["GIPS Report for September 2024."],
+      buttonText: "View Document",
+      filePath: valueEquityFundUrl2,
+      imagePath: "/images/documents/vef-gr.jpg",
     },
   ];
   const fundStats = {

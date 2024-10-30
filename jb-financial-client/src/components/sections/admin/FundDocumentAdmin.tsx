@@ -8,6 +8,11 @@ const FundDocumentAdmin: React.FC<FundDocumentAdminProps> = ({}) => {
   const [valueEquityFile, setValueEquityFile] = useState<File | null>(null);
   const [moneyMarketFile, setMoneyMarketFile] = useState<File | null>(null);
   const [shortTermGiltFile, setShortTermGiltFile] = useState<File | null>(null);
+  const [valueEquityFile2, setValueEquityFile2] = useState<File | null>(null);
+  const [moneyMarketFile2, setMoneyMarketFile2] = useState<File | null>(null);
+  const [shortTermGiltFile2, setShortTermGiltFile2] = useState<File | null>(
+    null
+  );
 
   // Handler for file input changes
   const handleFileChange = (
@@ -59,51 +64,108 @@ const FundDocumentAdmin: React.FC<FundDocumentAdminProps> = ({}) => {
         {/* Value Equity Fund */}
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Value Equity Fund</p>
-          <input
-            type="file"
-            className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
-            onChange={(e) => handleFileChange(e, setValueEquityFile)}
-          />
-          <button
-            className="primary-button"
-            onClick={() => handleSubmit("Value Equity Fund", valueEquityFile)}
-          >
-            Submit
-          </button>
+          <div className="flex gap-4 items-center">
+            <p className="regularText">Monthly Factsheet</p>
+            <input
+              type="file"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+              onChange={(e) => handleFileChange(e, setValueEquityFile)}
+            />
+            <button
+              className="primary-button-2"
+              onClick={() => handleSubmit("Value Equity Fund", valueEquityFile)}
+            >
+              Submit
+            </button>
+          </div>
+          <div className="flex gap-4 items-center">
+            <p className="regularText">GIPS Report</p>
+            <input
+              type="file"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+              onChange={(e) => handleFileChange(e, setValueEquityFile2)}
+            />
+            <button
+              className="primary-button-2"
+              onClick={() =>
+                handleSubmit("Value Equity Fund 2", valueEquityFile2)
+              }
+            >
+              Submit
+            </button>
+          </div>
         </div>
 
         {/* Money Market Fund */}
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Money Market Fund</p>
-          <input
-            type="file"
-            className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
-            onChange={(e) => handleFileChange(e, setMoneyMarketFile)}
-          />
-          <button
-            className="primary-button"
-            onClick={() => handleSubmit("Money Market Fund", moneyMarketFile)}
-          >
-            Submit
-          </button>
+          <div className="flex gap-4 items-center">
+            <p className="regularText">Monthly Factsheet</p>
+            <input
+              type="file"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+              onChange={(e) => handleFileChange(e, setMoneyMarketFile)}
+            />
+            <button
+              className="primary-button-2"
+              onClick={() => handleSubmit("Money Market Fund", moneyMarketFile)}
+            >
+              Submit
+            </button>
+          </div>
+          <div className="flex gap-4 items-center">
+            <p className="regularText">GIPS Report</p>
+            <input
+              type="file"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+              onChange={(e) => handleFileChange(e, setMoneyMarketFile2)}
+            />
+            <button
+              className="primary-button-2"
+              onClick={() =>
+                handleSubmit("Money Market Fund 2", moneyMarketFile2)
+              }
+            >
+              Submit
+            </button>
+          </div>
         </div>
 
         {/* Short Term Gilt Fund */}
         <div className="bg-[#fbfbfd] p-4 border border-neutral-lighter rounded shadow-sm flex flex-col flex-grow gap-4">
           <p className="bodyText text-neutral-mid">Short Term Gilt Fund</p>
-          <input
-            type="file"
-            className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
-            onChange={(e) => handleFileChange(e, setShortTermGiltFile)}
-          />
-          <button
-            className="primary-button"
-            onClick={() =>
-              handleSubmit("Short Term Gilt Fund", shortTermGiltFile)
-            }
-          >
-            Submit
-          </button>
+          <div className="flex gap-4 items-center">
+            <p className="regularText">Monthly Factsheet</p>
+            <input
+              type="file"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+              onChange={(e) => handleFileChange(e, setShortTermGiltFile)}
+            />
+            <button
+              className="primary-button-2"
+              onClick={() =>
+                handleSubmit("Short Term Gilt Fund", shortTermGiltFile)
+              }
+            >
+              Submit
+            </button>
+          </div>
+          <div className="flex gap-4 items-center">
+            <p className="regularText">GIPS Report</p>
+            <input
+              type="file"
+              className="switzer-r border border-neutral-lighter rounded-lg text-sm w-fit"
+              onChange={(e) => handleFileChange(e, setShortTermGiltFile2)}
+            />
+            <button
+              className="primary-button-2"
+              onClick={() =>
+                handleSubmit("Short Term Gilt Fund 2", shortTermGiltFile2)
+              }
+            >
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -22,6 +22,7 @@ const SGF: React.FC = () => {
   // ];
 
   const [shortTermGiltFundUrl, setShortTermGiltFundUrl] = useState("");
+  const [shortTermGiltFundUrl2, setShortTermGiltFundUrl2] = useState("");
 
   useEffect(() => {
     const fetchDocumentUrl = async () => {
@@ -29,6 +30,7 @@ const SGF: React.FC = () => {
         const response = await axios.get(`${SERVER_URL}/api/fund-doc-urls`);
         const { shortTermGiltFundUrl } = response.data;
         setShortTermGiltFundUrl(shortTermGiltFundUrl);
+        setShortTermGiltFundUrl2(shortTermGiltFundUrl2);
       } catch (error) {
         console.error("Error fetching document URL:", error);
       }
@@ -84,6 +86,15 @@ const SGF: React.FC = () => {
       buttonText: "View Document",
       filePath: shortTermGiltFundUrl,
       imagePath: "/images/documents/sgf-mf.jpg",
+    },
+    {
+      title: "GIPS Report",
+      fileType: "PDF",
+      fileSize: "3.9MB",
+      tags: ["GIPS Report for September 2024."],
+      buttonText: "View Document",
+      filePath: shortTermGiltFundUrl2,
+      imagePath: "/images/documents/sgf-gr.jpg",
     },
   ];
   const fundStats = {

@@ -22,19 +22,21 @@ const MMF: React.FC = () => {
   // ];
 
   const [moneyMarketFundUrl, setMoneyMarketFundUrl] = useState("");
+  const [moneyMarketFundUrl2, setMoneyMarketFundUrl2] = useState("");
 
   useEffect(() => {
-    const fetchDocumentUrl = async () => {
+    const fetchDocumentUrls = async () => {
       try {
         const response = await axios.get(`${SERVER_URL}/api/fund-doc-urls`);
-        const { moneyMarketFundUrl } = response.data;
+        const { moneyMarketFundUrl, moneyMarketFundUrl2 } = response.data;
         setMoneyMarketFundUrl(moneyMarketFundUrl);
+        setMoneyMarketFundUrl2(moneyMarketFundUrl2);
       } catch (error) {
-        console.error("Error fetching document URL:", error);
+        console.error("Error fetching document URLs:", error);
       }
     };
 
-    fetchDocumentUrl();
+    fetchDocumentUrls();
   }, []);
   const paragraphs = [
     "Christine set up JB Financial's wealth management operation in 2011 and has worked in private and institutional fund management since 1996. Christine began her career in 1996 with TD Bank Financial Group of Canada in mutual funds and retail treasury, moving onto private asset management. She has worked at CitiNational Investment Bank and independently advised institutions on setting investment policy.​​",
@@ -84,6 +86,15 @@ const MMF: React.FC = () => {
       buttonText: "View Document",
       filePath: moneyMarketFundUrl,
       imagePath: "/images/documents/mmf-mf.jpg",
+    },
+    {
+      title: "MGIPS Report",
+      fileType: "PDF",
+      fileSize: "3.9MB",
+      tags: ["GIPS Report for September 2024."],
+      buttonText: "View Document",
+      filePath: moneyMarketFundUrl2,
+      imagePath: "/images/documents/mmf-gr.jpg",
     },
   ];
   const fundStats = {
