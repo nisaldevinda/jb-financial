@@ -101,11 +101,7 @@ const TeamCard: React.FC<TeamCardProps> = ({
 
   return (
     <div className="flex flex-col bg-[#fbfbfd] rounded-2xl border-2 border-solid border-gray-300 p-8 md:p-12 gap-8 md:gap-12 items-center">
-      <img
-        src={imageUrl}
-        alt={name}
-        className="w-60 h-auto rounded-full border-2 border-neutral-lighter"
-      />
+      <img src={imageUrl} alt={name} className="w-60 h-auto rounded-full" />
       <div className="flex flex-col gap-1 items-center">
         <h5 className="switzer-sb text-lg md:text-2xl primaryText text-center">
           {name}

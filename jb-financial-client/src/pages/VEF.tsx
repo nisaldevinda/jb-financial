@@ -178,7 +178,7 @@ const VEF: React.FC = () => {
       <FundStewardSection
         name="Sashika Wickramaratne"
         designation="Portfolio Manager & CIO"
-        imageSrc="/images/team/sample-team-1.png"
+        imageSrc="/images/team/sashika.png"
         paragraphs={paragraphs}
       />
       <AccordionSection

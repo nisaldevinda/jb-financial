@@ -180,7 +180,7 @@ const SGF: React.FC = () => {
       <FundStewardSection
         name="Christine Dias Bandaranaike, CFA"
         designation="Portfolio Manager & CEO"
-        imageSrc="/images/team/sample-team-3.png"
+        imageSrc="/images/team/christine.png"
         paragraphs={paragraphs}
       />
       <AccordionSection
