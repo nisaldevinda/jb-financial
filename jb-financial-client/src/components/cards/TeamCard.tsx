@@ -40,13 +40,13 @@ const teamCardData: TeamCardProps[] = [
     description:
       "Sashika joined JBF in 2023 as the Chief Investment Officer and Portfolio Manager, primarily focused on the private wealth portfolios and the unit trusts. Prior to joining JB, he served as Vice President at Capital Alliance Investments and Assistant Vice President Treasury at Softlogic Life managing unit trusts and insurance portfolios.",
   },
-  {
-    name: "Nirodh Weliwitigoda",
-    designation: "Assistant Portfolio Manager",
-    imageUrl: "/images/team/nirodh.png",
-    description:
-      "Nirodh joined JBF in 2023 as an assistant portfolio manager. He focuses mainly on the Gilt and Money Market unit trusts. Prior to JBF he worked at the investment department of Union Assurance. He holds an MBA in Finance from University of Colombo and a B.B Mgt Finance (Special) degree from the University of Kelaniya.",
-  },
+  // {
+  //   name: "Nirodh Weliwitigoda",
+  //   designation: "Assistant Portfolio Manager",
+  //   imageUrl: "/images/team/nirodh.png",
+  //   description:
+  //     "Nirodh joined JBF in 2023 as an assistant portfolio manager. He focuses mainly on the Gilt and Money Market unit trusts. Prior to JBF he worked at the investment department of Union Assurance. He holds an MBA in Finance from University of Colombo and a B.B Mgt Finance (Special) degree from the University of Kelaniya.",
+  // },
   {
     name: "Jehan Fernando",
     designation: "Head of Sales",
