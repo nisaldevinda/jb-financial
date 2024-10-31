@@ -55,25 +55,25 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="min-w-full flex flex-col items-center text-center gap-4 lg:gap-8"
+              className="min-w-full flex flex-col items-center text-center gap-4 lg:gap-8 justify-center"
             >
-              <img src={testimonial.logoSrc} alt="Logo" className="w-[140px]" />
+              {/* <img src={testimonial.logoSrc} alt="Logo" className="w-[140px]" /> */}
               <p className="bodyText neutralText w-full lg:w-1/2">
                 {`“${testimonial.testimonialText}”`}
               </p>
               <div className="flex flex-col gap-4 items-center">
-                <img
+                {/* <img
                   src={testimonial.testimonialImageSrc}
                   alt="Testimonial"
                   className="w-16"
-                />
+                /> */}
                 <div className="flex flex-col gap-1">
                   <h5 className="switzer-sb text-lg lg:text-2xl primaryText">
                     {testimonial.name}
                   </h5>
-                  <p className="bodyText text-neutral-light">
+                  {/* <p className="bodyText text-neutral-light">
                     {testimonial.designation}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
