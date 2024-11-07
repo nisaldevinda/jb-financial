@@ -39,6 +39,7 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
       const labels = sortedData.map((item: any) => item.Date);
       const jbvefData = sortedData.map((item: any) => item.JBVEF);
       const spsl20triData = sortedData.map((item: any) => item.SPSL20TRI);
+      const astriData = sortedData.map((item: any) => item.ASTRI);
 
       setChartData({
         labels: labels,
@@ -47,15 +48,25 @@ const FundChart1: React.FC<FundChart1Props> = ({}) => {
             label: "JBVEF",
             data: jbvefData,
             borderColor: "#930010",
-            fill: true,
-            pointRadius: 2,
+            fill: false,
+            pointRadius: 1,
+            borderWidth: 2,
           },
           {
             label: "SPSL20TRI",
             data: spsl20triData,
             borderColor: "#444444",
-            fill: true,
-            pointRadius: 2,
+            fill: false,
+            pointRadius: 1,
+            borderWidth: 2,
+          },
+          {
+            label: "ASTRI",
+            data: astriData,
+            borderColor: "#AAAAAA",
+            fill: false,
+            pointRadius: 1,
+            borderWidth: 2,
           },
         ],
       });
