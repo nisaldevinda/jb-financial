@@ -36,6 +36,7 @@ const FundChart2: React.FC<FundChart2Props> = ({}) => {
         const labels = sortedData.map((item: any) => item.Date);
         const jbmmfData = sortedData.map((item: any) => item.JBMMF);
         const ndibData = sortedData.map((item: any) => item.NDBIB);
+        const awfdrData = sortedData.map((item: any) => item.AWFDR);
 
         setChartData({
           labels: labels,
@@ -44,17 +45,25 @@ const FundChart2: React.FC<FundChart2Props> = ({}) => {
               label: "JBMMF",
               data: jbmmfData,
               borderColor: "#930010",
-              backgroundColor: "rgba(147, 0, 16, 0.2)",
-              fill: true,
-              pointRadius: 2,
+              fill: false,
+              pointRadius: 1,
+              borderWidth: 2,
             },
             {
               label: "NDBIB CRISIL 90 DAY T-BILL INDEX",
               data: ndibData,
               borderColor: "#444444",
-              backgroundColor: "rgba(68, 68, 68, 0.2)",
-              fill: true,
-              pointRadius: 2,
+              fill: false,
+              pointRadius: 1,
+              borderWidth: 2,
+            },
+            {
+              label: "AWFDR",
+              data: awfdrData,
+              borderColor: "#AAAAAA",
+              fill: false,
+              pointRadius: 1,
+              borderWidth: 2,
             },
           ],
         });
