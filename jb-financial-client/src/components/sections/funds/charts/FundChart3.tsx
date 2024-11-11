@@ -38,6 +38,7 @@ const FundChart3: React.FC<FundChart3Props> = ({}) => {
       const labels = sortedData.map((item: any) => item.Date);
       const jbgiltData = sortedData.map((item: any) => item.JBGILT);
       const ndibData = sortedData.map((item: any) => item.NDBIB);
+      const tbillData = sortedData.map((item: any) => item.TBILL);
 
       // Set chart data
       setChartData({
@@ -48,16 +49,26 @@ const FundChart3: React.FC<FundChart3Props> = ({}) => {
             data: jbgiltData,
             borderColor: "#930010",
             backgroundColor: "rgba(147, 0, 16, 0.2)",
-            fill: true,
-            pointRadius: 2,
+            fill: false,
+            pointRadius: 1,
+            borderWidth: 2,
           },
           {
-            label: "NDBIB CRISIL 90 DAY T-BILL INDEX",
+            label: "NDBIB CRISIL 90 DAY",
             data: ndibData,
             borderColor: "#444444",
             backgroundColor: "rgba(68, 68, 68, 0.2)",
-            fill: true,
-            pointRadius: 2,
+            fill: false,
+            pointRadius: 1,
+            borderWidth: 2,
+          },
+          {
+            label: "T-BILL",
+            data: tbillData,
+            borderColor: "#AAAAAA",
+            fill: false,
+            pointRadius: 1,
+            borderWidth: 2,
           },
         ],
       });
