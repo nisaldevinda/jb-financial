@@ -1,45 +1,55 @@
-import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
+import React, { useState, FormEvent } from "react";
+import axios from "axios";
+import { SERVER_URL } from "../../Constants.tsx";
 
-interface ContactFormProps {}
+interface ContactFormNProps {}
 
-const ContactForm: React.FC<ContactFormProps> = () => {
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [message, setMessage] = useState<string>("");
+const ContactFormN: React.FC<ContactFormNProps> = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState("");
 
-  // EmailJS configuration
-  const serviceId = "service_7oqla1i";
-  const templateId = "template_scn5gyn";
-  const publicKey = "YB6BakE_DZu4DxQrW";
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    const templateParams = {
-      from_name: name,
-      from_email: email,
-      to_name: "JB Financial",
-      message: message,
-    };
+    try {
+      const response = await axios.post(
+        `${SERVER_URL}/api/send-email`,
+        formData
+      );
 
-    // Send the email using EmailJS
-    emailjs
-      .send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log("Email sent successfully.", response.status, response.text);
-        alert("Your message has been sent successfully!");
-        setName("");
-        setEmail("");
-        setMessage("");
-      })
-      .catch((error) => {
-        console.error("Failed to send email.", error);
-        alert(
-          "There was an error sending your message. Please try again later."
-        );
-      });
+      if (response.data.success) {
+        setSubmitStatus("Message sent successfully!");
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        throw new Error(response.data.message || "Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -48,12 +58,26 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       className="flex flex-col gap-4 md:gap-10 p-4 md:p-12 bg-off-white shadow-2xl rounded-3xl"
     >
       <h3 className="subtitleText text-neutral-mid">Get in Touch</h3>
+
+      {submitStatus && (
+        <div
+          className={`regularText p-4 rounded ${
+            submitStatus.includes("successfully")
+              ? "bg-green-100 text-green-700"
+              : "bg-red-100 text-red-700"
+          }`}
+        >
+          {submitStatus}
+        </div>
+      )}
+
       <div className="flex flex-col gap-2">
         <input
           type="text"
           id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
           placeholder="Your Name"
           className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid"
           required
@@ -64,9 +88,10 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         <input
           type="email"
           id="email"
-          value={email}
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
           placeholder="Your Email"
-          onChange={(e) => setEmail(e.target.value)}
           className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid"
           required
         />
@@ -75,20 +100,29 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       <div className="flex flex-col gap-2">
         <textarea
           id="message"
-          value={message}
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
           placeholder="Your Message"
-          onChange={(e) => setMessage(e.target.value)}
           className="px-6 py-4 border border-neutral-lighter focus:border-primary-800 rounded-lg switzer-r text-neutral-mid"
           rows={5}
           required
         />
       </div>
 
-      <button type="submit" className="primary-button">
-        Submit
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className={`primary-button ${
+          isSubmitting
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-primary-500 hover:bg-primary-600"
+        }`}
+      >
+        {isSubmitting ? "Sending..." : "Send"}
       </button>
     </form>
   );
 };
 
-export default ContactForm;
+export default ContactFormN;
