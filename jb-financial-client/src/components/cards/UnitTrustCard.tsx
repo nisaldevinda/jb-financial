@@ -21,7 +21,7 @@ const unitTrustCardData: CardProps[] = [
     title: "JB Vantage",
     subtitle: "Money Market Fund",
     description:
-      "Experience the higher returns of a fixed deposit and the deposit and withdrawal flexibility of a regular savings account.",
+      "Experience the higher returns of a fixed deposit, and the withdrawal flexibility of a regular savings account.",
     imageUrl: "/images/funds/money-market.jpg",
     link: "/funds/money-market-fund",
   },

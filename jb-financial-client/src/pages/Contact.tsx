@@ -41,7 +41,7 @@ const Contact: React.FC<ContactProps> = ({}) => {
                   +94 11 249 0900
                 </a>{" "}
                 <br />
-                <span>(Working Hours: Mon -Fri from 9AM -5PM)</span>
+                <span>(Working Hours: Mon - Fri from 9AM - 5PM)</span>
                 {/* <a href="tel:+94112490950" className="hover:text-neutral-dark">
                   +94 11 249 0950
                 </a>{" "}

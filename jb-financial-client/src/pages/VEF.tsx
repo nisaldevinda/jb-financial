@@ -102,7 +102,7 @@ const VEF: React.FC = () => {
     strategy: "Invest in undervalued large and mid-cap stocks",
     benchmark: "S&P Sri Lanka 20 Total Returns Index",
     investment: "Value investing",
-    fundSize: "LKR 2.2 Billion",
+    fundSize: "LKR 2.5 Billion (Nov '24)",
     totalRatio: "2.15%",
   };
   const faqData = [
@@ -140,8 +140,8 @@ const VEF: React.FC = () => {
         heading="Fund Objectives & Strategy"
         highlightText="Objectives & Strategy"
         description={[
-          "The fundamental investment objective of the JB Vantage Value Equity Fund is to achieve long term capital appreciation through investments in securities of companies which we believe are undervalued by the market and as such, have strong appreciation potential. The Fund may invest in all categories of equity related securities of companies including voting and nonvoting common shares, preference shares, rights, warrants and other equity related issues.",
-          "Equity funds are generally expected to be of high risk and/or “growth” category of investment. This is due to the fact that the Fund invests for capital growth or appreciation, by trying to grow the investor’s money over time through investment in equities. That is, growth is generated through capital gains – profits earned from buying and selling equity securities.",
+          "The fundamental investment objective of the JB Vantage Value Equity Fund is to achieve long term capital appreciation through investments in securities of listed companies which we believe are undervalued by the market and as such, have strong appreciation potential. The Fund may invest in all categories of equity related securities including voting and nonvoting common shares, preference shares, rights, warrants and other equity related issues.",
+          "Equity funds are generally expected to be of high risk and/or “growth” category of investment. This is due to the fact that the Fund invests for capital growth or appreciation, by trying to grow the investor’s money over time. That is, growth is generated through capital gains – profits earned from buying and selling equity securities.",
         ]}
         imageUrl="/images/funds/value-equity.jpg"
       />
